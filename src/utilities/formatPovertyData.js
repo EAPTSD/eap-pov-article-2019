@@ -1,0 +1,26 @@
+const formatPovertyData = array => {
+  let obj = {};
+
+  // eslint-disable-next-line
+  array.map((d, i) => {
+    if (i === 0) {
+      let arrObj = Object.keys(d).map((year, i) => {
+        return (obj[i] = { x: parseInt(year) });
+      });
+      Object.values(d).map((value, i) => {
+        return (arrObj[i].y = parseFloat(value));
+      });
+      return i <= 7 ? arrObj.slice(0, 7) : null;
+    } else {
+      Object.values(d).map((value, i) => {
+        return (obj[i].size = parseFloat(value) / 25);
+      });
+    }
+  });
+
+  const arr = [obj];
+  delete arr[0][7];
+  return Object.values(arr[0]);
+};
+
+export default formatPovertyData;

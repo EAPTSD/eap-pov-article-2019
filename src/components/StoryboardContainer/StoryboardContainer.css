@@ -1,0 +1,26 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+.full-height-container {
+  height: 100vh;
+  position: relative;
+}
+
+.bg-black {
+  background-color: black;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-blue {
+  background-color: blue;
+}
+
+.bg-grey {
+  background-color: grey;
+}
