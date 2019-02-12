@@ -10,9 +10,9 @@ import displayDataPopulator from '../../../utilities/displayDataPopulator';
 import './BubbleGraph.css';
 
 // Data
-import asean1_9 from '../../../data/asean_1.9.csv';
-import asean3_2 from '../../../data/asean_3.2.csv';
-import asean5_5 from '../../../data/asean_5.5.csv';
+import asean1_9 from '../../../data/BubbleGraphData/asean_1.9.csv';
+import asean3_2 from '../../../data/BubbleGraphData/asean_3.2.csv';
+import asean5_5 from '../../../data/BubbleGraphData/asean_5.5.csv';
 
 class BubbleGraph extends Component {
   state = {
@@ -23,28 +23,28 @@ class BubbleGraph extends Component {
     colors: ['#191970', '#1E90FF', '#87CEFA'],
     asean1_9: null,
     asean3_2: null,
-    asean5_5: null
+    asean5_5: null,
   };
 
   componentDidMount() {
     Promise.all([d3.csv(asean1_9), d3.csv(asean3_2), d3.csv(asean5_5)]).then(
-      files => {
-        const formattedPovertyData = files.map(file => {
+      (files) => {
+        const formattedPovertyData = files.map((file) => {
           return formatPovertyData(file);
         });
         this.setState({
           reserveData: formattedPovertyData,
           asean1_9: formattedPovertyData[0],
           asean3_2: formattedPovertyData[1],
-          asean5_5: formattedPovertyData[2]
+          asean5_5: formattedPovertyData[2],
         });
       }
     );
   }
 
-  updateGraph = index => {
+  updateGraph = (index) => {
     this.setState({
-      displayData: displayDataPopulator(this.state.reserveData, index)
+      displayData: displayDataPopulator(this.state.reserveData, index),
     });
   };
 
@@ -79,7 +79,7 @@ class BubbleGraph extends Component {
             })}
           </VictoryChart>
         </div>
-        {index.map(i => {
+        {index.map((i) => {
           return (
             <>
               <div className="foo" />

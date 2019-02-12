@@ -9,14 +9,14 @@ import formatClassData from '../../../utilities/formatClassData';
 import './StackedAreaGraph.css';
 
 // Data
-import aseanClassData from '../../../data/asean_economic_class.csv';
-import indonesiaClassData from '../../../data/indonesia_economic_class.csv';
-import laoClassData from '../../../data/lao_economic_class.csv';
-import malaysiaClassData from '../../../data/malaysia_economic_class.csv';
-import myanmarClassData from '../../../data/myanmar_economic_class.csv';
-import philippinesClassData from '../../../data/philippines_economic_class.csv';
-import thailandClassData from '../../../data/thailand_economic_class.csv';
-import vietnamClassData from '../../../data/vietnam_economic_class.csv';
+import aseanClassData from '../../../data/StackedAreaGraphData/asean_economic_class.csv';
+import indonesiaClassData from '../../../data/StackedAreaGraphData/indonesia_economic_class.csv';
+import laoClassData from '../../../data/StackedAreaGraphData/lao_economic_class.csv';
+import malaysiaClassData from '../../../data/StackedAreaGraphData/malaysia_economic_class.csv';
+import myanmarClassData from '../../../data/StackedAreaGraphData/myanmar_economic_class.csv';
+import philippinesClassData from '../../../data/StackedAreaGraphData/philippines_economic_class.csv';
+import thailandClassData from '../../../data/StackedAreaGraphData/thailand_economic_class.csv';
+import vietnamClassData from '../../../data/StackedAreaGraphData/vietnam_economic_class.csv';
 
 class StackedAreaGraph extends Component {
   state = {
@@ -29,10 +29,10 @@ class StackedAreaGraph extends Component {
       'Myanmar',
       'Philippines',
       'Thailand',
-      'Vietnam'
+      'Vietnam',
     ],
     activeCountry: 'ASEAN',
-    formattedClassData: []
+    formattedClassData: [],
   };
 
   componentDidMount() {
@@ -44,23 +44,23 @@ class StackedAreaGraph extends Component {
       d3.csv(myanmarClassData),
       d3.csv(philippinesClassData),
       d3.csv(thailandClassData),
-      d3.csv(vietnamClassData)
-    ]).then(files => {
-      const formattedClassData = files.map(file => {
+      d3.csv(vietnamClassData),
+    ]).then((files) => {
+      const formattedClassData = files.map((file) => {
         return formatClassData(file);
       });
       this.setState({
         data: formattedClassData[0],
-        formattedClassData
+        formattedClassData,
       });
     });
   }
 
-  handleClick = e => {
+  handleClick = (e) => {
     const countryIndex = e.target.value;
     this.setState({
       data: this.state.formattedClassData[countryIndex],
-      activeCountry: this.state.countries[countryIndex]
+      activeCountry: this.state.countries[countryIndex],
     });
   };
 
@@ -78,7 +78,7 @@ class StackedAreaGraph extends Component {
                 }`}
                 key={`country-button-${i}`}
                 value={i}
-                onClick={e => this.handleClick(e)}
+                onClick={(e) => this.handleClick(e)}
               >
                 {country}
               </Button>
