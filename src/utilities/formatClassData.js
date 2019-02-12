@@ -1,7 +1,7 @@
 const formatClassData = array => {
   return array.map((d, i) => {
-    let obj = {};
-    let arrObj = Object.keys(d).map((year, i) => {
+    const obj = {};
+    const arrObj = Object.keys(d).map((year, i) => {
       return (obj[i] = { x: parseInt(year) });
     });
     Object.values(d).map((value, i) => {

@@ -18,8 +18,8 @@ class BubbleGraph extends Component {
   state = {
     displayData: [],
     reserveData: [],
-    index: 1,
-    fixed: null,
+    index: [0, 1, 2, 3, 4, 5, 6, 7],
+    fixed: 'not-fixed',
     colors: ['#191970', '#1E90FF', '#87CEFA'],
     asean1_9: null,
     asean3_2: null,
@@ -48,25 +48,20 @@ class BubbleGraph extends Component {
     });
   };
 
-  fixPosition = () => {
-    this.setState({
-      fixed: this.state.fixed ? null : 'fixed'
-    });
+  handlePositionFix = () => {
+    const div = document.querySelector('.BubbleGraph-container');
+    div.classList.add('fixed');
   };
 
   render() {
-    const { fixed } = this.state;
+    const { fixed, index } = this.state;
     return (
       <div className="BubbleGraph-sequence-container">
-        <div className="testing">
-          <Waypoint
-            onLeave={() => {
-              this.fixPosition();
-              console.log('hello');
-              this.updateGraph(0);
-            }}
-          />
-        </div>
+        <Waypoint
+          onLeave={({ currentPosition }) => {
+            this.handlePositionFix(currentPosition);
+          }}
+        />
         <div className={`BubbleGraph-container ${fixed}`}>
           <VictoryChart
             theme={VictoryTheme.material}
@@ -84,36 +79,14 @@ class BubbleGraph extends Component {
             })}
           </VictoryChart>
         </div>
-
-        <div className="foo">No Year Data</div>
-
-        <Waypoint onEnter={() => this.updateGraph(1)} />
-
-        <div className="foo">2012</div>
-
-        <Waypoint onEnter={() => this.updateGraph(2)} />
-
-        <div className="foo">2013</div>
-
-        <Waypoint onEnter={() => this.updateGraph(3)} />
-
-        <div className="foo">2014</div>
-
-        <Waypoint onEnter={() => this.updateGraph(4)} />
-
-        <div className="foo">2015</div>
-
-        <Waypoint onEnter={() => this.updateGraph(5)} />
-
-        <div className="foo">2016</div>
-
-        <Waypoint onEnter={() => this.updateGraph(6)} />
-
-        <div className="foo">2017</div>
-
-        <Waypoint onEnter={() => this.updateGraph(7)} />
-
-        <div className="foo">2018</div>
+        {index.map(i => {
+          return (
+            <>
+              <div className="foo" />
+              <Waypoint onEnter={() => this.updateGraph(i)} />
+            </>
+          );
+        })}
       </div>
     );
   }

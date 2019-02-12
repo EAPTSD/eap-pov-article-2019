@@ -51,7 +51,7 @@ class StackedAreaGraph extends Component {
       });
       this.setState({
         data: formattedClassData[0],
-        formattedClassData: formattedClassData
+        formattedClassData
       });
     });
   }
@@ -90,10 +90,10 @@ class StackedAreaGraph extends Component {
             theme={VictoryTheme.material}
             animate={{ duration: 1000 }}
           >
-            <VictoryStack colorScale={'blue'}>
+            <VictoryStack colorScale="blue">
               {this.state.data.map((data, i) => {
                 return (
-                  <VictoryArea key={i} data={data} interpolation={'basis'} />
+                  <VictoryArea key={i} data={data} interpolation="basis" />
                 );
               })}
             </VictoryStack>
