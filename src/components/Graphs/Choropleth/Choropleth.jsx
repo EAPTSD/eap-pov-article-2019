@@ -7,7 +7,7 @@ import * as topojson from 'topojson';
 import './Choropleth.css';
 
 // Data
-import eapCountryData from '../../../data/ChoroplethData/eap_all_by_subnatid1_topojson.json';
+import eapCountryData from '../../../data/ChoroplethData/EAPMap_topojson.json';
 
 class Choropleth extends Component {
   state = {
