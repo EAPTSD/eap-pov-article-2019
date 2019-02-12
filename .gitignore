@@ -10,8 +10,6 @@
 
 # production
 /build
-.prettierrc.json
-.eslintrc.json
 
 # misc
 .DS_Store

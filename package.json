@@ -1,6 +1,7 @@
 {
   "name": "eap-story",
   "version": "0.1.0",
+  "author": "Darwin Rinderer",
   "private": true,
   "dependencies": {
     "d3": "5.8.0",
