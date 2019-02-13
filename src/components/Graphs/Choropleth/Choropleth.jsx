@@ -8,6 +8,7 @@ import './Choropleth.css';
 
 // Data
 import eapCountryData from '../../../data/ChoroplethData/EAPMap_topojson.json';
+import geoJsonData from '../../../data/ChoroplethData/EAPMap_geojson.json';
 
 class Choropleth extends Component {
   state = {
@@ -32,32 +33,41 @@ class Choropleth extends Component {
 
   renderMap = () => {
     const { eapCountryData, windowHeight, windowWidth } = this.state;
-    const eapCountries = topojson.feature(
+    const featureCollection = topojson.feature(
       eapCountryData,
       eapCountryData.objects.eap_all_by_subnatid1_shapefile
-    ).features;
-
-    console.log(eapCountries);
-
-    const projection = d3
-      .geoMercator()
-      .translate([windowWidth / 2, windowHeight / 2]);
-
-    const path = d3.geoPath().projection(projection);
+    );
 
     const svg = d3
       .select('.Choropleth-container')
       .append('svg')
-      .style('height', windowHeight + 'px')
-      .style('width', windowWidth + 'px')
-      .append('g');
+      .attr('height', windowHeight)
+      .attr('width', windowWidth);
+
+    const center = d3.geoPath().centroid(featureCollection);
+    const scale = 500;
+    const offset = [windowWidth / 2, windowHeight / 2];
+
+    // THIS WORKS DON'T DELETE
+    // const projection = d3.geoIdentity()
+    // .fitExtent([[-2000, 300], [900, 900]], featureCollection)
+    // .reflectY(true);
+
+    const projection = d3
+      .geoMercator()
+      .scale(scale)
+      .center(center)
+      .translate(offset);
+
+    const path = d3.geoPath().projection(projection);
 
     svg
-      .selectAll('.country')
-      .data(eapCountries)
+      .append('g')
+      .attr('class', 'country')
+      .selectAll('path')
+      .data(featureCollection.features)
       .enter()
       .append('path')
-      .attr('class', 'country')
       .attr('d', path);
   };
 
