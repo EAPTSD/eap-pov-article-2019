@@ -1,4 +1,4 @@
-const formatPovertyData = array => {
+const formatPovertyData = (array) => {
   const obj = {};
 
   // eslint-disable-next-line

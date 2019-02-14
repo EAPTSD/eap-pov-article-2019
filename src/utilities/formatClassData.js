@@ -1,4 +1,4 @@
-const formatClassData = array => {
+const formatClassData = (array) => {
   return array.map((d, i) => {
     const obj = {};
     const arrObj = Object.keys(d).map((year, i) => {

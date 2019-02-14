@@ -4,23 +4,27 @@ import * as d3 from 'd3';
 import * as topojson from 'topojson';
 
 // Internal Imports
+import getRandomInt from '../../../utilities/getRandomInt';
 import './Choropleth.css';
 
 // Data
 import eapCountryData from '../../../data/ChoroplethData/EAPMap_topojson.json';
-import geoJsonData from '../../../data/ChoroplethData/EAPMap_geojson.json';
 
 class Choropleth extends Component {
   state = {
+    color: null,
     eapCountryData: null,
     windowHeight: null,
     windowWidth: null,
   };
 
   componentDidMount() {
-    console.log(eapCountryData);
     this.setState(
       {
+        color: d3
+          .scaleQuantize()
+          .domain([0, 10])
+          .range(d3.schemeBlues[9]),
         eapCountryData: eapCountryData,
         windowHeight: window.outerHeight,
         windowWidth: window.outerWidth,
@@ -32,7 +36,7 @@ class Choropleth extends Component {
   }
 
   renderMap = () => {
-    const { eapCountryData, windowHeight, windowWidth } = this.state;
+    const { color, eapCountryData, windowHeight, windowWidth } = this.state;
     const featureCollection = topojson.feature(
       eapCountryData,
       eapCountryData.objects.eap_all_by_subnatid1_shapefile
@@ -47,11 +51,6 @@ class Choropleth extends Component {
     const center = d3.geoPath().centroid(featureCollection);
     const scale = 500;
     const offset = [windowWidth / 2, windowHeight / 2];
-
-    // THIS WORKS DON'T DELETE
-    // const projection = d3.geoIdentity()
-    // .fitExtent([[-2000, 300], [900, 900]], featureCollection)
-    // .reflectY(true);
 
     const projection = d3
       .geoMercator()
@@ -68,6 +67,8 @@ class Choropleth extends Component {
       .data(featureCollection.features)
       .enter()
       .append('path')
+      .attr('class', 'sub-nation')
+      .attr('fill', (d) => color(getRandomInt(11)))
       .attr('d', path);
   };
 
