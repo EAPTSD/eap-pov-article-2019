@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
+import Waypoint from 'react-waypoint';
 
 // Internal Imports
 import getRandomInt from '../../../utilities/getRandomInt';
@@ -14,17 +15,19 @@ class Choropleth extends Component {
   state = {
     color: null,
     eapCountryData: null,
+    index: [0, 1, 2, 3, 4, 5, 6, 7],
     windowHeight: null,
     windowWidth: null,
   };
 
   componentDidMount() {
+    const color = d3
+      .scaleQuantize()
+      .domain([0, 10])
+      .range(d3.schemeBlues[9]);
     this.setState(
       {
-        color: d3
-          .scaleQuantize()
-          .domain([0, 10])
-          .range(d3.schemeBlues[9]),
+        color: color,
         eapCountryData: eapCountryData,
         windowHeight: window.outerHeight,
         windowWidth: window.outerWidth,
@@ -72,8 +75,28 @@ class Choropleth extends Component {
       .attr('d', path);
   };
 
+  updateMap = () => {
+    const { color } = this.state;
+    d3.selectAll('path.sub-nation').attr('fill', (d) =>
+      color(getRandomInt(11))
+    );
+  };
+
   render() {
-    return <div className="Choropleth-container" />;
+    const { index } = this.state;
+    return (
+      <div className="Choropleth-sequence-container">
+        <div className="Choropleth-container fixed" />
+        {index.map((i) => {
+          return (
+            <>
+              <div className="Choropleth-waypoint-buffer" />
+              <Waypoint onEnter={() => this.updateMap()} />
+            </>
+          );
+        })}
+      </div>
+    );
   }
 }
 

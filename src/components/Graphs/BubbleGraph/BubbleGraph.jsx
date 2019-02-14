@@ -82,7 +82,7 @@ class BubbleGraph extends Component {
         {index.map((i) => {
           return (
             <>
-              <div className="foo" />
+              <div className="BubbleGraph-waypoint-buffer" />
               <Waypoint onEnter={() => this.updateGraph(i)} />
             </>
           );

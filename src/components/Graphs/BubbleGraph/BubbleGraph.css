@@ -21,14 +21,7 @@
   /* transform: translateX(-50%); */
 }
 
-.testing {
-  border-top: 1px dashed red;
-  display: block;
-  width: 100%;
-  height: 1px;
-}
-
-.foo {
+.BubbleGraph-waypoint-buffer {
   height: 100vh;
   background-color: blue;
 }
