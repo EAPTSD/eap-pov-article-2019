@@ -1,0 +1,22 @@
+.Header-container,
+.full-height-div {
+  height: 100vh;
+}
+
+.left-image-container,
+.middle-image-container,
+.right-image-container {
+  background-size: 100% 100%;
+}
+
+.left-image-container {
+  background-image: url('../../images/action-asia-blur-1455989.jpg');
+}
+
+.middle-image-container {
+  background-image: url('../../images/architecture-asia-bar-1455993.jpg');
+}
+
+.right-image-container {
+  background-image: url('../../images/art-asia-balloon-1455962.jpg');
+}

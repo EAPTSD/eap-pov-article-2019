@@ -17,7 +17,11 @@
   top: 0px;
 }
 
+path.sub-nation {
+  transition: fill 0.4s ease;
+}
+
 .Choropleth-waypoint-buffer {
-  height: 100vh;
+  height: 120vh;
   background-color: white;
 }

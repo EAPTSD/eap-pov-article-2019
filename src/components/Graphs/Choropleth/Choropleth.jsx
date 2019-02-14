@@ -15,7 +15,7 @@ class Choropleth extends Component {
   state = {
     color: null,
     eapCountryData: null,
-    index: [0, 1, 2, 3, 4, 5, 6, 7],
+    index: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
     windowHeight: null,
     windowWidth: null,
   };
@@ -52,8 +52,8 @@ class Choropleth extends Component {
       .attr('width', windowWidth);
 
     const center = d3.geoPath().centroid(featureCollection);
-    const scale = 500;
-    const offset = [windowWidth / 2, windowHeight / 2];
+    const scale = 450;
+    const offset = [windowWidth / 3, windowHeight / 2.4];
 
     const projection = d3
       .geoMercator()
