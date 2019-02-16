@@ -12,13 +12,15 @@
   align-items: center;
 }
 
-.fixed {
+.sticky {
   position: sticky;
   top: 0px;
+}
 
-  /* For Fixed */
-  /* left: 50%; */
-  /* transform: translateX(-50%); */
+.sticky:before,
+.sticky:after {
+  content: '';
+  display: table;
 }
 
 .BubbleGraph-waypoint-buffer {

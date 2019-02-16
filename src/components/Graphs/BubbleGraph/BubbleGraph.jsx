@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { VictoryChart, VictoryScatter, VictoryTheme } from 'victory';
 import * as d3 from 'd3';
 import Waypoint from 'react-waypoint';
+import Stickyfill from 'stickyfilljs';
 
 // Internal Imports
 import formatPovertyData from '../../../utilities/formatPovertyData';
@@ -19,7 +20,6 @@ class BubbleGraph extends Component {
     displayData: [],
     reserveData: [],
     index: [0, 1, 2, 3, 4, 5, 6, 7],
-    fixed: 'not-fixed',
     colors: ['#191970', '#1E90FF', '#87CEFA'],
     asean1_9: null,
     asean3_2: null,
@@ -40,6 +40,9 @@ class BubbleGraph extends Component {
         });
       }
     );
+
+    const elements = document.querySelectorAll('.sticky');
+    Stickyfill.add(elements);
   }
 
   updateGraph = (index) => {
@@ -48,21 +51,11 @@ class BubbleGraph extends Component {
     });
   };
 
-  handlePositionFix = () => {
-    const div = document.querySelector('.BubbleGraph-container');
-    div.classList.add('fixed');
-  };
-
   render() {
-    const { fixed, index } = this.state;
+    const { index } = this.state;
     return (
       <div className="BubbleGraph-sequence-container">
-        <Waypoint
-          onLeave={({ currentPosition }) => {
-            this.handlePositionFix(currentPosition);
-          }}
-        />
-        <div className={`BubbleGraph-container ${fixed}`}>
+        <div className="BubbleGraph-container sticky">
           <VictoryChart
             theme={VictoryTheme.material}
             animate={{ duration: 1000 }}

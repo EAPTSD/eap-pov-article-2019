@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
 import Waypoint from 'react-waypoint';
+import Stickyfill from 'stickyfilljs';
 
 // Internal Imports
 import getRandomInt from '../../../utilities/getRandomInt';
@@ -36,6 +37,9 @@ class Choropleth extends Component {
         this.renderMap();
       }
     );
+
+    const elements = document.querySelectorAll('.sticky');
+    Stickyfill.add(elements);
   }
 
   renderMap = () => {
@@ -86,7 +90,7 @@ class Choropleth extends Component {
     const { index } = this.state;
     return (
       <div className="Choropleth-sequence-container">
-        <div className="Choropleth-container fixed" />
+        <div className="Choropleth-container sticky" />
         {index.map((i) => {
           return (
             <>

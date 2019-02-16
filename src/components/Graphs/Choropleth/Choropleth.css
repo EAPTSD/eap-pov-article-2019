@@ -12,9 +12,15 @@
   align-items: center;
 }
 
-.fixed {
+.sticky {
   position: sticky;
   top: 0px;
+}
+
+.sticky:before,
+.sticky:after {
+  content: '';
+  display: table;
 }
 
 path.sub-nation {
