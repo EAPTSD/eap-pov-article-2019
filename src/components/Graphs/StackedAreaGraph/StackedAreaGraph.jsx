@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { VictoryChart, VictoryStack, VictoryArea, VictoryTheme } from 'victory';
 import * as d3 from 'd3';
 import { Button } from 'reactstrap';
-import Promise from 'promise-polyfill';
 
 // Internal Imports
 import formatClassData from '../../../utilities/formatClassData';
@@ -37,7 +36,7 @@ class StackedAreaGraph extends Component {
   };
 
   componentDidMount() {
-    const prom = new Promise.all([
+    Promise.all([
       d3.csv(aseanClassData),
       d3.csv(indonesiaClassData),
       d3.csv(laoClassData),
@@ -46,8 +45,7 @@ class StackedAreaGraph extends Component {
       d3.csv(philippinesClassData),
       d3.csv(thailandClassData),
       d3.csv(vietnamClassData),
-    ]);
-    prom.then((files) => {
+    ]).then((files) => {
       const formattedClassData = files.map((file) => {
         return formatClassData(file);
       });
