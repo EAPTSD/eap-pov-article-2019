@@ -4,6 +4,7 @@ import { VictoryChart, VictoryScatter, VictoryTheme } from 'victory';
 import * as d3 from 'd3';
 import Waypoint from 'react-waypoint';
 import Stickyfill from 'stickyfilljs';
+import Promise from 'promise-polyfill';
 
 // Internal Imports
 import formatPovertyData from '../../../utilities/formatPovertyData';
@@ -27,19 +28,22 @@ class BubbleGraph extends Component {
   };
 
   componentDidMount() {
-    Promise.all([d3.csv(asean1_9), d3.csv(asean3_2), d3.csv(asean5_5)]).then(
-      (files) => {
-        const formattedPovertyData = files.map((file) => {
-          return formatPovertyData(file);
-        });
-        this.setState({
-          reserveData: formattedPovertyData,
-          asean1_9: formattedPovertyData[0],
-          asean3_2: formattedPovertyData[1],
-          asean5_5: formattedPovertyData[2],
-        });
-      }
-    );
+    const prom = new Promise.all([
+      d3.csv(asean1_9),
+      d3.csv(asean3_2),
+      d3.csv(asean5_5),
+    ]);
+    prom.then((files) => {
+      const formattedPovertyData = files.map((file) => {
+        return formatPovertyData(file);
+      });
+      this.setState({
+        reserveData: formattedPovertyData,
+        asean1_9: formattedPovertyData[0],
+        asean3_2: formattedPovertyData[1],
+        asean5_5: formattedPovertyData[2],
+      });
+    });
 
     const elements = document.querySelectorAll('.sticky');
     Stickyfill.add(elements);
