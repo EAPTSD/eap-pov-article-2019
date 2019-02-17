@@ -1,3 +1,5 @@
+import { values } from 'core-js-pure/es/object';
+
 const formatPovertyData = (array) => {
   const obj = {};
 
@@ -7,19 +9,19 @@ const formatPovertyData = (array) => {
       const arrObj = Object.keys(d).map((year, i) => {
         return (obj[i] = { x: parseInt(year) });
       });
-      Object.values(d).map((value, i) => {
+      values(d).map((value, i) => {
         return (arrObj[i].y = parseFloat(value));
       });
       return i <= 7 ? arrObj.slice(0, 7) : null;
     }
-    Object.values(d).map((value, i) => {
+    values(d).map((value, i) => {
       return (obj[i].size = parseFloat(value) / 25);
     });
   });
 
   const arr = [obj];
   delete arr[0][7];
-  return Object.values(arr[0]);
+  return values(arr[0]);
 };
 
 export default formatPovertyData;
