@@ -1,7 +1,7 @@
 {
-  "main.css": "/eapstory/static/css/main.728857da.chunk.css",
-  "main.js": "/eapstory/static/js/main.24fca704.chunk.js",
-  "main.js.map": "/eapstory/static/js/main.24fca704.chunk.js.map",
+  "main.css": "/eapstory/static/css/main.e31cf6e9.chunk.css",
+  "main.js": "/eapstory/static/js/main.eae81e0d.chunk.js",
+  "main.js.map": "/eapstory/static/js/main.eae81e0d.chunk.js.map",
   "static/css/1.9cdb38ba.chunk.css": "/eapstory/static/css/1.9cdb38ba.chunk.css",
   "static/js/1.ae6e56fb.chunk.js": "/eapstory/static/js/1.ae6e56fb.chunk.js",
   "static/js/1.ae6e56fb.chunk.js.map": "/eapstory/static/js/1.ae6e56fb.chunk.js.map",
@@ -19,9 +19,9 @@
   "static/media/thailand_economic_class.csv": "/eapstory/static/media/thailand_economic_class.18e907a8.csv",
   "static/media/vietnam_economic_class.csv": "/eapstory/static/media/vietnam_economic_class.c9311325.csv",
   "static/media/asean_3.2.csv": "/eapstory/static/media/asean_3.2.da9a0cd2.csv",
-  "static/css/main.728857da.chunk.css.map": "/eapstory/static/css/main.728857da.chunk.css.map",
+  "static/css/main.e31cf6e9.chunk.css.map": "/eapstory/static/css/main.e31cf6e9.chunk.css.map",
   "static/css/1.9cdb38ba.chunk.css.map": "/eapstory/static/css/1.9cdb38ba.chunk.css.map",
   "index.html": "/eapstory/index.html",
-  "precache-manifest.115dbaa7d8c4978f14cb5bdadb5af773.js": "/eapstory/precache-manifest.115dbaa7d8c4978f14cb5bdadb5af773.js",
+  "precache-manifest.c6bb274c7ff147d1d3ae6b55b6c0a1ef.js": "/eapstory/precache-manifest.c6bb274c7ff147d1d3ae6b55b6c0a1ef.js",
   "service-worker.js": "/eapstory/service-worker.js"
 }
