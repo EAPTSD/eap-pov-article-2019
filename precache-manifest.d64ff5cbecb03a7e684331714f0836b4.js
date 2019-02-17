@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/lao_economic_class.8c4c4ffa.csv"
   },
   {
-    "revision": "eae81e0d2d4e9e3d97b4",
-    "url": "/eapstory/static/css/main.e31cf6e9.chunk.css"
+    "revision": "caee7051bba982a1219f",
+    "url": "/eapstory/static/css/main.812ab2d7.chunk.css"
   },
   {
     "revision": "1fdc743e8f28282e87c509fd44ee48b7",
     "url": "/eapstory/static/media/action-asia-blur-1455989.1fdc743e.jpg"
   },
   {
-    "revision": "ae6e56fb11f27c262487",
-    "url": "/eapstory/static/js/1.ae6e56fb.chunk.js"
+    "revision": "8c5dc831dff9ec7a3221",
+    "url": "/eapstory/static/js/1.8c5dc831.chunk.js"
   },
   {
     "revision": "40a07c3fc2e2d85ec270",
@@ -40,8 +40,8 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/indonesia_economic_class.3959786b.csv"
   },
   {
-    "revision": "eae81e0d2d4e9e3d97b4",
-    "url": "/eapstory/static/js/main.eae81e0d.chunk.js"
+    "revision": "caee7051bba982a1219f",
+    "url": "/eapstory/static/js/main.caee7051.chunk.js"
   },
   {
     "revision": "b6650a5bbf6840d0204e50f7b1b20d5b",
@@ -72,11 +72,11 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/architecture-asia-bar-1455993.f3c8fd08.jpg"
   },
   {
-    "revision": "ae6e56fb11f27c262487",
-    "url": "/eapstory/static/css/1.9cdb38ba.chunk.css"
+    "revision": "8c5dc831dff9ec7a3221",
+    "url": "/eapstory/static/css/1.b6f5093c.chunk.css"
   },
   {
-    "revision": "8344ab1b76113641798d21d6d265c3a9",
+    "revision": "d5eeb243093c5f09930ec28efd338ad4",
     "url": "/eapstory/index.html"
   }
 ];
