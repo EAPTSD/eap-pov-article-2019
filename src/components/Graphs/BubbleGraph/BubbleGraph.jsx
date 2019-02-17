@@ -41,11 +41,12 @@ class BubbleGraph extends Component {
       }
     );
 
-    const elements = document.querySelectorAll('.sticky');
+    const elements = document.querySelectorAll('.BubbleGraph-sticky');
     Stickyfill.add(elements);
   }
 
   updateGraph = (index) => {
+    console.log('hello');
     this.setState({
       displayData: displayDataPopulator(this.state.reserveData, index),
     });
@@ -55,7 +56,7 @@ class BubbleGraph extends Component {
     const { index } = this.state;
     return (
       <div className="BubbleGraph-sequence-container">
-        <div className="BubbleGraph-container sticky">
+        <div className="BubbleGraph-container BubbleGraph-sticky">
           <VictoryChart
             theme={VictoryTheme.material}
             animate={{ duration: 1000 }}

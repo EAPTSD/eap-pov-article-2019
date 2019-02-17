@@ -38,7 +38,7 @@ class Choropleth extends Component {
       }
     );
 
-    const elements = document.querySelectorAll('.sticky');
+    const elements = document.querySelectorAll('.Choropleth-sticky');
     Stickyfill.add(elements);
   }
 
@@ -90,8 +90,8 @@ class Choropleth extends Component {
     const { index } = this.state;
     return (
       <div className="Choropleth-sequence-container">
-        <div className="Choropleth-container sticky" />
-        {index.map((i) => {
+        <div className="Choropleth-container Choropleth-sticky" />
+        {index.map(() => {
           return (
             <>
               <div className="Choropleth-waypoint-buffer" />

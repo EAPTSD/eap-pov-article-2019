@@ -12,13 +12,13 @@
   align-items: center;
 }
 
-.sticky {
+.Choropleth-sticky {
   position: sticky;
   top: 0px;
 }
 
-.sticky:before,
-.sticky:after {
+.Choropleth-sticky:before,
+.Choropleth-sticky:after {
   content: '';
   display: table;
 }

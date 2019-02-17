@@ -12,13 +12,13 @@
   align-items: center;
 }
 
-.sticky {
+.BubbleGraph-sticky {
   position: sticky;
   top: 0px;
 }
 
-.sticky:before,
-.sticky:after {
+.BubbleGraph-sticky:before,
+.BubbleGraph-sticky:after {
   content: '';
   display: table;
 }
