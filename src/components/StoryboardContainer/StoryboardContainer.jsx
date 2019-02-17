@@ -2,6 +2,7 @@
 import React from 'react';
 
 // Internal Imports
+import BarGraph from '../Graphs/BarGraph';
 import BubbleGraph from '../Graphs/BubbleGraph';
 import Choropleth from '../Graphs/Choropleth';
 import Header from '../Header';
@@ -11,6 +12,7 @@ import './StoryboardContainer.css';
 const StoryboardContainer = () => {
   return (
     <div>
+      {/* <BarGraph /> */}
       <Header />
       <div className="bg-black full-height-container" />
       <div className="bg-blue full-height-container">

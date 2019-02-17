@@ -46,7 +46,6 @@ class BubbleGraph extends Component {
   }
 
   updateGraph = (index) => {
-    console.log('hello');
     this.setState({
       displayData: displayDataPopulator(this.state.reserveData, index),
     });

@@ -1,0 +1,29 @@
+.BarGraph-sequence-container {
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  background-color: blue;
+}
+
+.BarGraph-container {
+  height: 100vh;
+  width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.BarGraph-sticky {
+  position: sticky;
+  top: 0px;
+}
+
+.BarGraph-sticky:before,
+.BarGraph-sticky:after {
+  content: '';
+  display: table;
+}
+
+.BarGraph-waypoint-buffer {
+  height: 100vh;
+  background-color: blue;
+}
