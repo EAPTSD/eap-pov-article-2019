@@ -26,13 +26,10 @@ class BarGraph extends Component {
       const formattedHigherPovertyData = files.map((file) => {
         return formatHigherPovertyData(file, 2002);
       });
-      this.setState(
-        {
-          higherPovertyDisplayData: formattedHigherPovertyData[0],
-          reserveData: files,
-        },
-        () => console.log(this.state.higherPovertyData)
-      );
+      this.setState({
+        higherPovertyDisplayData: formattedHigherPovertyData[0],
+        reserveData: files,
+      });
     });
 
     const elements = document.querySelectorAll('.BarGraph-sticky');
@@ -57,7 +54,7 @@ class BarGraph extends Component {
           <VictoryChart
             height={400}
             width={400}
-            domainPadding={{ x: 50 }}
+            domainPadding={{ x: 25 }}
             animate={{ duration: 500 }}
           >
             <VictoryBar
@@ -71,7 +68,7 @@ class BarGraph extends Component {
         {years.map((year) => {
           return (
             <>
-              <div className="BubbleGraph-waypoint-buffer" />
+              <div className="BarGraph-waypoint-buffer" />
               <Waypoint onEnter={() => this.updateGraph(year)} />
             </>
           );

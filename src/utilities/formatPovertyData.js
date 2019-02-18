@@ -7,7 +7,7 @@ const formatPovertyData = (array) => {
   array.map((d, i) => {
     if (i === 0) {
       const arrObj = Object.keys(d).map((year, i) => {
-        return (obj[i] = { x: parseInt(year) });
+        return (obj[i] = { x: new Date(year, 1, 1) });
       });
       values(d).map((value, i) => {
         return (arrObj[i].y = parseFloat(value));

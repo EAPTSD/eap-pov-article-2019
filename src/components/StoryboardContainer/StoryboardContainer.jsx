@@ -12,7 +12,6 @@ import './StoryboardContainer.css';
 const StoryboardContainer = () => {
   return (
     <div>
-      {/* <BarGraph /> */}
       <Header />
       <div className="bg-black full-height-container" />
       <div className="bg-blue full-height-container">
@@ -22,6 +21,7 @@ const StoryboardContainer = () => {
       <BubbleGraph />
       <div className="bg-black full-height-container" />
       <div className="bg-grey full-height-container" />
+      <BarGraph />
       <div className="bg-grey full-height-container" />
       <div className="bg-grey full-height-container" />
       <div className="bg-black full-height-container" />

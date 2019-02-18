@@ -48,27 +48,32 @@ class BubbleGraph extends Component {
   }
 
   updateGraph = (index) => {
+    const { reserveData } = this.state;
     this.setState({
-      displayData: displayDataPopulator(this.state.reserveData, index),
+      displayData: displayDataPopulator(reserveData, index),
     });
   };
 
   render() {
-    const { index } = this.state;
+    const { index, displayData, colors } = this.state;
     return (
       <div className="BubbleGraph-sequence-container">
         <div className="BubbleGraph-container BubbleGraph-sticky">
           <VictoryChart
+            scale={{ x: 'time' }}
             theme={VictoryTheme.material}
-            animate={{ duration: 1000 }}
-            domain={{ x: [2012, 2018], y: [0, 100] }}
+            domain={{
+              x: [new Date(2012, 1, 1), new Date(2018, 1, 1)],
+              y: [0, 100],
+            }}
           >
-            {this.state.displayData.map((data, i) => {
+            {displayData.map((data, i) => {
               return (
                 <VictoryScatter
-                  style={{ data: { fill: this.state.colors[i] } }}
+                  style={{ data: { fill: colors[i] } }}
                   bubbleProperty="size"
                   data={data}
+                  animate={{ duration: 1000 }}
                 />
               );
             })}

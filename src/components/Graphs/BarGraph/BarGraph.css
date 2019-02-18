@@ -1,7 +1,7 @@
 .BarGraph-sequence-container {
   position: relative;
   -webkit-font-smoothing: antialiased;
-  background-color: blue;
+  background-color: grey;
 }
 
 .BarGraph-container {
@@ -25,5 +25,5 @@
 
 .BarGraph-waypoint-buffer {
   height: 100vh;
-  background-color: blue;
+  background-color: grey;
 }

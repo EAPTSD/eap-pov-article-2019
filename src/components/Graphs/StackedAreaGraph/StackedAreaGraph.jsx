@@ -65,16 +65,17 @@ class StackedAreaGraph extends Component {
   };
 
   render() {
+    const { activeCountry, data, countries } = this.state;
     return (
       <div>
         <div className="button-container text-center p-3">
-          {this.state.countries.map((country, i) => {
+          {countries.map((country, i) => {
             return (
               <Button
                 outline
                 color="primary"
                 className={`mr-2 ${
-                  this.state.activeCountry === country ? 'active' : null
+                  activeCountry === country ? 'active' : null
                 }`}
                 key={`country-button-${i}`}
                 value={i}
@@ -87,11 +88,12 @@ class StackedAreaGraph extends Component {
         </div>
         <div className="stacked-area-container">
           <VictoryChart
+            scale={{ x: 'time' }}
             theme={VictoryTheme.material}
             animate={{ duration: 1000 }}
           >
             <VictoryStack colorScale="blue">
-              {this.state.data.map((data, i) => {
+              {data.map((data, i) => {
                 return (
                   <VictoryArea key={i} data={data} interpolation="basis" />
                 );
