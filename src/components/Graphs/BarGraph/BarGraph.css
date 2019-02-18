@@ -6,10 +6,14 @@
 
 .BarGraph-container {
   height: 100vh;
-  width: 80vw;
-  margin: 0 auto;
   display: flex;
   align-items: center;
+  background-color: grey;
+}
+
+.BarGraph-container .VictoryContainer {
+  width: 80vw !important;
+  margin: 0 auto;
 }
 
 .BarGraph-sticky {
@@ -24,6 +28,6 @@
 }
 
 .BarGraph-waypoint-buffer {
-  height: 100vh;
+  height: 150vh;
   background-color: grey;
 }
