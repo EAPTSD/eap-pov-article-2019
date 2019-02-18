@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/indonesia_economic_class.3959786b.csv"
   },
   {
-    "revision": "d4cddc512f260cf5a5e9",
-    "url": "/eapstory/static/css/main.ffeffa2e.chunk.css"
+    "revision": "5a6e6e3c940020bbaca3",
+    "url": "/eapstory/static/css/main.ce1f12fb.chunk.css"
   },
   {
     "revision": "1fdc743e8f28282e87c509fd44ee48b7",
@@ -40,8 +40,8 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/asean_economic_class.6bdf3b9c.csv"
   },
   {
-    "revision": "d4cddc512f260cf5a5e9",
-    "url": "/eapstory/static/js/main.d4cddc51.chunk.js"
+    "revision": "5a6e6e3c940020bbaca3",
+    "url": "/eapstory/static/js/main.5a6e6e3c.chunk.js"
   },
   {
     "revision": "8c4c4ffad9da3081d9c07c1e6bb4097a",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
     "url": "/eapstory/static/css/1.3a383bf8.chunk.css"
   },
   {
-    "revision": "339572176823d85e739e1e5e45318d3e",
+    "revision": "d3f1f4521461f81af43c1eab761f4966",
     "url": "/eapstory/index.html"
   }
 ];
