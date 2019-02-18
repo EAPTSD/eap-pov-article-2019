@@ -1,6 +1,6 @@
 // External Imports
 import React, { Component } from 'react';
-import { VictoryChart, VictoryBar, Bar } from 'victory';
+import { VictoryChart, VictoryBar } from 'victory';
 import * as d3 from 'd3';
 import Waypoint from 'react-waypoint';
 import Stickyfill from 'stickyfilljs';
@@ -60,7 +60,12 @@ class BarGraph extends Component {
             domainPadding={{ x: 50 }}
             animate={{ duration: 500 }}
           >
-            <VictoryBar data={higherPovertyDisplayData} />
+            <VictoryBar
+              categories={{
+                x: ['< $1.9', '$1.9-$3.2', '$3.2-$5.5', '$5.5-$15', '> $15'],
+              }}
+              data={higherPovertyDisplayData}
+            />
           </VictoryChart>
         </div>
         {years.map((year) => {
