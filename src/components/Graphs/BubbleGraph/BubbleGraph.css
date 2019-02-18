@@ -6,10 +6,14 @@
 
 .BubbleGraph-container {
   height: 100vh;
-  width: 80vw;
-  margin: 0 auto;
   display: flex;
   align-items: center;
+  background-color: blue;
+}
+
+.BubbleGraph-container .VictoryChart {
+  width: 80vw;
+  margin: 0 auto;
 }
 
 .BubbleGraph-sticky {
