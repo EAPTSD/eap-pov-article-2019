@@ -1,23 +1,27 @@
 self.__precacheManifest = [
   {
-    "revision": "8c4c4ffad9da3081d9c07c1e6bb4097a",
-    "url": "/eapstory/static/media/lao_economic_class.8c4c4ffa.csv"
+    "revision": "3959786be53be49cf2bb9cb6fe805fa7",
+    "url": "/eapstory/static/media/indonesia_economic_class.3959786b.csv"
   },
   {
-    "revision": "caee7051bba982a1219f",
-    "url": "/eapstory/static/css/main.812ab2d7.chunk.css"
+    "revision": "d4cddc512f260cf5a5e9",
+    "url": "/eapstory/static/css/main.ffeffa2e.chunk.css"
   },
   {
     "revision": "1fdc743e8f28282e87c509fd44ee48b7",
     "url": "/eapstory/static/media/action-asia-blur-1455989.1fdc743e.jpg"
   },
   {
-    "revision": "8c5dc831dff9ec7a3221",
-    "url": "/eapstory/static/js/1.8c5dc831.chunk.js"
+    "revision": "8e0b7e759c757ec0e48d",
+    "url": "/eapstory/static/js/1.8e0b7e75.chunk.js"
   },
   {
     "revision": "40a07c3fc2e2d85ec270",
     "url": "/eapstory/static/js/runtime~main.40a07c3f.js"
+  },
+  {
+    "revision": "c04c0e1ba39c576302e4597d6f6fbf6b",
+    "url": "/eapstory/static/media/EAP_higher_pov.c04c0e1b.csv"
   },
   {
     "revision": "d2d83d68e43a52c3d9f3959d61a36920",
@@ -36,12 +40,12 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/asean_economic_class.6bdf3b9c.csv"
   },
   {
-    "revision": "3959786be53be49cf2bb9cb6fe805fa7",
-    "url": "/eapstory/static/media/indonesia_economic_class.3959786b.csv"
+    "revision": "d4cddc512f260cf5a5e9",
+    "url": "/eapstory/static/js/main.d4cddc51.chunk.js"
   },
   {
-    "revision": "caee7051bba982a1219f",
-    "url": "/eapstory/static/js/main.caee7051.chunk.js"
+    "revision": "8c4c4ffad9da3081d9c07c1e6bb4097a",
+    "url": "/eapstory/static/media/lao_economic_class.8c4c4ffa.csv"
   },
   {
     "revision": "b6650a5bbf6840d0204e50f7b1b20d5b",
@@ -72,11 +76,11 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/architecture-asia-bar-1455993.f3c8fd08.jpg"
   },
   {
-    "revision": "8c5dc831dff9ec7a3221",
-    "url": "/eapstory/static/css/1.b6f5093c.chunk.css"
+    "revision": "8e0b7e759c757ec0e48d",
+    "url": "/eapstory/static/css/1.3a383bf8.chunk.css"
   },
   {
-    "revision": "d5eeb243093c5f09930ec28efd338ad4",
+    "revision": "339572176823d85e739e1e5e45318d3e",
     "url": "/eapstory/index.html"
   }
 ];
