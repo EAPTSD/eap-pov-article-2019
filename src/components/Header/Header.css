@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700i');
+@font-face {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  src: url('https://fonts.googleapis.com/css?family=Roboto:400,700i');
+}
+
 .Header-container,
 .full-height-div {
   height: 100vh;
@@ -7,6 +13,7 @@
 .middle-image-container,
 .right-image-container {
   background-size: 100% 100%;
+  opacity: 0.95;
 }
 
 .left-image-container {
@@ -19,4 +26,21 @@
 
 .right-image-container {
   background-image: url('../../images/art-asia-balloon-1455962.jpg');
+}
+
+.Header-title {
+  position: absolute;
+  color: white;
+  bottom: 22.5vh;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.Header-title h1 {
+  font-size: 7.5vw;
+  font-weight: 700;
+  text-shadow: 2px 2px 8px #0f0f0f;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-style: italic;
 }

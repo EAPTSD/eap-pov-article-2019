@@ -12,6 +12,9 @@ const Header = () => {
         <div className="middle-image-container full-height-div col-sm" />
         <div className="right-image-container full-height-div col-sm" />
       </div>
+      <div className="Header-title">
+        <h1>Lorem Ipsum</h1>
+      </div>
     </div>
   );
 };

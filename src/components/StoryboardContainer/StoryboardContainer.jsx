@@ -2,6 +2,7 @@
 import React from 'react';
 
 // Internal Imports
+import appText from '../../text/appText';
 import BarGraph from '../Graphs/BarGraph';
 import BubbleGraph from '../Graphs/BubbleGraph';
 import Choropleth from '../Graphs/Choropleth';
@@ -13,7 +14,10 @@ const StoryboardContainer = () => {
   return (
     <div>
       <Header />
-      <div className="bg-black full-height-container" />
+      <div className="bg-black full-height-container">
+        <p className="pt-3">{appText.one}</p>
+        <p className="pt-3">{appText.two}</p>
+      </div>
       <div className="bg-blue full-height-container">
         <StackedAreaGraph />
       </div>
