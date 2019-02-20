@@ -84,6 +84,7 @@ class BubbleGraph extends Component {
             <>
               <div className="BubbleGraph-waypoint-buffer" />
               <Waypoint onEnter={() => this.updateGraph(i)} />
+              <div className="BubbleGraph-waypoint-buffer" />
             </>
           );
         })}

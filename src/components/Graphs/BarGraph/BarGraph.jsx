@@ -54,6 +54,7 @@ class BarGraph extends Component {
           <VictoryChart
             height={400}
             width={400}
+            // domain={{ y: [0, 1000] }}
             domainPadding={{ x: 25 }}
             animate={{ duration: 500 }}
           >
@@ -70,6 +71,7 @@ class BarGraph extends Component {
             <>
               <div className="BarGraph-waypoint-buffer" />
               <Waypoint onEnter={() => this.updateGraph(year)} />
+              <div className="BarGraph-waypoint-buffer" />
             </>
           );
         })}

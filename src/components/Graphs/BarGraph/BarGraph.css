@@ -12,7 +12,8 @@
 }
 
 .BarGraph-container .VictoryContainer {
-  width: 80vw !important;
+  width: 75% !important;
+  height: 75% !important;
   margin: 0 auto;
 }
 
