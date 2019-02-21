@@ -19,11 +19,11 @@ html {
   background-color: black;
 }
 
-.bg-black p {
+p {
   width: 600px;
   margin: 0 auto;
   font-size: 19px;
-  color: white;
+  color: black;
   opacity: 0.7;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
