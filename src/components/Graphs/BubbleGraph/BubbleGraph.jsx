@@ -56,6 +56,7 @@ class BubbleGraph extends Component {
 
   render() {
     const { index, displayData, colors } = this.state;
+    const { flowText } = this.props;
     return (
       <div className="BubbleGraph-sequence-container">
         <div className="BubbleGraph-container BubbleGraph-sticky">
@@ -84,7 +85,10 @@ class BubbleGraph extends Component {
             <>
               <div className="BubbleGraph-waypoint-buffer" />
               <Waypoint onEnter={() => this.updateGraph(i)} />
-              <div className="BubbleGraph-waypoint-buffer" />
+              <div className="BubbleGraph-waypoint-buffer">
+                <p className="bg-text">{flowText[i]}</p>
+              </div>
+              {i === 7 ? <div className="BubbleGraph-waypoint-buffer" /> : null}
             </>
           );
         })}
