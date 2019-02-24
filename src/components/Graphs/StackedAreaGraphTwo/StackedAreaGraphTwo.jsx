@@ -27,12 +27,11 @@ class StackedAreaGraphTwo extends Component {
       d3.csv(eapPercentageClassData),
       d3.csv(eapExChinaPercentageClassData),
     ]).then((files) => {
-      console.log(files);
       const formattedClassData = files.map((file) => {
         return formatClassData(file);
       });
       this.setState({
-        data: formattedClassData[0],
+        data: formattedClassData[3],
         formattedClassData,
       });
     });
@@ -59,9 +58,7 @@ class StackedAreaGraphTwo extends Component {
           >
             <VictoryStack colorScale="blue">
               {data.map((data, i) => {
-                return (
-                  <VictoryArea key={i} data={data} interpolation="basis" />
-                );
+                return <VictoryArea key={i} data={data} />;
               })}
             </VictoryStack>
           </VictoryChart>

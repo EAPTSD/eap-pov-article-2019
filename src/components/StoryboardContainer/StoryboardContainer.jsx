@@ -48,8 +48,8 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
-        {/* <StackedAreaGraphTwo /> */}
-        <Header />
+        <StackedAreaGraphTwo />
+        {/* <Header />
         <div>
           {firstText.map((text, i) => {
             return (
@@ -107,7 +107,7 @@ class StoryboardContainer extends Component {
               </p>
             );
           })}
-        </div>
+        </div> */}
       </div>
     );
   }
