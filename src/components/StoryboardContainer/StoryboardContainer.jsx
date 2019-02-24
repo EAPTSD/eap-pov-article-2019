@@ -8,6 +8,7 @@ import BubbleGraph from '../Graphs/BubbleGraph';
 import Choropleth from '../Graphs/Choropleth';
 import Header from '../Header';
 import StackedAreaGraph from '../Graphs/StackedAreaGraph';
+import StackedAreaGraphTwo from '../Graphs/StackedAreaGraphTwo';
 import extractText from '../../utilities/extractText';
 import './StoryboardContainer.css';
 
@@ -47,6 +48,7 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
+        {/* <StackedAreaGraphTwo /> */}
         <Header />
         <div>
           {firstText.map((text, i) => {
