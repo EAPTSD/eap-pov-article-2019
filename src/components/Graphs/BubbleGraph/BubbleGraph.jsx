@@ -27,21 +27,19 @@ class BubbleGraph extends Component {
   };
 
   componentDidMount() {
-    Promise.all([
-      d3.csv(asean1_9), //
-      d3.csv(asean3_2),
-      d3.csv(asean5_5),
-    ]).then((files) => {
-      const formattedPovertyData = files.map((file) => {
-        return formatPovertyData(file);
-      });
-      this.setState({
-        reserveData: formattedPovertyData,
-        asean1_9: formattedPovertyData[0],
-        asean3_2: formattedPovertyData[1],
-        asean5_5: formattedPovertyData[2],
-      });
-    });
+    Promise.all([d3.csv(asean1_9), d3.csv(asean3_2), d3.csv(asean5_5)]).then(
+      (files) => {
+        const formattedPovertyData = files.map((file) => {
+          return formatPovertyData(file);
+        });
+        this.setState({
+          reserveData: formattedPovertyData,
+          asean1_9: formattedPovertyData[0],
+          asean3_2: formattedPovertyData[1],
+          asean5_5: formattedPovertyData[2],
+        });
+      }
+    );
 
     const elements = document.querySelectorAll('.BubbleGraph-sticky');
     Stickyfill.add(elements);

@@ -1,6 +1,8 @@
 // External Imports
 import React, { Component } from 'react';
 import * as d3 from 'd3';
+import Waypoint from 'react-waypoint';
+import Stickyfill from 'stickyfilljs';
 
 // Internal Imports
 import formatClassData from '../../../utilities/formatClassData';
@@ -36,13 +38,18 @@ class StackedAreaGraphContainer extends Component {
         formattedClassData,
       });
     });
+
+    const elements = document.querySelectorAll(
+      '.StackedAreaGraphContainer-sticky'
+    );
+    Stickyfill.add(elements);
   }
 
-  handleClick = (e) => {
-    const countryIndex = e.target.value;
+  updateGraph = () => {
+    const { formattedClassData } = this.state;
     this.setState({
-      data: this.state.formattedClassData[countryIndex],
-      activeCountry: this.state.countries[countryIndex],
+      data: formattedClassData[1],
+      percentageData: formattedClassData[3],
     });
   };
 
@@ -50,8 +57,21 @@ class StackedAreaGraphContainer extends Component {
     const { data, percentageData } = this.state;
     return (
       <div>
-        <StackedAreaGraphTwo data={data} color={'blue'} />
-        <StackedAreaGraphTwo data={percentageData} color={'red'} />
+        <div className="StackedAreaGraphContainer-sequence-container StackedAreaGraphContainer-sticky container-fluid">
+          <div className="StackedAreaGraphContainer-container row">
+            <div className="col-sm">
+              <StackedAreaGraphTwo data={data} color={'blue'} />
+            </div>
+            <div className="col-sm">
+              <StackedAreaGraphTwo data={percentageData} color={'warm'} />
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className="StackedAreaGraphContainer-waypoint-buffer" />
+          <Waypoint onEnter={() => this.updateGraph()} />
+          <div className="StackedAreaGraphContainer-waypoint-buffer" />
+        </div>
       </div>
     );
   }
