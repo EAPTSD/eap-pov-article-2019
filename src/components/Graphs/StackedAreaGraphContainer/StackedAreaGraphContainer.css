@@ -1,6 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700i');
+@font-face {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  src: url('https://fonts.googleapis.com/css?family=Roboto:400,700i');
+}
+
 .StackedAreaGraphContainer-sequence-container {
   -webkit-font-smoothing: antialiased;
-  height: 75vh;
+  height: 85vh;
+  padding-top: 25px;
 }
 
 .StackedAreaGraphContainer-container {
@@ -10,4 +17,9 @@
 .StackedAreaGraphContainer-sticky {
   position: sticky;
   top: 0px;
+}
+
+.StackedAreaGraphContainer-header-text {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  margin-bottom: 0;
 }

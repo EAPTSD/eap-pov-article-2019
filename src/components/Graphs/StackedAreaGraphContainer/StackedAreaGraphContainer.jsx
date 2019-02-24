@@ -17,9 +17,14 @@ import eapExChinaPercentageClassData from '../../../data/StackedAreaGraphData/ea
 class StackedAreaGraphContainer extends Component {
   state = {
     data: [],
+    displayText: '',
     formattedClassData: [],
     index: 0,
     percentageData: [],
+    stackedAreaText: [
+      'EAP Economic Class with China',
+      'EAP Economic Class without China',
+    ],
   };
 
   componentDidMount() {
@@ -35,6 +40,7 @@ class StackedAreaGraphContainer extends Component {
       this.setState(
         {
           data: formattedClassData[0],
+          displayText: this.state.stackedAreaText[0],
           percentageData: formattedClassData[2],
           formattedClassData,
         },
@@ -52,9 +58,10 @@ class StackedAreaGraphContainer extends Component {
 
   updateGraph = () => {
     setInterval(() => {
-      const { index, formattedClassData } = this.state;
+      const { index, formattedClassData, stackedAreaText } = this.state;
       this.setState({
         data: formattedClassData[index],
+        displayText: stackedAreaText[index],
         percentageData: formattedClassData[index + 2],
         index: index === 1 ? 0 : 1,
       });
@@ -62,10 +69,17 @@ class StackedAreaGraphContainer extends Component {
   };
 
   render() {
-    const { data, percentageData } = this.state;
+    const { data, percentageData, displayText } = this.state;
     return (
       <div>
         <div className="StackedAreaGraphContainer-sequence-container StackedAreaGraphContainer-sticky container-fluid">
+          <div className="row">
+            <div className="col text-center">
+              <h1 className="StackedAreaGraphContainer-header-text">
+                {displayText}
+              </h1>
+            </div>
+          </div>
           <div className="StackedAreaGraphContainer-container row">
             <div className="col-sm">
               <StackedAreaGraphTwo data={data} color={'blue'} />
