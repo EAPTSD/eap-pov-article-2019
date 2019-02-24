@@ -9,7 +9,7 @@ const StackedAreaGraphTwo = (props) => {
   const { color, data } = props;
   return (
     <div>
-      <div className="stacked-area-two-container">
+      <div className="StackedAreaGraphTwo-container">
         <VictoryChart
           scale={{ x: 'time' }}
           theme={VictoryTheme.material}

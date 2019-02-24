@@ -1,6 +1,6 @@
 .StackedAreaGraphContainer-sequence-container {
   -webkit-font-smoothing: antialiased;
-  height: 100vh;
+  height: 75vh;
 }
 
 .StackedAreaGraphContainer-container {
@@ -10,8 +10,4 @@
 .StackedAreaGraphContainer-sticky {
   position: sticky;
   top: 0px;
-}
-
-.StackedAreaGraphContainer-waypoint-buffer {
-  height: 100vh;
 }

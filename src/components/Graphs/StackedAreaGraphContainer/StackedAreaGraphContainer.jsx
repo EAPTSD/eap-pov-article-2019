@@ -1,7 +1,6 @@
 // External Imports
 import React, { Component } from 'react';
 import * as d3 from 'd3';
-import Waypoint from 'react-waypoint';
 import Stickyfill from 'stickyfilljs';
 
 // Internal Imports
@@ -18,8 +17,9 @@ import eapExChinaPercentageClassData from '../../../data/StackedAreaGraphData/ea
 class StackedAreaGraphContainer extends Component {
   state = {
     data: [],
-    percentageData: [],
     formattedClassData: [],
+    index: 0,
+    percentageData: [],
   };
 
   componentDidMount() {
@@ -32,11 +32,16 @@ class StackedAreaGraphContainer extends Component {
       const formattedClassData = files.map((file) => {
         return formatClassData(file);
       });
-      this.setState({
-        data: formattedClassData[0],
-        percentageData: formattedClassData[2],
-        formattedClassData,
-      });
+      this.setState(
+        {
+          data: formattedClassData[0],
+          percentageData: formattedClassData[2],
+          formattedClassData,
+        },
+        () => {
+          this.updateGraph();
+        }
+      );
     });
 
     const elements = document.querySelectorAll(
@@ -46,11 +51,14 @@ class StackedAreaGraphContainer extends Component {
   }
 
   updateGraph = () => {
-    const { formattedClassData } = this.state;
-    this.setState({
-      data: formattedClassData[1],
-      percentageData: formattedClassData[3],
-    });
+    setInterval(() => {
+      const { index, formattedClassData } = this.state;
+      this.setState({
+        data: formattedClassData[index],
+        percentageData: formattedClassData[index + 2],
+        index: index === 1 ? 0 : 1,
+      });
+    }, 5000);
   };
 
   render() {
@@ -66,11 +74,6 @@ class StackedAreaGraphContainer extends Component {
               <StackedAreaGraphTwo data={percentageData} color={'warm'} />
             </div>
           </div>
-        </div>
-        <div>
-          <div className="StackedAreaGraphContainer-waypoint-buffer" />
-          <Waypoint onEnter={() => this.updateGraph()} />
-          <div className="StackedAreaGraphContainer-waypoint-buffer" />
         </div>
       </div>
     );
