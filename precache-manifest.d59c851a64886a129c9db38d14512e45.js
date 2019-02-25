@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "3959786be53be49cf2bb9cb6fe805fa7",
-    "url": "/eapstory/static/media/indonesia_economic_class.3959786b.csv"
+    "revision": "b6650a5bbf6840d0204e50f7b1b20d5b",
+    "url": "/eapstory/static/media/malaysia_economic_class.b6650a5b.csv"
   },
   {
-    "revision": "ec58249bdef04a38a61b",
-    "url": "/eapstory/static/css/main.d0ce1ae8.chunk.css"
+    "revision": "a1fbb217b984f220f8d5",
+    "url": "/eapstory/static/css/main.33ac2db1.chunk.css"
   },
   {
     "revision": "1fdc743e8f28282e87c509fd44ee48b7",
     "url": "/eapstory/static/media/action-asia-blur-1455989.1fdc743e.jpg"
   },
   {
-    "revision": "c84a755fe018259b48c0",
-    "url": "/eapstory/static/js/1.c84a755f.chunk.js"
+    "revision": "f3cbcbefa30af6d844aa",
+    "url": "/eapstory/static/js/1.f3cbcbef.chunk.js"
   },
   {
     "revision": "40a07c3fc2e2d85ec270",
@@ -40,16 +40,16 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/asean_economic_class.6bdf3b9c.csv"
   },
   {
-    "revision": "ec58249bdef04a38a61b",
-    "url": "/eapstory/static/js/main.ec58249b.chunk.js"
+    "revision": "3959786be53be49cf2bb9cb6fe805fa7",
+    "url": "/eapstory/static/media/indonesia_economic_class.3959786b.csv"
   },
   {
     "revision": "8c4c4ffad9da3081d9c07c1e6bb4097a",
     "url": "/eapstory/static/media/lao_economic_class.8c4c4ffa.csv"
   },
   {
-    "revision": "b6650a5bbf6840d0204e50f7b1b20d5b",
-    "url": "/eapstory/static/media/malaysia_economic_class.b6650a5b.csv"
+    "revision": "a1fbb217b984f220f8d5",
+    "url": "/eapstory/static/js/main.a1fbb217.chunk.js"
   },
   {
     "revision": "db025a2cd15618f709f5adc199843556",
@@ -68,6 +68,22 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/vietnam_economic_class.c9311325.csv"
   },
   {
+    "revision": "c1c4a5750576e92634073249b185de83",
+    "url": "/eapstory/static/media/eap_economic_class.c1c4a575.csv"
+  },
+  {
+    "revision": "87e5e61b8825f12a7068395dd42d019e",
+    "url": "/eapstory/static/media/eap_ex_china_economic_class.87e5e61b.csv"
+  },
+  {
+    "revision": "807a2eb8ffcd2e803f87fbc268ae01f5",
+    "url": "/eapstory/static/media/eap_economic_class_percentage.807a2eb8.csv"
+  },
+  {
+    "revision": "40d5b8bad8ac251df466d33f62fbeb4e",
+    "url": "/eapstory/static/media/eap_ex_china_economic_class_percentage.40d5b8ba.csv"
+  },
+  {
     "revision": "29f309708d18f399a369b0aaf713c5df",
     "url": "/eapstory/static/media/art-asia-balloon-1455962.29f30970.jpg"
   },
@@ -76,11 +92,11 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/architecture-asia-bar-1455993.f3c8fd08.jpg"
   },
   {
-    "revision": "c84a755fe018259b48c0",
-    "url": "/eapstory/static/css/1.8edb629c.chunk.css"
+    "revision": "f3cbcbefa30af6d844aa",
+    "url": "/eapstory/static/css/1.e127e8b2.chunk.css"
   },
   {
-    "revision": "908e569e6c780e669ddf1da636e0fb3e",
+    "revision": "3dc69f1feac234bf0d96a9caa05c2da0",
     "url": "/eapstory/index.html"
   }
 ];
