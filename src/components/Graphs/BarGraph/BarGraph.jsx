@@ -59,6 +59,11 @@ class BarGraph extends Component {
             animate={{ duration: 500 }}
           >
             <VictoryBar
+              style={{
+                data: {
+                  fill: (d) => (d.xName === '< $1.9' ? '#c43a31' : '#000000'),
+                },
+              }}
               categories={{
                 x: ['< $1.9', '$1.9-$3.2', '$3.2-$5.5', '$5.5-$15', '> $15'],
               }}

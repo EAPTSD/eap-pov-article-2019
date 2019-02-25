@@ -12,12 +12,14 @@ const StackedAreaGraphTwo = (props) => {
       <div className="StackedAreaGraphTwo-container">
         <VictoryChart
           scale={{ x: 'time' }}
-          theme={VictoryTheme.material}
-          animate={{ duration: 1000 }}
+          //theme={VictoryTheme.grayscale}
+          animate={{ duration: 1500 }}
+          width={450}
+          height={400}
         >
           <VictoryStack colorScale={color}>
             {data.map((data, i) => {
-              return <VictoryArea key={i} data={data} />;
+              return <VictoryArea key={i} data={data} interpolation="basis" />;
             })}
           </VictoryStack>
         </VictoryChart>
