@@ -78,7 +78,7 @@ class BarGraph extends Component {
               <div className="BarGraph-waypoint-buffer" />
               <Waypoint onEnter={() => this.updateGraph(year)} />
               <div className="BarGraph-waypoint-buffer" />
-              {i === 5 ? <div className="BarGraph-waypoint-buffer" /> : null}
+              {i === 4 ? <div className="BarGraph-waypoint-buffer" /> : null}
             </>
           );
         })}
