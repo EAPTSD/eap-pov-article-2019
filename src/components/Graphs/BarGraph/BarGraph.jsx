@@ -71,12 +71,14 @@ class BarGraph extends Component {
             />
           </VictoryChart>
         </div>
-        {years.map((year) => {
+        {years.map((year, i) => {
           return (
             <>
+              {i === 0 ? <div className="BarGraph-waypoint-buffer" /> : null}
               <div className="BarGraph-waypoint-buffer" />
               <Waypoint onEnter={() => this.updateGraph(year)} />
               <div className="BarGraph-waypoint-buffer" />
+              {i === 5 ? <div className="BarGraph-waypoint-buffer" /> : null}
             </>
           );
         })}
