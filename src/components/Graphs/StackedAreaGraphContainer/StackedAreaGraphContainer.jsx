@@ -5,7 +5,7 @@ import Stickyfill from 'stickyfilljs';
 
 // Internal Imports
 import formatClassData from '../../../utilities/formatClassData';
-import StackedAreaGraphTwo from '../StackedAreaGraphTwo';
+import StackedAreaGraphV2 from '../StackedAreaGraphV2';
 import './StackedAreaGraphContainer.css';
 
 // Data
@@ -82,10 +82,14 @@ class StackedAreaGraphContainer extends Component {
           </div>
           <div className="StackedAreaGraphContainer-container row">
             <div className="col-sm">
-              <StackedAreaGraphTwo data={data} color={'blue'} />
+              <StackedAreaGraphV2 data={data} color={'blue'} />
             </div>
             <div className="col-sm">
-              <StackedAreaGraphTwo data={percentageData} color={'warm'} />
+              <StackedAreaGraphV2
+                data={percentageData}
+                color={'warm'}
+                isPercent={true}
+              />
             </div>
           </div>
         </div>

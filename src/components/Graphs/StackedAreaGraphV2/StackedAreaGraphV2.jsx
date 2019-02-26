@@ -1,18 +1,17 @@
 // External Imports
 import React from 'react';
-import { VictoryChart, VictoryStack, VictoryArea, VictoryTheme } from 'victory';
+import { VictoryAxis, VictoryChart, VictoryStack, VictoryArea } from 'victory';
 
 // Internal Imports
-import './StackedAreaGraphTwo.css';
+import './StackedAreaGraphV2.css';
 
-const StackedAreaGraphTwo = (props) => {
-  const { color, data } = props;
+const StackedAreaGraphV2 = (props) => {
+  const { color, data, isPercent } = props;
   return (
     <div>
-      <div className="StackedAreaGraphTwo-container">
+      <div className="StackedAreaGraphV2-container">
         <VictoryChart
           scale={{ x: 'time' }}
-          //theme={VictoryTheme.grayscale}
           animate={{ duration: 1500 }}
           width={450}
           height={400}
@@ -22,10 +21,14 @@ const StackedAreaGraphTwo = (props) => {
               return <VictoryArea key={i} data={data} interpolation="basis" />;
             })}
           </VictoryStack>
+          {isPercent && (
+            <VictoryAxis dependentAxis tickFormat={(tick) => `${tick}%`} />
+          )}
+          {isPercent && <VictoryAxis crossAxis />}
         </VictoryChart>
       </div>
     </div>
   );
 };
 
-export default StackedAreaGraphTwo;
+export default StackedAreaGraphV2;

@@ -7,12 +7,12 @@ import Stickyfill from 'stickyfilljs';
 
 // Internal Imports
 import formatHigherPovertyDataTwo from '../../../utilities/formatHigherPovertyDataTwo';
-import './BarGraphTwo.css';
+import './BarGraphV2.css';
 
 // Data
 import higherPovertyData from '../../../data/BarGraphData/EAP_higher_pov.csv';
 
-class BarGraphTwo extends Component {
+class BarGraphV2 extends Component {
   state = {
     higherPovertyDisplayData: null,
     reserveData: null,
@@ -103,4 +103,4 @@ class BarGraphTwo extends Component {
   }
 }
 
-export default BarGraphTwo;
+export default BarGraphV2;

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // Internal Imports
 import appText from '../../text/appText';
 import BarGraph from '../Graphs/BarGraph';
-import BarGraphTwo from '../Graphs/BarGraphTwo';
+import BarGraphV2 from '../Graphs/BarGraphV2';
 import BubbleGraph from '../Graphs/BubbleGraph';
 import Choropleth from '../Graphs/Choropleth';
 import Header from '../Header';
@@ -80,7 +80,7 @@ class StoryboardContainer extends Component {
           })}
         </div>
         <BarGraph />
-        {/* <BarGraphTwo /> */}
+        <BarGraphV2 />
         <div>
           {fifthText.map((text, i) => {
             return (
