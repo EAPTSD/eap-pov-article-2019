@@ -1,6 +1,6 @@
 // External Imports
 import React, { Component } from 'react';
-import { VictoryChart, VictoryScatter, VictoryTheme } from 'victory';
+import { VictoryChart, VictoryScatter } from 'victory';
 import * as d3 from 'd3';
 import Waypoint from 'react-waypoint';
 import Stickyfill from 'stickyfilljs';
@@ -20,7 +20,7 @@ class BubbleGraph extends Component {
     displayData: [],
     reserveData: [],
     index: [0, 1, 2, 3, 4, 5, 6, 7],
-    colors: ['#191970', '#1E90FF', '#87CEFA'],
+    colors: ['#191970', '#325DDF', '#87CEFA'],
     asean1_9: null,
     asean3_2: null,
     asean5_5: null,
@@ -60,7 +60,6 @@ class BubbleGraph extends Component {
         <div className="BubbleGraph-container BubbleGraph-sticky">
           <VictoryChart
             scale={{ x: 'time' }}
-            theme={VictoryTheme.material}
             domain={{
               x: [new Date(2012, 1, 1), new Date(2018, 1, 1)],
               y: [0, 100],
@@ -71,8 +70,8 @@ class BubbleGraph extends Component {
                 <VictoryScatter
                   style={{ data: { fill: colors[i] } }}
                   bubbleProperty="size"
+                  domainPadding={{ x: 25 }}
                   data={data}
-                  animate={{ duration: 1000 }}
                 />
               );
             })}

@@ -1,14 +1,14 @@
 .BarGraph-sequence-container {
   position: relative;
   -webkit-font-smoothing: antialiased;
-  background-color: grey;
+  background-color: lightgrey;
 }
 
 .BarGraph-container {
   height: 100vh;
   display: flex;
   align-items: center;
-  background-color: grey;
+  background-color: lightgrey;
 }
 
 .BarGraph-container .VictoryContainer {
@@ -30,5 +30,5 @@
 
 .BarGraph-waypoint-buffer {
   height: 150vh;
-  background-color: grey;
+  background-color: grelightgrey;
 }

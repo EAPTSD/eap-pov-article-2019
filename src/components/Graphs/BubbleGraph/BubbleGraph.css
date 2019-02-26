@@ -7,20 +7,17 @@
 .BubbleGraph-sequence-container {
   position: relative;
   -webkit-font-smoothing: antialiased;
-  background-color: blue;
+  background-color: cornflowerblue;
   z-index: -1;
 }
 
 .BubbleGraph-container {
   height: 100vh;
-  display: flex;
-  align-items: center;
-  background-color: blue;
-  z-index: 0;
+  background-color: cornflowerblue;
 }
 
-.BubbleGraph-container .VictoryChart {
-  width: 80vw;
+.BubbleGraph-container .VictoryContainer {
+  width: 60% !important;
   margin: 0 auto;
 }
 

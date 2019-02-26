@@ -10,6 +10,10 @@ html {
   margin: 0;
 }
 
+.StoryboardContainer {
+  max-width: 1440px;
+}
+
 .full-height-container {
   height: auto;
   position: relative;

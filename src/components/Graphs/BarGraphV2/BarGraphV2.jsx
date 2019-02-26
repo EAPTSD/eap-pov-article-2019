@@ -57,8 +57,8 @@ class BarGraphV2 extends Component {
       return formatHigherPovertyDataTwo(data, year);
     });
     const upUp = this.transformData(updatedHigherPovertyData[0]);
-    higherPovertyDisplayData.map((data, i) => {
-      data.push(upUp[i][0]);
+    higherPovertyDisplayData.forEach((element, i) => {
+      element.push(upUp[i][0]);
     });
     this.setState({
       higherPovertyDisplayData: higherPovertyDisplayData,
@@ -68,8 +68,8 @@ class BarGraphV2 extends Component {
   render() {
     const { higherPovertyDisplayData, years } = this.state;
     return (
-      <div className="BarGraph-sequence-container">
-        <div className="BarGraph-container BarGraph-sticky">
+      <div className="BarGraphV2-sequence-container">
+        <div className="BarGraphV2-container BarGraph-sticky">
           <VictoryChart
             height={400}
             width={400}
@@ -92,9 +92,9 @@ class BarGraphV2 extends Component {
         {years.map((year) => {
           return (
             <>
-              <div className="BarGraph-waypoint-buffer" />
+              <div className="BarGraphV2-waypoint-buffer" />
               <Waypoint onEnter={() => this.updateGraph(year)} />
-              <div className="BarGraph-waypoint-buffer" />
+              <div className="BarGraphV2-waypoint-buffer" />
             </>
           );
         })}

@@ -50,64 +50,66 @@ class StoryboardContainer extends Component {
     return (
       <div>
         <Header />
-        <div>
-          {firstText.map((text, i) => {
-            return (
-              <p className="pt-3 sb-text" key={`text-${i}`}>
-                {text}
-              </p>
-            );
-          })}
-        </div>
-        <StackedAreaGraphContainer />
-        <div>
-          {secondText.map((text, i) => {
-            return (
-              <p className="pt-3 sb-text" key={`text-${i}`}>
-                {text}
-              </p>
-            );
-          })}
-        </div>
-        <BubbleGraph flowText={thirdText} />
-        <div>
-          {fourthText.map((text, i) => {
-            return (
-              <p className="pt-3 sb-text" key={`text-${i}`}>
-                {text}
-              </p>
-            );
-          })}
-        </div>
-        <BarGraph />
-        <BarGraphV2 />
-        <div>
-          {fifthText.map((text, i) => {
-            return (
-              <p className="pt-3 sb-text" key={`text-${i}`}>
-                {text}
-              </p>
-            );
-          })}
-        </div>
-        <div>
-          {sixthText.map((text, i) => {
-            return (
-              <p className="pt-3 sb-text" key={`text-${i}`}>
-                {text}
-              </p>
-            );
-          })}
-        </div>
-        <Choropleth />
-        <div>
-          {seventhText.map((text, i) => {
-            return (
-              <p className="pt-3 sb-text" key={`text-${i}`}>
-                {text}
-              </p>
-            );
-          })}
+        <div className="StoryboardContainer">
+          <div>
+            {firstText.map((text, i) => {
+              return (
+                <p className="pt-3 sb-text" key={`text-${i}`}>
+                  {text}
+                </p>
+              );
+            })}
+          </div>
+          <StackedAreaGraphContainer />
+          <div>
+            {secondText.map((text, i) => {
+              return (
+                <p className="pt-3 sb-text" key={`text-${i}`}>
+                  {text}
+                </p>
+              );
+            })}
+          </div>
+          <BubbleGraph flowText={thirdText} />
+          <div>
+            {fourthText.map((text, i) => {
+              return (
+                <p className="pt-3 sb-text" key={`text-${i}`}>
+                  {text}
+                </p>
+              );
+            })}
+          </div>
+          <BarGraph />
+          {/* <BarGraphV2 /> */}
+          <div>
+            {fifthText.map((text, i) => {
+              return (
+                <p className="pt-3 sb-text" key={`text-${i}`}>
+                  {text}
+                </p>
+              );
+            })}
+          </div>
+          <div>
+            {sixthText.map((text, i) => {
+              return (
+                <p className="pt-3 sb-text" key={`text-${i}`}>
+                  {text}
+                </p>
+              );
+            })}
+          </div>
+          <Choropleth />
+          <div>
+            {seventhText.map((text, i) => {
+              return (
+                <p className="pt-3 sb-text" key={`text-${i}`}>
+                  {text}
+                </p>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
