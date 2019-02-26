@@ -1,7 +1,7 @@
 {
-  "main.css": "/eapstory/static/css/main.fc839ddd.chunk.css",
-  "main.js": "/eapstory/static/js/main.ba1f9c0d.chunk.js",
-  "main.js.map": "/eapstory/static/js/main.ba1f9c0d.chunk.js.map",
+  "main.css": "/eapstory/static/css/main.c1b4e3ed.chunk.css",
+  "main.js": "/eapstory/static/js/main.3146a543.chunk.js",
+  "main.js.map": "/eapstory/static/js/main.3146a543.chunk.js.map",
   "static/css/1.e127e8b2.chunk.css": "/eapstory/static/css/1.e127e8b2.chunk.css",
   "static/js/1.f3cbcbef.chunk.js": "/eapstory/static/js/1.f3cbcbef.chunk.js",
   "static/js/1.f3cbcbef.chunk.js.map": "/eapstory/static/js/1.f3cbcbef.chunk.js.map",
@@ -24,9 +24,9 @@
   "static/media/eap_economic_class_percentage.csv": "/eapstory/static/media/eap_economic_class_percentage.807a2eb8.csv",
   "static/media/eap_ex_china_economic_class_percentage.csv": "/eapstory/static/media/eap_ex_china_economic_class_percentage.40d5b8ba.csv",
   "static/media/asean_1.9.csv": "/eapstory/static/media/asean_1.9.d2d83d68.csv",
-  "static/css/main.fc839ddd.chunk.css.map": "/eapstory/static/css/main.fc839ddd.chunk.css.map",
+  "static/css/main.c1b4e3ed.chunk.css.map": "/eapstory/static/css/main.c1b4e3ed.chunk.css.map",
   "static/css/1.e127e8b2.chunk.css.map": "/eapstory/static/css/1.e127e8b2.chunk.css.map",
   "index.html": "/eapstory/index.html",
-  "precache-manifest.83f333988330f1ef85ed8458f8904bbc.js": "/eapstory/precache-manifest.83f333988330f1ef85ed8458f8904bbc.js",
+  "precache-manifest.54274c85ef7dd256b097e63c5a8cfdf7.js": "/eapstory/precache-manifest.54274c85ef7dd256b097e63c5a8cfdf7.js",
   "service-worker.js": "/eapstory/service-worker.js"
 }
