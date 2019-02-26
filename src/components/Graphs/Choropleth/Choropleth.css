@@ -1,7 +1,7 @@
 .Choropleth-sequence-container {
   position: relative;
   -webkit-font-smoothing: antialiased;
-  background-color: white;
+  background-color: #606060;
 }
 
 .Choropleth-container {
@@ -29,5 +29,5 @@ path.sub-nation {
 
 .Choropleth-waypoint-buffer {
   height: 120vh;
-  background-color: white;
+  background-color: #606060;
 }
