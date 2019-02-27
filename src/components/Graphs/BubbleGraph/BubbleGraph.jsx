@@ -27,11 +27,14 @@ class BubbleGraph extends Component {
   };
 
   componentDidMount() {
+    const { colors } = this.state;
     Promise.all([d3.csv(asean1_9), d3.csv(asean3_2), d3.csv(asean5_5)]).then(
       (files) => {
-        const formattedPovertyData = files.map((file) => {
-          return formatPovertyData(file);
+        const formattedPovertyData = files.map((file, i) => {
+          const tractColor = colors[i];
+          return formatPovertyData(file, tractColor);
         });
+
         this.setState({
           reserveData: formattedPovertyData,
           asean1_9: formattedPovertyData[0],
@@ -47,9 +50,15 @@ class BubbleGraph extends Component {
 
   updateGraph = (index) => {
     const { reserveData } = this.state;
-    console.log(displayDataPopulator(reserveData, index));
+    const displayArr = displayDataPopulator(reserveData, index);
+    const res = [];
+    for (let i = 0; i < displayArr[0].length; i++) {
+      res.push(displayArr[0][i]);
+      res.push(displayArr[1][i]);
+      res.push(displayArr[2][i]);
+    }
     this.setState({
-      displayData: displayDataPopulator(reserveData, index),
+      displayData: res,
     });
   };
 
@@ -70,6 +79,22 @@ class BubbleGraph extends Component {
               bubbleProperty="size"
               domainPadding={{ x: 25 }}
               data={displayData}
+              style={{
+                data: {
+                  fill: (d) => d.fill,
+                },
+              }}
+              animate={{
+                onExit: {
+                  duration: 500,
+                  before: () => ({ opacity: 0.3, _y: 0 }),
+                },
+                onEnter: {
+                  duration: 500,
+                  before: () => ({ opacity: 0.3, _y: 0 }),
+                  after: (datum) => ({ opacity: 1, _y: datum._y }),
+                },
+              }}
             />
           </VictoryChart>
         </div>
