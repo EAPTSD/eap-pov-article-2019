@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/malaysia_economic_class.b6650a5b.csv"
   },
   {
-    "revision": "3146a5434e920ce3ecf2",
+    "revision": "395d6b8668176828c4f1",
     "url": "/eapstory/static/css/main.c1b4e3ed.chunk.css"
   },
   {
@@ -48,8 +48,8 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/lao_economic_class.8c4c4ffa.csv"
   },
   {
-    "revision": "3146a5434e920ce3ecf2",
-    "url": "/eapstory/static/js/main.3146a543.chunk.js"
+    "revision": "395d6b8668176828c4f1",
+    "url": "/eapstory/static/js/main.395d6b86.chunk.js"
   },
   {
     "revision": "db025a2cd15618f709f5adc199843556",
@@ -96,7 +96,7 @@ self.__precacheManifest = [
     "url": "/eapstory/static/css/1.e127e8b2.chunk.css"
   },
   {
-    "revision": "b9d46b17b2926e05d327e35874397064",
+    "revision": "75e85c960134ab4bd3d10f0ea756a1a7",
     "url": "/eapstory/index.html"
   }
 ];
