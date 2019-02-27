@@ -47,13 +47,14 @@ class BubbleGraph extends Component {
 
   updateGraph = (index) => {
     const { reserveData } = this.state;
+    console.log(displayDataPopulator(reserveData, index));
     this.setState({
       displayData: displayDataPopulator(reserveData, index),
     });
   };
 
   render() {
-    const { index, displayData, colors } = this.state;
+    const { index, displayData } = this.state;
     const { flowText } = this.props;
     return (
       <div className="BubbleGraph-sequence-container">
@@ -65,16 +66,11 @@ class BubbleGraph extends Component {
               y: [0, 100],
             }}
           >
-            {displayData.map((data, i) => {
-              return (
-                <VictoryScatter
-                  style={{ data: { fill: colors[i] } }}
-                  bubbleProperty="size"
-                  domainPadding={{ x: 25 }}
-                  data={data}
-                />
-              );
-            })}
+            <VictoryScatter
+              bubbleProperty="size"
+              domainPadding={{ x: 25 }}
+              data={displayData}
+            />
           </VictoryChart>
         </div>
         {index.map((i) => {
