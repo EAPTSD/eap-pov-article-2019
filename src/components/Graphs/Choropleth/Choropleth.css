@@ -12,6 +12,11 @@
   align-items: center;
 }
 
+.Choropleth-container svg {
+  width: 100%;
+  height: 100%;
+}
+
 .Choropleth-sticky {
   position: sticky;
   top: 0px;

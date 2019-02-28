@@ -13,25 +13,46 @@ import './Choropleth.css';
 import eapCountryData from '../../../data/ChoroplethData/EAPMap_topojson.json';
 
 class Choropleth extends Component {
-  state = {
-    color: null,
-    eapCountryData: null,
-    index: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-    windowHeight: null,
-    windowWidth: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: null,
+      eapCountryData: null,
+      index: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      windowHeight: null,
+      windowWidth: null,
+      mapCenter: null,
+      featureCollection: null,
+    };
+    this.choroplethContainerRef = React.createRef();
+    this.choroplethRef = React.createRef();
+  }
 
   componentDidMount() {
     const color = d3
       .scaleQuantize()
       .domain([0, 10])
       .range(d3.schemeBlues[9]);
+
+    const choroplethContainerHeight = this.choroplethContainerRef.current
+      .clientHeight;
+    const choroplethContainerWidth = this.choroplethContainerRef.current
+      .clientWidth;
+
+    const featureCollection = topojson.feature(
+      eapCountryData,
+      eapCountryData.objects.eap_all_by_subnatid1_shapefile
+    );
+    const center = d3.geoPath().centroid(featureCollection);
+
     this.setState(
       {
         color: color,
         eapCountryData: eapCountryData,
-        windowHeight: window.outerHeight,
-        windowWidth: window.outerWidth,
+        containerHeight: choroplethContainerHeight,
+        containerWidth: choroplethContainerWidth,
+        mapCenter: center,
+        featureCollection: featureCollection,
       },
       () => {
         this.renderMap();
@@ -40,29 +61,37 @@ class Choropleth extends Component {
 
     const elements = document.querySelectorAll('.Choropleth-sticky');
     Stickyfill.add(elements);
+
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
   }
 
   renderMap = () => {
-    const { color, eapCountryData, windowHeight, windowWidth } = this.state;
-    const featureCollection = topojson.feature(
-      eapCountryData,
-      eapCountryData.objects.eap_all_by_subnatid1_shapefile
-    );
+    const {
+      color,
+      containerHeight,
+      containerWidth,
+      featureCollection,
+      mapCenter,
+    } = this.state;
 
     const svg = d3
       .select('.Choropleth-container')
       .append('svg')
-      .attr('height', windowHeight)
-      .attr('width', windowWidth);
+      .attr('class', 'Choropleth-svg')
+      .attr('height', containerHeight)
+      .attr('width', containerWidth);
 
-    const center = d3.geoPath().centroid(featureCollection);
     const scale = 420;
-    const offset = [windowWidth / 3, windowHeight / 2.4];
+    const offset = [containerWidth / 3, containerHeight / 2.4];
 
     const projection = d3
       .geoMercator()
       .scale(scale)
-      .center(center)
+      .center(mapCenter)
       .translate(offset);
 
     const path = d3.geoPath().projection(projection);
@@ -79,6 +108,36 @@ class Choropleth extends Component {
       .attr('d', path);
   };
 
+  onResize = () => {
+    const { mapCenter } = this.state;
+
+    const containerHeight = this.choroplethContainerRef.current.clientHeight;
+    const containerWidth = this.choroplethContainerRef.current.clientWidth;
+
+    console.log(containerHeight, containerWidth);
+
+    const newScale = 420;
+    const newOffset = [containerWidth / 3, containerHeight / 2.4];
+
+    const newProjection = d3
+      .geoMercator()
+      .scale(newScale)
+      .center(mapCenter)
+      .translate(newOffset);
+
+    const newPath = d3.geoPath().projection(newProjection);
+    console.log(document.querySelector('.Choropleth-svg'));
+    console.log(d3.select('.Choropleth-svg'));
+    const svg = d3
+      .select('.Choropleth-svg')
+      .attr('height', containerHeight)
+      .attr('width', containerWidth);
+
+    console.log(d3.select('svg'));
+
+    svg.selectAll('path').attr('d', newPath);
+  };
+
   updateMap = () => {
     const { color } = this.state;
     d3.selectAll('path.sub-nation').attr('fill', (d) =>
@@ -90,7 +149,10 @@ class Choropleth extends Component {
     const { index } = this.state;
     return (
       <div className="Choropleth-sequence-container">
-        <div className="Choropleth-container Choropleth-sticky" />
+        <div
+          className="Choropleth-container Choropleth-sticky"
+          ref={this.choroplethContainerRef}
+        />
         {index.map(() => {
           return (
             <>
