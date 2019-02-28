@@ -114,8 +114,6 @@ class Choropleth extends Component {
     const containerHeight = this.choroplethContainerRef.current.clientHeight;
     const containerWidth = this.choroplethContainerRef.current.clientWidth;
 
-    console.log(containerHeight, containerWidth);
-
     const newScale = 420;
     const newOffset = [containerWidth / 3, containerHeight / 2.4];
 
@@ -126,14 +124,11 @@ class Choropleth extends Component {
       .translate(newOffset);
 
     const newPath = d3.geoPath().projection(newProjection);
-    console.log(document.querySelector('.Choropleth-svg'));
-    console.log(d3.select('.Choropleth-svg'));
+
     const svg = d3
       .select('.Choropleth-svg')
       .attr('height', containerHeight)
       .attr('width', containerWidth);
-
-    console.log(d3.select('svg'));
 
     svg.selectAll('path').attr('d', newPath);
   };
