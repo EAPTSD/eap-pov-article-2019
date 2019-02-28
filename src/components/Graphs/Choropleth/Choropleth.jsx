@@ -56,7 +56,7 @@ class Choropleth extends Component {
       .attr('width', windowWidth);
 
     const center = d3.geoPath().centroid(featureCollection);
-    const scale = 450;
+    const scale = 420;
     const offset = [windowWidth / 3, windowHeight / 2.4];
 
     const projection = d3
