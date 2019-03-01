@@ -7,6 +7,7 @@ import Stickyfill from 'stickyfilljs';
 
 // Internal Imports
 import getRandomInt from '../../../utilities/getRandomInt';
+import scaleByScreenSize from '../../../utilities/scaleByScreenSize';
 import './Choropleth.css';
 
 // Data
@@ -70,6 +71,8 @@ class Choropleth extends Component {
   }
 
   renderMap = () => {
+    scaleByScreenSize();
+
     const {
       color,
       containerHeight,
@@ -85,7 +88,7 @@ class Choropleth extends Component {
       .attr('height', containerHeight)
       .attr('width', containerWidth);
 
-    const scale = 420;
+    const scale = scaleByScreenSize();
     const offset = [containerWidth / 3, containerHeight / 2.4];
 
     const projection = d3
@@ -114,7 +117,7 @@ class Choropleth extends Component {
     const containerHeight = this.choroplethContainerRef.current.clientHeight;
     const containerWidth = this.choroplethContainerRef.current.clientWidth;
 
-    const newScale = 420;
+    const newScale = scaleByScreenSize();
     const newOffset = [containerWidth / 3, containerHeight / 2.4];
 
     const newProjection = d3

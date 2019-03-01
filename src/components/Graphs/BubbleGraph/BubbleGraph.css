@@ -34,8 +34,6 @@
 
 .BubbleGraph-waypoint-buffer {
   height: 100vh;
-  /* background-color: yellow;
-  opacity: 0.5; */
   z-index: 10;
 }
 
