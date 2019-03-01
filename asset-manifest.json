@@ -1,10 +1,10 @@
 {
-  "main.css": "/eapstory/static/css/main.c1b4e3ed.chunk.css",
-  "main.js": "/eapstory/static/js/main.395d6b86.chunk.js",
-  "main.js.map": "/eapstory/static/js/main.395d6b86.chunk.js.map",
+  "main.css": "/eapstory/static/css/main.2e3cbf5a.chunk.css",
+  "main.js": "/eapstory/static/js/main.3a2044db.chunk.js",
+  "main.js.map": "/eapstory/static/js/main.3a2044db.chunk.js.map",
   "static/css/1.e127e8b2.chunk.css": "/eapstory/static/css/1.e127e8b2.chunk.css",
-  "static/js/1.f3cbcbef.chunk.js": "/eapstory/static/js/1.f3cbcbef.chunk.js",
-  "static/js/1.f3cbcbef.chunk.js.map": "/eapstory/static/js/1.f3cbcbef.chunk.js.map",
+  "static/js/1.e47c342e.chunk.js": "/eapstory/static/js/1.e47c342e.chunk.js",
+  "static/js/1.e47c342e.chunk.js.map": "/eapstory/static/js/1.e47c342e.chunk.js.map",
   "runtime~main.js": "/eapstory/static/js/runtime~main.40a07c3f.js",
   "runtime~main.js.map": "/eapstory/static/js/runtime~main.40a07c3f.js.map",
   "static/media/Header.css": "/eapstory/static/media/action-asia-blur-1455989.1fdc743e.jpg",
@@ -24,9 +24,9 @@
   "static/media/eap_economic_class_percentage.csv": "/eapstory/static/media/eap_economic_class_percentage.807a2eb8.csv",
   "static/media/eap_ex_china_economic_class_percentage.csv": "/eapstory/static/media/eap_ex_china_economic_class_percentage.40d5b8ba.csv",
   "static/media/asean_1.9.csv": "/eapstory/static/media/asean_1.9.d2d83d68.csv",
-  "static/css/main.c1b4e3ed.chunk.css.map": "/eapstory/static/css/main.c1b4e3ed.chunk.css.map",
+  "static/css/main.2e3cbf5a.chunk.css.map": "/eapstory/static/css/main.2e3cbf5a.chunk.css.map",
   "static/css/1.e127e8b2.chunk.css.map": "/eapstory/static/css/1.e127e8b2.chunk.css.map",
   "index.html": "/eapstory/index.html",
-  "precache-manifest.7d5048caaa4d38bb2e9f800458ce87c3.js": "/eapstory/precache-manifest.7d5048caaa4d38bb2e9f800458ce87c3.js",
+  "precache-manifest.058777b45f158c6e018d3cbbd7b1f92d.js": "/eapstory/precache-manifest.058777b45f158c6e018d3cbbd7b1f92d.js",
   "service-worker.js": "/eapstory/service-worker.js"
 }
