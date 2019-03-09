@@ -1,0 +1,47 @@
+.ChoroplethMongolia-sequence-container {
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  background-color: #606060;
+}
+
+.ChoroplethMongolia-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #606060;
+  text-align: center;
+}
+
+.ChoroplethMongolia-container svg {
+  height: 100%;
+  width: 80vw;
+  background-color: #606060;
+  display: block;
+  margin: 0 auto;
+}
+
+.ChoroplethMongolia-sticky {
+  position: sticky;
+  top: 0px;
+}
+
+.ChoroplethMongolia-sticky:before,
+.ChoroplethMongolia-sticky:after {
+  content: '';
+  display: table;
+}
+
+path.sub-nation {
+  transition: fill 0.4s ease;
+}
+
+.ChoroplethMongolia-waypoint-buffer {
+  height: 120vh;
+  background-color: #606060;
+}
+
+@media only screen and (max-width: 1150px) {
+  .ChoroplethMongolia-container svg {
+    width: 95vw;
+  }
+}
