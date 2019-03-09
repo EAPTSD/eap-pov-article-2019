@@ -1,5 +1,5 @@
-.ChoroplethMongolia-container {
-  height: 300px;
+.ChoroplethV2Mongolia-container {
+  height: 250px;
   width: 450px;
   display: flex;
   align-items: center;
@@ -7,29 +7,18 @@
   text-align: center;
 }
 
-.ChoroplethMongolia-container svg {
+.ChoroplethV2Mongolia-container svg {
   height: 100%;
   /* background-color: #606060; */
   display: block;
   /* margin: 0 auto; */
 }
 
-.ChoroplethMongolia-sticky {
-  position: sticky;
-  top: 0px;
-}
-
-.ChoroplethMongolia-sticky:before,
-.ChoroplethMongolia-sticky:after {
-  content: '';
-  display: table;
-}
-
 path.sub-nation {
   transition: fill 0.4s ease;
 }
 
-.ChoroplethMongolia-waypoint-buffer {
+.ChoroplethV2Mongolia-waypoint-buffer {
   height: 120vh;
   background-color: #606060;
 }

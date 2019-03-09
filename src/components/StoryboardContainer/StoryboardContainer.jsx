@@ -7,7 +7,9 @@ import BarGraph from '../Graphs/BarGraph';
 import BarGraphV2 from '../Graphs/BarGraphV2';
 import BubbleGraph from '../Graphs/BubbleGraph';
 import Choropleth from '../Graphs/Choropleth';
-import ChoroplethMongolia from '../Graphs/ChoroplethMongolia';
+import ChoroplethContainer from '../Graphs/ChoroplethContainer';
+import ChoroplethV2Mongolia from '../Graphs/ChoroplethV2Mongolia';
+import ChoroplethV2Eap from '../Graphs/ChoroplethV2Eap';
 import Header from '../Header';
 import StackedAreaGraph from '../Graphs/StackedAreaGraph';
 import StackedAreaGraphContainer from '../Graphs/StackedAreaGraphContainer';
@@ -50,7 +52,8 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
-        {/* <ChoroplethMongolia /> */}
+        {/* <ChoroplethV2Eap /> */}
+        {/* <ChoroplethContainer /> */}
         <Header />
         <div className="StoryboardContainer">
           <div className="sb-text-container">

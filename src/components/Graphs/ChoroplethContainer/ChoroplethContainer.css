@@ -1,0 +1,24 @@
+.ChoroplethContainer-sequence-container {
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  background-color: #606060;
+}
+
+.ChoroplethContainer-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #606060;
+  text-align: center;
+}
+
+.ChoroplethContainer-sticky {
+  position: sticky;
+  top: 0px;
+}
+
+.ChoroplethContainer-sticky:before,
+.ChoroplethContainer-sticky:after {
+  content: '';
+  display: table;
+}
