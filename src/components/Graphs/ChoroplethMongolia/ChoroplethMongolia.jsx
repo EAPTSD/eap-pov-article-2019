@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
-import Waypoint from 'react-waypoint';
 import Stickyfill from 'stickyfilljs';
 
 // Internal Imports
@@ -19,7 +18,6 @@ class ChoroplethMongolia extends Component {
     this.state = {
       color: null,
       mngData: null,
-      index: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
       windowHeight: null,
       windowWidth: null,
       mapCenter: null,
@@ -39,8 +37,6 @@ class ChoroplethMongolia extends Component {
       .ChoroplethMongoliaContainerRef.current.clientHeight;
     const ChoroplethMongoliaContainerWidth = this.ChoroplethMongoliaContainerRef
       .current.clientWidth;
-
-    console.log(mngData);
 
     const featureCollection = topojson.feature(
       mngData,
@@ -91,11 +87,11 @@ class ChoroplethMongolia extends Component {
       .attr('width', containerWidth);
 
     const scale = scaleByScreenSize();
-    const offset = [containerWidth / 3, containerHeight / 2.4];
+    const offset = [containerWidth / 2.1, containerHeight / 2];
 
     const projection = d3
       .geoMercator()
-      .scale(800)
+      .scale(500)
       .center(mapCenter)
       .translate(offset);
 
@@ -122,13 +118,13 @@ class ChoroplethMongolia extends Component {
       .clientWidth;
 
     const newScale = scaleByScreenSize();
-    const newOffset = [containerWidth / 3, containerHeight / 2.4];
+    const offset = [containerWidth / 2.1, containerHeight / 2];
 
     const newProjection = d3
       .geoMercator()
-      .scale(newScale)
+      .scale(500)
       .center(mapCenter)
-      .translate(newOffset);
+      .translate(offset);
 
     const newPath = d3.geoPath().projection(newProjection);
 
@@ -140,30 +136,12 @@ class ChoroplethMongolia extends Component {
     svg.selectAll('path').attr('d', newPath);
   };
 
-  updateMap = () => {
-    const { color } = this.state;
-    d3.selectAll('path.sub-nation').attr('fill', (d) =>
-      color(getRandomInt(11))
-    );
-  };
-
   render() {
-    const { index } = this.state;
     return (
-      <div className="ChoroplethMongolia-sequence-container">
-        <div
-          className="ChoroplethMongolia-container ChoroplethMongolia-sticky"
-          ref={this.ChoroplethMongoliaContainerRef}
-        />
-        {index.map(() => {
-          return (
-            <>
-              <div className="ChoroplethMongolia-waypoint-buffer" />
-              <Waypoint onEnter={() => this.updateMap()} />
-            </>
-          );
-        })}
-      </div>
+      <div
+        className="ChoroplethMongolia-container ChoroplethMongolia-sticky"
+        ref={this.ChoroplethMongoliaContainerRef}
+      />
     );
   }
 }

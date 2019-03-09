@@ -1,11 +1,6 @@
-.ChoroplethMongolia-sequence-container {
-  position: relative;
-  -webkit-font-smoothing: antialiased;
-  background-color: #606060;
-}
-
 .ChoroplethMongolia-container {
-  height: 100vh;
+  height: 300px;
+  width: 450px;
   display: flex;
   align-items: center;
   background-color: #606060;
@@ -14,10 +9,9 @@
 
 .ChoroplethMongolia-container svg {
   height: 100%;
-  width: 80vw;
-  background-color: #606060;
+  /* background-color: #606060; */
   display: block;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .ChoroplethMongolia-sticky {
@@ -38,10 +32,4 @@ path.sub-nation {
 .ChoroplethMongolia-waypoint-buffer {
   height: 120vh;
   background-color: #606060;
-}
-
-@media only screen and (max-width: 1150px) {
-  .ChoroplethMongolia-container svg {
-    width: 95vw;
-  }
 }
