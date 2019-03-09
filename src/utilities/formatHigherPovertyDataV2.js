@@ -1,4 +1,4 @@
-const formatHigherPovertyDataTwo = (array, year) => {
+const formatHigherPovertyDataV2 = (array, year) => {
   const arr = array.map((d, i) => {
     let obj = {};
     obj.x = year;
@@ -9,4 +9,4 @@ const formatHigherPovertyDataTwo = (array, year) => {
   return arr;
 };
 
-export default formatHigherPovertyDataTwo;
+export default formatHigherPovertyDataV2;

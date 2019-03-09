@@ -86,11 +86,11 @@ class BubbleGraph extends Component {
               }}
               animate={{
                 onExit: {
-                  duration: 500,
+                  duration: 100,
                   before: () => ({ opacity: 0.3, _y: 0 }),
                 },
                 onEnter: {
-                  duration: 500,
+                  duration: 100,
                   before: () => ({ opacity: 0.3, _y: 0 }),
                   after: (datum) => ({ opacity: 1, _y: datum._y }),
                 },

@@ -51,7 +51,7 @@ class StoryboardContainer extends Component {
       <div>
         <Header />
         <div className="StoryboardContainer">
-          <div>
+          <div className="sb-text-container">
             {firstText.map((text, i) => {
               return (
                 <p className="pt-3 sb-text" key={`text-${i}`}>
@@ -61,7 +61,7 @@ class StoryboardContainer extends Component {
             })}
           </div>
           <StackedAreaGraphContainer />
-          <div>
+          <div className="sb-text-container">
             {secondText.map((text, i) => {
               return (
                 <p className="pt-3 sb-text" key={`text-${i}`}>
@@ -71,7 +71,7 @@ class StoryboardContainer extends Component {
             })}
           </div>
           <BubbleGraph flowText={thirdText} />
-          <div>
+          <div className="sb-text-container">
             {fourthText.map((text, i) => {
               return (
                 <p className="pt-3 sb-text" key={`text-${i}`}>
@@ -82,7 +82,7 @@ class StoryboardContainer extends Component {
           </div>
           <BarGraph />
           {/* <BarGraphV2 /> */}
-          <div>
+          <div className="sb-text-container">
             {fifthText.map((text, i) => {
               return (
                 <p className="pt-3 sb-text" key={`text-${i}`}>
@@ -91,7 +91,7 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-          <div>
+          <div className="sb-text-container">
             {sixthText.map((text, i) => {
               return (
                 <p className="pt-3 sb-text" key={`text-${i}`}>
@@ -101,7 +101,7 @@ class StoryboardContainer extends Component {
             })}
           </div>
           <Choropleth />
-          <div>
+          <div className="sb-text-container">
             {seventhText.map((text, i) => {
               return (
                 <p className="pt-3 sb-text" key={`text-${i}`}>

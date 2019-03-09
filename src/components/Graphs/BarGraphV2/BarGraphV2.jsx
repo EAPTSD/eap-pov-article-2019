@@ -6,7 +6,7 @@ import Waypoint from 'react-waypoint';
 import Stickyfill from 'stickyfilljs';
 
 // Internal Imports
-import formatHigherPovertyDataTwo from '../../../utilities/formatHigherPovertyDataTwo';
+import formatHigherPovertyDataV2 from '../../../utilities/formatHigherPovertyDataV2';
 import './BarGraphV2.css';
 
 // Data
@@ -24,10 +24,10 @@ class BarGraphV2 extends Component {
       d3.csv(higherPovertyData), //
     ]).then((files) => {
       const formattedHigherPovertyData = files.map((file) => {
-        return formatHigherPovertyDataTwo(file, 2002);
+        return formatHigherPovertyDataV2(file, 2002);
       });
       this.setState({
-        higherPovertyDisplayData: this.transformData(
+        higherPovertyDisplayData: this.transformDataforDisplay(
           formattedHigherPovertyData[0]
         ),
         reserveData: files,
@@ -38,7 +38,7 @@ class BarGraphV2 extends Component {
     Stickyfill.add(elements);
   }
 
-  transformData = (dataset) => {
+  transformDataforDisplay = (dataset) => {
     const totals = dataset[0].map((data, i) => {
       return dataset.reduce((memo, curr) => {
         return memo + curr[i].y;
@@ -54,9 +54,9 @@ class BarGraphV2 extends Component {
   updateGraph = (year) => {
     const { reserveData, higherPovertyDisplayData } = this.state;
     const updatedHigherPovertyData = reserveData.map((data) => {
-      return formatHigherPovertyDataTwo(data, year);
+      return formatHigherPovertyDataV2(data, year);
     });
-    const upUp = this.transformData(updatedHigherPovertyData[0]);
+    const upUp = this.transformDataforDisplay(updatedHigherPovertyData[0]);
     higherPovertyDisplayData.forEach((element, i) => {
       element.push(upUp[i][0]);
     });
@@ -77,11 +77,10 @@ class BarGraphV2 extends Component {
             animate={{ duration: 500 }}
           >
             <VictoryStack
-              colorScale={['orange', 'red', 'blue', 'black', 'green']}
+              colorScale={['red', 'yellow', 'blue', 'black', 'green']}
             >
               {higherPovertyDisplayData &&
                 higherPovertyDisplayData.map((data, i) => {
-                  //  console.log(data)
                   return <VictoryBar data={data} key={i} />;
                 })}
             </VictoryStack>
