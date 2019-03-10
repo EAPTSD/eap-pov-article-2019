@@ -7,16 +7,17 @@ import Stickyfill from 'stickyfilljs';
 
 // Internal Imports
 import formatHigherPovertyDataV2 from '../../../utilities/formatHigherPovertyDataV2';
+import displayDataPopulator from '../../../utilities/displayDataPopulator';
 import './BarGraphV2.css';
 
 // Data
-import higherPovertyData from '../../../data/BarGraphData/EAP_higher_pov.csv';
+import higherPovertyData from '../../../data/BarGraphData/EAP_higher_pov_V2.csv';
 
 class BarGraphV2 extends Component {
   state = {
-    higherPovertyDisplayData: null,
+    higherPovertyDisplayData: [],
     reserveData: null,
-    years: [2006, 2010, 2014, 2018],
+    index: [1, 2, 3, 4, 5],
   };
 
   componentDidMount() {
@@ -24,13 +25,12 @@ class BarGraphV2 extends Component {
       d3.csv(higherPovertyData), //
     ]).then((files) => {
       const formattedHigherPovertyData = files.map((file) => {
-        return formatHigherPovertyDataV2(file, 2002);
+        return formatHigherPovertyDataV2(file);
       });
+      const displayArr = displayDataPopulator(formattedHigherPovertyData[0], 1);
       this.setState({
-        higherPovertyDisplayData: this.transformDataforDisplay(
-          formattedHigherPovertyData[0]
-        ),
-        reserveData: files,
+        higherPovertyDisplayData: displayArr,
+        reserveData: formattedHigherPovertyData[0],
       });
     });
 
@@ -38,61 +38,45 @@ class BarGraphV2 extends Component {
     Stickyfill.add(elements);
   }
 
-  transformDataforDisplay = (dataset) => {
-    const totals = dataset[0].map((data, i) => {
-      return dataset.reduce((memo, curr) => {
-        return memo + curr[i].y;
-      }, 0);
-    });
-    return dataset.map((data) => {
-      return data.map((datum, i) => {
-        return { x: datum.x, y: (datum.y / totals[i]) * 100 };
-      });
-    });
-  };
-
-  updateGraph = (year) => {
-    const { reserveData, higherPovertyDisplayData } = this.state;
-    const updatedHigherPovertyData = reserveData.map((data) => {
-      return formatHigherPovertyDataV2(data, year);
-    });
-    const upUp = this.transformDataforDisplay(updatedHigherPovertyData[0]);
-    higherPovertyDisplayData.forEach((element, i) => {
-      element.push(upUp[i][0]);
-    });
+  updateGraph = (index) => {
+    const { reserveData } = this.state;
+    const displayArr = displayDataPopulator(reserveData, index);
     this.setState({
-      higherPovertyDisplayData: higherPovertyDisplayData,
+      higherPovertyDisplayData: displayArr,
     });
   };
 
   render() {
-    const { higherPovertyDisplayData, years } = this.state;
+    const { higherPovertyDisplayData, index } = this.state;
+    console.log(higherPovertyDisplayData);
     return (
       <div className="BarGraphV2-sequence-container">
         <div className="BarGraphV2-container BarGraph-sticky">
-          <VictoryChart
-            height={400}
-            width={400}
-            domainPadding={{ x: 25 }}
-            animate={{ duration: 500 }}
-          >
+          <VictoryChart height={400} width={400} domainPadding={{ x: 25 }}>
             <VictoryStack
               colorScale={['red', 'yellow', 'blue', 'black', 'green']}
             >
               {higherPovertyDisplayData &&
                 higherPovertyDisplayData.map((data, i) => {
-                  return <VictoryBar data={data} key={i} barWidth={25} />;
+                  return (
+                    <VictoryBar
+                      data={data}
+                      key={i}
+                      barWidth={25}
+                      animate={{ duration: 500 }}
+                    />
+                  );
                 })}
             </VictoryStack>
             <VictoryAxis dependentAxis tickFormat={(tick) => `${tick}%`} />
             <VictoryAxis tickFormat={[2002, 2006, 2010, 2014, 2018]} />
           </VictoryChart>
         </div>
-        {years.map((year) => {
+        {index.map((index) => {
           return (
             <>
               <div className="BarGraphV2-waypoint-buffer" />
-              <Waypoint onEnter={() => this.updateGraph(year)} />
+              <Waypoint onEnter={() => this.updateGraph(index)} />
               <div className="BarGraphV2-waypoint-buffer" />
             </>
           );

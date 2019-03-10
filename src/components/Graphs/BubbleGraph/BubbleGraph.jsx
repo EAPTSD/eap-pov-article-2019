@@ -34,7 +34,6 @@ class BubbleGraph extends Component {
           const tractColor = colors[i];
           return formatPovertyData(file, tractColor);
         });
-
         this.setState({
           reserveData: formattedPovertyData,
           asean1_9: formattedPovertyData[0],
