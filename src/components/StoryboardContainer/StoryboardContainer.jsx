@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // Internal Imports
 import appText from '../../text/appText';
 import BarGraph from '../Graphs/BarGraph';
-import BarGraphV2 from '../Graphs/BarGraphV2';
+import BarGraphPercentage from '../Graphs/BarGraphPercentage';
 import BubbleGraph from '../Graphs/BubbleGraph';
 import Choropleth from '../Graphs/Choropleth';
 import ChoroplethContainer from '../Graphs/ChoroplethContainer';
@@ -52,7 +52,7 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
-        <BarGraphV2 />
+        <BarGraphPercentage />
         {/* <ChoroplethV2Eap /> */}
         {/* <ChoroplethV2Mongolia /> */}
         {/* <ChoroplethContainer /> */}
@@ -88,7 +88,7 @@ class StoryboardContainer extends Component {
             })}
           </div>
           <BarGraph />
-          <BarGraphV2 /> 
+          <BarGraphPercentage /> 
           <div className="sb-text-container">
             {fifthText.map((text, i) => {
               return (

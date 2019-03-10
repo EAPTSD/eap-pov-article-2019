@@ -1,34 +1,34 @@
-.BarGraphV2-sequence-container {
+.BarGraphPercentage-sequence-container {
   position: relative;
   -webkit-font-smoothing: antialiased;
   background-color: lightgrey;
 }
 
-.BarGraphV2-container {
+.BarGraphPercentage-container {
   height: 100vh;
   display: flex;
   align-items: center;
   background-color: lightgrey;
 }
 
-.BarGraphV2-container .VictoryContainer {
+.BarGraphPercentage-container .VictoryContainer {
   width: 75% !important;
   height: 75% !important;
   margin: 0 auto;
 }
 
-.BarGraphV2-sticky {
+.BarGraphPercentage-sticky {
   position: sticky;
   top: 0px;
 }
 
-.BarGraphV2-sticky:before,
-.BarGraphV2-sticky:after {
+.BarGraphPercentage-sticky:before,
+.BarGraphPercentage-sticky:after {
   content: '';
   display: table;
 }
 
-.BarGraphV2-waypoint-buffer {
+.BarGraphPercentage-waypoint-buffer {
   height: 150vh;
   background-color: lightgrey;
 }

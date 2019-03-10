@@ -8,12 +8,12 @@ import Stickyfill from 'stickyfilljs';
 // Internal Imports
 import formatHigherPovertyDataV2 from '../../../utilities/formatHigherPovertyDataV2';
 import displayDataPopulator from '../../../utilities/displayDataPopulator';
-import './BarGraphV2.css';
+import './BarGraphPercentage.css';
 
 // Data
 import higherPovertyData from '../../../data/BarGraphData/EAP_higher_pov_V2.csv';
 
-class BarGraphV2 extends Component {
+class BarGraphPercentage extends Component {
   state = {
     higherPovertyDisplayData: [],
     reserveData: null,
@@ -49,8 +49,8 @@ class BarGraphV2 extends Component {
   render() {
     const { higherPovertyDisplayData, index } = this.state;
     return (
-      <div className="BarGraphV2-sequence-container">
-        <div className="BarGraphV2-container BarGraph-sticky">
+      <div className="BarGraphPercentage-sequence-container">
+        <div className="BarGraphPercentage-container BarGraph-sticky">
           <VictoryChart height={400} width={400} domainPadding={{ x: 25 }}>
             <VictoryStack
               colorScale={['red', 'yellow', 'blue', 'black', 'green']}
@@ -78,9 +78,9 @@ class BarGraphV2 extends Component {
         {index.map((index) => {
           return (
             <>
-              <div className="BarGraphV2-waypoint-buffer" />
+              <div className="BarGraphPercentage-waypoint-buffer" />
               <Waypoint onEnter={() => this.updateGraph(index)} />
-              <div className="BarGraphV2-waypoint-buffer" />
+              <div className="BarGraphPercentage-waypoint-buffer" />
             </>
           );
         })}
@@ -89,4 +89,4 @@ class BarGraphV2 extends Component {
   }
 }
 
-export default BarGraphV2;
+export default BarGraphPercentage;
