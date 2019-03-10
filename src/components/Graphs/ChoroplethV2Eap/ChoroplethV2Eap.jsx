@@ -68,12 +68,12 @@ class ChoroplethV2Eap extends Component {
     const svg = d3
       .select('.ChoroplethV2Eap-container')
       .append('svg')
-      .attr('class', 'Choropleth-svg')
+      .attr('class', 'ChoroplethV2Eap-svg')
       .attr('height', containerHeight)
       .attr('width', containerWidth);
 
-    const scale = 480;
-    const offset = [containerWidth / 3, containerHeight / 2.4];
+    const scale = 555;
+    const offset = [containerWidth / 6, containerHeight / 25];
 
     const projection = d3
       .geoMercator()

@@ -76,7 +76,7 @@ class ChoroplethV2Mongolia extends Component {
 
     const projection = d3
       .geoMercator()
-      .scale(750)
+      .scale(550)
       .center(mapCenter)
       .translate(offset);
 

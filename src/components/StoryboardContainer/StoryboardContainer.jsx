@@ -53,6 +53,7 @@ class StoryboardContainer extends Component {
     return (
       <div>
         {/* <ChoroplethV2Eap /> */}
+        {/* <ChoroplethV2Mongolia /> */}
         {/* <ChoroplethContainer /> */}
         <Header />
         <div className="StoryboardContainer">
@@ -105,7 +106,8 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-          <Choropleth />
+          {/* <Choropleth /> */}
+          <ChoroplethContainer />
           <div className="sb-text-container">
             {seventhText.map((text, i) => {
               return (

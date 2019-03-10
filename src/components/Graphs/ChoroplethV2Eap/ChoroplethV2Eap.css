@@ -1,11 +1,6 @@
-.ChoroplethV2Eap-sequence-container {
-  position: relative;
-  -webkit-font-smoothing: antialiased;
-  background-color: #606060;
-}
-
 .ChoroplethV2Eap-container {
-  height: 100vh;
+  height: 80vh;
+  width: 60vw;
   display: flex;
   align-items: center;
   background-color: #606060;
@@ -14,7 +9,6 @@
 
 .ChoroplethV2Eap-container svg {
   height: 100%;
-  width: 80vw;
   background-color: #606060;
   display: block;
   margin: 0 auto;
@@ -22,10 +16,4 @@
 
 path.sub-nation {
   transition: fill 0.4s ease;
-}
-
-@media only screen and (max-width: 1150px) {
-  .ChoroplethV2Eap-container svg {
-    width: 95vw;
-  }
 }
