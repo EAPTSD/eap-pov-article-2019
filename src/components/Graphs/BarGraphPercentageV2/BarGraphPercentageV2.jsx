@@ -34,10 +34,10 @@ class BarGraphPercentageV2 extends Component {
   }
 
   render() {
-    const { higherPovertyDisplayData, index } = this.state;
+    const { higherPovertyDisplayData } = this.state;
     return (
       <div className="BarGraphPercentageV2-sequence-container">
-        <div className="BarGraphPercentageV2-container BarGraph-sticky">
+        <div className="BarGraphPercentageV2-container">
           <VictoryChart height={400} width={400} domainPadding={{ x: 25 }}>
             <VictoryStack
               colorScale={['red', 'yellow', 'blue', 'black', 'green']}

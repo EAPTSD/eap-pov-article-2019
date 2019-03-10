@@ -1,7 +1,6 @@
 // External Imports
 import React, { Component } from 'react';
 import * as d3 from 'd3';
-import Stickyfill from 'stickyfilljs';
 
 // Internal Imports
 import formatClassData from '../../../utilities/formatClassData';
@@ -49,11 +48,6 @@ class StackedAreaGraphContainer extends Component {
         }
       );
     });
-
-    const elements = document.querySelectorAll(
-      '.StackedAreaGraphContainer-sticky'
-    );
-    Stickyfill.add(elements);
   }
 
   updateGraph = () => {
@@ -72,7 +66,7 @@ class StackedAreaGraphContainer extends Component {
     const { data, percentageData, displayText } = this.state;
     return (
       <div>
-        <div className="StackedAreaGraphContainer-sequence-container StackedAreaGraphContainer-sticky container-fluid">
+        <div className="StackedAreaGraphContainer-sequence-container container-fluid">
           <div className="row">
             <div className="col text-center">
               <h1 className="StackedAreaGraphContainer-header-text">

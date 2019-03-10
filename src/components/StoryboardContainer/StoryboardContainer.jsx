@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import appText from '../../text/appText';
 import BarGraph from '../Graphs/BarGraph';
 import BarGraphPercentage from '../Graphs/BarGraphPercentage';
+import BarGraphContainer from '../Graphs/BarGraphContainer';
 import BubbleGraph from '../Graphs/BubbleGraph';
 import Choropleth from '../Graphs/Choropleth';
 import ChoroplethContainer from '../Graphs/ChoroplethContainer';
@@ -52,7 +53,7 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
-        <BarGraphPercentage />
+        <BarGraphContainer />
         {/* <ChoroplethV2Eap /> */}
         {/* <ChoroplethV2Mongolia /> */}
         {/* <ChoroplethContainer /> */}

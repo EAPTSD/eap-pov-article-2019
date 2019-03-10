@@ -8,7 +8,7 @@ import formatHigherPovertyData from '../../../utilities/formatHigherPovertyData'
 import './BarGraphV2.css';
 
 // Data
-import higherPovertyData from '../../../data/BarGraphV2Data/EAP_higher_pov.csv';
+import higherPovertyData from '../../../data/BarGraphData/EAP_higher_pov.csv';
 
 class BarGraphV2 extends Component {
   state = {
@@ -35,7 +35,7 @@ class BarGraphV2 extends Component {
     const { higherPovertyDisplayData } = this.state;
     return (
       <div className="BarGraphV2-sequence-container">
-        <div className="BarGraphV2-container BarGraphV2-sticky">
+        <div className="BarGraphV2-container">
           <VictoryChart
             height={400}
             width={400}

@@ -16,19 +16,3 @@
   height: 75% !important;
   margin: 0 auto;
 }
-
-.BarGraphPercentageV2-sticky {
-  position: sticky;
-  top: 0px;
-}
-
-.BarGraphPercentageV2-sticky:before,
-.BarGraphPercentageV2-sticky:after {
-  content: '';
-  display: table;
-}
-
-.BarGraphPercentageV2-waypoint-buffer {
-  height: 150vh;
-  background-color: lightgrey;
-}
