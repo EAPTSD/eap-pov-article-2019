@@ -8,29 +8,46 @@ import Waypoint from 'react-waypoint';
 import BarGraphV2 from '../BarGraphV2';
 import BarGraphPercentageV2 from '../BarGraphPercentageV2';
 import formatHigherPovertyData from '../../../utilities/formatHigherPovertyData';
+import formatHigherPovertyDataV2 from '../../../utilities/formatHigherPovertyDataV2';
+import displayDataPopulator from '../../../utilities/displayDataPopulator';
 import './BarGraphContainer.css';
 
 // Data
 import higherPovertyData from '../../../data/BarGraphData/EAP_higher_pov.csv';
+import percHigherPovertyData from '../../../data/BarGraphData/EAP_higher_pov_V2.csv';
 
 class BarGraphContainer extends Component {
   state = {
-    higherPovertyDisplayData: null,
-    reserveData: null,
+    higherPovertyDisplayData: [],
+    reserveData: [],
+    percHigherPovertyDisplayData: [],
+    percReserveData: [],
     years: [2002, 2006, 2010, 2014, 2018],
     index: [1, 2, 3, 4, 5],
+    buffer: [1, 2, 3, 4],
   };
 
   componentDidMount() {
     Promise.all([
       d3.csv(higherPovertyData), //
+      d3.csv(percHigherPovertyData),
     ]).then((files) => {
-      const formattedHigherPovertyData = files.map((file) => {
-        return formatHigherPovertyData(file, 2002);
-      });
+      const formattedHigherPovertyData = formatHigherPovertyData(
+        files[0],
+        2002
+      );
+      const formattedPercHigherPovertyData = formatHigherPovertyDataV2(
+        files[1]
+      );
+      const displayArr = displayDataPopulator(
+        formattedPercHigherPovertyData,
+        1
+      );
       this.setState({
-        higherPovertyDisplayData: formattedHigherPovertyData[0],
-        reserveData: files,
+        higherPovertyDisplayData: formattedHigherPovertyData,
+        percHigherPovertyDisplayData: displayArr,
+        reserveData: files[0],
+        percReserveData: formattedPercHigherPovertyData,
       });
     });
 
@@ -38,18 +55,26 @@ class BarGraphContainer extends Component {
     Stickyfill.add(elements);
   }
 
-  updateGraph = (year) => {
-    const { reserveData } = this.state;
-    const updatedHigherPovertyData = reserveData.map((data) => {
-      return formatHigherPovertyData(data, year);
-    });
+  updateGraph = (buffer) => {
+    const { years, index, reserveData, percReserveData } = this.state;
+
+    const year = years[buffer];
+    console.log(year);
+    const i = index[buffer];
+    const updatedHigherPovertyData = formatHigherPovertyData(reserveData, year);
+    const displayArr = displayDataPopulator(percReserveData, i);
     this.setState({
-      higherPovertyDisplayData: updatedHigherPovertyData[0],
+      higherPovertyDisplayData: updatedHigherPovertyData,
+      percHigherPovertyDisplayData: displayArr,
     });
   };
 
   render() {
-    const { years, higherPovertyDisplayData } = this.state;
+    const {
+      buffer,
+      higherPovertyDisplayData,
+      percHigherPovertyDisplayData,
+    } = this.state;
     return (
       <div>
         <div className="BarGraphContainer-sequence-container BarGraphContainer-sticky container-fluid">
@@ -58,15 +83,17 @@ class BarGraphContainer extends Component {
               <BarGraphV2 higherPovertyDisplayData={higherPovertyDisplayData} />
             </div>
             <div className="col-sm">
-              <BarGraphPercentageV2 />
+              <BarGraphPercentageV2
+                percHigherPovertyDisplayData={percHigherPovertyDisplayData}
+              />
             </div>
           </div>
         </div>
-        {years.map((year) => {
+        {buffer.map((buffer) => {
           return (
             <>
               <div className="BarGraphContainer-waypoint-buffer" />
-              <Waypoint onEnter={() => this.updateGraph(year)} />
+              <Waypoint onEnter={() => this.updateGraph(buffer)} />
               <div className="BarGraphContainer-waypoint-buffer" />
             </>
           );
