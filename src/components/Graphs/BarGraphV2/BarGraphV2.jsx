@@ -48,7 +48,6 @@ class BarGraphV2 extends Component {
 
   render() {
     const { higherPovertyDisplayData, index } = this.state;
-    console.log(higherPovertyDisplayData);
     return (
       <div className="BarGraphV2-sequence-container">
         <div className="BarGraphV2-container BarGraph-sticky">
@@ -63,7 +62,11 @@ class BarGraphV2 extends Component {
                       data={data}
                       key={i}
                       barWidth={25}
-                      animate={{ duration: 500 }}
+                      animate={{
+                        onEnter: {
+                          duration: 500,
+                        },
+                      }}
                     />
                   );
                 })}
