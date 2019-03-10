@@ -81,7 +81,7 @@ class BarGraphV2 extends Component {
             >
               {higherPovertyDisplayData &&
                 higherPovertyDisplayData.map((data, i) => {
-                  return <VictoryBar data={data} key={i} />;
+                  return <VictoryBar data={data} key={i} barWidth={25} />;
                 })}
             </VictoryStack>
             <VictoryAxis dependentAxis tickFormat={(tick) => `${tick}%`} />

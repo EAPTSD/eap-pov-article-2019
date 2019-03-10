@@ -52,6 +52,7 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
+        {/* <BarGraphV2 />  */}
         {/* <ChoroplethV2Eap /> */}
         {/* <ChoroplethV2Mongolia /> */}
         {/* <ChoroplethContainer /> */}
@@ -106,8 +107,8 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-          {/* <Choropleth /> */}
-          <ChoroplethContainer />
+          <Choropleth />
+          {/* <ChoroplethContainer /> */}
           <div className="sb-text-container">
             {seventhText.map((text, i) => {
               return (
