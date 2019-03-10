@@ -87,7 +87,7 @@ class StoryboardContainer extends Component {
             })}
           </div>
           <BarGraph />
-          {/* <BarGraphV2 /> */}
+          {/* <BarGraphV2 />  */}
           <div className="sb-text-container">
             {fifthText.map((text, i) => {
               return (

@@ -13,6 +13,7 @@ class ChoroplethContainer extends Component {
 
   componentDidMount() {
     const elements = document.querySelectorAll('.ChoroplethContainer-sticky');
+    elements[0].setAttribute('style', 'width: 70%');
     Stickyfill.add(elements);
   }
 
