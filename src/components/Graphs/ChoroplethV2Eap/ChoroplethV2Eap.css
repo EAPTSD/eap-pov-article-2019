@@ -5,6 +5,8 @@
   align-items: center;
   background-color: #606060;
   text-align: center;
+  left: -35%;
+  transform: translateX(35%);
 }
 
 .ChoroplethV2Eap-container svg {

@@ -90,7 +90,7 @@ class ChoroplethV2Mongolia extends Component {
       .enter()
       .append('path')
       .attr('class', 'sub-nation')
-      .attr('fill', (d) => color(getRandomInt(11)))
+      .attr('fill', (d) => 'lightgrey')
       .attr('d', path);
   };
 
