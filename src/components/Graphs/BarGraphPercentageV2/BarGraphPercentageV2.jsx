@@ -1,9 +1,17 @@
 // External Imports
-import React, { Component } from 'react';
+import React from 'react';
 import { VictoryAxis, VictoryChart, VictoryBar, VictoryStack } from 'victory';
 
 // Internal Imports
 import './BarGraphPercentageV2.css';
+
+const color = {
+  '1': '#F1536D',
+  '2': '#CCEBFF',
+  '3': '#68C2FF',
+  '4': '#006FC2',
+  '5': '#004A92',
+};
 
 const BarGraphPercentageV2 = (props) => {
   const { percHigherPovertyDisplayData } = props;
@@ -19,6 +27,11 @@ const BarGraphPercentageV2 = (props) => {
                 return (
                   <VictoryBar
                     data={data}
+                    style={{
+                      data: {
+                        fill: (d) => color[d.stack],
+                      },
+                    }}
                     key={i}
                     barWidth={25}
                     animate={{

@@ -24,7 +24,7 @@ class BarGraphContainer extends Component {
     percReserveData: [],
     years: [2002, 2006, 2010, 2014, 2018],
     index: [1, 2, 3, 4, 5],
-    buffer: [1, 2, 3, 4],
+    buffer: [0, 1, 2, 3, 4],
   };
 
   componentDidMount() {
@@ -57,9 +57,7 @@ class BarGraphContainer extends Component {
 
   updateGraph = (buffer) => {
     const { years, index, reserveData, percReserveData } = this.state;
-
     const year = years[buffer];
-    console.log(year);
     const i = index[buffer];
     const updatedHigherPovertyData = formatHigherPovertyData(reserveData, year);
     const displayArr = displayDataPopulator(percReserveData, i);

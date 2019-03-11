@@ -5,6 +5,14 @@ import { VictoryChart, VictoryBar } from 'victory';
 // Internal Imports
 import './BarGraphV2.css';
 
+const color = {
+  '< $1.9': '#F1536D',
+  '$1.9-$3.2': '#CCEBFF',
+  '$3.2-$5.5': '#68C2FF',
+  '$5.5-$15': '#006FC2',
+  '> $15': '#004A92',
+};
+
 const BarGraphV2 = (props) => {
   const { higherPovertyDisplayData } = props;
   return (
@@ -13,14 +21,14 @@ const BarGraphV2 = (props) => {
         <VictoryChart
           height={400}
           width={400}
-          // domain={{ y: [0, 1000] }}
+          domain={{ y: [0, 1000] }}
           domainPadding={{ x: 25 }}
-          animate={{ duration: 500 }}
+          animate={{ duration: 1000 }}
         >
           <VictoryBar
             style={{
               data: {
-                fill: (d) => (d.xName === '< $1.9' ? '#c43a31' : '#000000'),
+                fill: (d) => color[d.xName],
               },
             }}
             categories={{
