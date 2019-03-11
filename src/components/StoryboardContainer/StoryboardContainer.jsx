@@ -53,11 +53,11 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
-        <BarGraphContainer />
+        {/* <BarGraphContainer /> */}
         {/* <ChoroplethV2Eap /> */}
         {/* <ChoroplethV2Mongolia /> */}
         {/* <ChoroplethContainer /> */}
-        {/* <Header />
+        <Header />
         <div className="StoryboardContainer">
           <div className="sb-text-container">
             {firstText.map((text, i) => {
@@ -88,8 +88,9 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-          <BarGraph />
-          <BarGraphPercentage /> 
+          {/* <BarGraph />
+          <BarGraphPercentage />  */}
+          <BarGraphContainer />
           <div className="sb-text-container">
             {fifthText.map((text, i) => {
               return (
@@ -108,7 +109,7 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-          <Choropleth />
+          {/* <Choropleth /> */}
           <ChoroplethContainer />
           <div className="sb-text-container">
             {seventhText.map((text, i) => {
@@ -119,7 +120,7 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-        </div> */}
+        </div>
       </div>
     );
   }

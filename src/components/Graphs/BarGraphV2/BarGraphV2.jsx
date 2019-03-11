@@ -26,6 +26,7 @@ const BarGraphV2 = (props) => {
           animate={{ duration: 1000 }}
         >
           <VictoryBar
+            barWidth={35}
             style={{
               data: {
                 fill: (d) => color[d.xName],

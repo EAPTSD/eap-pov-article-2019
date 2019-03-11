@@ -19,9 +19,7 @@ const BarGraphPercentageV2 = (props) => {
     <div className="BarGraphPercentageV2-sequence-container">
       <div className="BarGraphPercentageV2-container">
         <VictoryChart height={400} width={400} domainPadding={{ x: 25 }}>
-          <VictoryStack
-            colorScale={['red', 'yellow', 'blue', 'black', 'green']}
-          >
+          <VictoryStack>
             {percHigherPovertyDisplayData &&
               percHigherPovertyDisplayData.map((data, i) => {
                 return (
@@ -33,7 +31,7 @@ const BarGraphPercentageV2 = (props) => {
                       },
                     }}
                     key={i}
-                    barWidth={25}
+                    barWidth={35}
                     animate={{
                       onEnter: {
                         duration: 500,

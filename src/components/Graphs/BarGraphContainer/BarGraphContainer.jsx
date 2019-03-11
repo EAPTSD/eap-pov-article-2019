@@ -93,6 +93,9 @@ class BarGraphContainer extends Component {
               <div className="BarGraphContainer-waypoint-buffer" />
               <Waypoint onEnter={() => this.updateGraph(buffer)} />
               <div className="BarGraphContainer-waypoint-buffer" />
+              {buffer === 4 ? (
+                <div className="BarGraphContainer-waypoint-buffer" />
+              ) : null}
             </>
           );
         })}
