@@ -97,7 +97,7 @@ class StackedAreaGraph extends Component {
         <div className="stacked-area-container">
           <VictoryChart
             scale={{ x: 'time' }}
-            animate={{ duration: 1500 }}
+            animate={{ duration: 1000 }}
             width={700}
             height={500}
           >
