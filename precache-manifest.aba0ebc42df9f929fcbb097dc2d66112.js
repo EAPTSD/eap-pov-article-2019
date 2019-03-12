@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "b6650a5bbf6840d0204e50f7b1b20d5b",
-    "url": "/eapstory/static/media/malaysia_economic_class.b6650a5b.csv"
+    "revision": "8ac626a5a298f86794416b39380daeff",
+    "url": "/eapstory/static/media/philippines_economic_class.8ac626a5.csv"
   },
   {
-    "revision": "81cb835bfb8a49948dfa",
-    "url": "/eapstory/static/css/main.37511285.chunk.css"
+    "revision": "3580898e8925b7e0c3d0",
+    "url": "/eapstory/static/css/main.ed178204.chunk.css"
   },
   {
     "revision": "1fdc743e8f28282e87c509fd44ee48b7",
     "url": "/eapstory/static/media/action-asia-blur-1455989.1fdc743e.jpg"
   },
   {
-    "revision": "5d7665ed0cc92e5f4db9",
-    "url": "/eapstory/static/js/1.5d7665ed.chunk.js"
+    "revision": "b2bbe5c16816bc1d2df7",
+    "url": "/eapstory/static/js/1.b2bbe5c1.chunk.js"
   },
   {
     "revision": "40a07c3fc2e2d85ec270",
@@ -52,16 +52,16 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/lao_economic_class.8c4c4ffa.csv"
   },
   {
-    "revision": "81cb835bfb8a49948dfa",
-    "url": "/eapstory/static/js/main.81cb835b.chunk.js"
+    "revision": "b6650a5bbf6840d0204e50f7b1b20d5b",
+    "url": "/eapstory/static/media/malaysia_economic_class.b6650a5b.csv"
   },
   {
     "revision": "db025a2cd15618f709f5adc199843556",
     "url": "/eapstory/static/media/myanmar_economic_class.db025a2c.csv"
   },
   {
-    "revision": "8ac626a5a298f86794416b39380daeff",
-    "url": "/eapstory/static/media/philippines_economic_class.8ac626a5.csv"
+    "revision": "3580898e8925b7e0c3d0",
+    "url": "/eapstory/static/js/main.3580898e.chunk.js"
   },
   {
     "revision": "18e907a8578fe2ebf7735e69f896cd6c",
@@ -70,6 +70,22 @@ self.__precacheManifest = [
   {
     "revision": "c9311325d271f892a8fd427e0b214eac",
     "url": "/eapstory/static/media/vietnam_economic_class.c9311325.csv"
+  },
+  {
+    "revision": "d6a8a43e7e49c37649bdc881066fc96f",
+    "url": "/eapstory/static/media/1200px-Flag_of_ASEAN.svg.d6a8a43e.png"
+  },
+  {
+    "revision": "2efcb61256602e4794f53432b950f09e",
+    "url": "/eapstory/static/media/1200px-Flag_of_Myanmar.svg.2efcb612.png"
+  },
+  {
+    "revision": "da8b4d4088c238a95f3abb86d9e7cd53",
+    "url": "/eapstory/static/media/2000px-Flag_of_Laos.svg.da8b4d40.png"
+  },
+  {
+    "revision": "759c1c2124c437358e70a735c3a7b5eb",
+    "url": "/eapstory/static/media/2000px-Flag_of_the_Philippines.svg.759c1c21.png"
   },
   {
     "revision": "c1c4a5750576e92634073249b185de83",
@@ -96,11 +112,11 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/architecture-asia-bar-1455993.f3c8fd08.jpg"
   },
   {
-    "revision": "5d7665ed0cc92e5f4db9",
-    "url": "/eapstory/static/css/1.cdeb2a32.chunk.css"
+    "revision": "b2bbe5c16816bc1d2df7",
+    "url": "/eapstory/static/css/1.ce699183.chunk.css"
   },
   {
-    "revision": "c06f33a9378d1bb64f6b9f6b9560df04",
+    "revision": "799722163e16930d4deb3656c1dfbeda",
     "url": "/eapstory/index.html"
   }
 ];
