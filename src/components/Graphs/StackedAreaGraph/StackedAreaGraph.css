@@ -1,8 +1,21 @@
 .stacked-area-container {
-  height: 90vh;
+  height: 60vh;
 }
 
 .button-container {
-  width: 85%;
+  width: 65%;
   margin: 0 auto;
+}
+
+.bg-button {
+  width: 100%;
+  height: auto;
+  box-shadow: 1px 5px 20px -2px #000000;
+  border: 1px;
+  transition: transform 0.1s;
+}
+
+.bg-button:hover {
+  cursor: pointer;
+  transform: scale(1.02);
 }

@@ -13,8 +13,8 @@ const StackedAreaGraphV2 = (props) => {
         <VictoryChart
           scale={{ x: 'time' }}
           animate={{ duration: 1500 }}
-          width={450}
-          height={400}
+          width={350}
+          height={300}
         >
           <VictoryStack colorScale={color}>
             {data.map((data, i) => {
