@@ -76,11 +76,14 @@ class StackedAreaGraph extends Component {
     });
   }
 
-  handleClick = (e) => {
-    const countryIndex = e.target.value;
+  handleClick = (i) => {
+    const { formattedClassData, countries } = this.state;
+    const countryIndex = i;
+    console.log(i);
+
     this.setState({
-      data: this.state.formattedClassData[countryIndex],
-      activeCountry: this.state.countries[countryIndex],
+      data: formattedClassData[countryIndex],
+      activeCountry: countries[countryIndex],
     });
   };
 
@@ -88,6 +91,9 @@ class StackedAreaGraph extends Component {
     const { activeCountry, data, countries, flags } = this.state;
     return (
       <div>
+        <div className="text-center">
+          <h1>{activeCountry}</h1>
+        </div>
         <div className="stacked-area-container">
           <VictoryChart
             scale={{ x: 'time' }}
@@ -129,7 +135,7 @@ class StackedAreaGraph extends Component {
                   className="col-sm-3 button-container pb-5"
                   key={`country-button-${i}`}
                   value={i}
-                  onClick={(e) => this.handleClick(e)}
+                  onClick={() => this.handleClick(i)}
                 >
                   <img className="bg-button" src={flags[country]} />
                 </div>

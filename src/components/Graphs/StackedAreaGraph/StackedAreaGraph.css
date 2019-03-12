@@ -3,19 +3,23 @@
 }
 
 .button-container {
-  width: 65%;
+  width: 55%;
   margin: 0 auto;
 }
 
 .bg-button {
   width: 100%;
   height: auto;
-  box-shadow: 1px 5px 20px -2px #000000;
+  box-shadow: 1px 5px 20px -2px #474747;
   border: 1px;
   transition: transform 0.1s;
 }
 
 .bg-button:hover {
   cursor: pointer;
-  transform: scale(1.02);
+  transform: scale(1.03);
+}
+
+.bg-button:active {
+  transform: translateY(1px);
 }
