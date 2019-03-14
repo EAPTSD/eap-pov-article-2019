@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/philippines_economic_class.8ac626a5.csv"
   },
   {
-    "revision": "3580898e8925b7e0c3d0",
-    "url": "/eapstory/static/css/main.ed178204.chunk.css"
+    "revision": "71a96a40dc48bb172912",
+    "url": "/eapstory/static/css/main.e1823f47.chunk.css"
   },
   {
     "revision": "1fdc743e8f28282e87c509fd44ee48b7",
     "url": "/eapstory/static/media/action-asia-blur-1455989.1fdc743e.jpg"
   },
   {
-    "revision": "b2bbe5c16816bc1d2df7",
-    "url": "/eapstory/static/js/1.b2bbe5c1.chunk.js"
+    "revision": "42e45830217c495b1f23",
+    "url": "/eapstory/static/js/1.42e45830.chunk.js"
   },
   {
     "revision": "40a07c3fc2e2d85ec270",
@@ -60,8 +60,8 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/myanmar_economic_class.db025a2c.csv"
   },
   {
-    "revision": "3580898e8925b7e0c3d0",
-    "url": "/eapstory/static/js/main.3580898e.chunk.js"
+    "revision": "71a96a40dc48bb172912",
+    "url": "/eapstory/static/js/main.71a96a40.chunk.js"
   },
   {
     "revision": "18e907a8578fe2ebf7735e69f896cd6c",
@@ -112,11 +112,11 @@ self.__precacheManifest = [
     "url": "/eapstory/static/media/architecture-asia-bar-1455993.f3c8fd08.jpg"
   },
   {
-    "revision": "b2bbe5c16816bc1d2df7",
-    "url": "/eapstory/static/css/1.ce699183.chunk.css"
+    "revision": "42e45830217c495b1f23",
+    "url": "/eapstory/static/css/1.0b4849c4.chunk.css"
   },
   {
-    "revision": "799722163e16930d4deb3656c1dfbeda",
+    "revision": "ad9e9bc7897a95d8099812c8bc1e1c01",
     "url": "/eapstory/index.html"
   }
 ];
