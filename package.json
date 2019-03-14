@@ -1,5 +1,5 @@
 {
-  "name": "eapstory",
+  "name": "24f402c1-271d-4361-a6b3-2ad3a1fcffe1",
   "version": "0.1.0",
   "author": "Darwin Rinderer",
   "private": false,
@@ -16,6 +16,7 @@
     "reactstrap": "7.1.0",
     "stickyfilljs": "2.1.0",
     "topojson": "3.0.2",
+    "uuid": "^3.3.2",
     "victory": "31.1.0"
   },
   "scripts": {
@@ -58,5 +59,5 @@
     "prettier": "1.16.4",
     "pretty-quick": "1.10.0"
   },
-  "homepage": "https://EAPTSD.github.io/eapstory"
+  "homepage": "https://24f402c1-271d-4361-a6b3-2ad3a1fcffe1.github.io/eapstory"
 }

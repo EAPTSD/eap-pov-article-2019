@@ -1,5 +1,6 @@
 // External Imports
 import React, { Component } from 'react';
+import uuid from 'uuid';
 
 // Internal Imports
 import appText from '../../text/appText';
@@ -41,6 +42,7 @@ class StoryboardContainer extends Component {
       sixthText: textArray.slice(44, 54),
       seventhText: textArray.slice(54),
     });
+    console.log(uuid());
   }
 
   render() {
