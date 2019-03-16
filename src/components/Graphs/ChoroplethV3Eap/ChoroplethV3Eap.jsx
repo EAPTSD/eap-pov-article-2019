@@ -68,7 +68,7 @@ class ChoroplethV3Eap extends Component {
       .attr('height', containerHeight)
       .attr('width', containerWidth);
 
-    const scale = 455;
+    const scale = 400;
     const offset = [containerWidth / 3, containerHeight / 2.4];
 
     const projection = d3
@@ -100,7 +100,7 @@ class ChoroplethV3Eap extends Component {
         )
       )
       .attr('fill', 'none')
-      .attr('stroke', 'red')
+      .attr('stroke', 'white')
       .attr('stroke-linejoin', 'round')
       .attr('d', path);
 
@@ -114,7 +114,7 @@ class ChoroplethV3Eap extends Component {
         )
       )
       .attr('fill', 'none')
-      .attr('stroke', 'red')
+      .attr('stroke', 'white')
       .attr('stroke-linejoin', 'round')
       .attr('d', path);
   };
