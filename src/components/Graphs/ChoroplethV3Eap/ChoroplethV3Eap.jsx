@@ -4,34 +4,28 @@ import * as d3 from 'd3';
 import * as topojson from 'topojson';
 
 // Internal Imports
-import './ChoroplethV2Eap.css';
+import './ChoroplethV3Eap.css';
 
 // Data
 import eapCountryData from '../../../data/ChoroplethData/EAPMap_topojson.json';
 
-class ChoroplethV2Eap extends Component {
+class ChoroplethV3Eap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: null,
       eapCountryData: null,
       windowHeight: null,
       windowWidth: null,
       mapCenter: null,
       featureCollection: null,
     };
-    this.ChoroplethV2EapRef = React.createRef();
+    this.ChoroplethV3EapRef = React.createRef();
   }
 
   componentDidMount() {
-    const color = d3
-      .scaleQuantize()
-      .domain([0, 10])
-      .range(d3.schemeBlues[9]);
-
-    const choroplethContainerHeight = this.ChoroplethV2EapRef.current
+    const choroplethContainerHeight = this.ChoroplethV3EapRef.current
       .clientHeight;
-    const choroplethContainerWidth = this.ChoroplethV2EapRef.current
+    const choroplethContainerWidth = this.ChoroplethV3EapRef.current
       .clientWidth;
 
     const featureCollection = topojson.feature(
@@ -42,7 +36,6 @@ class ChoroplethV2Eap extends Component {
 
     this.setState(
       {
-        color: color,
         eapCountryData: eapCountryData,
         containerHeight: choroplethContainerHeight,
         containerWidth: choroplethContainerWidth,
@@ -64,9 +57,9 @@ class ChoroplethV2Eap extends Component {
     } = this.state;
 
     const svg = d3
-      .select('.ChoroplethV2Eap-container')
+      .select('.ChoroplethV3Eap-container')
       .append('svg')
-      .attr('class', 'ChoroplethV2Eap-svg')
+      .attr('class', 'ChoroplethV3Eap-svg')
       .attr('height', containerHeight)
       .attr('width', containerWidth);
 
@@ -96,11 +89,11 @@ class ChoroplethV2Eap extends Component {
   render() {
     return (
       <div
-        className="ChoroplethV2Eap-container"
-        ref={this.ChoroplethV2EapRef}
+        className="ChoroplethV3Eap-container"
+        ref={this.ChoroplethV3EapRef}
       />
     );
   }
 }
 
-export default ChoroplethV2Eap;
+export default ChoroplethV3Eap;

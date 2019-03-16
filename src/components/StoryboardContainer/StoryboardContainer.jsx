@@ -1,6 +1,5 @@
 // External Imports
 import React, { Component } from 'react';
-import uuid from 'uuid';
 
 // Internal Imports
 import appText from '../../text/appText';
@@ -42,7 +41,6 @@ class StoryboardContainer extends Component {
       sixthText: textArray.slice(44, 54),
       seventhText: textArray.slice(54),
     });
-    console.log(uuid());
   }
 
   render() {
@@ -58,10 +56,6 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
-        {/* <BarGraphContainer /> */}
-        {/* <ChoroplethV2Eap /> */}
-        {/* <ChoroplethV2Mongolia /> */}
-        {/* <ChoroplethContainer /> */}
         <Header />
         <div className="StoryboardContainer">
           <div className="sb-text-container">
@@ -135,8 +129,7 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-        </div>{' '}
-        */}
+        </div>
       </div>
     );
   }

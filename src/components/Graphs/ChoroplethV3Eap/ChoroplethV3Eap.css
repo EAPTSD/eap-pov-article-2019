@@ -1,0 +1,21 @@
+.ChoroplethV3Eap-container {
+  height: 80vh;
+  width: 60vw;
+  display: flex;
+  align-items: center;
+  background-color: #606060;
+  text-align: center;
+  left: -35%;
+  transform: translateX(35%);
+}
+
+.ChoroplethV3Eap-container svg {
+  height: 100%;
+  background-color: #606060;
+  display: block;
+  margin: 0 auto;
+}
+
+path.sub-nation {
+  transition: fill 0.4s ease;
+}
