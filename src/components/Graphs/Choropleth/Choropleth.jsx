@@ -11,7 +11,7 @@ import scaleByScreenSize from '../../../utilities/scaleByScreenSize';
 import './Choropleth.css';
 
 // Data
-import eapCountryData from '../../../data/ChoroplethData/EAPMap_topojson.json';
+import eapCountryData from '../../../data/ChoroplethData/EAP_subnat_topojson.json';
 
 class Choropleth extends Component {
   constructor(props) {

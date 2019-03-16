@@ -7,13 +7,14 @@ import * as topojson from 'topojson';
 import './ChoroplethV3Eap.css';
 
 // Data
-import eapCountryData from '../../../data/ChoroplethData/EAPMap_topojson.json';
+import eapSubNatData from '../../../data/ChoroplethData/EAP_subnat_topojson.json';
+import combinedData from '../../../data/ChoroplethData/EAP_topojson.json';
 
 class ChoroplethV3Eap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      eapCountryData: null,
+      combinedData: null,
       windowHeight: null,
       windowWidth: null,
       mapCenter: null,
@@ -23,20 +24,23 @@ class ChoroplethV3Eap extends Component {
   }
 
   componentDidMount() {
+    // eapSubNatData.objects.eap_all_by_subnatid1_shapefile.geometries.map(country => console.log(country));
+    console.log(combinedData);
+
     const choroplethContainerHeight = this.ChoroplethV3EapRef.current
       .clientHeight;
     const choroplethContainerWidth = this.ChoroplethV3EapRef.current
       .clientWidth;
 
     const featureCollection = topojson.feature(
-      eapCountryData,
-      eapCountryData.objects.eap_all_by_subnatid1_shapefile
+      combinedData,
+      combinedData.objects.EAP_SubNations
     );
     const center = d3.geoPath().centroid(featureCollection);
 
     this.setState(
       {
-        eapCountryData: eapCountryData,
+        combinedData: combinedData,
         containerHeight: choroplethContainerHeight,
         containerWidth: choroplethContainerWidth,
         mapCenter: center,
@@ -50,6 +54,7 @@ class ChoroplethV3Eap extends Component {
 
   renderMap = () => {
     const {
+      combinedData,
       containerHeight,
       containerWidth,
       featureCollection,
@@ -63,8 +68,8 @@ class ChoroplethV3Eap extends Component {
       .attr('height', containerHeight)
       .attr('width', containerWidth);
 
-    const scale = 555;
-    const offset = [containerWidth / 6, containerHeight / 25];
+    const scale = 455;
+    const offset = [containerWidth / 3, containerHeight / 2.4];
 
     const projection = d3
       .geoMercator()
@@ -83,6 +88,34 @@ class ChoroplethV3Eap extends Component {
       .append('path')
       .attr('class', 'sub-nation')
       .attr('fill', (d) => 'lightgrey')
+      .attr('d', path);
+
+    svg
+      .append('path')
+      .datum(
+        topojson.mesh(
+          combinedData,
+          combinedData.objects.EAP_Countries,
+          (a) => a
+        )
+      )
+      .attr('fill', 'none')
+      .attr('stroke', 'red')
+      .attr('stroke-linejoin', 'round')
+      .attr('d', path);
+
+    svg
+      .append('path')
+      .datum(
+        topojson.mesh(
+          combinedData,
+          combinedData.objects.EAP_SubNations,
+          (a) => a.properties.ADM0_CODE === 147295
+        )
+      )
+      .attr('fill', 'none')
+      .attr('stroke', 'red')
+      .attr('stroke-linejoin', 'round')
       .attr('d', path);
   };
 

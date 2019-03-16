@@ -7,10 +7,8 @@ import BarGraph from '../Graphs/BarGraph';
 import BarGraphPercentage from '../Graphs/BarGraphPercentage';
 import BarGraphContainer from '../Graphs/BarGraphContainer';
 import BubbleGraph from '../Graphs/BubbleGraph';
-import Choropleth from '../Graphs/Choropleth';
 import ChoroplethContainer from '../Graphs/ChoroplethContainer';
-import ChoroplethV2Mongolia from '../Graphs/ChoroplethV2Mongolia';
-import ChoroplethV2Eap from '../Graphs/ChoroplethV2Eap';
+import ChoroplethV3Eap from '../Graphs/ChoroplethV3Eap';
 import Header from '../Header';
 import StackedAreaGraph from '../Graphs/StackedAreaGraph';
 import StackedAreaGraphContainer from '../Graphs/StackedAreaGraphContainer';
@@ -56,7 +54,8 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
-        <Header />
+        <ChoroplethV3Eap />
+        {/* <Header />
         <div className="StoryboardContainer">
           <div className="sb-text-container">
             {firstText.map((text, i) => {
@@ -97,8 +96,8 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-          {/* <BarGraph />
-          <BarGraphPercentage />  */}
+          <BarGraph />
+          <BarGraphPercentage /> 
           <BarGraphContainer />
           <div className="sb-text-container">
             {fifthText.map((text, i) => {
@@ -118,7 +117,7 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-          {/* <Choropleth /> */}
+          <Choropleth />
           <ChoroplethContainer />
           <div className="sb-text-container">
             {seventhText.map((text, i) => {
@@ -129,7 +128,7 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
