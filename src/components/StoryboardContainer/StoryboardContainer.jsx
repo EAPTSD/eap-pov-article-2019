@@ -54,7 +54,8 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
-        <ChoroplethV3Eap />
+        <StackedAreaGraphContainer />
+        {/* <ChoroplethV3Eap /> */}
         {/* <Header />
         <div className="StoryboardContainer">
           <div className="sb-text-container">
