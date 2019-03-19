@@ -5,6 +5,7 @@ import * as d3 from 'd3';
 // Internal Imports
 import formatClassData from '../../../utilities/formatClassData';
 import StackedAreaGraphV2 from '../StackedAreaGraphV2';
+import StackedAreaLegend from './StackedAreaLegend';
 import './StackedAreaGraphContainer.css';
 
 // Data
@@ -16,6 +17,15 @@ import eapExChinaPercentageClassData from '../../../data/StackedAreaGraphData/ea
 class StackedAreaGraphContainer extends Component {
   state = {
     data: [],
+    povClasses: [
+      'Extreme Poor',
+      'Moderate Poor',
+      'Economically Vulnerable',
+      'Economically Secure',
+      'Middle Class',
+    ],
+    coolColors: ['#002C61', '#004B8F', '#006BC9', '#3795E5', '#65B4F4'],
+    warmColors: ['#940031', '#C43343', '#DC5429', '#FF821D', '#FFAF55'],
     displayText: '',
     formattedClassData: [],
     index: 0,
@@ -63,7 +73,14 @@ class StackedAreaGraphContainer extends Component {
   };
 
   render() {
-    const { data, percentageData, displayText } = this.state;
+    const {
+      data,
+      coolColors,
+      warmColors,
+      povClasses,
+      percentageData,
+      displayText,
+    } = this.state;
     return (
       <div>
         <div className="StackedAreaGraphContainer-sequence-container container-fluid">
@@ -83,6 +100,15 @@ class StackedAreaGraphContainer extends Component {
                 data={percentageData}
                 color={'warm'}
                 isPercent={true}
+              />
+            </div>
+          </div>
+          <div className="row text-center">
+            <div className="col-sm">
+              <StackedAreaLegend
+                povClasses={povClasses}
+                coolColors={coolColors}
+                warmColors={warmColors}
               />
             </div>
           </div>
