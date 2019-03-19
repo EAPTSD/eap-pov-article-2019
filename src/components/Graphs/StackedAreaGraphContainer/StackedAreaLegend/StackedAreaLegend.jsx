@@ -4,7 +4,7 @@ const StackedAreaLegend = (props) => {
   const { povClasses, coolColors, warmColors } = props;
   return povClasses.map((povClass, i) => {
     return (
-      <>
+      <div>
         <svg width={60} height={25}>
           <circle
             cx={25}
@@ -24,7 +24,7 @@ const StackedAreaLegend = (props) => {
           />
         </svg>
         <span>{povClass}</span>
-      </>
+      </div>
     );
   });
 };

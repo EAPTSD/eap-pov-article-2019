@@ -103,7 +103,7 @@ class StackedAreaGraphContainer extends Component {
               />
             </div>
           </div>
-          <div className="row text-center">
+          <div className="row text-center legend-container">
             <div className="col-sm">
               <StackedAreaLegend
                 povClasses={povClasses}

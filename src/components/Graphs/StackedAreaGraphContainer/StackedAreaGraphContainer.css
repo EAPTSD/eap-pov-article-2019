@@ -15,3 +15,8 @@
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   margin-bottom: 0;
 }
+
+.legend-container {
+  position: relative;
+  top: -100px;
+}
