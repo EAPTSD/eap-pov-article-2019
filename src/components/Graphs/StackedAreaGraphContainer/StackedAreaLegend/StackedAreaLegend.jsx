@@ -4,7 +4,7 @@ const StackedAreaLegend = (props) => {
   const {
     povClasses,
     coolColors,
-    warmColors,
+    purpColors,
     highlightArea,
     unhighlightArea,
   } = props;
@@ -29,7 +29,7 @@ const StackedAreaLegend = (props) => {
             r={7.5}
             stroke="black"
             stroke-width="1"
-            fill={warmColors[i]}
+            fill={purpColors[i]}
           />
         </svg>
         <span>{povClass}</span>

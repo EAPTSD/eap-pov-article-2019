@@ -25,7 +25,7 @@ class StackedAreaGraphContainer extends Component {
       'Middle Class',
     ],
     coolColors: ['#002C61', '#004B8F', '#006BC9', '#3795E5', '#65B4F4'],
-    warmColors: ['#940031', '#C43343', '#DC5429', '#FF821D', '#FFAF55'],
+    purpColors: ['#2E0854', '#580fa2', '#831ce9', '#ad6af1', '#d8b7f8'],
     displayText: '',
     formattedClassData: [],
     index: 0,
@@ -115,7 +115,7 @@ class StackedAreaGraphContainer extends Component {
     const {
       data,
       coolColors,
-      warmColors,
+      purpColors,
       povClasses,
       percentageData,
       displayText,
@@ -142,7 +142,7 @@ class StackedAreaGraphContainer extends Component {
             <div className="col-sm">
               <StackedAreaGraphV2
                 data={percentageData}
-                color={'warm'}
+                color={purpColors}
                 isPercent={true}
                 externalMutations={externalMutations}
               />
@@ -153,7 +153,7 @@ class StackedAreaGraphContainer extends Component {
               <StackedAreaLegend
                 povClasses={povClasses}
                 coolColors={coolColors}
-                warmColors={warmColors}
+                purpColors={purpColors}
                 highlightArea={this.highlightArea}
                 unhighlightArea={this.unhighlightArea}
               />
