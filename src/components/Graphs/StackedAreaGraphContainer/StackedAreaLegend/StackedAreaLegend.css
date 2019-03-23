@@ -1,0 +1,8 @@
+.StackedAreaLegend-item {
+  /* Inline Legend Items */
+  /* display: inline-block; */
+
+  /* Stacked Legend Items */
+  width: 237px;
+  margin: 0 auto;
+}

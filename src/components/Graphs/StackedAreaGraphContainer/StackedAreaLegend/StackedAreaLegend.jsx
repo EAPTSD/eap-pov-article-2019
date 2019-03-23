@@ -1,4 +1,8 @@
+// External Imports
 import React from 'react';
+
+// Internal Imports
+import './StackedAreaLegend.css';
 
 const StackedAreaLegend = (props) => {
   const {
@@ -11,6 +15,7 @@ const StackedAreaLegend = (props) => {
   return povClasses.map((povClass, i) => {
     return (
       <div
+        className="StackedAreaLegend-item"
         onMouseOver={() => highlightArea(i)}
         onMouseOut={() => unhighlightArea(i)}
       >

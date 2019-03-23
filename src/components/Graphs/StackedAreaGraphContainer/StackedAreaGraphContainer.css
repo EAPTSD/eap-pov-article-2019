@@ -1,7 +1,7 @@
 .StackedAreaGraphContainer-sequence-container {
   -webkit-font-smoothing: antialiased;
   height: 85vh;
-  padding-top: 25px;
+  padding: 25px 0;
   background-color: lavenderblush;
 }
 
@@ -16,7 +16,7 @@
   margin-bottom: 0;
 }
 
-.legend-container {
+.StackedAreaLegend-container {
   position: relative;
-  top: -100px;
+  top: -175px;
 }

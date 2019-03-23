@@ -1,3 +1,5 @@
 .StackedAreaGraphV2-container {
+  position: relative;
+  top: -75px;
   height: 75vh;
 }
