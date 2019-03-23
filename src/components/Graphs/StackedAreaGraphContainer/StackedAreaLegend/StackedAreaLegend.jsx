@@ -1,10 +1,19 @@
 import React from 'react';
 
 const StackedAreaLegend = (props) => {
-  const { povClasses, coolColors, warmColors, highlightArea } = props;
+  const {
+    povClasses,
+    coolColors,
+    warmColors,
+    highlightArea,
+    unhighlightArea,
+  } = props;
   return povClasses.map((povClass, i) => {
     return (
-      <div onMouseOver={() => highlightArea(i)}>
+      <div
+        onMouseOver={() => highlightArea(i)}
+        onMouseOut={() => unhighlightArea(i)}
+      >
         <svg width={60} height={25}>
           <circle
             cx={25}

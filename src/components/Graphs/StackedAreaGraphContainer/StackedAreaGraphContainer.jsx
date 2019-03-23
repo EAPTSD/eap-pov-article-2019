@@ -34,6 +34,7 @@ class StackedAreaGraphContainer extends Component {
       'EAP Economic Class with China',
       'EAP Economic Class without China',
     ],
+    externalMutations: undefined,
   };
 
   componentDidMount() {
@@ -72,32 +73,44 @@ class StackedAreaGraphContainer extends Component {
     }, 5000);
   };
 
-  removeMutation() {
+  removeMutation = () => {
     console.log('removeMutation');
     this.setState({
       externalMutations: undefined,
     });
-  }
+  };
 
-  highlightArea(i) {
-    const callback = this.removeMutation.bind(this);
+  highlightArea = (i) => {
+    const callback = this.removeMutation;
     const area = `area-${i}`;
-    console.log('highlightArea', area);
     this.setState({
       externalMutations: [
         {
           childName: area,
-          target: ['data'],
+          target: 'data',
           eventKey: 'all',
-          mutation: (props) => {
-            console.log(props);
-            return { style: { fill: 'red' } };
-          },
+          mutation: () => ({ style: { fill: 'gold' } }),
           callback,
         },
       ],
     });
-  }
+  };
+
+  unhighlightArea = (i) => {
+    const callback = this.removeMutation;
+    const area = `area-${i}`;
+    this.setState({
+      externalMutations: [
+        {
+          childName: area,
+          target: 'data',
+          eventKey: 'all',
+          mutation: () => ({ style: undefined }),
+          callback,
+        },
+      ],
+    });
+  };
 
   render() {
     const {
@@ -132,6 +145,7 @@ class StackedAreaGraphContainer extends Component {
                 data={percentageData}
                 color={'warm'}
                 isPercent={true}
+                externalMutations={externalMutations}
               />
             </div>
           </div>
@@ -141,7 +155,8 @@ class StackedAreaGraphContainer extends Component {
                 povClasses={povClasses}
                 coolColors={coolColors}
                 warmColors={warmColors}
-                highlightArea={this.highlightArea.bind(this)}
+                highlightArea={this.highlightArea}
+                unhighlightArea={this.unhighlightArea}
               />
             </div>
           </div>

@@ -7,7 +7,6 @@ import './StackedAreaGraphV2.css';
 
 const StackedAreaGraphV2 = (props) => {
   const { color, data, isPercent, externalMutations } = props;
-  console.log(externalMutations);
   return (
     <div>
       <div className="StackedAreaGraphV2-container">
