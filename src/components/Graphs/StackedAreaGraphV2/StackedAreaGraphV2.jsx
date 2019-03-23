@@ -7,15 +7,21 @@ import './StackedAreaGraphV2.css';
 
 const StackedAreaGraphV2 = (props) => {
   const { color, data, isPercent, externalMutations } = props;
+  console.log(externalMutations);
   return (
     <div>
       <div className="StackedAreaGraphV2-container">
         <VictoryChart
+          externalEventMutations={externalMutations}
+          events={[
+            {
+              target: 'data',
+            },
+          ]}
           scale={{ x: 'time' }}
           animate={{ duration: 1500 }}
           width={350}
           height={300}
-          externalEventMutations={externalMutations}
         >
           <VictoryStack colorScale={color}>
             {data.map((data, i) => {

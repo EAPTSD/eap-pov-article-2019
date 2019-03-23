@@ -34,7 +34,6 @@ class StackedAreaGraphContainer extends Component {
       'EAP Economic Class with China',
       'EAP Economic Class without China',
     ],
-    externalMutations: null,
   };
 
   componentDidMount() {
@@ -55,7 +54,7 @@ class StackedAreaGraphContainer extends Component {
           formattedClassData,
         },
         () => {
-          this.updateGraph();
+          // this.updateGraph();
         }
       );
     });
@@ -73,27 +72,32 @@ class StackedAreaGraphContainer extends Component {
     }, 5000);
   };
 
-  removeMutation = () => {
+  removeMutation() {
+    console.log('removeMutation');
     this.setState({
-      externalMutations: null,
+      externalMutations: undefined,
     });
-    console.log('i');
-  };
+  }
 
-  highlightArea = (i) => {
-    console.log(i);
+  highlightArea(i) {
+    const callback = this.removeMutation.bind(this);
+    const area = `area-${i}`;
+    console.log('highlightArea', area);
     this.setState({
       externalMutations: [
         {
-          childName: `area-${i}`,
+          childName: area,
           target: ['data'],
-          eventKey: `area-${i}`,
-          mutation: () => ({ style: { fill: 'orange' } }),
-          callback: this.removeMutation,
+          eventKey: 'all',
+          mutation: (props) => {
+            console.log(props);
+            return { style: { fill: 'red' } };
+          },
+          callback,
         },
       ],
     });
-  };
+  }
 
   render() {
     const {
@@ -137,7 +141,7 @@ class StackedAreaGraphContainer extends Component {
                 povClasses={povClasses}
                 coolColors={coolColors}
                 warmColors={warmColors}
-                highlightArea={this.highlightArea}
+                highlightArea={this.highlightArea.bind(this)}
               />
             </div>
           </div>
