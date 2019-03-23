@@ -55,7 +55,7 @@ class StackedAreaGraphContainer extends Component {
           formattedClassData,
         },
         () => {
-          // this.updateGraph();
+          this.updateGraph();
         }
       );
     });
@@ -74,7 +74,6 @@ class StackedAreaGraphContainer extends Component {
   };
 
   removeMutation = () => {
-    console.log('removeMutation');
     this.setState({
       externalMutations: undefined,
     });
