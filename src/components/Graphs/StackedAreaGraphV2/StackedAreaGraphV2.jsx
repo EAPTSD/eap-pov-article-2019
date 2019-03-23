@@ -6,7 +6,7 @@ import { VictoryAxis, VictoryChart, VictoryStack, VictoryArea } from 'victory';
 import './StackedAreaGraphV2.css';
 
 const StackedAreaGraphV2 = (props) => {
-  const { color, data, isPercent } = props;
+  const { color, data, isPercent, externalMutations } = props;
   return (
     <div>
       <div className="StackedAreaGraphV2-container">
@@ -15,10 +15,18 @@ const StackedAreaGraphV2 = (props) => {
           animate={{ duration: 1500 }}
           width={350}
           height={300}
+          externalEventMutations={externalMutations}
         >
           <VictoryStack colorScale={color}>
             {data.map((data, i) => {
-              return <VictoryArea key={i} data={data} interpolation="basis" />;
+              return (
+                <VictoryArea
+                  name={`area-${i}`}
+                  key={i}
+                  data={data}
+                  interpolation="basis"
+                />
+              );
             })}
           </VictoryStack>
           {isPercent && (
