@@ -21,6 +21,7 @@ const StackedAreaLegend = (props) => {
       >
         <svg width={60} height={25}>
           <circle
+            className="legend-circle"
             cx={25}
             cy={12.5}
             r={7.5}
@@ -29,6 +30,7 @@ const StackedAreaLegend = (props) => {
             fill={coolColors[i]}
           />
           <circle
+            className="legend-circle"
             cx={45}
             cy={12.5}
             r={7.5}

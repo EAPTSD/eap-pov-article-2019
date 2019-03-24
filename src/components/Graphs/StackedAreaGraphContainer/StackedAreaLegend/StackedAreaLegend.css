@@ -6,9 +6,13 @@
   /* width: 237px;
   margin: 0 auto; */
 
-  margin: 10px;
+  margin: 0 20px;
 }
 
 .StackedAreaLegend-item:hover {
   transform: scale(1.05);
+}
+
+.StackedAreaLegend-item:hover circle {
+  fill: #daa520;
 }
