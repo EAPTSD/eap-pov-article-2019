@@ -1,6 +1,7 @@
 // External Imports
 import React, { Component } from 'react';
 import * as d3 from 'd3';
+import Typed from 'typed.js';
 
 // Internal Imports
 import formatClassData from '../../../utilities/formatClassData';
@@ -31,8 +32,8 @@ class StackedAreaGraphContainer extends Component {
     index: 0,
     percentageData: [],
     stackedAreaText: [
-      'EAP Economic Class with China',
-      'EAP Economic Class without China',
+      '<strong>with</strong> China',
+      '<strong>without</strong> China',
     ],
     externalMutations: undefined,
   };
@@ -55,10 +56,23 @@ class StackedAreaGraphContainer extends Component {
           formattedClassData,
         },
         () => {
+          const options = {
+            strings: this.state.stackedAreaText,
+            typeSpeed: 50,
+            backSpeed: 50,
+            smartBackspace: false,
+            loop: true,
+            loopCount: Infinity,
+          };
+          this.typed = new Typed(this.el, options);
           this.updateGraph();
         }
       );
     });
+  }
+
+  componentWillUnmount() {
+    this.typed.destroy();
   }
 
   updateGraph = () => {
@@ -74,7 +88,6 @@ class StackedAreaGraphContainer extends Component {
   };
 
   removeMutation = () => {
-    console.log('hi');
     this.setState({
       externalMutations: undefined,
     });
@@ -82,7 +95,6 @@ class StackedAreaGraphContainer extends Component {
 
   highlightArea = (i, event) => {
     event.stopPropagation();
-    console.log(i);
     const callback = this.removeMutation;
     const area = `area-${i}`;
     this.setState({
@@ -135,9 +147,16 @@ class StackedAreaGraphContainer extends Component {
         <div className="StackedAreaGraphContainer-sequence-container container-fluid">
           <div className="row">
             <div className="col text-center">
-              <h1 className="StackedAreaGraphContainer-header-text">
+              <span>EAP Economic Class </span>
+              <span
+                className="StackedAreaGraphContainer-header-text"
+                ref={(el) => {
+                  this.el = el;
+                }}
+              />
+              {/* <h1 className="StackedAreaGraphContainer-header-text">
                 {displayText}
-              </h1>
+              </h1> */}
             </div>
           </div>
           <div className="StackedAreaGraphContainer-container row">
