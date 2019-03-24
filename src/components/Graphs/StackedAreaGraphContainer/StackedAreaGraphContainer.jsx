@@ -74,12 +74,15 @@ class StackedAreaGraphContainer extends Component {
   };
 
   removeMutation = () => {
+    console.log('hi');
     this.setState({
       externalMutations: undefined,
     });
   };
 
-  highlightArea = (i) => {
+  highlightArea = (i, event) => {
+    event.stopPropagation();
+    console.log(i);
     const callback = this.removeMutation;
     const area = `area-${i}`;
     this.setState({
@@ -88,14 +91,20 @@ class StackedAreaGraphContainer extends Component {
           childName: area,
           target: 'data',
           eventKey: 'all',
-          mutation: () => ({ style: { fill: 'goldenrod' } }),
+          mutation: () => ({
+            style: {
+              fill: 'goldenrod',
+              stroke: 'goldenrod',
+            },
+          }),
           callback,
         },
       ],
     });
   };
 
-  unhighlightArea = (i) => {
+  unhighlightArea = (i, event) => {
+    event.stopPropagation();
     const callback = this.removeMutation;
     const area = `area-${i}`;
     this.setState({

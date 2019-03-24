@@ -16,8 +16,8 @@ const StackedAreaLegend = (props) => {
     return (
       <div
         className="StackedAreaLegend-item"
-        onMouseOver={() => highlightArea(i)}
-        onMouseOut={() => unhighlightArea(i)}
+        onMouseEnter={(event) => highlightArea(i, event)}
+        onMouseLeave={(event) => unhighlightArea(i, event)}
       >
         <svg width={60} height={25}>
           <circle

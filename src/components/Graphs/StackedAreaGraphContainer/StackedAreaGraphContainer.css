@@ -18,5 +18,10 @@
 
 .StackedAreaLegend-container {
   position: relative;
-  top: -175px;
+
+  /* Stacked Legend Items */
+  /* top: -175px; */
+
+  /* Inline Legend Items */
+  top: -100px;
 }

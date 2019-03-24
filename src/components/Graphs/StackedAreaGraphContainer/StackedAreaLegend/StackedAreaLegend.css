@@ -1,8 +1,14 @@
 .StackedAreaLegend-item {
   /* Inline Legend Items */
-  /* display: inline-block; */
+  display: inline-block;
 
   /* Stacked Legend Items */
-  width: 237px;
-  margin: 0 auto;
+  /* width: 237px;
+  margin: 0 auto; */
+
+  margin: 10px;
+}
+
+.StackedAreaLegend-item:hover {
+  transform: scale(1.05);
 }
