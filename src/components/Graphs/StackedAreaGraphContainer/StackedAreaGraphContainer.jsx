@@ -143,7 +143,7 @@ class StackedAreaGraphContainer extends Component {
                 EAP Economic Class
               </h1>
               <span
-                className={`StackedAreaGraphContainer-header-text ${headerClass}`}
+                className={`StackedAreaGraphContainer-header-text-change ${headerClass}`}
               >
                 {displayText}
               </span>

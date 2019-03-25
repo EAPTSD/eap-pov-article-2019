@@ -3,8 +3,8 @@
   height: 75vh;
 
   /* Stacked Legend Items */
-  top: -75px;
+  /* top: -75px; */
 
   /* Inline Legend Items */
-  top: -50px;
+  top: -75px;
 }

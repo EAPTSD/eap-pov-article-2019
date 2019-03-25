@@ -14,6 +14,13 @@
 .StackedAreaGraphContainer-header-text {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   margin-bottom: 0;
+  font-size: 2.5rem;
+}
+
+.StackedAreaGraphContainer-header-text-change {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  margin-bottom: 0;
+  font-size: 2rem;
 }
 
 .StackedAreaLegend-container {
@@ -23,7 +30,7 @@
   /* top: -175px; */
 
   /* Inline Legend Items */
-  top: -100px;
+  top: -125px;
 }
 
 .fadeOut {
