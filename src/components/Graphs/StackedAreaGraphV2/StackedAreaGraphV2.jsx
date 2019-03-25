@@ -1,6 +1,12 @@
 // External Imports
 import React from 'react';
-import { VictoryAxis, VictoryChart, VictoryStack, VictoryArea } from 'victory';
+import {
+  VictoryAxis,
+  VictoryChart,
+  VictoryStack,
+  VictoryArea,
+  VictoryLabel,
+} from 'victory';
 
 // Internal Imports
 import './StackedAreaGraphV2.css';
@@ -19,8 +25,8 @@ const StackedAreaGraphV2 = (props) => {
           ]}
           scale={{ x: 'time' }}
           animate={{ duration: 1500 }}
-          width={350}
-          height={300}
+          width={500}
+          height={450}
         >
           <VictoryStack colorScale={color}>
             {data.map((data, i) => {
@@ -34,10 +40,23 @@ const StackedAreaGraphV2 = (props) => {
               );
             })}
           </VictoryStack>
-          {isPercent && (
-            <VictoryAxis dependentAxis tickFormat={(tick) => `${tick}%`} />
-          )}
-          {isPercent && <VictoryAxis crossAxis />}
+          <VictoryAxis
+            dependentAxis
+            tickFormat={isPercent ? (tick) => `${tick}%` : null}
+            label={
+              isPercent ? 'Population (Percentage)' : 'Population (Million)'
+            }
+            axisLabelComponent={<VictoryLabel dy={-12} />}
+            style={{
+              tickLabels: { fontSize: 12, padding: 5 },
+            }}
+          />
+          <VictoryAxis
+            crossAxis
+            style={{
+              tickLabels: { fontSize: 12, padding: 5 },
+            }}
+          />
         </VictoryChart>
       </div>
     </div>
