@@ -1,0 +1,19 @@
+.StackedAreaLegend-item {
+  /* Inline Legend Items */
+  display: inline-block;
+
+  /* Stacked Legend Items */
+  /* width: 237px;
+  margin: 0 auto; */
+
+  margin: 0 20px;
+}
+
+.StackedAreaLegend-item:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.StackedAreaLegend-item:hover circle {
+  fill: #daa520;
+}

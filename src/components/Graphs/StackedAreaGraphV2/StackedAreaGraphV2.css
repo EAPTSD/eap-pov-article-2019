@@ -1,3 +1,10 @@
 .StackedAreaGraphV2-container {
+  position: relative;
   height: 75vh;
+
+  /* Stacked Legend Items */
+  /* top: -75px; */
+
+  /* Inline Legend Items */
+  top: -50px;
 }

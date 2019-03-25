@@ -1,7 +1,7 @@
 .StackedAreaGraphContainer-sequence-container {
   -webkit-font-smoothing: antialiased;
   height: 85vh;
-  padding-top: 25px;
+  padding: 15px 0;
   background-color: lavenderblush;
 }
 
@@ -14,4 +14,49 @@
 .StackedAreaGraphContainer-header-text {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   margin-bottom: 0;
+  font-size: 2.5rem;
+}
+
+.StackedAreaGraphContainer-header-text-change {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  margin-bottom: 0;
+  font-size: 2rem;
+}
+
+.StackedAreaLegend-container {
+  position: relative;
+
+  /* Stacked Legend Items */
+  /* top: -175px; */
+
+  /* Inline Legend Items */
+  top: -125px;
+}
+
+.fadeOut {
+  opacity: 0;
+  animation: fadeout 1s linear;
+}
+
+.fadeIn {
+  opacity: 1;
+  animation: fadein 1s linear;
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

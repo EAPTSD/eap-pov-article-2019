@@ -18,8 +18,7 @@ import './StoryboardContainer.css';
 class StoryboardContainer extends Component {
   state = {
     firstText: [],
-    secondTextA: [],
-    secondTextB: [],
+    secondText: [],
     thirdText: [],
     fourthText: [],
     fifthText: [],
@@ -31,8 +30,7 @@ class StoryboardContainer extends Component {
     const textArray = extractText(appText);
     this.setState({
       firstText: textArray.slice(0, 4),
-      secondTextA: textArray.slice(4, 9),
-      secondTextB: textArray.slice(9, 14),
+      secondText: textArray.slice(4, 14),
       thirdText: textArray.slice(14, 24),
       fourthText: textArray.slice(24, 34),
       fifthText: textArray.slice(34, 44),
@@ -44,8 +42,7 @@ class StoryboardContainer extends Component {
   render() {
     const {
       firstText,
-      secondTextA,
-      secondTextB,
+      secondText,
       thirdText,
       fourthText,
       fifthText,
@@ -54,8 +51,7 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
-        <ChoroplethV3Eap />
-        {/* <Header />
+        <Header />
         <div className="StoryboardContainer">
           <div className="sb-text-container">
             {firstText.map((text, i) => {
@@ -68,17 +64,7 @@ class StoryboardContainer extends Component {
           </div>
           <StackedAreaGraphContainer />
           <div className="sb-text-container">
-            {secondTextA.map((text, i) => {
-              return (
-                <p className="pt-3 sb-text" key={`text-${i}`}>
-                  {text}
-                </p>
-              );
-            })}
-          </div>
-          <StackedAreaGraph />
-          <div className="sb-text-container">
-            {secondTextB.map((text, i) => {
+            {secondText.map((text, i) => {
               return (
                 <p className="pt-3 sb-text" key={`text-${i}`}>
                   {text}
@@ -96,8 +82,6 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-          <BarGraph />
-          <BarGraphPercentage /> 
           <BarGraphContainer />
           <div className="sb-text-container">
             {fifthText.map((text, i) => {
@@ -117,7 +101,6 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-          <Choropleth />
           <ChoroplethContainer />
           <div className="sb-text-container">
             {seventhText.map((text, i) => {
@@ -128,7 +111,7 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-        </div> */}
+        </div>
       </div>
     );
   }

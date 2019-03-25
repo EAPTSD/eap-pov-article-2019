@@ -24,8 +24,8 @@ class ChoroplethV3Eap extends Component {
   }
 
   componentDidMount() {
-    // eapSubNatData.objects.eap_all_by_subnatid1_shapefile.geometries.map(country => console.log(country));
-    console.log(combinedData);
+    // combinedData.objects.EAP_SubNations.geometries.map(country => console.log(country.properties));
+    // console.log(combinedData);
 
     const choroplethContainerHeight = this.ChoroplethV3EapRef.current
       .clientHeight;
