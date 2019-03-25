@@ -1,7 +1,7 @@
 // External Imports
 import React, { Component } from 'react';
 import * as d3 from 'd3';
-import Typed from 'typed.js';
+import Typewriter from 'typewriter-effect';
 
 // Internal Imports
 import formatClassData from '../../../utilities/formatClassData';
@@ -29,13 +29,11 @@ class StackedAreaGraphContainer extends Component {
     purpColors: ['#2E0854', '#580fa2', '#831ce9', '#ad6af1', '#d8b7f8'],
     displayText: '',
     formattedClassData: [],
-    index: 0,
+    index: 1,
     percentageData: [],
-    stackedAreaText: [
-      '<strong>with</strong> China',
-      '<strong>without</strong> China',
-    ],
+    stackedAreaText: ['with China', 'without China'],
     externalMutations: undefined,
+    headerClass: '',
   };
 
   componentDidMount() {
@@ -56,35 +54,28 @@ class StackedAreaGraphContainer extends Component {
           formattedClassData,
         },
         () => {
-          const options = {
-            strings: this.state.stackedAreaText,
-            typeSpeed: 50,
-            backSpeed: 50,
-            smartBackspace: false,
-            loop: true,
-            loopCount: Infinity,
-          };
-          this.typed = new Typed(this.el, options);
           this.updateGraph();
         }
       );
     });
   }
 
-  componentWillUnmount() {
-    this.typed.destroy();
-  }
-
   updateGraph = () => {
     setInterval(() => {
       const { index, formattedClassData, stackedAreaText } = this.state;
+      setTimeout(() => {
+        this.setState({
+          headerClass: 'fadeOut',
+        });
+      }, 3000);
       this.setState({
         data: formattedClassData[index],
         displayText: stackedAreaText[index],
+        headerClass: 'fadeIn',
         percentageData: formattedClassData[index + 2],
         index: index === 1 ? 0 : 1,
       });
-    }, 5000);
+    }, 4000);
   };
 
   removeMutation = () => {
@@ -141,22 +132,21 @@ class StackedAreaGraphContainer extends Component {
       percentageData,
       displayText,
       externalMutations,
+      headerClass,
     } = this.state;
     return (
       <div>
         <div className="StackedAreaGraphContainer-sequence-container container-fluid">
           <div className="row">
             <div className="col text-center">
-              <span>EAP Economic Class </span>
+              <h1 className="StackedAreaGraphContainer-header-text">
+                EAP Economic Class
+              </h1>
               <span
-                className="StackedAreaGraphContainer-header-text"
-                ref={(el) => {
-                  this.el = el;
-                }}
-              />
-              {/* <h1 className="StackedAreaGraphContainer-header-text">
+                className={`StackedAreaGraphContainer-header-text ${headerClass}`}
+              >
                 {displayText}
-              </h1> */}
+              </span>
             </div>
           </div>
           <div className="StackedAreaGraphContainer-container row">
