@@ -50,6 +50,7 @@ class BubbleGraph extends Component {
   updateGraph = (index) => {
     const { reserveData } = this.state;
     const displayArr = displayDataPopulator(reserveData, index);
+    console.log(displayArr);
     const res = [];
     for (let i = 0; i < displayArr[0].length; i++) {
       res.push(displayArr[0][i]);
@@ -85,11 +86,11 @@ class BubbleGraph extends Component {
               }}
               animate={{
                 onExit: {
-                  duration: 100,
+                  duration: 500,
                   before: () => ({ opacity: 0.3, _y: 0 }),
                 },
                 onEnter: {
-                  duration: 100,
+                  duration: 500,
                   before: () => ({ opacity: 0.3, _y: 0 }),
                   after: (datum) => ({ opacity: 1, _y: datum._y }),
                 },
@@ -101,7 +102,12 @@ class BubbleGraph extends Component {
           return (
             <>
               <div className="BubbleGraph-waypoint-buffer" />
-              <Waypoint onEnter={() => this.updateGraph(i)} />
+              {i === 0 ? (
+                <Waypoint onEnter={() => this.updateGraph(0)} />
+              ) : null}
+              {i === 1 ? (
+                <Waypoint onEnter={() => this.updateGraph(7)} />
+              ) : null}
               <div className="BubbleGraph-waypoint-buffer">
                 <p className="bg-text">{flowText[i]}</p>
               </div>
