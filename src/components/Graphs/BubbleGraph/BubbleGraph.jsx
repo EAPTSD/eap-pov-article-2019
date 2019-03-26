@@ -83,17 +83,20 @@ class BubbleGraph extends Component {
             }}
           >
             <VictoryLegend
-              x={325}
+              x={203}
               y={50}
+              title={`Per-Capita Per-Day Poverty`}
+              centerTitle
               orientation="horizontal"
               gutter={20}
               style={{
                 data: { stroke: 'black', strokeWidth: 1 },
                 border: { stroke: 'black' },
+                title: { fontSize: 14 },
+                labels: { fontSize: 12 },
               }}
               colorScale={['#87CEFA', '#325DDF', '#191970']}
-              data={[{ name: 'One' }, { name: 'Two' }, { name: 'Three' }]}
-              itemsPerRow={1}
+              data={[{ name: '$5.50' }, { name: '$3.20' }, { name: '$1.90' }]}
             />
             <VictoryScatter
               bubbleProperty="size"
