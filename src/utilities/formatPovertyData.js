@@ -15,7 +15,7 @@ const formatPovertyData = (array, color) => {
       return i <= 7 ? arrObj.slice(0, 7) : null;
     }
     values(d).map((value, i) => {
-      return (obj[i].size = parseFloat(value) / 100);
+      return (obj[i].size = parseFloat(value) / 30);
     });
   });
 

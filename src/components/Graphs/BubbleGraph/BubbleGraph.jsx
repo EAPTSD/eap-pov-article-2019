@@ -56,7 +56,6 @@ class BubbleGraph extends Component {
       res.push(displayArr[1][i]);
       res.push(displayArr[2][i]);
     }
-    console.log(res);
     this.setState({
       displayData: res,
     });
@@ -69,10 +68,12 @@ class BubbleGraph extends Component {
       <div className="BubbleGraph-sequence-container">
         <div className="BubbleGraph-container BubbleGraph-sticky">
           <VictoryChart
+            height={400}
+            width={450}
             scale={{ x: 'time' }}
             domain={{
               x: [new Date(2012, 1, 1), new Date(2018, 1, 1)],
-              y: [0, 100],
+              y: [0, 60],
             }}
           >
             <VictoryScatter
@@ -82,6 +83,7 @@ class BubbleGraph extends Component {
               style={{
                 data: {
                   fill: (d) => d.fill,
+                  stroke: 'black',
                 },
               }}
               animate={{
