@@ -50,13 +50,13 @@ class BubbleGraph extends Component {
   updateGraph = (index) => {
     const { reserveData } = this.state;
     const displayArr = displayDataPopulator(reserveData, index);
-    console.log(displayArr);
     const res = [];
     for (let i = 0; i < displayArr[0].length; i++) {
       res.push(displayArr[0][i]);
       res.push(displayArr[1][i]);
       res.push(displayArr[2][i]);
     }
+    console.log(res);
     this.setState({
       displayData: res,
     });
