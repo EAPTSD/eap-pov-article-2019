@@ -22,7 +22,8 @@ const formatPovertyData = (array, color) => {
     }
     values(d).map((value, i) => {
       obj[i].size = parseFloat(value) / 20;
-      obj[i].label = `${obj[i].label}Number of poor: ${value}M`;
+      obj[i].label = `${obj[i].label}Number of Poor: ${value}M`;
+      return obj;
     });
   });
 
