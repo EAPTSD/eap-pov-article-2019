@@ -6,6 +6,7 @@ import {
   VictoryAxis,
   VictoryLabel,
   VictoryLegend,
+  VictoryTooltip,
 } from 'victory';
 import * as d3 from 'd3';
 import Waypoint from 'react-waypoint';
@@ -108,6 +109,7 @@ class BubbleGraph extends Component {
                   strokeWidth: '1px',
                 },
               }}
+              labelComponent={<VictoryTooltip />}
               animate={{
                 onExit: {
                   duration: 500,
