@@ -5,6 +5,7 @@ import {
   VictoryScatter,
   VictoryAxis,
   VictoryLabel,
+  VictoryLegend,
 } from 'victory';
 import * as d3 from 'd3';
 import Waypoint from 'react-waypoint';
@@ -81,6 +82,19 @@ class BubbleGraph extends Component {
               y: [0, 60],
             }}
           >
+            <VictoryLegend
+              x={325}
+              y={50}
+              orientation="horizontal"
+              gutter={20}
+              style={{
+                data: { stroke: 'black', strokeWidth: 1 },
+                border: { stroke: 'black' },
+              }}
+              colorScale={['#87CEFA', '#325DDF', '#191970']}
+              data={[{ name: 'One' }, { name: 'Two' }, { name: 'Three' }]}
+              itemsPerRow={1}
+            />
             <VictoryScatter
               bubbleProperty="size"
               data={displayData}
