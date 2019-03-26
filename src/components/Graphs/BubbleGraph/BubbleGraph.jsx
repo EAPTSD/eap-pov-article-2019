@@ -1,6 +1,11 @@
 // External Imports
 import React, { Component } from 'react';
-import { VictoryChart, VictoryScatter } from 'victory';
+import {
+  VictoryChart,
+  VictoryScatter,
+  VictoryAxis,
+  VictoryLabel,
+} from 'victory';
 import * as d3 from 'd3';
 import Waypoint from 'react-waypoint';
 import Stickyfill from 'stickyfilljs';
@@ -72,18 +77,18 @@ class BubbleGraph extends Component {
             width={450}
             scale={{ x: 'time' }}
             domain={{
-              x: [new Date(2012, 1, 1), new Date(2018, 1, 1)],
+              x: [new Date(2011, 1, 1), new Date(2018, 1, 1)],
               y: [0, 60],
             }}
           >
             <VictoryScatter
               bubbleProperty="size"
-              domainPadding={{ x: 25 }}
               data={displayData}
               style={{
                 data: {
                   fill: (d) => d.fill,
                   stroke: 'black',
+                  strokeWidth: '1px',
                 },
               }}
               animate={{
@@ -96,6 +101,22 @@ class BubbleGraph extends Component {
                   before: () => ({ opacity: 0.3, _y: 0 }),
                   after: (datum) => ({ opacity: 1, _y: datum._y }),
                 },
+              }}
+            />
+            <VictoryAxis
+              dependentAxis
+              tickFormat={(tick) => `${tick}%`}
+              label={'Poverty Rate (Percentage)'}
+              axisLabelComponent={<VictoryLabel dy={-12} />}
+              style={{
+                axisLabel: { fontSize: 12 },
+                tickLabels: { fontSize: 10, padding: 5 },
+              }}
+            />
+            <VictoryAxis
+              crossAxis
+              style={{
+                tickLabels: { fontSize: 10, padding: 5 },
               }}
             />
           </VictoryChart>
