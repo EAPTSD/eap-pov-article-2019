@@ -2,7 +2,7 @@
   position: relative;
   -webkit-font-smoothing: antialiased;
   background-color: cornflowerblue;
-  z-index: -1;
+  z-index: 0;
 }
 
 .BubbleGraph-container {

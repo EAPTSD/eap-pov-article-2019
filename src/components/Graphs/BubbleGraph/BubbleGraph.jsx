@@ -1,6 +1,13 @@
 // External Imports
 import React, { Component } from 'react';
-import { VictoryChart, VictoryScatter } from 'victory';
+import {
+  VictoryChart,
+  VictoryScatter,
+  VictoryAxis,
+  VictoryLabel,
+  VictoryLegend,
+  VictoryTooltip,
+} from 'victory';
 import * as d3 from 'd3';
 import Waypoint from 'react-waypoint';
 import Stickyfill from 'stickyfilljs';
@@ -68,31 +75,67 @@ class BubbleGraph extends Component {
       <div className="BubbleGraph-sequence-container">
         <div className="BubbleGraph-container BubbleGraph-sticky">
           <VictoryChart
+            height={400}
+            width={450}
             scale={{ x: 'time' }}
             domain={{
-              x: [new Date(2012, 1, 1), new Date(2018, 1, 1)],
-              y: [0, 100],
+              x: [new Date(2011, 1, 1), new Date(2018, 1, 1)],
+              y: [0, 60],
             }}
           >
+            <VictoryLegend
+              x={203}
+              y={50}
+              title={`Per-Capita Per-Day Poverty`}
+              centerTitle
+              orientation="horizontal"
+              gutter={20}
+              style={{
+                data: { stroke: 'black', strokeWidth: 1 },
+                border: { stroke: 'black' },
+                title: { fontSize: 14 },
+                labels: { fontSize: 12 },
+              }}
+              colorScale={['#87CEFA', '#325DDF', '#191970']}
+              data={[{ name: '$5.50' }, { name: '$3.20' }, { name: '$1.90' }]}
+            />
             <VictoryScatter
               bubbleProperty="size"
-              domainPadding={{ x: 25 }}
               data={displayData}
               style={{
                 data: {
                   fill: (d) => d.fill,
+                  stroke: 'black',
+                  strokeWidth: '1px',
                 },
               }}
+              labelComponent={<VictoryTooltip />}
               animate={{
                 onExit: {
-                  duration: 100,
+                  duration: 500,
                   before: () => ({ opacity: 0.3, _y: 0 }),
                 },
                 onEnter: {
-                  duration: 100,
+                  duration: 500,
                   before: () => ({ opacity: 0.3, _y: 0 }),
                   after: (datum) => ({ opacity: 1, _y: datum._y }),
                 },
+              }}
+            />
+            <VictoryAxis
+              dependentAxis
+              tickFormat={(tick) => `${tick}%`}
+              label={'Poverty Rate (Percentage)'}
+              axisLabelComponent={<VictoryLabel dy={-12} />}
+              style={{
+                axisLabel: { fontSize: 12 },
+                tickLabels: { fontSize: 10, padding: 5 },
+              }}
+            />
+            <VictoryAxis
+              crossAxis
+              style={{
+                tickLabels: { fontSize: 10, padding: 5 },
               }}
             />
           </VictoryChart>
@@ -101,7 +144,12 @@ class BubbleGraph extends Component {
           return (
             <>
               <div className="BubbleGraph-waypoint-buffer" />
-              <Waypoint onEnter={() => this.updateGraph(i)} />
+              {i === 0 ? (
+                <Waypoint onEnter={() => this.updateGraph(0)} />
+              ) : null}
+              {i === 1 ? (
+                <Waypoint onEnter={() => this.updateGraph(7)} />
+              ) : null}
               <div className="BubbleGraph-waypoint-buffer">
                 <p className="bg-text">{flowText[i]}</p>
               </div>
