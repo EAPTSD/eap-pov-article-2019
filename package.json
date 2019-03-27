@@ -16,7 +16,6 @@
     "reactstrap": "7.1.0",
     "stickyfilljs": "2.1.0",
     "topojson": "3.0.2",
-    "typewriter-effect": "^2.5.3",
     "uuid": "^3.3.2",
     "victory": "31.1.0"
   },
