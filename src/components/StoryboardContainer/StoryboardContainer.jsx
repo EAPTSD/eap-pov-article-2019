@@ -6,7 +6,7 @@ import appText from '../../text/appText';
 import BarGraph from '../Graphs/BarGraph';
 import BarGraphPercentage from '../Graphs/BarGraphPercentage';
 import BarGraphContainer from '../Graphs/BarGraphContainer';
-import BubbleGraph from '../Graphs/BubbleGraph';
+import BubbleGraphContainer from '../Graphs/BubbleGraphContainer';
 import ChoroplethContainer from '../Graphs/ChoroplethContainer';
 import ChoroplethV3Eap from '../Graphs/ChoroplethV3Eap';
 import Header from '../Header';
@@ -51,7 +51,7 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
-        <BubbleGraph flowText={thirdText} />
+        <BubbleGraphContainer flowText={thirdText} />
         {/* <Header />
         <div className="StoryboardContainer">
           <div className="sb-text-container">

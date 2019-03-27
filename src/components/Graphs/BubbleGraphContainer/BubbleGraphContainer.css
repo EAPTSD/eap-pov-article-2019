@@ -1,0 +1,50 @@
+.BubbleGraphContainer-sequence-container {
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  background-color: cornflowerblue;
+  z-index: 0;
+}
+
+.BubbleGraphContainer-container {
+  height: 100vh;
+  background-color: cornflowerblue;
+}
+
+.BubbleGraphContainer-container .VictoryContainer {
+  width: 60% !important;
+  margin: 0 auto;
+}
+
+.BubbleGraphContainer-sticky {
+  position: sticky;
+  top: 0px;
+}
+
+.BubbleGraphContainer-sticky:before,
+.BubbleGraphContainer-sticky:after {
+  content: '';
+  display: table;
+}
+
+.BubbleGraphContainer-waypoint-buffer {
+  height: 100vh;
+  z-index: 10;
+}
+
+.bg-text {
+  width: 600px;
+  margin: 0 auto;
+  font-size: 19px;
+  color: white;
+  opacity: 0.7;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  background: black;
+  padding: 25px;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 650px) {
+  .bg-text {
+    width: 90vw;
+  }
+}
