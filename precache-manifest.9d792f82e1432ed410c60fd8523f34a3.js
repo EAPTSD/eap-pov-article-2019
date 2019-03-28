@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "8ac626a5a298f86794416b39380daeff",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/philippines_economic_class.8ac626a5.csv"
+    "revision": "b6650a5bbf6840d0204e50f7b1b20d5b",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/malaysia_economic_class.b6650a5b.csv"
   },
   {
-    "revision": "0679aa313b99ea718715",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.a3341ebb.chunk.css"
+    "revision": "d197ddda39b5d111061e",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.aa0c7ecf.chunk.css"
   },
   {
     "revision": "1fdc743e8f28282e87c509fd44ee48b7",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/action-asia-blur-1455989.1fdc743e.jpg"
   },
   {
-    "revision": "42e45830217c495b1f23",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/1.42e45830.chunk.js"
+    "revision": "22ccde1efe448f8b4699",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/1.22ccde1e.chunk.js"
   },
   {
     "revision": "51b6458cc8c2ce96ca60",
@@ -28,16 +28,28 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/EAP_higher_pov_V2.141381fe.csv"
   },
   {
-    "revision": "d2d83d68e43a52c3d9f3959d61a36920",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_1.9.d2d83d68.csv"
+    "revision": "5d3ebbf18f46a7b48e1ee110274ffce3",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_wChina_1.9.5d3ebbf1.csv"
   },
   {
-    "revision": "da9a0cd2bf9f7b7a8a4b84801c7b5ec6",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_3.2.da9a0cd2.csv"
+    "revision": "b2508c6160ab289da1aa78ed23649518",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_wChina_3.2.b2508c61.csv"
   },
   {
-    "revision": "7a59e30cd1d939dcefe2928017dc7c4f",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_5.5.7a59e30c.csv"
+    "revision": "4b1504fd03547e3518a34555755ebc8b",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_wChina_5.5.4b1504fd.csv"
+  },
+  {
+    "revision": "f2dbba84117a2fe4ef00bee86fa78d6f",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_woChina_1.9.f2dbba84.csv"
+  },
+  {
+    "revision": "dc048442fc079e52d7940fae2de30b9c",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_woChina_3.2.dc048442.csv"
+  },
+  {
+    "revision": "578be73b517d2dffcbeb44803dc9be4c",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_woChina_5.5.578be73b.csv"
   },
   {
     "revision": "6bdf3b9cc31e955ca984e90dc9d24028",
@@ -52,16 +64,16 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/lao_economic_class.8c4c4ffa.csv"
   },
   {
-    "revision": "b6650a5bbf6840d0204e50f7b1b20d5b",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/malaysia_economic_class.b6650a5b.csv"
+    "revision": "d197ddda39b5d111061e",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.d197ddda.chunk.js"
   },
   {
     "revision": "db025a2cd15618f709f5adc199843556",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/myanmar_economic_class.db025a2c.csv"
   },
   {
-    "revision": "0679aa313b99ea718715",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.0679aa31.chunk.js"
+    "revision": "8ac626a5a298f86794416b39380daeff",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/philippines_economic_class.8ac626a5.csv"
   },
   {
     "revision": "18e907a8578fe2ebf7735e69f896cd6c",
@@ -112,11 +124,11 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/architecture-asia-bar-1455993.f3c8fd08.jpg"
   },
   {
-    "revision": "42e45830217c495b1f23",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.0b4849c4.chunk.css"
+    "revision": "22ccde1efe448f8b4699",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.7194c3b9.chunk.css"
   },
   {
-    "revision": "b8958e341f8d667fd8cc4a3b8df53f79",
+    "revision": "863eb3c74566650c39bbf0798b106345",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/index.html"
   }
 ];
