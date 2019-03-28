@@ -14,11 +14,15 @@ import './BubbleGraphContainer.css';
 import asean_wChina_1_9 from '../../../data/BubbleGraphData/asean_wChina_1.9.csv';
 import asean_wChina_3_2 from '../../../data/BubbleGraphData/asean_wChina_3.2.csv';
 import asean_wChina_5_5 from '../../../data/BubbleGraphData/asean_wChina_5.5.csv';
+import asean_woChina_1_9 from '../../../data/BubbleGraphData/asean_woChina_1.9.csv';
+import asean_woChina_3_2 from '../../../data/BubbleGraphData/asean_woChina_3.2.csv';
+import asean_woChina_5_5 from '../../../data/BubbleGraphData/asean_woChina_5.5.csv';
 
 class BubbleGraphContainer extends Component {
   state = {
     displayData: [],
     reserveDataWChina: [],
+    reserveDataWoChina: [],
     index: [0, 1, 2, 3, 4, 5, 6, 7],
     colors: ['#191970', '#325DDF', '#87CEFA'],
     asean1_9: null,
@@ -35,13 +39,26 @@ class BubbleGraphContainer extends Component {
       d3.csv(asean_wChina_1_9),
       d3.csv(asean_wChina_3_2),
       d3.csv(asean_wChina_5_5),
+      d3.csv(asean_woChina_1_9),
+      d3.csv(asean_woChina_3_2),
+      d3.csv(asean_woChina_5_5),
     ]).then((files) => {
-      const formattedPovertyDataWChina = files.map((file, i) => {
+      const povertyDataWChina = files.slice(0, 3);
+      const povertyDataWoChina = files.slice(3, 6);
+
+      const formattedPovertyDataWChina = povertyDataWChina.map((file, i) => {
         const tractColor = colors[i];
         return formatPovertyData(file, tractColor);
       });
+
+      const formattedPovertyDataWoChina = povertyDataWoChina.map((file, i) => {
+        const tractColor = colors[i];
+        return formatPovertyData(file, tractColor);
+      });
+
       this.setState({
         reserveDataWChina: formattedPovertyDataWChina,
+        reserveDataWoChina: formattedPovertyDataWoChina,
       });
     });
 
@@ -50,16 +67,23 @@ class BubbleGraphContainer extends Component {
   }
 
   updateGraph = (index, withChina) => {
+    const {
+      reserveDataWChina,
+      reserveDataWoChina,
+      bubbleGraphText,
+    } = this.state;
     let headerClass;
     let displayText;
-    const { reserveDataWChina, bubbleGraphText } = this.state;
-    const displayArr = displayDataPopulator(reserveDataWChina, index);
+
+    const data = withChina ? reserveDataWChina : reserveDataWoChina;
+    const displayArr = displayDataPopulator(data, index);
     const res = [];
     for (let i = 0; i < displayArr[0].length; i++) {
       res.push(displayArr[0][i]);
       res.push(displayArr[1][i]);
       res.push(displayArr[2][i]);
     }
+
     if (withChina === 'reset') {
       headerClass = 'fadeOut';
       displayText = bubbleGraphText[0];
@@ -67,7 +91,12 @@ class BubbleGraphContainer extends Component {
       headerClass = 'fadeIn';
       displayText = bubbleGraphText[0];
     } else {
+      headerClass = 'fadeIn';
+      displayText = bubbleGraphText[1];
     }
+
+    console.log(res);
+
     this.setState({
       displayData: res,
       headerClass: headerClass,
@@ -98,8 +127,10 @@ class BubbleGraphContainer extends Component {
               {i === 0 || i === 4 ? (
                 <Waypoint onEnter={() => this.updateGraph(0, 'reset')} />
               ) : null}
-              {i === 1 ? (
-                <Waypoint onEnter={() => this.updateGraph(7, true)} />
+              {i === 1 || i === 5 ? (
+                <Waypoint
+                  onEnter={() => this.updateGraph(7, i === 1 ? true : false)}
+                />
               ) : null}
               <div className="BubbleGraphContainer-waypoint-buffer">
                 <p className="bg-text">{flowText[i]}</p>

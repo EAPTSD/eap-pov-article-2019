@@ -21,7 +21,7 @@ const BubbleGraphV2 = (props) => {
       scale={{ x: 'time' }}
       domain={{
         x: [new Date(2011, 1, 1), new Date(2018, 1, 1)],
-        y: [0, 60],
+        y: [0, 70],
       }}
     >
       <VictoryLegend
