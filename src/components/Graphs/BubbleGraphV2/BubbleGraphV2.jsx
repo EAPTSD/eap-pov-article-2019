@@ -19,14 +19,15 @@ const BubbleGraphV2 = (props) => {
       height={400}
       width={450}
       scale={{ x: 'time' }}
+      domainPadding={[0, 10]}
       domain={{
         x: [new Date(2011, 1, 1), new Date(2018, 1, 1)],
-        y: [0, 70],
+        y: [0, 60],
       }}
     >
       <VictoryLegend
-        x={203}
-        y={50}
+        x={230}
+        y={40}
         title={`Per-Capita Per-Day Poverty`}
         centerTitle
         orientation="horizontal"
@@ -34,8 +35,8 @@ const BubbleGraphV2 = (props) => {
         style={{
           data: { stroke: 'black', strokeWidth: 1 },
           border: { stroke: 'black' },
-          title: { fontSize: 14 },
-          labels: { fontSize: 12 },
+          title: { fontSize: 12 },
+          labels: { fontSize: 10 },
         }}
         colorScale={['#87CEFA', '#325DDF', '#191970']}
         data={[{ name: '$5.50' }, { name: '$3.20' }, { name: '$1.90' }]}
@@ -53,11 +54,11 @@ const BubbleGraphV2 = (props) => {
         labelComponent={<VictoryTooltip />}
         animate={{
           onExit: {
-            duration: 500,
+            duration: 1000,
             before: () => ({ opacity: 0.3, _y: 0 }),
           },
           onEnter: {
-            duration: 500,
+            duration: 1000,
             before: () => ({ opacity: 0.3, _y: 0 }),
             after: (datum) => ({ opacity: 1, _y: datum._y }),
           },

@@ -51,14 +51,36 @@ class BubbleGraphContainer extends Component {
         return formatPovertyData(file, tractColor);
       });
 
+      const displayArrChina = displayDataPopulator(
+        formattedPovertyDataWChina,
+        7
+      );
+      const resChina = [];
+      for (let i = 0; i < displayArrChina[0].length; i++) {
+        resChina.push(displayArrChina[0][i]);
+        resChina.push(displayArrChina[1][i]);
+        resChina.push(displayArrChina[2][i]);
+      }
+
       const formattedPovertyDataWoChina = povertyDataWoChina.map((file, i) => {
         const tractColor = colors[i];
         return formatPovertyData(file, tractColor);
       });
 
+      const displayArrWoChina = displayDataPopulator(
+        formattedPovertyDataWoChina,
+        7
+      );
+      const resWoChina = [];
+      for (let i = 0; i < displayArrWoChina[0].length; i++) {
+        resWoChina.push(displayArrWoChina[0][i]);
+        resWoChina.push(displayArrWoChina[1][i]);
+        resWoChina.push(displayArrWoChina[2][i]);
+      }
+
       this.setState({
-        reserveDataWChina: formattedPovertyDataWChina,
-        reserveDataWoChina: formattedPovertyDataWoChina,
+        reserveDataWChina: resChina,
+        reserveDataWoChina: resWoChina,
       });
     });
 
@@ -66,39 +88,33 @@ class BubbleGraphContainer extends Component {
     Stickyfill.add(elements);
   }
 
-  updateGraph = (index, withChina) => {
+  updateGraph = (withChina) => {
     const {
       reserveDataWChina,
       reserveDataWoChina,
       bubbleGraphText,
     } = this.state;
+
     let headerClass;
     let displayText;
+    let displayData = [];
 
-    const data = withChina ? reserveDataWChina : reserveDataWoChina;
-    const displayArr = displayDataPopulator(data, index);
-    const res = [];
-    for (let i = 0; i < displayArr[0].length; i++) {
-      res.push(displayArr[0][i]);
-      res.push(displayArr[1][i]);
-      res.push(displayArr[2][i]);
-    }
-
-    if (withChina === 'reset') {
-      headerClass = 'fadeOut';
-      displayText = bubbleGraphText[0];
-    } else if (withChina === true) {
+    if (withChina === true) {
       headerClass = 'fadeIn';
       displayText = bubbleGraphText[0];
-    } else {
+      displayData = reserveDataWChina;
+    } else if (withChina === false) {
       headerClass = 'fadeIn';
       displayText = bubbleGraphText[1];
+      displayData = reserveDataWoChina;
+    } else {
+      headerClass = 'fadeOut';
+      displayText = bubbleGraphText[0];
+      displayData = [];
     }
 
-    console.log(res);
-
     this.setState({
-      displayData: res,
+      displayData: displayData,
       headerClass: headerClass,
       displayText: displayText,
     });
@@ -124,13 +140,19 @@ class BubbleGraphContainer extends Component {
           return (
             <>
               <div className="BubbleGraphContainer-waypoint-buffer" />
-              {i === 0 || i === 4 ? (
-                <Waypoint onEnter={() => this.updateGraph(0, 'reset')} />
+              {i === 0 ? (
+                <>
+                  <Waypoint onEnter={() => this.updateGraph()} />
+                  <div className="BubbleGraphContainer-waypoint-buffer" />
+                </>
               ) : null}
-              {i === 1 || i === 5 ? (
-                <Waypoint
-                  onEnter={() => this.updateGraph(7, i === 1 ? true : false)}
-                />
+              {i === 1 || i === 4 ? (
+                <>
+                  <Waypoint
+                    onEnter={() => this.updateGraph(i === 1 ? true : false)}
+                  />
+                  <div className="BubbleGraphContainer-waypoint-buffer" />
+                </>
               ) : null}
               <div className="BubbleGraphContainer-waypoint-buffer">
                 <p className="bg-text">{flowText[i]}</p>

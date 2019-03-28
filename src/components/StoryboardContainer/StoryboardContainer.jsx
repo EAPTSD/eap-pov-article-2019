@@ -51,8 +51,7 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
-        <BubbleGraphContainer flowText={thirdText} />
-        {/* <Header />
+        <Header />
         <div className="StoryboardContainer">
           <div className="sb-text-container">
             {firstText.map((text, i) => {
@@ -73,7 +72,7 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-          <BubbleGraph flowText={thirdText} />
+          <BubbleGraphContainer flowText={thirdText} />
           <div className="sb-text-container">
             {fourthText.map((text, i) => {
               return (
@@ -112,7 +111,7 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-        </div> */}
+        </div>
       </div>
     );
   }
