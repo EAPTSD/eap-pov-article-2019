@@ -8,11 +8,27 @@
 .BubbleGraphContainer-container {
   height: 100vh;
   background-color: cornflowerblue;
+  padding: 25px;
+}
+
+.BubbleGraphContainer-header-text {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  margin-bottom: 0;
+  font-size: 2.5rem;
+}
+
+.BubbleGraphContainer-header-text-change {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  margin-bottom: 0;
+  font-size: 2rem;
+}
+
+.BubbleGraphContainer-header-container {
+  height: 15%;
 }
 
 .BubbleGraphContainer-container .VictoryContainer {
-  width: 60% !important;
-  margin: 0 auto;
+  top: -40px;
 }
 
 .BubbleGraphContainer-sticky {
@@ -41,6 +57,34 @@
   background: black;
   padding: 25px;
   border-radius: 5px;
+}
+
+.fadeOut {
+  opacity: 0;
+  animation: fadeout 1s linear;
+}
+
+.fadeIn {
+  opacity: 1;
+  animation: fadein 1s linear;
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media only screen and (max-width: 650px) {
