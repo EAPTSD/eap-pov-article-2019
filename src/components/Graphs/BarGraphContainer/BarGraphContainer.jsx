@@ -12,7 +12,10 @@ import higherPovertyData from '../../../data/BarGraphData/EAP_higher_pov.csv';
 
 class BarGraphContainer extends Component {
   state = {
+    displayText: '2002',
+    headerClass: '',
     higherPovertyDisplayData: [],
+    index: 1,
     reserveData: [],
     years: [
       2002,
@@ -33,12 +36,10 @@ class BarGraphContainer extends Component {
       2017,
       2018,
     ],
-    index: 1,
   };
 
   componentDidMount() {
     const { years } = this.state;
-    console.log(years.length);
     Promise.all([d3.csv(higherPovertyData)]).then((files) => {
       const formattedHigherPovertyData = formatHigherPovertyData(
         files[0],
@@ -58,10 +59,10 @@ class BarGraphContainer extends Component {
 
   updateGraph = () => {
     setInterval(() => {
-      const { reserveData, index } = this.state;
-      console.log(index);
-      console.log(reserveData[index]);
+      const { reserveData, index, years } = this.state;
       this.setState({
+        displayText: years[index].toString(),
+        headerClass: 'fadeIn',
         higherPovertyDisplayData: reserveData[index],
         index: index === 16 ? 0 : index + 1,
       });
@@ -69,10 +70,21 @@ class BarGraphContainer extends Component {
   };
 
   render() {
-    const { higherPovertyDisplayData } = this.state;
-    // console.log(higherPovertyDisplayData);
+    const { higherPovertyDisplayData, displayText, headerClass } = this.state;
     return (
-      <div className="BarGraphContainer-sequence-container BarGraphContainer-sticky container-fluid">
+      <div className="BarGraphContainer-sequence-container container-fluid">
+        <div className="row">
+          <div className="col text-center">
+            <h1 className="StackedAreaGraphContainer-header-text">
+              EAP Economic Class
+            </h1>
+            <span
+              className={`StackedAreaGraphContainer-header-text-change ${headerClass}`}
+            >
+              {displayText}
+            </span>
+          </div>
+        </div>
         <div className="BarGraphContainer-container row">
           <div className="col-sm">
             <BarGraphV2 higherPovertyDisplayData={higherPovertyDisplayData} />
