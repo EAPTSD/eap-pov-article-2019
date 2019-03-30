@@ -23,14 +23,14 @@
   font-size: 2rem;
 }
 
-.fadeOut {
+.BarGraphContainer-fadeOut {
   opacity: 0;
-  animation: fadeout 1s linear;
+  animation: fadeout 0.5s linear;
 }
 
-.fadeIn {
+.BarGraphContainer-fadeIn {
   opacity: 1;
-  animation: fadein 1s linear;
+  animation: fadein 0.5s linear;
 }
 
 @keyframes fadeout {

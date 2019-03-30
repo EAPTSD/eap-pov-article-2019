@@ -60,13 +60,18 @@ class BarGraphContainer extends Component {
   updateGraph = () => {
     setInterval(() => {
       const { reserveData, index, years } = this.state;
+      setTimeout(() => {
+        this.setState({
+          headerClass: 'BarGraphContainer-fadeOut',
+        });
+      }, 1000);
       this.setState({
         displayText: years[index].toString(),
-        headerClass: 'fadeIn',
+        headerClass: 'BarGraphContainer-fadeIn',
         higherPovertyDisplayData: reserveData[index],
         index: index === 16 ? 0 : index + 1,
       });
-    }, 1300);
+    }, 1500);
   };
 
   render() {
