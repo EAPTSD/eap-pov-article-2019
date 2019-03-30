@@ -16,29 +16,27 @@ const color = {
 const BarGraphV2 = (props) => {
   const { higherPovertyDisplayData } = props;
   return (
-    <div className="BarGraphV2-sequence-container">
-      <div className="BarGraphV2-container">
-        <VictoryChart
-          height={400}
-          width={400}
-          // domain={{ y: [0, 1000] }}
-          domainPadding={{ x: 25 }}
-          animate={{ duration: 800 }}
-        >
-          <VictoryBar
-            barWidth={35}
-            style={{
-              data: {
-                fill: (d) => color[d.xName],
-              },
-            }}
-            categories={{
-              x: ['< $1.9', '$1.9-$3.2', '$3.2-$5.5', '$5.5-$15', '> $15'],
-            }}
-            data={higherPovertyDisplayData}
-          />
-        </VictoryChart>
-      </div>
+    <div className="BarGraphV2-container">
+      <VictoryChart
+        height={400}
+        width={450}
+        // domain={{ y: [0, 1000] }}
+        domainPadding={{ x: 35 }}
+        animate={{ duration: 800 }}
+      >
+        <VictoryBar
+          barWidth={40}
+          style={{
+            data: {
+              fill: (d) => color[d.xName],
+            },
+          }}
+          categories={{
+            x: ['< $1.9', '$1.9-$3.2', '$3.2-$5.5', '$5.5-$15', '> $15'],
+          }}
+          data={higherPovertyDisplayData}
+        />
+      </VictoryChart>
     </div>
   );
 };

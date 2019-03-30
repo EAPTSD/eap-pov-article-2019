@@ -75,11 +75,11 @@ class BarGraphContainer extends Component {
       <div className="BarGraphContainer-sequence-container container-fluid">
         <div className="row">
           <div className="col text-center">
-            <h1 className="StackedAreaGraphContainer-header-text">
-              EAP Economic Class
+            <h1 className="BarGraphContainer-header-text">
+              Developing EAP Poor Population with China
             </h1>
             <span
-              className={`StackedAreaGraphContainer-header-text-change ${headerClass}`}
+              className={`BarGraphContainer-header-text-change ${headerClass}`}
             >
               {displayText}
             </span>
