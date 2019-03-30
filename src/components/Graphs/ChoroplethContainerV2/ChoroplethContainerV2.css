@@ -1,0 +1,29 @@
+.ChoroplethContainerV2-sequence-container {
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  background-color: #606060;
+}
+
+.ChoroplethContainerV2-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #606060;
+  position: relative;
+}
+
+.ChoroplethContainerV2-sticky {
+  position: sticky;
+  top: 0px;
+}
+
+.ChoroplethContainerV2-sticky:before,
+.ChoroplethContainerV2-sticky:after {
+  content: '';
+  display: table;
+}
+
+.ChoroplethContainerV2-waypoint-buffer {
+  height: 120vh;
+  background-color: #606060;
+}

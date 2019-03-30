@@ -8,6 +8,7 @@ import BarGraphPercentage from '../Graphs/BarGraphPercentage';
 import BarGraphContainer from '../Graphs/BarGraphContainer';
 import BubbleGraphContainer from '../Graphs/BubbleGraphContainer';
 import ChoroplethContainer from '../Graphs/ChoroplethContainer';
+import ChoroplethContainerV2 from '../Graphs/ChoroplethContainerV2';
 import ChoroplethV3Eap from '../Graphs/ChoroplethV3Eap';
 import Header from '../Header';
 import StackedAreaGraph from '../Graphs/StackedAreaGraph';
@@ -51,7 +52,9 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
-        <Header />
+        {/* <ChoroplethContainerV2 /> */}
+        <ChoroplethV3Eap />
+        {/* <Header />
         <div className="StoryboardContainer">
           <div className="sb-text-container">
             {firstText.map((text, i) => {
@@ -111,7 +114,7 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

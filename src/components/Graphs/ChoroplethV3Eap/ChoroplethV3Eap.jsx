@@ -24,8 +24,7 @@ class ChoroplethV3Eap extends Component {
   }
 
   componentDidMount() {
-    // combinedData.objects.EAP_SubNations.geometries.map(country => console.log(country.properties));
-    // console.log(combinedData);
+    //  combinedData.objects.EAP_SubNations.geometries.map(country => console.log(country.properties));
 
     const choroplethContainerHeight = this.ChoroplethV3EapRef.current
       .clientHeight;
@@ -87,7 +86,7 @@ class ChoroplethV3Eap extends Component {
       .enter()
       .append('path')
       .attr('class', 'sub-nation')
-      .attr('fill', (d) => 'lightgrey')
+      .attr('fill', 'lightgrey')
       .attr('d', path);
 
     svg
@@ -96,7 +95,7 @@ class ChoroplethV3Eap extends Component {
         topojson.mesh(
           combinedData,
           combinedData.objects.EAP_Countries,
-          (a) => a
+          (a) => a.id !== 1
         )
       )
       .attr('fill', 'none')
