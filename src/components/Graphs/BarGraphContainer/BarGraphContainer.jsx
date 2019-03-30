@@ -51,7 +51,9 @@ class BarGraphContainer extends Component {
           reserveData: formattedHigherPovertyData,
         },
         () => {
-          this.updateGraph();
+          setTimeout(() => {
+            this.updateGraph();
+          }, 3000);
         }
       );
     });
@@ -64,7 +66,7 @@ class BarGraphContainer extends Component {
         this.setState({
           headerClass: 'BarGraphContainer-fadeOut',
         });
-      }, 1000);
+      }, 1200);
       this.setState({
         displayText: years[index].toString(),
         headerClass: 'BarGraphContainer-fadeIn',
