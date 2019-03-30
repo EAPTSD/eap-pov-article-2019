@@ -1,6 +1,7 @@
 .BarGraphContainer-sequence-container {
   -webkit-font-smoothing: antialiased;
-  height: 100vh;
+  height: 85vh;
+  padding: 15px 0;
   background-color: lightgrey;
 }
 
@@ -10,23 +11,42 @@
   margin: 0 auto;
 }
 
-.BarGraphContainer-sticky {
-  position: sticky;
-  top: 0px;
-}
-
-.BarGraphContainer-sticky:before,
-.BarGraphContainer-sticky:after {
-  content: '';
-  display: table;
-}
-
-.BarGraphContainer-waypoint-buffer {
-  height: 150vh;
-  background-color: lightgrey;
-}
-
 .BarGraphContainer-header-text {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   margin-bottom: 0;
+  font-size: 2.5rem;
+}
+
+.BarGraphContainer-header-text-change {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  margin-bottom: 0;
+  font-size: 2rem;
+}
+
+.BarGraphContainer-fadeOut {
+  opacity: 0;
+  animation: fadeout 0.3s linear;
+}
+
+.BarGraphContainer-fadeIn {
+  opacity: 1;
+  animation: fadein 0.5s linear;
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

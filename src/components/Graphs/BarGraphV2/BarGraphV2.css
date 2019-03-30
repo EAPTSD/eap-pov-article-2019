@@ -1,18 +1,5 @@
-.BarGraphV2-sequence-container {
-  position: relative;
-  -webkit-font-smoothing: antialiased;
-  background-color: lightgrey;
-}
-
 .BarGraphV2-container {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  background-color: lightgrey;
-}
-
-.BarGraphV2-container .VictoryContainer {
-  width: 75% !important;
-  height: 75% !important;
-  margin: 0 auto;
+  position: relative;
+  height: 75vh;
+  top: -40px;
 }

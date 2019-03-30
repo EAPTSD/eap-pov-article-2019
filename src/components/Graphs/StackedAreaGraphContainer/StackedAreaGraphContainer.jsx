@@ -134,47 +134,45 @@ class StackedAreaGraphContainer extends Component {
       headerClass,
     } = this.state;
     return (
-      <div>
-        <div className="StackedAreaGraphContainer-sequence-container container-fluid">
-          <div className="row">
-            <div className="col text-center">
-              <h1 className="StackedAreaGraphContainer-header-text">
-                EAP Economic Class
-              </h1>
-              <span
-                className={`StackedAreaGraphContainer-header-text-change ${headerClass}`}
-              >
-                {displayText}
-              </span>
-            </div>
+      <div className="StackedAreaGraphContainer-sequence-container container-fluid">
+        <div className="row">
+          <div className="col text-center">
+            <h1 className="StackedAreaGraphContainer-header-text">
+              EAP Economic Class
+            </h1>
+            <span
+              className={`StackedAreaGraphContainer-header-text-change ${headerClass}`}
+            >
+              {displayText}
+            </span>
           </div>
-          <div className="StackedAreaGraphContainer-container row">
-            <div className="col-sm">
-              <StackedAreaGraphV2
-                data={data}
-                color={'blue'}
-                externalMutations={externalMutations}
-              />
-            </div>
-            <div className="col-sm">
-              <StackedAreaGraphV2
-                data={percentageData}
-                color={purpColors}
-                isPercent={true}
-                externalMutations={externalMutations}
-              />
-            </div>
+        </div>
+        <div className="StackedAreaGraphContainer-container row">
+          <div className="col-sm">
+            <StackedAreaGraphV2
+              data={data}
+              color={'blue'}
+              externalMutations={externalMutations}
+            />
           </div>
-          <div className="row text-center StackedAreaLegend-container">
-            <div className="col-sm">
-              <StackedAreaLegend
-                povClasses={povClasses}
-                coolColors={coolColors}
-                purpColors={purpColors}
-                highlightArea={this.highlightArea}
-                unhighlightArea={this.unhighlightArea}
-              />
-            </div>
+          <div className="col-sm">
+            <StackedAreaGraphV2
+              data={percentageData}
+              color={purpColors}
+              isPercent={true}
+              externalMutations={externalMutations}
+            />
+          </div>
+        </div>
+        <div className="row text-center StackedAreaLegend-container">
+          <div className="col-sm">
+            <StackedAreaLegend
+              povClasses={povClasses}
+              coolColors={coolColors}
+              purpColors={purpColors}
+              highlightArea={this.highlightArea}
+              unhighlightArea={this.unhighlightArea}
+            />
           </div>
         </div>
       </div>
