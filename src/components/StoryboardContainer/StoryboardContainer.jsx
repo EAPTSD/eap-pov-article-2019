@@ -52,8 +52,8 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
-        {/* <ChoroplethContainerV2 /> */}
-        <ChoroplethV3Eap />
+        <ChoroplethContainerV2 />
+        {/* <ChoroplethV3Eap /> */}
         {/* <Header />
         <div className="StoryboardContainer">
           <div className="sb-text-container">

@@ -71,8 +71,6 @@ class Choropleth extends Component {
   }
 
   renderMap = () => {
-    scaleByScreenSize();
-
     const {
       color,
       containerHeight,

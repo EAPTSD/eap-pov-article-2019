@@ -48,6 +48,12 @@ class ChoroplethV3Eap extends Component {
         this.renderMap();
       }
     );
+
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
   }
 
   renderMap = () => {
@@ -59,35 +65,22 @@ class ChoroplethV3Eap extends Component {
       mapCenter,
     } = this.state;
 
-    // marshall islands, palau ??
-    // 1 -> china
-    // 10, 242 -> timor-leste
-    // 12, 262  -> vanuatu
-    // 13, 225 -> solomon islands
-    // 14, 83 -> fiji
-    // 15, 163 -> federated states
-    // 135 -> Kiribaiti
-    // 212 -> Samoa
-    // 245 -> Tonga
-    // 252 -> Tuavalu
-
     const extractedCountries = [
-      1,
+      1, // China
       12,
+      262, // ^Vanuatu
       13,
+      225, // ^Solomon Islands
       14,
+      83, // ^Fiji
       15,
-      83,
-      135,
-      163,
-      212,
-      225,
-      245,
-      252,
-      262,
-    ];
+      163, // ^Federated States
+      135, // Kiribaiti
+      212, // Samoa
+      245, // Tonga
+      252, // Tuavalu
+    ]; // marshall islands, palau ??
 
-    console.log(featureCollection.features);
     const filteredCollection = featureCollection.features.filter((country) => {
       return !extractedCountries.includes(country.properties.ADM0_CODE);
     });
@@ -99,11 +92,8 @@ class ChoroplethV3Eap extends Component {
       .attr('height', containerHeight)
       .attr('width', containerWidth);
 
-    // const scale = 600;
-    // const offset = [containerWidth / 2.5, containerHeight / 4.4];
-    const scale = 400;
-    const offset = [containerWidth / 4, containerHeight / 4.4];
-
+    const offset = [containerWidth / 2.5, containerHeight / 20.89];
+    const scale = this.getScale(containerWidth, containerHeight);
     const projection = d3
       .geoMercator()
       .scale(scale)
@@ -150,6 +140,41 @@ class ChoroplethV3Eap extends Component {
       .attr('stroke', 'white')
       .attr('stroke-linejoin', 'round')
       .attr('d', path);
+  };
+
+  getScale = (width, height) => {
+    const baseScale = 800;
+    const scaleFactor = 2.5;
+    const baseWidth = 470;
+    const baseHeight = 270;
+
+    const scale1 = (baseScale * width) / baseWidth;
+    const scale2 = (baseScale * height) / baseHeight;
+    return d3.min([scale1, scale2]) / scaleFactor;
+  };
+
+  onResize = () => {
+    const { mapCenter } = this.state;
+
+    const containerHeight = this.ChoroplethV3EapRef.current.clientHeight;
+    const containerWidth = this.ChoroplethV3EapRef.current.clientWidth;
+    const newScale = this.getScale(containerWidth, containerHeight);
+    const newOffset = [containerWidth / 2.5, containerHeight / 20.89];
+
+    const newProjection = d3
+      .geoMercator()
+      .scale(newScale)
+      .center(mapCenter)
+      .translate(newOffset);
+
+    const newPath = d3.geoPath().projection(newProjection);
+
+    const svg = d3
+      .select('.ChoroplethV3Eap-svg')
+      .attr('height', containerHeight)
+      .attr('width', containerWidth);
+
+    svg.selectAll('path').attr('d', newPath);
   };
 
   render() {
