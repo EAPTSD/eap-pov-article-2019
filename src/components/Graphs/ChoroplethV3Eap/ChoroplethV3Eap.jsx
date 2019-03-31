@@ -7,7 +7,6 @@ import * as topojson from 'topojson';
 import './ChoroplethV3Eap.css';
 
 // Data
-import eapSubNatData from '../../../data/ChoroplethData/EAP_subnat_topojson.json';
 import combinedData from '../../../data/ChoroplethData/EAP_topojson.json';
 
 class ChoroplethV3Eap extends Component {
@@ -24,7 +23,7 @@ class ChoroplethV3Eap extends Component {
   }
 
   componentDidMount() {
-    //  combinedData.objects.EAP_SubNations.geometries.map(country => console.log(country.properties));
+    // combinedData.objects.EAP_SubNations.geometries.map(country => console.log(country.properties));
 
     const choroplethContainerHeight = this.ChoroplethV3EapRef.current
       .clientHeight;
@@ -60,6 +59,39 @@ class ChoroplethV3Eap extends Component {
       mapCenter,
     } = this.state;
 
+    // marshall islands, palau ??
+    // 1 -> china
+    // 10, 242 -> timor-leste
+    // 12, 262  -> vanuatu
+    // 13, 225 -> solomon islands
+    // 14, 83 -> fiji
+    // 15, 163 -> federated states
+    // 135 -> Kiribaiti
+    // 212 -> Samoa
+    // 245 -> Tonga
+    // 252 -> Tuavalu
+
+    const extractedCountries = [
+      1,
+      12,
+      13,
+      14,
+      15,
+      83,
+      135,
+      163,
+      212,
+      225,
+      245,
+      252,
+      262,
+    ];
+
+    console.log(featureCollection.features);
+    const filteredCollection = featureCollection.features.filter((country) => {
+      return !extractedCountries.includes(country.properties.ADM0_CODE);
+    });
+
     const svg = d3
       .select('.ChoroplethV3Eap-container')
       .append('svg')
@@ -67,8 +99,10 @@ class ChoroplethV3Eap extends Component {
       .attr('height', containerHeight)
       .attr('width', containerWidth);
 
+    // const scale = 600;
+    // const offset = [containerWidth / 2.5, containerHeight / 4.4];
     const scale = 400;
-    const offset = [containerWidth / 3, containerHeight / 2.4];
+    const offset = [containerWidth / 4, containerHeight / 4.4];
 
     const projection = d3
       .geoMercator()
@@ -82,7 +116,7 @@ class ChoroplethV3Eap extends Component {
       .append('g')
       .attr('class', 'country')
       .selectAll('path')
-      .data(featureCollection.features)
+      .data(filteredCollection)
       .enter()
       .append('path')
       .attr('class', 'sub-nation')
@@ -95,7 +129,7 @@ class ChoroplethV3Eap extends Component {
         topojson.mesh(
           combinedData,
           combinedData.objects.EAP_Countries,
-          (a) => a.id !== 1
+          (a) => !extractedCountries.includes(a.id)
         )
       )
       .attr('fill', 'none')
