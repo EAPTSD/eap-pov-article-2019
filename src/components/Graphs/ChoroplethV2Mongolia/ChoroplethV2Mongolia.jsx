@@ -7,15 +7,15 @@ import * as topojson from 'topojson';
 import './ChoroplethV2Mongolia.css';
 
 // Data
-import mngData from '../../../data/ChoroplethData/MNG_topojson.json';
+import combinedData from '../../../data/ChoroplethData/EAP_topojson.json';
 
 class ChoroplethV2Mongolia extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mngData: null,
-      windowHeight: null,
-      windowWidth: null,
+      mngCollection: null,
+      containerHeight: null,
+      containerWidth: null,
       mapCenter: null,
       featureCollection: null,
     };
@@ -29,14 +29,25 @@ class ChoroplethV2Mongolia extends Component {
       .ChoroplethV2MongoliaContainerRef.current.clientWidth;
 
     const featureCollection = topojson.feature(
-      mngData,
-      mngData.objects.mng_adm1_subnatid
+      combinedData,
+      combinedData.objects.EAP_SubNations
     );
-    const center = d3.geoPath().centroid(featureCollection);
+    const mngIsoloated = featureCollection.features.filter((country) => {
+      return [167].includes(country.properties.ADM0_CODE);
+    });
+
+    console.log(mngIsoloated);
+
+    const mngCollection = {
+      features: mngIsoloated,
+      type: 'FeatureCollection',
+    };
+
+    const center = d3.geoPath().centroid(mngCollection);
 
     this.setState(
       {
-        mngData: mngData,
+        mngCollection: mngCollection,
         containerHeight: ChoroplethV2MongoliaContainerHeight,
         containerWidth: ChoroplethV2MongoliaContainerWidth,
         mapCenter: center,
@@ -50,6 +61,7 @@ class ChoroplethV2Mongolia extends Component {
 
   renderMap = () => {
     const {
+      mngCollection,
       containerHeight,
       containerWidth,
       featureCollection,
@@ -77,11 +89,26 @@ class ChoroplethV2Mongolia extends Component {
       .append('g')
       .attr('class', 'country')
       .selectAll('path')
-      .data(featureCollection.features)
+      .data(mngCollection.features)
       .enter()
       .append('path')
       .attr('class', 'sub-nation')
       .attr('fill', 'lightgrey')
+      .attr('d', path);
+
+    svg
+      .append('path')
+      .datum(
+        topojson.mesh(
+          combinedData,
+          combinedData.objects.EAP_Countries,
+          (a) => a
+        )
+      )
+      .attr('fill', 'none')
+      .attr('stroke', 'white')
+      .attr('stroke-width', '0.5px')
+      .attr('stroke-linejoin', 'round')
       .attr('d', path);
   };
 
