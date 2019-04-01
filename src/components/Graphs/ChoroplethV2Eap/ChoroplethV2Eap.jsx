@@ -13,8 +13,8 @@ class ChoroplethV2Eap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      windowHeight: null,
-      windowWidth: null,
+      containerHeight: null,
+      containerWidth: null,
       mapCenter: null,
       featureCollection: null,
     };
@@ -44,6 +44,12 @@ class ChoroplethV2Eap extends Component {
         this.renderMap();
       }
     );
+
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
   }
 
   renderMap = () => {
@@ -112,6 +118,41 @@ class ChoroplethV2Eap extends Component {
       .attr('stroke-width', '0.5px')
       .attr('stroke-linejoin', 'round')
       .attr('d', path);
+  };
+
+  getScale = (width, height) => {
+    const baseScale = 555;
+    const scaleFactor = 1.8;
+    const baseWidth = 470;
+    const baseHeight = 270;
+
+    const scale1 = (baseScale * width) / baseWidth;
+    const scale2 = (baseScale * height) / baseHeight;
+    return d3.min([scale1, scale2]) / scaleFactor;
+  };
+
+  onResize = () => {
+    const { mapCenter } = this.state;
+
+    const containerHeight = this.ChoroplethV2EapRef.current.clientHeight;
+    const containerWidth = this.ChoroplethV2EapRef.current.clientWidth;
+    const newScale = this.getScale(containerWidth, containerHeight);
+    const newOffset = [containerWidth / 6, containerHeight / 25];
+
+    const newProjection = d3
+      .geoMercator()
+      .scale(newScale)
+      .center(mapCenter)
+      .translate(newOffset);
+
+    const newPath = d3.geoPath().projection(newProjection);
+
+    const svg = d3
+      .select('.ChoroplethV2Eap-svg')
+      .attr('height', containerHeight)
+      .attr('width', containerWidth);
+
+    svg.selectAll('path').attr('d', newPath);
   };
 
   render() {

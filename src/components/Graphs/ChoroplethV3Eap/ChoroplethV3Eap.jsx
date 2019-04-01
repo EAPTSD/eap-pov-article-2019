@@ -50,6 +50,12 @@ class ChoroplethV3Eap extends Component {
         this.renderMap();
       }
     );
+
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
   }
 
   renderMap = () => {
