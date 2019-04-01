@@ -119,6 +119,41 @@ class ChoroplethV3Eap extends Component {
       .attr('d', path);
   };
 
+  getScale = (width, height) => {
+    const baseScale = 400;
+    const scaleFactor = 2.5;
+    const baseWidth = 470;
+    const baseHeight = 270;
+
+    const scale1 = (baseScale * width) / baseWidth;
+    const scale2 = (baseScale * height) / baseHeight;
+    return d3.min([scale1, scale2]) / scaleFactor;
+  };
+
+  onResize = () => {
+    const { mapCenter } = this.state;
+
+    const containerHeight = this.ChoroplethV3EapRef.current.clientHeight;
+    const containerWidth = this.ChoroplethV3EapRef.current.clientWidth;
+    const newScale = this.getScale(containerWidth, containerHeight);
+    const newOffset = [containerWidth / 3, containerHeight / 2.4];
+
+    const newProjection = d3
+      .geoMercator()
+      .scale(newScale)
+      .center(mapCenter)
+      .translate(newOffset);
+
+    const newPath = d3.geoPath().projection(newProjection);
+
+    const svg = d3
+      .select('.ChoroplethV3Eap-svg')
+      .attr('height', containerHeight)
+      .attr('width', containerWidth);
+
+    svg.selectAll('path').attr('d', newPath);
+  };
+
   render() {
     return (
       <div
