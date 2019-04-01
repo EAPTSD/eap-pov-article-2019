@@ -7,14 +7,12 @@ import * as topojson from 'topojson';
 import './ChoroplethV2Eap.css';
 
 // Data
-import eapCountryData from '../../../data/ChoroplethData/EAP_subnat_topojson.json';
+import combinedData from '../../../data/ChoroplethData/EAP_topojson.json';
 
 class ChoroplethV2Eap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: null,
-      eapCountryData: null,
       windowHeight: null,
       windowWidth: null,
       mapCenter: null,
@@ -24,26 +22,19 @@ class ChoroplethV2Eap extends Component {
   }
 
   componentDidMount() {
-    const color = d3
-      .scaleQuantize()
-      .domain([0, 10])
-      .range(d3.schemeBlues[9]);
-
     const choroplethContainerHeight = this.ChoroplethV2EapRef.current
       .clientHeight;
     const choroplethContainerWidth = this.ChoroplethV2EapRef.current
       .clientWidth;
 
     const featureCollection = topojson.feature(
-      eapCountryData,
-      eapCountryData.objects.eap_all_by_subnatid1_shapefile
+      combinedData,
+      combinedData.objects.EAP_SubNations
     );
     const center = d3.geoPath().centroid(featureCollection);
 
     this.setState(
       {
-        color: color,
-        eapCountryData: eapCountryData,
         containerHeight: choroplethContainerHeight,
         containerWidth: choroplethContainerWidth,
         mapCenter: center,
@@ -90,6 +81,36 @@ class ChoroplethV2Eap extends Component {
       .append('path')
       .attr('class', 'sub-nation')
       .attr('fill', (d) => 'lightgrey')
+      .attr('d', path);
+
+    svg
+      .append('path')
+      .datum(
+        topojson.mesh(
+          combinedData,
+          combinedData.objects.EAP_Countries,
+          (a) => a
+        )
+      )
+      .attr('fill', 'none')
+      .attr('stroke', 'white')
+      .attr('stroke-width', '0.5px')
+      .attr('stroke-linejoin', 'round')
+      .attr('d', path);
+
+    svg
+      .append('path')
+      .datum(
+        topojson.mesh(
+          combinedData,
+          combinedData.objects.EAP_SubNations,
+          (a) => a.properties.ADM0_CODE === 147295
+        )
+      )
+      .attr('fill', 'none')
+      .attr('stroke', 'white')
+      .attr('stroke-width', '0.5px')
+      .attr('stroke-linejoin', 'round')
       .attr('d', path);
   };
 
