@@ -5,10 +5,10 @@
   align-items: center;
   background-color: #606060;
   text-align: center;
-  position: relative;
-  right: 10%;
-  top: -20%;
-  transform: translateX(10%) translateY(-20%);
+  position: absolute;
+  right: 35%;
+  top: 5%;
+  transform: translateX(35%) translateY(5%);
 }
 
 .ChoroplethV2Mongolia-container svg {

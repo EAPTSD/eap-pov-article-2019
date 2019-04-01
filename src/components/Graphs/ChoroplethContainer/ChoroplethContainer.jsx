@@ -44,7 +44,7 @@ class ChoroplethContainer extends Component {
       <div className="ChoroplethContainer-sequence-container">
         <div className="ChoroplethContainer-container ChoroplethContainer-sticky">
           <ChoroplethV2Eap />
-          {/* <ChoroplethV2Mongolia /> */}
+          <ChoroplethV2Mongolia />
         </div>
         {index.map((i) => {
           return (

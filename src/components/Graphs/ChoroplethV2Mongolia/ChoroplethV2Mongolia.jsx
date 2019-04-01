@@ -4,7 +4,6 @@ import * as d3 from 'd3';
 import * as topojson from 'topojson';
 
 // Internal Imports
-import getRandomInt from '../../../utilities/getRandomInt';
 import './ChoroplethV2Mongolia.css';
 
 // Data
@@ -14,7 +13,6 @@ class ChoroplethV2Mongolia extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: null,
       mngData: null,
       windowHeight: null,
       windowWidth: null,
@@ -25,11 +23,6 @@ class ChoroplethV2Mongolia extends Component {
   }
 
   componentDidMount() {
-    const color = d3
-      .scaleQuantize()
-      .domain([0, 10])
-      .range(d3.schemeBlues[9]);
-
     const ChoroplethV2MongoliaContainerHeight = this
       .ChoroplethV2MongoliaContainerRef.current.clientHeight;
     const ChoroplethV2MongoliaContainerWidth = this
@@ -43,7 +36,6 @@ class ChoroplethV2Mongolia extends Component {
 
     this.setState(
       {
-        color: color,
         mngData: mngData,
         containerHeight: ChoroplethV2MongoliaContainerHeight,
         containerWidth: ChoroplethV2MongoliaContainerWidth,
@@ -58,7 +50,6 @@ class ChoroplethV2Mongolia extends Component {
 
   renderMap = () => {
     const {
-      color,
       containerHeight,
       containerWidth,
       featureCollection,
@@ -90,7 +81,7 @@ class ChoroplethV2Mongolia extends Component {
       .enter()
       .append('path')
       .attr('class', 'sub-nation')
-      .attr('fill', (d) => 'lightgrey')
+      .attr('fill', 'lightgrey')
       .attr('d', path);
   };
 
