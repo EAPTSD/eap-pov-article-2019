@@ -68,7 +68,7 @@ class ChoroplethV2Eap extends Component {
       .attr('width', containerWidth);
 
     const scale = this.getScale(containerWidth, containerHeight);
-    const offset = [containerWidth / 6, containerHeight / 25];
+    const offset = [containerWidth / 4, containerHeight / 400];
 
     const projection = d3
       .geoMercator()
@@ -121,10 +121,10 @@ class ChoroplethV2Eap extends Component {
   };
 
   getScale = (width, height) => {
-    const baseScale = 555;
-    const scaleFactor = 1.48;
+    const baseScale = 725;
+    const scaleFactor = 2.5;
     const baseWidth = 470;
-    const baseHeight = 370;
+    const baseHeight = 270;
 
     const scale1 = (baseScale * width) / baseWidth;
     const scale2 = (baseScale * height) / baseHeight;
@@ -137,7 +137,7 @@ class ChoroplethV2Eap extends Component {
     const containerHeight = this.ChoroplethV2EapRef.current.clientHeight;
     const containerWidth = this.ChoroplethV2EapRef.current.clientWidth;
     const newScale = this.getScale(containerWidth, containerHeight);
-    const newOffset = [containerWidth / 6, containerHeight / 25];
+    const newOffset = [containerWidth / 4, containerHeight / 30];
 
     const newProjection = d3
       .geoMercator()
