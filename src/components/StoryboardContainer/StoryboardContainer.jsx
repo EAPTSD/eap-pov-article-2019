@@ -10,6 +10,8 @@ import BubbleGraphContainer from '../Graphs/BubbleGraphContainer';
 import ChoroplethContainer from '../Graphs/ChoroplethContainer';
 import ChoroplethContainerV2 from '../Graphs/ChoroplethContainerV2';
 import ChoroplethV3Eap from '../Graphs/ChoroplethV3Eap';
+import ChoroplethV2Fiji from '../Graphs/ChoroplethV2Fiji';
+import ChoroplethV2Vanuatu from '../Graphs/ChoroplethV2Vanuatu';
 import Header from '../Header';
 import StackedAreaGraph from '../Graphs/StackedAreaGraph';
 import StackedAreaGraphContainer from '../Graphs/StackedAreaGraphContainer';
@@ -53,6 +55,8 @@ class StoryboardContainer extends Component {
     return (
       <div>
         <ChoroplethContainerV2 />
+        {/* <ChoroplethV2Vanuatu /> */}
+        {/* <ChoroplethV2Fiji /> */}
         {/* <ChoroplethV3Eap /> */}
         {/* <Header />
         <div className="StoryboardContainer">

@@ -4,43 +4,51 @@ import * as d3 from 'd3';
 import * as topojson from 'topojson';
 
 // Internal Imports
-import './ChoroplethV2Mongolia.css';
+import './ChoroplethV2Fiji.css';
 
 // Data
-import mngData from '../../../data/ChoroplethData/MNG_topojson.json';
+import combinedData from '../../../data/ChoroplethData/EAP_topojson.json';
 
-class ChoroplethV2Mongolia extends Component {
+class ChoroplethV2Fiji extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mngData: null,
+      fijiCollection: null,
       containerHeight: null,
       containerWidth: null,
       mapCenter: null,
       featureCollection: null,
     };
-    this.ChoroplethV2MongoliaContainerRef = React.createRef();
+    this.ChoroplethV2FijiContainerRef = React.createRef();
   }
 
   componentDidMount() {
-    console.log(mngData);
-
-    const ChoroplethV2MongoliaContainerHeight = this
-      .ChoroplethV2MongoliaContainerRef.current.clientHeight;
-    const ChoroplethV2MongoliaContainerWidth = this
-      .ChoroplethV2MongoliaContainerRef.current.clientWidth;
+    const ChoroplethV2FijiContainerHeight = this.ChoroplethV2FijiContainerRef
+      .current.clientHeight;
+    const ChoroplethV2FijiContainerWidth = this.ChoroplethV2FijiContainerRef
+      .current.clientWidth;
 
     const featureCollection = topojson.feature(
-      mngData,
-      mngData.objects.mng_adm1_subnatid
+      combinedData,
+      combinedData.objects.EAP_SubNations
     );
-    const center = d3.geoPath().centroid(featureCollection);
+
+    const fijiIsoloated = featureCollection.features.filter((country) => {
+      return [3377, 3379, 3380].includes(country.properties.OBJECTID);
+    });
+
+    const fijiCollection = {
+      features: fijiIsoloated,
+      type: 'FeatureCollection',
+    };
+
+    const center = [177.7833794722082, -17.753291284397186];
 
     this.setState(
       {
-        mngData: mngData,
-        containerHeight: ChoroplethV2MongoliaContainerHeight,
-        containerWidth: ChoroplethV2MongoliaContainerWidth,
+        fijiCollection: fijiCollection,
+        containerHeight: ChoroplethV2FijiContainerHeight,
+        containerWidth: ChoroplethV2FijiContainerWidth,
         mapCenter: center,
         featureCollection: featureCollection,
       },
@@ -60,18 +68,18 @@ class ChoroplethV2Mongolia extends Component {
     const {
       containerHeight,
       containerWidth,
-      featureCollection,
+      fijiCollection,
       mapCenter,
     } = this.state;
 
     const svg = d3
-      .select('.ChoroplethV2Mongolia-container')
+      .select('.ChoroplethV2Fiji-container')
       .append('svg')
-      .attr('class', 'ChoroplethV2Mongolia-svg')
+      .attr('class', 'ChoroplethV2Fiji-svg')
       .attr('height', containerHeight)
       .attr('width', containerWidth);
 
-    const offset = [containerWidth / 2.1, containerHeight / 2];
+    const offset = [containerWidth / 3.75, containerHeight / 1.65];
     const scale = this.getScale();
     const projection = d3
       .geoMercator()
@@ -85,18 +93,33 @@ class ChoroplethV2Mongolia extends Component {
       .append('g')
       .attr('class', 'country')
       .selectAll('path')
-      .data(featureCollection.features)
+      .data(fijiCollection.features)
       .enter()
       .append('path')
       .attr('class', 'sub-nation')
-      .attr('fill', (d) => 'lightgrey')
+      .attr('fill', 'lightgrey')
+      .attr('d', path);
+
+    svg
+      .append('path')
+      .datum(
+        topojson.mesh(
+          combinedData,
+          combinedData.objects.EAP_Countries,
+          (a) => a
+        )
+      )
+      .attr('fill', 'none')
+      .attr('stroke', 'white')
+      .attr('stroke-width', '0.5px')
+      .attr('stroke-linejoin', 'round')
       .attr('d', path);
   };
 
   getScale = () => {
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
-    const baseScale = 475;
+    const baseScale = 1500;
     const scaleFactor = 4.6;
     const baseWidth = 300;
     const baseHeight = 150;
@@ -110,12 +133,12 @@ class ChoroplethV2Mongolia extends Component {
   onResize = () => {
     const { mapCenter } = this.state;
 
-    const containerHeight = this.ChoroplethV2MongoliaContainerRef.current
+    const containerHeight = this.ChoroplethV2FijiContainerRef.current
       .clientHeight;
-    const containerWidth = this.ChoroplethV2MongoliaContainerRef.current
+    const containerWidth = this.ChoroplethV2FijiContainerRef.current
       .clientWidth;
     const newScale = this.getScale();
-    const newOffset = [containerWidth / 2.1, containerHeight / 2];
+    const newOffset = [containerWidth / 3.75, containerHeight / 1.65];
 
     const newProjection = d3
       .geoMercator()
@@ -126,7 +149,7 @@ class ChoroplethV2Mongolia extends Component {
     const newPath = d3.geoPath().projection(newProjection);
 
     const svg = d3
-      .select('.ChoroplethV2Mongolia-svg')
+      .select('.ChoroplethV2Fiji-svg')
       .attr('height', containerHeight)
       .attr('width', containerWidth);
 
@@ -136,11 +159,11 @@ class ChoroplethV2Mongolia extends Component {
   render() {
     return (
       <div
-        className="ChoroplethV2Mongolia-container"
-        ref={this.ChoroplethV2MongoliaContainerRef}
+        className="ChoroplethV2Fiji-container"
+        ref={this.ChoroplethV2FijiContainerRef}
       />
     );
   }
 }
 
-export default ChoroplethV2Mongolia;
+export default ChoroplethV2Fiji;

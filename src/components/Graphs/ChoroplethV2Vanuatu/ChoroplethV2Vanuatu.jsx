@@ -4,43 +4,51 @@ import * as d3 from 'd3';
 import * as topojson from 'topojson';
 
 // Internal Imports
-import './ChoroplethV2Mongolia.css';
+import './ChoroplethV2Vanuatu.css';
 
 // Data
-import mngData from '../../../data/ChoroplethData/MNG_topojson.json';
+import combinedData from '../../../data/ChoroplethData/EAP_topojson.json';
 
-class ChoroplethV2Mongolia extends Component {
+class ChoroplethV2Vanuatu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mngData: null,
+      vanuatuCollection: null,
       containerHeight: null,
       containerWidth: null,
       mapCenter: null,
       featureCollection: null,
     };
-    this.ChoroplethV2MongoliaContainerRef = React.createRef();
+    this.ChoroplethV2VanuatuContainerRef = React.createRef();
   }
 
   componentDidMount() {
-    console.log(mngData);
-
-    const ChoroplethV2MongoliaContainerHeight = this
-      .ChoroplethV2MongoliaContainerRef.current.clientHeight;
-    const ChoroplethV2MongoliaContainerWidth = this
-      .ChoroplethV2MongoliaContainerRef.current.clientWidth;
+    const ChoroplethV2VanuatuContainerHeight = this
+      .ChoroplethV2VanuatuContainerRef.current.clientHeight;
+    const ChoroplethV2VanuatuContainerWidth = this
+      .ChoroplethV2VanuatuContainerRef.current.clientWidth;
 
     const featureCollection = topojson.feature(
-      mngData,
-      mngData.objects.mng_adm1_subnatid
+      combinedData,
+      combinedData.objects.EAP_SubNations
     );
-    const center = d3.geoPath().centroid(featureCollection);
+
+    const vanuatuIsoloated = featureCollection.features.filter((country) => {
+      return [262].includes(country.properties.ADM0_CODE);
+    });
+
+    const vanuatuCollection = {
+      features: vanuatuIsoloated,
+      type: 'FeatureCollection',
+    };
+
+    const center = d3.geoPath().centroid(vanuatuCollection);
 
     this.setState(
       {
-        mngData: mngData,
-        containerHeight: ChoroplethV2MongoliaContainerHeight,
-        containerWidth: ChoroplethV2MongoliaContainerWidth,
+        vanuatuCollection: vanuatuCollection,
+        containerHeight: ChoroplethV2VanuatuContainerHeight,
+        containerWidth: ChoroplethV2VanuatuContainerWidth,
         mapCenter: center,
         featureCollection: featureCollection,
       },
@@ -60,22 +68,22 @@ class ChoroplethV2Mongolia extends Component {
     const {
       containerHeight,
       containerWidth,
-      featureCollection,
+      vanuatuCollection,
       mapCenter,
     } = this.state;
 
     const svg = d3
-      .select('.ChoroplethV2Mongolia-container')
+      .select('.ChoroplethV2Vanuatu-container')
       .append('svg')
-      .attr('class', 'ChoroplethV2Mongolia-svg')
+      .attr('class', 'ChoroplethV2Vanuatu-svg')
       .attr('height', containerHeight)
       .attr('width', containerWidth);
 
-    const offset = [containerWidth / 2.1, containerHeight / 2];
+    const offset = [containerWidth / 2, containerHeight / 2.25];
     const scale = this.getScale();
     const projection = d3
       .geoMercator()
-      .scale(scale)
+      .scale(700)
       .center(mapCenter)
       .translate(offset);
 
@@ -85,18 +93,33 @@ class ChoroplethV2Mongolia extends Component {
       .append('g')
       .attr('class', 'country')
       .selectAll('path')
-      .data(featureCollection.features)
+      .data(vanuatuCollection.features)
       .enter()
       .append('path')
       .attr('class', 'sub-nation')
-      .attr('fill', (d) => 'lightgrey')
+      .attr('fill', 'lightgrey')
+      .attr('d', path);
+
+    svg
+      .append('path')
+      .datum(
+        topojson.mesh(
+          combinedData,
+          combinedData.objects.EAP_Countries,
+          (a) => a
+        )
+      )
+      .attr('fill', 'none')
+      .attr('stroke', 'white')
+      .attr('stroke-width', '0.5px')
+      .attr('stroke-linejoin', 'round')
       .attr('d', path);
   };
 
   getScale = () => {
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
-    const baseScale = 475;
+    const baseScale = 700;
     const scaleFactor = 4.6;
     const baseWidth = 300;
     const baseHeight = 150;
@@ -110,12 +133,12 @@ class ChoroplethV2Mongolia extends Component {
   onResize = () => {
     const { mapCenter } = this.state;
 
-    const containerHeight = this.ChoroplethV2MongoliaContainerRef.current
+    const containerHeight = this.ChoroplethV2VanuatuContainerRef.current
       .clientHeight;
-    const containerWidth = this.ChoroplethV2MongoliaContainerRef.current
+    const containerWidth = this.ChoroplethV2VanuatuContainerRef.current
       .clientWidth;
     const newScale = this.getScale();
-    const newOffset = [containerWidth / 2.1, containerHeight / 2];
+    const newOffset = [containerWidth / 2, containerHeight / 2.25];
 
     const newProjection = d3
       .geoMercator()
@@ -126,7 +149,7 @@ class ChoroplethV2Mongolia extends Component {
     const newPath = d3.geoPath().projection(newProjection);
 
     const svg = d3
-      .select('.ChoroplethV2Mongolia-svg')
+      .select('.ChoroplethV2Vanuatu-svg')
       .attr('height', containerHeight)
       .attr('width', containerWidth);
 
@@ -136,11 +159,11 @@ class ChoroplethV2Mongolia extends Component {
   render() {
     return (
       <div
-        className="ChoroplethV2Mongolia-container"
-        ref={this.ChoroplethV2MongoliaContainerRef}
+        className="ChoroplethV2Vanuatu-container"
+        ref={this.ChoroplethV2VanuatuContainerRef}
       />
     );
   }
 }
 
-export default ChoroplethV2Mongolia;
+export default ChoroplethV2Vanuatu;

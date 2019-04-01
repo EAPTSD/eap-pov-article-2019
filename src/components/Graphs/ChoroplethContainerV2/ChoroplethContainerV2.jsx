@@ -7,6 +7,8 @@ import Waypoint from 'react-waypoint';
 // Internal Imports
 import ChoroplethV3Eap from '../ChoroplethV3Eap';
 import ChoroplethV2Mongolia from '../ChoroplethV2Mongolia';
+import ChoroplethV2Fiji from '../ChoroplethV2Fiji';
+import ChoroplethV2Vanuatu from '../ChoroplethV2Vanuatu';
 import getRandomInt from '../../../utilities/getRandomInt';
 import './ChoroplethContainerV2.css';
 
@@ -44,7 +46,8 @@ class ChoroplethContainerV2 extends Component {
       <div className="ChoroplethContainerV2-sequence-container">
         <div className="ChoroplethContainerV2-container ChoroplethContainerV2-sticky">
           <ChoroplethV3Eap />
-          <ChoroplethV2Mongolia />
+          <ChoroplethV2Fiji />
+          <ChoroplethV2Vanuatu />
         </div>
         {index.map((i) => {
           return (

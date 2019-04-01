@@ -1,6 +1,6 @@
-.ChoroplethV2Mongolia-container {
-  height: 26.12%;
-  width: 22.56%;
+.ChoroplethV2Vanuatu-container {
+  height: 14.5%;
+  width: 6.9%;
   display: flex;
   align-items: center;
   background-color: #606060;
@@ -11,7 +11,7 @@
   transform: translateX(25%) translateY(-25%);
 }
 
-.ChoroplethV2Mongolia-container svg {
+.ChoroplethV2Vanuatu-container svg {
   height: 100%;
   background-color: #606060;
   display: block;
@@ -20,9 +20,4 @@
 
 path.sub-nation {
   transition: fill 0.4s ease;
-}
-
-.ChoroplethV2Mongolia-waypoint-buffer {
-  height: 120vh;
-  background-color: #606060;
 }
