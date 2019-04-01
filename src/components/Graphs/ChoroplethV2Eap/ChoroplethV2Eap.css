@@ -1,12 +1,12 @@
 .ChoroplethV2Eap-container {
   height: 80vh;
-  width: 60vw;
+  width: 80vw;
   display: flex;
   align-items: center;
   background-color: #606060;
   text-align: center;
-  left: -35%;
-  transform: translateX(35%);
+  left: -15%;
+  transform: translateX(15%);
 }
 
 .ChoroplethV2Eap-container svg {

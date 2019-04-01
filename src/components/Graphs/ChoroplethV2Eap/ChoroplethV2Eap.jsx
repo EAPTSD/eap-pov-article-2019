@@ -67,7 +67,7 @@ class ChoroplethV2Eap extends Component {
       .attr('height', containerHeight)
       .attr('width', containerWidth);
 
-    const scale = 555;
+    const scale = this.getScale(containerWidth, containerHeight);
     const offset = [containerWidth / 6, containerHeight / 25];
 
     const projection = d3
@@ -122,9 +122,9 @@ class ChoroplethV2Eap extends Component {
 
   getScale = (width, height) => {
     const baseScale = 555;
-    const scaleFactor = 1.8;
+    const scaleFactor = 1.48;
     const baseWidth = 470;
-    const baseHeight = 270;
+    const baseHeight = 370;
 
     const scale1 = (baseScale * width) / baseWidth;
     const scale2 = (baseScale * height) / baseHeight;
