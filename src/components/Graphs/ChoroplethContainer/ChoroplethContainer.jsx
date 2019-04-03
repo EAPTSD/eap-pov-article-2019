@@ -35,38 +35,38 @@ class ChoroplethContainer extends Component {
       const choroplethDataObj = choroplethDataToObj(files[0]);
 
       const pov190Color = d3
-        .scaleQuantize()
-        .domain([0, 45])
+        .scaleThreshold()
+        .domain([0.5, 1.2, 2.3, 6.8, 11.3, 15.6, 25.2, 44, 55])
         .range(d3.schemeBlues[9]);
 
       const pov320Color = d3
-        .scaleQuantize()
-        .domain([0, 85])
+        .scaleThreshold()
+        .domain([1, 6, 12, 22, 30, 36, 46, 63, 85])
         .range(d3.schemeBlues[9]);
 
       const pov550Color = d3
-        .scaleQuantize()
-        .domain([0, 97])
+        .scaleThreshold()
+        .domain([5, 28, 42, 56, 62, 70, 75, 87, 97])
         .range(d3.schemeBlues[9]);
 
       const edAttainColor = d3
-        .scaleQuantize()
-        .domain([0, 39])
+        .scaleThreshold()
+        .domain([0.8, 1.9, 3.6, 5.3, 7, 11, 15, 25, 39])
         .range(d3.schemeGreens[9]);
 
       const edEnrollColor = d3
-        .scaleQuantize()
-        .domain([0, 56])
+        .scaleThreshold()
+        .domain([0.5, 1.5, 2.8, 3.6, 5.5, 8.7, 12, 29, 56])
         .range(d3.schemeGreens[9]);
 
       const waterColor = d3
-        .scaleQuantize()
-        .domain([0, 83])
+        .scaleThreshold()
+        .domain([2.1, 7.6, 11.2, 13, 18.4, 26, 37, 60, 83])
         .range(d3.schemePurples[9]);
 
       const sanitation = d3
-        .scaleQuantize()
-        .domain([0, 88])
+        .scaleThreshold()
+        .domain([1.1, 3.5, 9.7, 12.7, 20, 29, 43, 66, 88])
         .range(d3.schemeReds[9]);
 
       const colors = {
@@ -90,19 +90,15 @@ class ChoroplethContainer extends Component {
   }
 
   updateGraph = (type, i) => {
-    console.log(type);
     const { colors, choroplethDataObj } = this.state;
     const color = colors[type];
-    console.log(color);
     const subNation = d3.selectAll('path.sub-nation');
     if (i === 0) {
       subNation.attr('fill', 'lightgrey');
       return;
     }
     subNation.attr('fill', (d) => {
-      console.log(d.properties.ADM1_CODE);
       const colorValue = choroplethDataObj[d.properties.ADM1_CODE][type];
-      console.log(colorValue);
       if (colorValue === '-1') return 'lightgrey';
       return color(colorValue);
     });
