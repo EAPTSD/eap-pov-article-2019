@@ -1,4 +1,4 @@
-﻿Country,Year,Subnatid1,adm1_code,pov190,pov320,pov550,education attainment,education enrollment,water,sanitation,
+﻿Country,Year,Subnatid1,adm1_code,pov190,pov320,pov550,edAttain,edEnroll,water,sanitation,
 Cambodia,2012,Cambodia,44,-1,-1,-1,-1,-1,-1,-1,
 CHN,2015,China,147295,0.72803,6.96697,27.2125,-1,-1,-1,-1,
 FJI,2013,1-Central,40187,1.143773,11.22792,42.05398,0.5398288,1.421129,3.482268,3.039185,

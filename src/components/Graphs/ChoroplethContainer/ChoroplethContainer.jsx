@@ -15,39 +15,93 @@ import choroplethData from '../../../data/ChoroplethData/choropleth_data.csv';
 
 class ChoroplethContainer extends Component {
   state = {
-    color: null,
+    colors: {},
     choroplethDataObj: null,
-    index: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    types: [
+      'start',
+      'pov190',
+      'pov320',
+      'pov550',
+      'edAttain',
+      'edEnroll',
+      'water',
+      'sanitation',
+      'end',
+    ],
   };
 
   componentDidMount() {
     Promise.all([d3.csv(choroplethData)]).then((files) => {
       const choroplethDataObj = choroplethDataToObj(files[0]);
-      const color = d3
+
+      const pov190Color = d3
         .scaleQuantize()
-        .domain([0, 55])
+        .domain([0, 45])
         .range(d3.schemeBlues[9]);
-      console.log(choroplethDataObj);
+
+      const pov320Color = d3
+        .scaleQuantize()
+        .domain([0, 85])
+        .range(d3.schemeBlues[9]);
+
+      const pov550Color = d3
+        .scaleQuantize()
+        .domain([0, 97])
+        .range(d3.schemeBlues[9]);
+
+      const edAttainColor = d3
+        .scaleQuantize()
+        .domain([0, 39])
+        .range(d3.schemeGreens[9]);
+
+      const edEnrollColor = d3
+        .scaleQuantize()
+        .domain([0, 56])
+        .range(d3.schemeGreens[9]);
+
+      const waterColor = d3
+        .scaleQuantize()
+        .domain([0, 83])
+        .range(d3.schemePurples[9]);
+
+      const sanitation = d3
+        .scaleQuantize()
+        .domain([0, 88])
+        .range(d3.schemeReds[9]);
+
+      const colors = {
+        pov190: pov190Color,
+        pov320: pov320Color,
+        pov550: pov550Color,
+        edAttain: edAttainColor,
+        edEnroll: edEnrollColor,
+        water: waterColor,
+        sanitation: sanitation,
+      };
+
       this.setState({
-        color: color,
+        colors: colors,
         choroplethDataObj: choroplethDataObj,
       });
     });
+
     const elements = document.querySelectorAll('.ChoroplethContainer-sticky');
     Stickyfill.add(elements);
   }
 
-  updateGraph = (i) => {
-    const { color, choroplethDataObj } = this.state;
+  updateGraph = (type, i) => {
+    console.log(type);
+    const { colors, choroplethDataObj } = this.state;
+    const color = colors[type];
+    console.log(color);
     const subNation = d3.selectAll('path.sub-nation');
     if (i === 0) {
       subNation.attr('fill', 'lightgrey');
       return;
     }
     subNation.attr('fill', (d) => {
-      console.log(d);
-      const colorValue = choroplethDataObj[d.properties.ADM1_CODE].pov190;
-      console.log(d.properties.ADM0_NAME);
+      console.log(d.properties.ADM1_CODE);
+      const colorValue = choroplethDataObj[d.properties.ADM1_CODE][type];
       console.log(colorValue);
       if (colorValue === '-1') return 'lightgrey';
       return color(colorValue);
@@ -55,18 +109,18 @@ class ChoroplethContainer extends Component {
   };
 
   render() {
-    const { index } = this.state;
+    const { types } = this.state;
     return (
       <div className="ChoroplethContainer-sequence-container">
         <div className="ChoroplethContainer-container ChoroplethContainer-sticky">
           <ChoroplethV2Eap />
           <ChoroplethV2Mongolia />
         </div>
-        {index.map((i) => {
+        {types.map((type, i) => {
           return (
             <>
               <div className="ChoroplethContainer-waypoint-buffer" />
-              <Waypoint onEnter={() => this.updateGraph(i)} />
+              <Waypoint onEnter={() => this.updateGraph(type, i)} />
             </>
           );
         })}
