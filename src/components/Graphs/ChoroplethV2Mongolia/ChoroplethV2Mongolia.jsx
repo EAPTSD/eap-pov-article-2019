@@ -36,8 +36,6 @@ class ChoroplethV2Mongolia extends Component {
       return [167].includes(country.properties.ADM0_CODE);
     });
 
-    console.log(mngIsoloated);
-
     const mngCollection = {
       features: mngIsoloated,
       type: 'FeatureCollection',
