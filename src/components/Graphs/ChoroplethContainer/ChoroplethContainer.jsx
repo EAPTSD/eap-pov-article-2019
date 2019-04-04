@@ -1,6 +1,7 @@
 // External Imports
 import React, { Component } from 'react';
 import * as d3 from 'd3';
+import { legendColor, legendHelpers } from 'd3-svg-legend';
 import Stickyfill from 'stickyfilljs';
 import Waypoint from 'react-waypoint';
 
@@ -79,6 +80,7 @@ class ChoroplethContainer extends Component {
         sanitation: sanitation,
       };
 
+      this.createLegend(pov190Color);
       this.setState({
         colors: colors,
         choroplethDataObj: choroplethDataObj,
@@ -92,50 +94,55 @@ class ChoroplethContainer extends Component {
   createLegend = (color) => {
     const svg = d3.select('.ChoroplethV2Eap-svg');
 
-    const x = d3
-      .scaleLinear()
-      .domain(d3.extent(color.domain()))
-      .rangeRound([600, 860]);
+    const thresholdScale = d3
+      .scaleThreshold()
+      .domain(color.domain())
+      .range(color.range());
 
-    const g = svg.append('g').attr('transform', 'translate(-537, 600)');
+    svg
+      .append('g')
+      .attr('class', 'Choropleth-legend')
+      .attr('transform', 'translate(7, 450)')
+      .attr('visibility', 'hidden');
 
-    g.selectAll('rect')
-      .data(color.range().map((d) => color.invertExtent(d)))
-      .enter()
-      .append('rect')
-      .attr('height', 15)
-      .attr('x', (d) => x(d[0]))
-      .attr('width', (d) => x(d[1]) - x(d[0]))
-      .attr('fill', (d) => color(d[0]));
+    const legend = legendColor()
+      .labelFormat(d3.format('.2f'))
+      .labels(legendHelpers.thresholdLabels)
+      .scale(thresholdScale);
 
-    g.append('text')
-      .attr('class', 'caption')
-      .attr('x', x.range()[0])
-      .attr('y', -6)
-      .attr('fill', '#000')
-      .attr('text-anchor', 'start')
-      .attr('font-weight', 'bold')
-      .text('hi');
+    svg.select('.Choropleth-legend').call(legend);
+  };
 
-    g.call(
-      d3
-        .axisBottom(x)
-        .tickSize(13)
-        .tickFormat(d3.format(''))
-        .tickValues(
-          color
-            .range()
-            .slice(1)
-            .map((d) => color.invertExtent(d)[0])
-        )
-    )
-      .select('.domain')
-      .remove();
+  // update
+  updateLegend = (color, isVisible = false) => {
+    const legend = d3.select('.Choropleth-legend');
+
+    const visibility = isVisible ? 'visible' : 'hidden';
+
+    legend.attr('visibility', visibility);
+
+    if (!color) return;
+
+    const thresholdScale = d3
+      .scaleThreshold()
+      .domain(color.domain())
+      .range(color.range());
+
+    const legendUpdate = legendColor()
+      .labelFormat(d3.format('.2f'))
+      .labels(legendHelpers.thresholdLabels)
+      .scale(thresholdScale);
+
+    legend.call(legendUpdate);
   };
 
   updateGraph = (type, i) => {
     const { colors, choroplethDataObj } = this.state;
     const color = colors[type];
+    const isVisible = i === 0 ? false : true;
+
+    this.updateLegend(color, isVisible);
+
     const subNation = d3.selectAll('path.sub-nation');
     if (i === 0) {
       subNation.attr('fill', 'lightgrey');
@@ -146,8 +153,6 @@ class ChoroplethContainer extends Component {
       if (colorValue === '-1') return 'lightgrey';
       return color(colorValue);
     });
-
-    this.createLegend(color);
   };
 
   render() {
