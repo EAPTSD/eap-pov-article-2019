@@ -62,7 +62,6 @@ class ChoroplethV2Mongolia extends Component {
       mngCollection,
       containerHeight,
       containerWidth,
-      featureCollection,
       mapCenter,
     } = this.state;
 
@@ -73,7 +72,7 @@ class ChoroplethV2Mongolia extends Component {
       .attr('height', containerHeight)
       .attr('width', containerWidth);
 
-    const offset = [containerWidth / 2.1, containerHeight / 2];
+    const offset = [containerWidth / 2.1, containerHeight / 2.25];
 
     const projection = d3
       .geoMercator()
@@ -115,7 +114,9 @@ class ChoroplethV2Mongolia extends Component {
       <div
         className="ChoroplethV2Mongolia-container"
         ref={this.ChoroplethV2MongoliaContainerRef}
-      />
+      >
+        <span className="ChoroplethV2Mongolia-span">Mongolia</span>
+      </div>
     );
   }
 }

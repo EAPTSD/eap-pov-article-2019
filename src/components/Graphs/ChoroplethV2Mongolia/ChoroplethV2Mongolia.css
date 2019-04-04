@@ -1,5 +1,5 @@
 .ChoroplethV2Mongolia-container {
-  height: 180px;
+  height: 200px;
   width: 325px;
   display: flex;
   align-items: center;
@@ -9,9 +9,10 @@
   right: 35%;
   top: 5%;
   transform: translateX(35%) translateY(5%);
+  border: 1px solid lightgrey;
 }
 
-.ChoroplethV2Mongolia-container svg {
+.ChoroplethV2Mongolia-svg {
   height: 100%;
   background-color: #606060;
   display: block;
@@ -25,4 +26,13 @@ path.sub-nation {
 .ChoroplethV2Mongolia-waypoint-buffer {
   height: 120vh;
   background-color: #606060;
+}
+
+.ChoroplethV2Mongolia-span {
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  height: 25px;
+  bottom: 8px;
+  color: white;
 }
