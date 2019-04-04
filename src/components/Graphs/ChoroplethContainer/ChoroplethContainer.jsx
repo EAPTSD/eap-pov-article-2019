@@ -89,6 +89,50 @@ class ChoroplethContainer extends Component {
     Stickyfill.add(elements);
   }
 
+  createLegend = (color) => {
+    const svg = d3.select('.ChoroplethV2Eap-svg');
+
+    const x = d3
+      .scaleLinear()
+      .domain(d3.extent(color.domain()))
+      .rangeRound([600, 860]);
+
+    const g = svg.append('g').attr('transform', 'translate(-537, 600)');
+
+    g.selectAll('rect')
+      .data(color.range().map((d) => color.invertExtent(d)))
+      .enter()
+      .append('rect')
+      .attr('height', 15)
+      .attr('x', (d) => x(d[0]))
+      .attr('width', (d) => x(d[1]) - x(d[0]))
+      .attr('fill', (d) => color(d[0]));
+
+    g.append('text')
+      .attr('class', 'caption')
+      .attr('x', x.range()[0])
+      .attr('y', -6)
+      .attr('fill', '#000')
+      .attr('text-anchor', 'start')
+      .attr('font-weight', 'bold')
+      .text('hi');
+
+    g.call(
+      d3
+        .axisBottom(x)
+        .tickSize(13)
+        .tickFormat(d3.format(''))
+        .tickValues(
+          color
+            .range()
+            .slice(1)
+            .map((d) => color.invertExtent(d)[0])
+        )
+    )
+      .select('.domain')
+      .remove();
+  };
+
   updateGraph = (type, i) => {
     const { colors, choroplethDataObj } = this.state;
     const color = colors[type];
@@ -102,6 +146,8 @@ class ChoroplethContainer extends Component {
       if (colorValue === '-1') return 'lightgrey';
       return color(colorValue);
     });
+
+    this.createLegend(color);
   };
 
   render() {
