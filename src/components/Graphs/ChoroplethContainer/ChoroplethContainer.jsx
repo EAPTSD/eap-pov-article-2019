@@ -53,22 +53,22 @@ class ChoroplethContainer extends Component {
       const edAttainColor = d3
         .scaleThreshold()
         .domain([0.8, 1.9, 3.6, 5.3, 7, 11, 15, 25, 39])
-        .range(d3.schemeGreens[9]);
+        .range(d3.schemeReds[9]);
 
       const edEnrollColor = d3
         .scaleThreshold()
         .domain([0.5, 1.5, 2.8, 3.6, 5.5, 8.7, 12, 29, 56])
-        .range(d3.schemeGreens[9]);
+        .range(d3.schemeReds[9]);
 
       const waterColor = d3
         .scaleThreshold()
         .domain([2.1, 7.6, 11.2, 13, 18.4, 26, 37, 60, 83])
-        .range(d3.schemePurples[9]);
+        .range(d3.schemeGreens[9]);
 
       const sanitation = d3
         .scaleThreshold()
         .domain([1.1, 3.5, 9.7, 12.7, 20, 29, 43, 66, 88])
-        .range(d3.schemeReds[9]);
+        .range(d3.schemePurples[9]);
 
       const colors = {
         pov190: pov190Color,
