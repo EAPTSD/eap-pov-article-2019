@@ -28,3 +28,20 @@
   height: 120vh;
   background-color: #606060;
 }
+
+.sub-nation:hover {
+  fill: orange;
+  transition: fill 0s !important;
+}
+
+.Choropleth-tooltip {
+  opacity: 0;
+  position: absolute;
+  padding: 5px;
+  font-size: 0.9em;
+  border-radius: 4px;
+  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.25);
+  color: white;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  background: black;
+}

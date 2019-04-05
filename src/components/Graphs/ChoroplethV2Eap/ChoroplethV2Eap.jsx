@@ -90,7 +90,8 @@ class ChoroplethV2Eap extends Component {
       .append('path')
       .attr('class', 'sub-nation')
       .attr('fill', 'lightgrey')
-      .attr('d', path);
+      .attr('d', path)
+      .append('title');
 
     svg
       .append('path')

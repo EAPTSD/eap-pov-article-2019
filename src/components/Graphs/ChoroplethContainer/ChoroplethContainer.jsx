@@ -118,7 +118,6 @@ class ChoroplethContainer extends Component {
     const legend = d3.select('.Choropleth-legend');
 
     const visibility = isVisible ? 'visible' : 'hidden';
-
     legend.attr('visibility', visibility);
 
     if (!color) return;
@@ -148,11 +147,38 @@ class ChoroplethContainer extends Component {
       subNation.attr('fill', 'lightgrey');
       return;
     }
+
     subNation.attr('fill', (d) => {
-      const colorValue = choroplethDataObj[d.properties.ADM1_CODE][type];
-      if (colorValue === '-1') return 'lightgrey';
-      return color(colorValue);
+      const dataValue = choroplethDataObj[d.properties.ADM1_CODE][type];
+      const fillColor = dataValue === '-1' ? 'lightgrey' : color(dataValue);
+      return fillColor;
     });
+
+    const tooltip = d3.select('.Choropleth-tooltip');
+    subNation.on('mouseover', (d) => {
+      const country = d.properties.ADM0_NAME;
+      const region = d.properties.ADM1_NAME;
+      const dataValue = choroplethDataObj[d.properties.ADM1_CODE][type];
+      tooltip
+        .transition()
+        .duration(250)
+        .style('opacity', 0.7);
+      tooltip
+        .html(
+          `<p>Country: ${country}</p><p>Sub-Region: ${region}</p><p>Data Value: ${dataValue}</p>`
+        )
+        .style('left', `${d3.event.pageX + 15}px`)
+        .style('top', `${d3.event.pageY - 1800}px`);
+    });
+
+    // attr('title', (d) => {
+    //   console.log(d);
+    //   const country = d.properties.ADM0_NAME;
+    //   const region = d.properties.ADM1_NAME;
+    //   const dataValue = choroplethDataObj[d.properties.ADM1_CODE][type];
+    //   const title = `Country: ${country}\nRegion: ${region}\nValue: ${dataValue}`
+    //   return title;
+    // });
   };
 
   render() {
@@ -162,6 +188,7 @@ class ChoroplethContainer extends Component {
         <div className="ChoroplethContainer-container ChoroplethContainer-sticky">
           <ChoroplethV2Eap />
           <ChoroplethV2Mongolia />
+          <div className="Choropleth-tooltip" />
         </div>
         {types.map((type, i) => {
           return (
