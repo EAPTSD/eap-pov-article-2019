@@ -113,7 +113,6 @@ class ChoroplethContainer extends Component {
     svg.select('.Choropleth-legend').call(legend);
   };
 
-  // update
   updateLegend = (color, isVisible = false) => {
     const legend = d3.select('.Choropleth-legend');
 
@@ -155,30 +154,29 @@ class ChoroplethContainer extends Component {
     });
 
     const tooltip = d3.select('.Choropleth-tooltip');
-    subNation.on('mouseover', (d) => {
-      const country = d.properties.ADM0_NAME;
-      const region = d.properties.ADM1_NAME;
-      const dataValue = choroplethDataObj[d.properties.ADM1_CODE][type];
-      tooltip
-        .transition()
-        .duration(250)
-        .style('opacity', 0.7);
-      tooltip
-        .html(
-          `<p>Country: ${country}</p><p>Sub-Region: ${region}</p><p>Data Value: ${dataValue}</p>`
-        )
-        .style('left', `${d3.event.pageX + 15}px`)
-        .style('top', `${d3.event.pageY - 1800}px`);
-    });
-
-    // attr('title', (d) => {
-    //   console.log(d);
-    //   const country = d.properties.ADM0_NAME;
-    //   const region = d.properties.ADM1_NAME;
-    //   const dataValue = choroplethDataObj[d.properties.ADM1_CODE][type];
-    //   const title = `Country: ${country}\nRegion: ${region}\nValue: ${dataValue}`
-    //   return title;
-    // });
+    subNation
+      .on('mouseover', (d) => {
+        console.log(d3.event.y);
+        const country = d.properties.ADM0_NAME;
+        const region = d.properties.ADM1_NAME;
+        const dataValue = choroplethDataObj[d.properties.ADM1_CODE][type];
+        tooltip
+          .transition()
+          .duration(250)
+          .style('opacity', 0.85);
+        tooltip
+          .html(
+            `<p>Country: ${country}</p><p>Sub-Region: ${region}</p><p>Data Value: ${dataValue}</p>`
+          )
+          .style('left', `${d3.event.x + 25}px`)
+          .style('top', `${d3.event.y + 25}px`);
+      })
+      .on('mouseout', () => {
+        tooltip
+          .transition()
+          .duration(250)
+          .style('opacity', 0);
+      });
   };
 
   render() {
