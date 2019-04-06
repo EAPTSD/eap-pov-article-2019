@@ -34,5 +34,7 @@ path.sub-nation {
   z-index: 100;
   height: 25px;
   bottom: 8px;
-  color: white;
+  color: whitesmoke;
+  font-weight: 500;
+  letter-spacing: 0.25px;
 }

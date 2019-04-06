@@ -101,7 +101,7 @@ class ChoroplethContainer extends Component {
   }
 
   createLegend = (color) => {
-    const svg = d3.select('.ChoroplethV2Eap-svg');
+    const svg = d3.select('.Choropleth-legend-container');
 
     const thresholdScale = d3
       .scaleThreshold()
@@ -111,7 +111,6 @@ class ChoroplethContainer extends Component {
     svg
       .append('g')
       .attr('class', 'Choropleth-legend')
-      .attr('transform', 'translate(7, 450)')
       .attr('visibility', 'hidden');
 
     const legend = legendColor()
@@ -124,9 +123,11 @@ class ChoroplethContainer extends Component {
 
   updateLegend = (color, isVisible = false) => {
     const legend = d3.select('.Choropleth-legend');
+    const legendContainer = d3.select('.Choropleth-legend-container');
 
     const visibility = isVisible ? 'visible' : 'hidden';
     legend.attr('visibility', visibility);
+    legendContainer.attr('visibility', visibility);
 
     if (!color) return;
 
@@ -146,13 +147,13 @@ class ChoroplethContainer extends Component {
   updateGraph = (type, i) => {
     const { colors, labels, choroplethDataObj } = this.state;
     const color = colors[type];
-    const isVisible = i === 0 ? false : true;
+    const isVisible = i === 0 || i === 8 ? false : true;
 
     this.updateLegend(color, isVisible, type);
 
     const subNation = d3.selectAll('path.sub-nation');
-    if (i === 0) {
-      subNation.attr('fill', 'lightgrey');
+    if (i === 0 || i === 8) {
+      subNation.attr('fill', 'lightgrey').on('mouseenter', () => {});
       return;
     }
 
@@ -179,14 +180,14 @@ class ChoroplethContainer extends Component {
         const dataValue = dataString.slice(0, dataString.indexOf('.') + 3);
 
         let regionHtml;
-        if (region) {
+        if (region && color) {
           regionHtml = `<p class='Choropleth-tooltip-underline'>Sub-Region: ${region}</p>`;
         } else {
           regionHtml = '';
         }
 
         let dataHtml;
-        if (dataValue !== '-1') {
+        if (dataValue !== '-1' && color) {
           dataHtml = `<div class='Choropleth-tooltip-data-container'>
           <span class='Choropleth-tooltip-data'>${dataValue}</span>
           <span class='Choropleth-tooltip-data-title'>${labels[type]}</span>
@@ -238,12 +239,19 @@ class ChoroplethContainer extends Component {
           <ChoroplethV2Eap />
           <ChoroplethV2Mongolia />
           <div className="Choropleth-tooltip" />
+          <svg className="Choropleth-legend-container" visibility="hidden" />
         </div>
         {types.map((type, i) => {
           return (
             <>
               <div className="ChoroplethContainer-waypoint-buffer" />
+              {i === 0 ? (
+                <div className="ChoroplethContainer-waypoint-buffer" />
+              ) : null}
               <Waypoint onEnter={() => this.updateGraph(type, i)} />
+              {i === 8 ? (
+                <div className="ChoroplethContainer-waypoint-buffer" />
+              ) : null}
             </>
           );
         })}

@@ -81,7 +81,23 @@
   font-weight: 900;
 }
 
+.Choropleth-legend-container {
+  position: absolute;
+  bottom: 50px;
+  width: 149px;
+  height: 206px;
+  background-color: #3c3c3c;
+  border-radius: 5px;
+  padding: 10px;
+  /* box-shadow: 10px 10px 10px 2px rgba(0, 0, 0, 0.3); */
+}
+
+.Choropleth-legend-container,
+.Choropleth-legend-container .Choropleth-legend {
+  transition: visibility fill 0.4s;
+}
+
 .Choropleth-legend .label {
-  fill: #191919;
+  fill: #cbcbcb;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
