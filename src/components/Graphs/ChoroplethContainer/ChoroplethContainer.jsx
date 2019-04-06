@@ -245,9 +245,6 @@ class ChoroplethContainer extends Component {
           return (
             <>
               <div className="ChoroplethContainer-waypoint-buffer" />
-              {i === 0 ? (
-                <div className="ChoroplethContainer-waypoint-buffer" />
-              ) : null}
               <Waypoint onEnter={() => this.updateGraph(type, i)} />
               {i === 8 ? (
                 <div className="ChoroplethContainer-waypoint-buffer" />
