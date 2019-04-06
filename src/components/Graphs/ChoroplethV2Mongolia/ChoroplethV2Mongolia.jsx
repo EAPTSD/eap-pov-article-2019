@@ -55,6 +55,12 @@ class ChoroplethV2Mongolia extends Component {
         this.renderMap();
       }
     );
+
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
   }
 
   renderMap = () => {
@@ -73,10 +79,11 @@ class ChoroplethV2Mongolia extends Component {
       .attr('width', containerWidth);
 
     const offset = [containerWidth / 2.1, containerHeight / 2.25];
+    const scale = this.getScale();
 
     const projection = d3
       .geoMercator()
-      .scale(550)
+      .scale(scale)
       .center(mapCenter)
       .translate(offset);
 
@@ -108,6 +115,46 @@ class ChoroplethV2Mongolia extends Component {
       .attr('stroke-width', '0.5px')
       .attr('stroke-linejoin', 'round')
       .attr('d', path);
+  };
+
+  getScale = () => {
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    const baseScale = 550;
+    const scaleFactor = 4.6;
+    const baseWidth = 300;
+    const baseHeight = 150;
+
+    const scale1 = (baseScale * windowWidth) / baseWidth;
+    const scale2 = (baseScale * windowHeight) / baseHeight;
+
+    return d3.min([scale1, scale2]) / scaleFactor;
+  };
+
+  onResize = () => {
+    const { mapCenter } = this.state;
+
+    const containerHeight = this.ChoroplethV2MongoliaContainerRef.current
+      .clientHeight;
+    const containerWidth = this.ChoroplethV2MongoliaContainerRef.current
+      .clientWidth;
+    const newScale = this.getScale();
+    const newOffset = [containerWidth / 2.1, containerHeight / 2.25];
+
+    const newProjection = d3
+      .geoMercator()
+      .scale(newScale)
+      .center(mapCenter)
+      .translate(newOffset);
+
+    const newPath = d3.geoPath().projection(newProjection);
+
+    const svg = d3
+      .select('.ChoroplethV2Mongolia-svg')
+      .attr('height', containerHeight)
+      .attr('width', containerWidth);
+
+    svg.selectAll('path').attr('d', newPath);
   };
 
   render() {
