@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/malaysia_economic_class.b6650a5b.csv"
   },
   {
-    "revision": "d197ddda39b5d111061e",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.aa0c7ecf.chunk.css"
+    "revision": "a77d257ad20d8773adb3",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.c1632c77.chunk.css"
   },
   {
     "revision": "1fdc743e8f28282e87c509fd44ee48b7",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/action-asia-blur-1455989.1fdc743e.jpg"
   },
   {
-    "revision": "22ccde1efe448f8b4699",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/1.22ccde1e.chunk.js"
+    "revision": "6576fa0e4578f1a15aa0",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/1.6576fa0e.chunk.js"
   },
   {
     "revision": "51b6458cc8c2ce96ca60",
@@ -52,6 +52,10 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_woChina_5.5.578be73b.csv"
   },
   {
+    "revision": "174fc8f3c29dd58e3825afacdb745e29",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/choropleth_data.174fc8f3.csv"
+  },
+  {
     "revision": "6bdf3b9cc31e955ca984e90dc9d24028",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_economic_class.6bdf3b9c.csv"
   },
@@ -64,8 +68,8 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/lao_economic_class.8c4c4ffa.csv"
   },
   {
-    "revision": "d197ddda39b5d111061e",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.d197ddda.chunk.js"
+    "revision": "a77d257ad20d8773adb3",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.a77d257a.chunk.js"
   },
   {
     "revision": "db025a2cd15618f709f5adc199843556",
@@ -124,11 +128,11 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/architecture-asia-bar-1455993.f3c8fd08.jpg"
   },
   {
-    "revision": "22ccde1efe448f8b4699",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.7194c3b9.chunk.css"
+    "revision": "6576fa0e4578f1a15aa0",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.b6e2804b.chunk.css"
   },
   {
-    "revision": "863eb3c74566650c39bbf0798b106345",
+    "revision": "6461873bca78cbe80fad74164543c878",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/index.html"
   }
 ];
