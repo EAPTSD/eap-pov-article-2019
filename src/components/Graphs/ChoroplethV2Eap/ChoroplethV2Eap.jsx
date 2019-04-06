@@ -71,7 +71,7 @@ class ChoroplethV2Eap extends Component {
       .attr('width', containerWidth);
 
     const scale = this.getScale(containerWidth, containerHeight);
-    const offset = [containerWidth / 4, containerHeight / 400];
+    const offset = [containerWidth / 3.75, containerHeight / 400];
 
     const projection = d3
       .geoMercator()
@@ -141,7 +141,7 @@ class ChoroplethV2Eap extends Component {
     const containerHeight = this.ChoroplethV2EapRef.current.clientHeight;
     const containerWidth = this.ChoroplethV2EapRef.current.clientWidth;
     const newScale = this.getScale(containerWidth, containerHeight);
-    const newOffset = [containerWidth / 4, containerHeight / 30];
+    const newOffset = [containerWidth / 3.75, containerHeight / 30];
 
     const newProjection = d3
       .geoMercator()

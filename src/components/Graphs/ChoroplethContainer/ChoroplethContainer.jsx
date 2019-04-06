@@ -29,6 +29,15 @@ class ChoroplethContainer extends Component {
       'sanitation',
       'end',
     ],
+    labels: {
+      pov190: 'Poverty $1.90',
+      pov320: 'Poverty $3.20',
+      pov550: 'Poverty $5.50',
+      edAttain: 'Eductation Attainment',
+      edEnroll: 'Eductation Enrollment',
+      water: 'Water',
+      sanitation: 'Sanitation',
+    },
   };
 
   componentDidMount() {
@@ -96,8 +105,8 @@ class ChoroplethContainer extends Component {
 
     const thresholdScale = d3
       .scaleThreshold()
-      .domain(color.domain())
-      .range(color.range());
+      .domain([color.domain()])
+      .range([color.range()]);
 
     svg
       .append('g')
@@ -135,11 +144,11 @@ class ChoroplethContainer extends Component {
   };
 
   updateGraph = (type, i) => {
-    const { colors, choroplethDataObj } = this.state;
+    const { colors, labels, choroplethDataObj } = this.state;
     const color = colors[type];
     const isVisible = i === 0 ? false : true;
 
-    this.updateLegend(color, isVisible);
+    this.updateLegend(color, isVisible, type);
 
     const subNation = d3.selectAll('path.sub-nation');
     if (i === 0) {
@@ -155,27 +164,69 @@ class ChoroplethContainer extends Component {
 
     const tooltip = d3.select('.Choropleth-tooltip');
     subNation
-      .on('mouseover', (d) => {
-        console.log(d3.event.y);
+      .on('mouseenter', (d) => {
+        const offsetX =
+          d3.event.x / window.innerWidth > 0.75
+            ? d3.event.x - 75
+            : d3.event.x + 25;
+        const offsetY =
+          d3.event.y / window.innerHeight > 0.75
+            ? d3.event.y - 175
+            : d3.event.y + 25;
         const country = d.properties.ADM0_NAME;
         const region = d.properties.ADM1_NAME;
-        const dataValue = choroplethDataObj[d.properties.ADM1_CODE][type];
+        const dataString = choroplethDataObj[d.properties.ADM1_CODE][type];
+        const dataValue = dataString.slice(0, dataString.indexOf('.') + 3);
+
+        let regionHtml;
+        if (region) {
+          regionHtml = `<p class='Choropleth-tooltip-underline'>Sub-Region: ${region}</p>`;
+        } else {
+          regionHtml = '';
+        }
+
+        let dataHtml;
+        if (dataValue !== '-1') {
+          dataHtml = `<div class='Choropleth-tooltip-data-container'>
+          <span class='Choropleth-tooltip-data'>${dataValue}</span>
+          <span class='Choropleth-tooltip-data-title'>${labels[type]}</span>
+          </div>`;
+        } else {
+          dataHtml = '';
+        }
+
         tooltip
           .transition()
           .duration(250)
-          .style('opacity', 0.85);
+          .style('opacity', 0.9)
+          .transition()
+          .duration(250)
+          .style('z-index', 1);
+
+        setTimeout(() => {
+          tooltip.style('z-index', 1);
+        }, 255);
+
         tooltip
           .html(
-            `<p>Country: ${country}</p><p>Sub-Region: ${region}</p><p>Data Value: ${dataValue}</p>`
+            `<p class='Choropleth-tooltip-header ${
+              regionHtml ? '' : 'Choropleth-tooltip-underline'
+            }'>${country}</p>
+            ${regionHtml}
+            ${dataHtml}`
           )
-          .style('left', `${d3.event.x + 25}px`)
-          .style('top', `${d3.event.y + 25}px`);
+          .style('left', `${offsetX}px`)
+          .style('top', `${offsetY}px`);
       })
       .on('mouseout', () => {
         tooltip
           .transition()
-          .duration(250)
+          .duration(100)
           .style('opacity', 0);
+
+        setTimeout(() => {
+          tooltip.style('z-index', -1);
+        }, 105);
       });
   };
 
