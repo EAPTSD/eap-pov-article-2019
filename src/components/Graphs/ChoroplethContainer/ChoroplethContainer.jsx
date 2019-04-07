@@ -15,30 +15,36 @@ import './ChoroplethContainer.css';
 import choroplethData from '../../../data/ChoroplethData/choropleth_data.csv';
 
 class ChoroplethContainer extends Component {
-  state = {
-    colors: {},
-    choroplethDataObj: null,
-    types: [
-      'start',
-      'pov190',
-      'pov320',
-      'pov550',
-      'edAttain',
-      'edEnroll',
-      'water',
-      'sanitation',
-      'end',
-    ],
-    labels: {
-      pov190: 'Poverty $1.90',
-      pov320: 'Poverty $3.20',
-      pov550: 'Poverty $5.50',
-      edAttain: 'Eductation Attainment',
-      edEnroll: 'Eductation Enrollment',
-      water: 'Water',
-      sanitation: 'Sanitation',
-    },
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      colors: {},
+      choroplethDataObj: null,
+      legendWidth: null,
+      legendHeight: null,
+      types: [
+        'start',
+        'pov190',
+        'pov320',
+        'pov550',
+        'edAttain',
+        'edEnroll',
+        'water',
+        'sanitation',
+        'end',
+      ],
+      labels: {
+        pov190: 'Poverty $1.90',
+        pov320: 'Poverty $3.20',
+        pov550: 'Poverty $5.50',
+        edAttain: 'Eductation Attainment',
+        edEnroll: 'Eductation Enrollment',
+        water: 'Water',
+        sanitation: 'Sanitation',
+      },
+    };
+    this.ChoroplethLegendRef = React.createRef();
+  }
 
   componentDidMount() {
     Promise.all([d3.csv(choroplethData)]).then((files) => {
@@ -96,9 +102,49 @@ class ChoroplethContainer extends Component {
       });
     });
 
+    this.onResize();
     const elements = document.querySelectorAll('.ChoroplethContainer-sticky');
     Stickyfill.add(elements);
+    window.addEventListener('resize', this.onResize);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  onResize = () => {
+    let legendWidth;
+    let legendHeight;
+    const windowWidth = window.innerWidth;
+
+    switch (true) {
+      case windowWidth < 576:
+        legendWidth = '70px';
+        legendHeight = '95px';
+        break;
+      case windowWidth < 720:
+        legendWidth = '80px';
+        legendHeight = '115px';
+        break;
+      case windowWidth < 960:
+        legendWidth = '100px';
+        legendHeight = '125px';
+        break;
+      case windowWidth < 1140:
+        legendWidth = '120px';
+        legendHeight = '160px';
+        break;
+      case windowWidth > 1140:
+        legendWidth = '150px';
+        legendHeight = '200px';
+        break;
+    }
+
+    this.setState({
+      legendWidth: legendWidth,
+      legendHeight: legendHeight,
+    });
+  };
 
   createLegend = (color) => {
     const svg = d3.select('.Choropleth-legend-container');
@@ -167,13 +213,13 @@ class ChoroplethContainer extends Component {
     subNation
       .on('mouseenter', (d) => {
         const offsetX =
-          d3.event.x / window.innerWidth > 0.75
-            ? d3.event.x - 75
+          d3.event.x / window.innerWidth > 0.65
+            ? d3.event.x - 175
             : d3.event.x + 25;
         const offsetY =
-          d3.event.y / window.innerHeight > 0.75
+          d3.event.y / window.innerHeight > 0.65
             ? d3.event.y - 175
-            : d3.event.y + 25;
+            : d3.event.y;
         const country = d.properties.ADM0_NAME;
         const region = d.properties.ADM1_NAME;
         const dataString = choroplethDataObj[d.properties.ADM1_CODE][type];
@@ -232,14 +278,22 @@ class ChoroplethContainer extends Component {
   };
 
   render() {
-    const { types } = this.state;
+    const { types, legendWidth, legendHeight } = this.state;
     return (
       <div className="ChoroplethContainer-sequence-container">
         <div className="ChoroplethContainer-container ChoroplethContainer-sticky">
           <ChoroplethV2Eap />
           <ChoroplethV2Mongolia />
           <div className="Choropleth-tooltip" />
-          <svg className="Choropleth-legend-container" visibility="hidden" />
+          <svg
+            className="Choropleth-legend-container"
+            visibility="hidden"
+            ref={this.ChoroplethLegendRef}
+            style={{
+              height: legendHeight || 1,
+              width: legendWidth || 1,
+            }}
+          />
         </div>
         {types.map((type, i) => {
           return (

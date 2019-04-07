@@ -107,7 +107,7 @@ class ChoroplethV2Mongolia extends Component {
         topojson.mesh(
           combinedData,
           combinedData.objects.EAP_Countries,
-          (a) => a
+          (a) => a.id === 0
         )
       )
       .attr('fill', 'none')

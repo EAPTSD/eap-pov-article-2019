@@ -22,9 +22,6 @@ class ChoroplethV2Eap extends Component {
   }
 
   componentDidMount() {
-    // console.log(combinedData);
-    // combinedData.objects.EAP_SubNations.geometries.map(country => {console.log(country.properties)});
-
     const choroplethContainerHeight = this.ChoroplethV2EapRef.current
       .clientHeight;
     const choroplethContainerWidth = this.ChoroplethV2EapRef.current
@@ -99,7 +96,7 @@ class ChoroplethV2Eap extends Component {
         topojson.mesh(
           combinedData,
           combinedData.objects.EAP_Countries,
-          (a) => a
+          (a) => a.id !== 1
         )
       )
       .attr('fill', 'none')
