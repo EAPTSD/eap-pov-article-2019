@@ -19,14 +19,14 @@ import thailandClassData from '../../../data/StackedAreaGraphData/thailand_econo
 import vietnamClassData from '../../../data/StackedAreaGraphData/vietnam_economic_class.csv';
 
 // Images
-import ASEAN from '../../../images/1200px-Flag_of_ASEAN.svg.png';
-import Indonesia from '../../../images/1200px-Flag_of_Indonesia.svg.png';
-import Myanmar from '../../../images/1200px-Flag_of_Myanmar.svg.png';
-import Vietnam from '../../../images/1200px-Flag_of_Vietnam.svg.png';
-import LoaPDR from '../../../images/2000px-Flag_of_Laos.svg.png';
-import Philippines from '../../../images/2000px-Flag_of_the_Philippines.svg.png';
-import Thailand from '../../../images/th.png';
-import Malaysia from '../../../images/my.png';
+// import ASEAN from '../../../images/1200px-Flag_of_ASEAN.svg.png';
+// import Indonesia from '../../../images/1200px-Flag_of_Indonesia.svg.png';
+// import Myanmar from '../../../images/1200px-Flag_of_Myanmar.svg.png';
+// import Vietnam from '../../../images/1200px-Flag_of_Vietnam.svg.png';
+// import LoaPDR from '../../../images/2000px-Flag_of_Laos.svg.png';
+// import Philippines from '../../../images/2000px-Flag_of_the_Philippines.svg.png';
+// import Thailand from '../../../images/th.png';
+// import Malaysia from '../../../images/my.png';
 
 class StackedAreaGraph extends Component {
   state = {
@@ -42,14 +42,14 @@ class StackedAreaGraph extends Component {
       'Vietnam',
     ],
     flags: {
-      ASEAN: ASEAN,
-      Indonesia: Indonesia,
-      'Lao PDR': LoaPDR,
-      Malaysia: Malaysia,
-      Myanmar: Myanmar,
-      Philippines: Philippines,
-      Thailand: Thailand,
-      Vietnam: Vietnam,
+      // ASEAN: ASEAN,
+      // Indonesia: Indonesia,
+      // 'Lao PDR': LoaPDR,
+      // Malaysia: Malaysia,
+      // Myanmar: Myanmar,
+      // Philippines: Philippines,
+      // Thailand: Thailand,
+      // Vietnam: Vietnam,
     },
     activeCountry: 'ASEAN',
     formattedClassData: [],
@@ -79,7 +79,6 @@ class StackedAreaGraph extends Component {
   handleClick = (i) => {
     const { formattedClassData, countries } = this.state;
     const countryIndex = i;
-    console.log(i);
 
     this.setState({
       data: formattedClassData[countryIndex],

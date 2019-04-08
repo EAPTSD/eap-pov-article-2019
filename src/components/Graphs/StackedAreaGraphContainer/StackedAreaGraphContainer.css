@@ -3,6 +3,7 @@
   height: 85vh;
   padding: 15px 0;
   background-color: lavenderblush;
+  margin: 0 !important;
 }
 
 .StackedAreaGraphContainer-container {
@@ -25,6 +26,7 @@
 
 .StackedAreaLegend-container {
   position: relative;
+  margin: 0 !important;
 
   /* Stacked Legend Items */
   /* top: -175px; */

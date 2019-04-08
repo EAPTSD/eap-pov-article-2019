@@ -10,6 +10,7 @@ import BubbleGraphContainer from '../Graphs/BubbleGraphContainer';
 import ChoroplethContainer from '../Graphs/ChoroplethContainer';
 import ChoroplethV3Eap from '../Graphs/ChoroplethV3Eap';
 import Header from '../Header';
+import HeaderV2 from '../HeaderV2';
 import StackedAreaGraph from '../Graphs/StackedAreaGraph';
 import StackedAreaGraphContainer from '../Graphs/StackedAreaGraphContainer';
 import extractText from '../../utilities/extractText';
@@ -29,8 +30,8 @@ class StoryboardContainer extends Component {
   componentDidMount() {
     const textArray = extractText(appText);
     this.setState({
-      firstText: textArray.slice(0, 4),
-      secondText: textArray.slice(4, 14),
+      firstText: textArray.slice(0, 3),
+      secondText: textArray.slice(3, 6),
       thirdText: textArray.slice(14, 24),
       fourthText: textArray.slice(24, 34),
       fifthText: textArray.slice(34, 44),
@@ -51,27 +52,42 @@ class StoryboardContainer extends Component {
     } = this.state;
     return (
       <div>
-        <ChoroplethContainer />
-        {/* <Header />
         <div className="StoryboardContainer">
-          <div className="sb-text-container">
-            {firstText.map((text, i) => {
-              return (
-                <p className="pt-3 sb-text" key={`text-${i}`}>
-                  {text}
-                </p>
-              );
-            })}
+          <HeaderV2 />
+          <div className="bg-0">
+            <div className="text-container-0">
+              {firstText.map((text, i) => {
+                return (
+                  <p className="text-0" key={`0-text-${i}`}>
+                    {i === 0 ? (
+                      <>
+                        <span className="dropcap-0">P</span>
+                        <span className="leadtext-0">
+                          IECING TOGETHER THE POVERTY PUZZLE
+                        </span>
+                      </>
+                    ) : null}
+                    {text}
+                  </p>
+                );
+              })}
+            </div>
+            <div className="image-container-0" />
           </div>
-          <StackedAreaGraphContainer />
-          <div className="sb-text-container">
-            {secondText.map((text, i) => {
-              return (
-                <p className="pt-3 sb-text" key={`text-${i}`}>
-                  {text}
-                </p>
-              );
-            })}
+          {/* <StackedAreaGraphContainer /> */}
+          <div className="bg-1">
+            <h2 className="introtext-1">
+              Why are broader measures of poverty important?
+            </h2>
+            <div className="text-container-1">
+              {secondText.map((text, i) => {
+                return (
+                  <p className="text-1" key={`text-${i}`}>
+                    {text}
+                  </p>
+                );
+              })}
+            </div>
           </div>
           <BubbleGraphContainer flowText={thirdText} />
           <div className="sb-text-container">
@@ -112,7 +128,7 @@ class StoryboardContainer extends Component {
               );
             })}
           </div>
-        </div> */}
+        </div>
       </div>
     );
   }

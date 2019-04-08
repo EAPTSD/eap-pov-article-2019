@@ -118,13 +118,21 @@ class ChoroplethContainer extends Component {
     const windowWidth = window.innerWidth;
 
     switch (true) {
+      case windowWidth < 500:
+        legendWidth = '60px';
+        legendHeight = '85px';
+        break;
       case windowWidth < 576:
         legendWidth = '70px';
         legendHeight = '95px';
         break;
+      case windowWidth < 648:
+        legendWidth = '75px';
+        legendHeight = '100px';
+        break;
       case windowWidth < 720:
         legendWidth = '80px';
-        legendHeight = '115px';
+        legendHeight = '110px';
         break;
       case windowWidth < 960:
         legendWidth = '100px';
@@ -219,7 +227,7 @@ class ChoroplethContainer extends Component {
         const offsetY =
           d3.event.y / window.innerHeight > 0.65
             ? d3.event.y - 175
-            : d3.event.y;
+            : d3.event.y + 25;
         const country = d.properties.ADM0_NAME;
         const region = d.properties.ADM1_NAME;
         const dataString = choroplethDataObj[d.properties.ADM1_CODE][type];
