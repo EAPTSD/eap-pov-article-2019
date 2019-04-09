@@ -3,16 +3,10 @@ import React, { Component } from 'react';
 
 // Internal Imports
 import appText from '../../text/appText';
-import BarGraph from '../Graphs/BarGraph';
-import BarGraphPercentage from '../Graphs/BarGraphPercentage';
 import BarGraphContainer from '../Graphs/BarGraphContainer';
 import BubbleGraphContainer from '../Graphs/BubbleGraphContainer';
 import ChoroplethContainer from '../Graphs/ChoroplethContainer';
-import ChoroplethV3Eap from '../Graphs/ChoroplethV3Eap';
-import Header from '../Header';
 import HeaderV2 from '../HeaderV2';
-import StackedAreaGraph from '../Graphs/StackedAreaGraph';
-import StackedAreaGraphContainer from '../Graphs/StackedAreaGraphContainer';
 import extractText from '../../utilities/extractText';
 import './StoryboardContainer.css';
 
@@ -32,7 +26,7 @@ class StoryboardContainer extends Component {
     this.setState({
       firstText: textArray.slice(0, 3),
       secondText: textArray.slice(3, 6),
-      thirdText: textArray.slice(14, 24),
+      thirdText: textArray.slice(6, 9),
       fourthText: textArray.slice(24, 34),
       fifthText: textArray.slice(34, 44),
       sixthText: textArray.slice(44, 54),

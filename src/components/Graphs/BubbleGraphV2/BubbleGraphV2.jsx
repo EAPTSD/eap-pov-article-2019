@@ -33,10 +33,10 @@ const BubbleGraphV2 = (props) => {
         orientation="horizontal"
         gutter={20}
         style={{
-          data: { stroke: 'black', strokeWidth: 1 },
+          data: { stroke: 'black', strokeWidth: 1, fontFamily: 'Lora, serif' },
           border: { stroke: 'black' },
-          title: { fontSize: 12 },
-          labels: { fontSize: 10 },
+          title: { fontSize: 12, fontFamily: 'Lora, serif' },
+          labels: { fontSize: 10, fontFamily: 'Lora, serif' },
         }}
         colorScale={['#87CEFA', '#325DDF', '#191970']}
         data={[{ name: '$5.50' }, { name: '$3.20' }, { name: '$1.90' }]}
@@ -49,6 +49,7 @@ const BubbleGraphV2 = (props) => {
             fill: (d) => d.fill,
             stroke: 'black',
             strokeWidth: '1px',
+            fontFamily: 'Lora, serif',
           },
         }}
         labelComponent={<VictoryTooltip />}
@@ -70,14 +71,14 @@ const BubbleGraphV2 = (props) => {
         label={'Poverty Rate (Percentage)'}
         axisLabelComponent={<VictoryLabel dy={-12} />}
         style={{
-          axisLabel: { fontSize: 12 },
-          tickLabels: { fontSize: 10, padding: 5 },
+          axisLabel: { fontSize: 12, fontFamily: 'Lora, serif' },
+          tickLabels: { fontSize: 10, padding: 5, fontFamily: 'Lora, serif' },
         }}
       />
       <VictoryAxis
         crossAxis
         style={{
-          tickLabels: { fontSize: 10, padding: 5 },
+          tickLabels: { fontSize: 10, padding: 5, fontFamily: 'Lora, serif' },
         }}
       />
     </VictoryChart>

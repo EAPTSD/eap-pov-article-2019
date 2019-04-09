@@ -12,15 +12,16 @@
 }
 
 .BubbleGraphContainer-header-text {
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: 'Cormorant', serif;
   margin-bottom: 0;
   font-size: 2.5rem;
 }
 
 .BubbleGraphContainer-header-text-change {
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: 'Cormorant', serif;
   margin-bottom: 0;
   font-size: 2rem;
+  height: 2rem;
 }
 
 .BubbleGraphContainer-header-container {
@@ -47,16 +48,44 @@
   z-index: 10;
 }
 
-.bg-text {
+.bg-header-3 {
   width: 600px;
-  margin: 0 auto;
-  font-size: 19px;
-  color: white;
-  opacity: 0.7;
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
-  background: black;
-  padding: 25px;
+  font-size: 2.2rem;
+  color: #111;
+  opacity: 0.9;
+  font-family: 'Cormorant', serif;
+  padding-left: 75px;
   border-radius: 5px;
+  margin-bottom: 50vh;
+  will-change: transform;
+}
+
+.bg-text-3 {
+  width: 600px;
+  color: #111;
+  opacity: 0.9;
+  font-family: 'Lora', serif;
+  padding-left: 75px;
+  border-radius: 5px;
+  line-height: 1.6em;
+  font-size: 20px;
+  margin-bottom: 35vh;
+}
+
+.bg-text-3-last {
+  width: 600px;
+  color: #111;
+  opacity: 0.9;
+  font-family: 'Lora', serif;
+  padding-left: 75px;
+  border-radius: 5px;
+  line-height: 1.6em;
+  font-size: 20px;
+  padding-bottom: 50vh;
+}
+
+.hide-text {
+  opacity: 0;
 }
 
 .fadeOut {
@@ -91,4 +120,11 @@
   .bg-text {
     width: 90vw;
   }
+}
+
+.temp {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  opacity: 0.9;
 }

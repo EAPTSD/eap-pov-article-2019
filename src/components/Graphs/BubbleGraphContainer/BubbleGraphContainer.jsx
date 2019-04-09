@@ -29,8 +29,8 @@ class BubbleGraphContainer extends Component {
     asean3_2: null,
     asean5_5: null,
     bubbleGraphText: ['with China', 'without China'],
-    displayText: '',
-    headerClass: '',
+    displayText: 'with China',
+    headerClass: 'hide-text',
   };
 
   componentDidMount() {
@@ -121,44 +121,73 @@ class BubbleGraphContainer extends Component {
   };
 
   render() {
-    const { index, displayData, headerClass, displayText } = this.state;
+    const { displayData, headerClass, displayText } = this.state;
     const { flowText } = this.props;
     return (
       <div className="BubbleGraphContainer-sequence-container">
-        <div className="BubbleGraphContainer-container BubbleGraphContainer-sticky">
-          <div className="BubbleGraphContainer-header-container text-center">
-            <h1 className="BubbleGraphContainer-header-text">Developing EAP</h1>
-            <span
-              className={`BubbleGraphContainer-header-text-change ${headerClass}`}
-            >
-              {displayText}
-            </span>
+        <div className="BubbleGraphContainer-container BubbleGraphContainer-sticky container-fluid">
+          <div className="row">
+            <div className="col-6" />
+            <div className="BubbleGraphContainer-header-container col-6 text-center">
+              <h1 className="BubbleGraphContainer-header-text">
+                Developing EAP
+              </h1>
+              <span
+                className={`BubbleGraphContainer-header-text-change ${headerClass}`}
+              >
+                {displayText}
+              </span>
+              <BubbleGraphV2 displayData={displayData} />
+            </div>
           </div>
-          <BubbleGraphV2 displayData={displayData} />
         </div>
-        {index.map((i) => {
+        {flowText.map((text, i) => {
+          let flowClass;
+          if (i === 0) {
+            flowClass = 'bg-header-3';
+          } else if (i === 1) {
+            flowClass = 'bg-text-3';
+          } else {
+            flowClass = 'bg-text-3-last';
+          }
           return (
             <>
-              <div className="BubbleGraphContainer-waypoint-buffer" />
               {i === 0 ? (
                 <>
-                  <Waypoint onEnter={() => this.updateGraph()} />
-                  <div className="BubbleGraphContainer-waypoint-buffer" />
+                  <Waypoint
+                    onEnter={({ previousPosition }) => {
+                      if (previousPosition === 'above') {
+                        return this.updateGraph();
+                      } else {
+                        setTimeout(() => {
+                          this.updateGraph(true);
+                        }, 400);
+                      }
+                    }}
+                  />
+                  <div className="temp" />
                 </>
               ) : null}
-              {i === 1 || i === 4 ? (
+              {i === 2 ? (
                 <>
                   <Waypoint
-                    onEnter={() => this.updateGraph(i === 1 ? true : false)}
+                    onEnter={() => {
+                      this.updateGraph(false);
+                    }}
                   />
-                  <div className="BubbleGraphContainer-waypoint-buffer" />
+                  <div className="temp" />
                 </>
               ) : null}
-              <div className="BubbleGraphContainer-waypoint-buffer">
-                <p className="bg-text">{flowText[i]}</p>
-              </div>
-              {i === 7 ? (
-                <div className="BubbleGraphContainer-waypoint-buffer" />
+              <p className={flowClass}>{text}</p>
+              {i === 2 ? (
+                <>
+                  <Waypoint
+                    onEnter={() => {
+                      this.updateGraph();
+                    }}
+                  />
+                  <div className="temp" />
+                </>
               ) : null}
             </>
           );
