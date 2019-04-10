@@ -162,12 +162,12 @@ body .row {
 }
 
 .parallax-divider {
-  position: fixed;
   background-image: url('../../images/the-fishermen-3039589_1920.jpg');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 120vh;
   will-change: transform;
 }
 
