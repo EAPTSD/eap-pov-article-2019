@@ -1,7 +1,7 @@
 {
-  "main.css": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.3f36c49a.chunk.css",
-  "main.js": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.2c53e90d.chunk.js",
-  "main.js.map": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.2c53e90d.chunk.js.map",
+  "main.css": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.8f2fe7ea.chunk.css",
+  "main.js": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.4126818b.chunk.js",
+  "main.js.map": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.4126818b.chunk.js.map",
   "static/css/1.9b3f9647.chunk.css": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.9b3f9647.chunk.css",
   "static/js/1.5474a61f.chunk.js": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/1.5474a61f.chunk.js",
   "static/js/1.5474a61f.chunk.js.map": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/1.5474a61f.chunk.js.map",
@@ -17,9 +17,9 @@
   "static/media/HeaderV2.css": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/pedestrians-400811_1920.329f0ffd.jpg",
   "static/media/StoryboardContainer.css": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/the-fishermen-3039589_1920.03244904.jpg",
   "static/media/asean_wChina_1.9.csv": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_wChina_1.9.5d3ebbf1.csv",
-  "static/css/main.3f36c49a.chunk.css.map": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.3f36c49a.chunk.css.map",
+  "static/css/main.8f2fe7ea.chunk.css.map": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.8f2fe7ea.chunk.css.map",
   "static/css/1.9b3f9647.chunk.css.map": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.9b3f9647.chunk.css.map",
   "index.html": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/index.html",
-  "precache-manifest.35e9162378c93a8bebd08be4a76be854.js": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/precache-manifest.35e9162378c93a8bebd08be4a76be854.js",
+  "precache-manifest.89927bf8dba16577bcd4e056db109eca.js": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/precache-manifest.89927bf8dba16577bcd4e056db109eca.js",
   "service-worker.js": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/service-worker.js"
 }
