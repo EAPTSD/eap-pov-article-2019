@@ -1,13 +1,13 @@
 .BubbleGraphContainer-sequence-container {
   position: relative;
   -webkit-font-smoothing: antialiased;
-  background-color: cornflowerblue;
+  background-color: #82aaf1;
   z-index: 0;
 }
 
 .BubbleGraphContainer-container {
   height: 100vh;
-  background-color: cornflowerblue;
+  background-color: #82aaf1;
   padding: 25px;
 }
 
@@ -48,7 +48,7 @@
   z-index: 10;
 }
 
-.bg-header-3 {
+.bg-header-2 {
   width: 600px;
   font-size: 2.2rem;
   color: #111;
@@ -60,7 +60,7 @@
   will-change: transform;
 }
 
-.bg-text-3 {
+.bg-text-2 {
   width: 600px;
   color: #111;
   opacity: 0.9;
@@ -72,7 +72,7 @@
   margin-bottom: 35vh;
 }
 
-.bg-text-3-last {
+.bg-text-2-last {
   width: 600px;
   color: #111;
   opacity: 0.9;

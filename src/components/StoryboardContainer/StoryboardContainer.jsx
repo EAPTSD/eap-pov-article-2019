@@ -18,19 +18,17 @@ class StoryboardContainer extends Component {
     fourthText: [],
     fifthText: [],
     sixthText: [],
-    seventhText: [],
   };
 
   componentDidMount() {
     const textArray = extractText(appText);
     this.setState({
       firstText: textArray.slice(0, 3),
-      secondText: textArray.slice(3, 6),
-      thirdText: textArray.slice(6, 9),
-      fourthText: textArray.slice(24, 34),
-      fifthText: textArray.slice(34, 44),
-      sixthText: textArray.slice(44, 54),
-      seventhText: textArray.slice(54),
+      secondText: textArray.slice(3, 4),
+      thirdText: textArray.slice(4, 6),
+      fourthText: textArray.slice(6, 9),
+      fifthText: textArray.slice(9, 11),
+      sixthText: textArray.slice(9, 11),
     });
   }
 
@@ -42,10 +40,11 @@ class StoryboardContainer extends Component {
       fourthText,
       fifthText,
       sixthText,
-      seventhText,
     } = this.state;
     return (
       <div>
+        {/* <StackedAreaGraphContainer /> */}
+
         <div className="StoryboardContainer">
           <HeaderV2 />
           <div className="bg-0">
@@ -68,7 +67,6 @@ class StoryboardContainer extends Component {
             </div>
             <div className="image-container-0" />
           </div>
-          {/* <StackedAreaGraphContainer /> */}
           <div className="bg-1">
             <h2 className="introtext-1">
               Why are broader measures of poverty important?
@@ -83,38 +81,38 @@ class StoryboardContainer extends Component {
               })}
             </div>
           </div>
-          <BubbleGraphContainer flowText={thirdText} />
-          <div className="sb-text-container">
-            {fourthText.map((text, i) => {
-              return (
-                <p className="pt-3 sb-text" key={`text-${i}`}>
-                  {text}
-                </p>
-              );
-            })}
-          </div>
           <BarGraphContainer />
-          <div className="sb-text-container">
-            {fifthText.map((text, i) => {
-              return (
-                <p className="pt-3 sb-text" key={`text-${i}`}>
-                  {text}
-                </p>
-              );
-            })}
+          <div className="bg-1-special">
+            <div className="text-container-1">
+              {thirdText.map((text, i) => {
+                return (
+                  <p className="text-1" key={`text-${i}`}>
+                    {text}
+                  </p>
+                );
+              })}
+            </div>
           </div>
-          <div className="sb-text-container">
-            {sixthText.map((text, i) => {
-              return (
-                <p className="pt-3 sb-text" key={`text-${i}`}>
-                  {text}
-                </p>
-              );
-            })}
+          <BubbleGraphContainer flowText={fourthText} />
+          <div className="parallax-divider" />
+          <div className="bg-3">
+            <h2 className="introtext-3">
+              Non-monetary measures are important to tackle poverty in all its
+              forms
+            </h2>
+            <div className="text-container-3">
+              {fifthText.map((text, i) => {
+                return (
+                  <p className="text-3" key={`text-${i}`}>
+                    {text}
+                  </p>
+                );
+              })}
+            </div>
           </div>
           <ChoroplethContainer />
           <div className="sb-text-container">
-            {seventhText.map((text, i) => {
+            {sixthText.map((text, i) => {
               return (
                 <p className="pt-3 sb-text" key={`text-${i}`}>
                   {text}

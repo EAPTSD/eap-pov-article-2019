@@ -2,25 +2,23 @@
   -webkit-font-smoothing: antialiased;
   height: 85vh;
   padding: 15px 0;
-  background-color: lightgrey;
 }
 
 .BarGraphContainer-container {
-  height: 100%;
   width: 75%;
   margin: 0 auto;
 }
 
 .BarGraphContainer-header-text {
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: 'Cormorant', serif;
   margin-bottom: 0;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 .BarGraphContainer-header-text-change {
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: 'Cormorant', serif;
   margin-bottom: 0;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .BarGraphContainer-fadeOut {

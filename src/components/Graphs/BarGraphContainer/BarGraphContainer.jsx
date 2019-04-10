@@ -92,10 +92,8 @@ class BarGraphContainer extends Component {
             </span>
           </div>
         </div>
-        <div className="BarGraphContainer-container row">
-          <div className="col-sm">
-            <BarGraphV2 higherPovertyDisplayData={higherPovertyDisplayData} />
-          </div>
+        <div className="BarGraphContainer-container">
+          <BarGraphV2 higherPovertyDisplayData={higherPovertyDisplayData} />
         </div>
       </div>
     );

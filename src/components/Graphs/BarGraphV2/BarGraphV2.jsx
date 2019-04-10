@@ -29,6 +29,7 @@ const BarGraphV2 = (props) => {
           style={{
             data: {
               fill: (d) => color[d.xName],
+              fontFamily: 'Lora, serif',
             },
           }}
           categories={{
@@ -41,13 +42,15 @@ const BarGraphV2 = (props) => {
           label={'Population (Million)'}
           axisLabelComponent={<VictoryLabel dy={-12} />}
           style={{
-            tickLabels: { fontSize: 12, padding: 5 },
+            tickLabels: { fontSize: 12, padding: 5, fontFamily: 'Lora, serif' },
+            axisLabel: { fontFamily: 'Lora, serif' },
           }}
         />
         <VictoryAxis
           crossAxis
           style={{
-            tickLabels: { fontSize: 12, padding: 5 },
+            tickLabels: { fontSize: 12, padding: 5, fontFamily: 'Lora, serif' },
+            axisLabel: { fontFamily: 'Lora, serif' },
           }}
         />
       </VictoryChart>

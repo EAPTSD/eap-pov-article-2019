@@ -144,11 +144,11 @@ class BubbleGraphContainer extends Component {
         {flowText.map((text, i) => {
           let flowClass;
           if (i === 0) {
-            flowClass = 'bg-header-3';
+            flowClass = 'bg-header-2';
           } else if (i === 1) {
-            flowClass = 'bg-text-3';
+            flowClass = 'bg-text-2';
           } else {
-            flowClass = 'bg-text-3-last';
+            flowClass = 'bg-text-2-last';
           }
           return (
             <>

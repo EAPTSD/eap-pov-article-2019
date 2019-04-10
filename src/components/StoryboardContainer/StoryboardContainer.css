@@ -98,6 +98,12 @@ body .row {
   padding: 300px 0 50px;
 }
 
+.bg-1-special {
+  position: relative;
+  background-color: white;
+  padding: 0 0 50px;
+}
+
 .text-container-1 {
   width: 600px;
   margin: 0 auto;
@@ -112,6 +118,80 @@ body .row {
 }
 
 .text-1 {
+  font-family: 'Lora', serif;
+  margin-bottom: 2rem;
+  color: #111;
+  line-height: 1.6em;
+  font-size: 20px;
+}
+
+.bg-header-2 {
+  width: 600px;
+  font-size: 2.2rem;
+  color: #111;
+  opacity: 0.9;
+  font-family: 'Cormorant', serif;
+  padding-left: 75px;
+  border-radius: 5px;
+  margin-bottom: 50vh;
+  will-change: transform;
+}
+
+.bg-text-2 {
+  width: 600px;
+  color: #111;
+  opacity: 0.9;
+  font-family: 'Lora', serif;
+  padding-left: 75px;
+  border-radius: 5px;
+  line-height: 1.6em;
+  font-size: 20px;
+  margin-bottom: 35vh;
+}
+
+.bg-text-2-last {
+  width: 600px;
+  color: #111;
+  opacity: 0.9;
+  font-family: 'Lora', serif;
+  padding-left: 75px;
+  border-radius: 5px;
+  line-height: 1.6em;
+  font-size: 20px;
+  padding-bottom: 50vh;
+}
+
+.parallax-divider {
+  position: fixed;
+  background-image: url('../../images/the-fishermen-3039589_1920.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  will-change: transform;
+}
+
+.bg-3 {
+  position: relative;
+  background-color: white;
+  padding: 50px 0;
+}
+
+.text-container-3 {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.introtext-3 {
+  font-family: 'Cormorant', serif;
+  margin-bottom: 2.5rem;
+  width: 770px;
+  margin: 0.5rem auto 2.5rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.text-3 {
   font-family: 'Lora', serif;
   margin-bottom: 2rem;
   color: #111;
