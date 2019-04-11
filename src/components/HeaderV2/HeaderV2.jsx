@@ -1,6 +1,5 @@
 // External Imports
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
 // Internal Imports
 import './HeaderV2.css';

@@ -142,7 +142,7 @@ class ChoroplethContainer extends Component {
         legendWidth = '120px';
         legendHeight = '160px';
         break;
-      case windowWidth > 1140:
+      default:
         legendWidth = '150px';
         legendHeight = '200px';
         break;

@@ -1,14 +1,16 @@
 .ChoroplethContainer-sequence-container {
   position: relative;
   -webkit-font-smoothing: antialiased;
-  background-color: #606060;
+  /* background-color: #606060; */
+  background-color: #9b9b9b;
 }
 
 .ChoroplethContainer-container {
   height: 100vh;
   display: flex;
   align-items: center;
-  background-color: #606060;
+  /* background-color: #606060; */
+  background-color: #9b9b9b;
   padding: 25px;
 }
 
@@ -25,7 +27,8 @@
 
 .ChoroplethContainer-waypoint-buffer {
   height: 120vh;
-  background-color: #606060;
+  /* background-color: #606060; */
+  background-color: #9b9b9b;
 }
 
 .sub-nation:hover {

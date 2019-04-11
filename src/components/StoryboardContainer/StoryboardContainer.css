@@ -173,7 +173,8 @@ body .row {
 
 .bg-3 {
   position: relative;
-  background-color: white;
+  /* background-color: white; */
+  background-color: #9b9b9b;
   padding: 50px 0;
 }
 
