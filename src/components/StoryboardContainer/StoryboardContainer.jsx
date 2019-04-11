@@ -7,18 +7,24 @@ import BarGraphContainer from '../Graphs/BarGraphContainer';
 import BubbleGraphContainer from '../Graphs/BubbleGraphContainer';
 import ChoroplethContainer from '../Graphs/ChoroplethContainer';
 import HeaderV2 from '../HeaderV2';
+import RotatePhone from '../RotatePhone';
 import extractText from '../../utilities/extractText';
 import './StoryboardContainer.css';
 
 class StoryboardContainer extends Component {
-  state = {
-    firstText: [],
-    secondText: [],
-    thirdText: [],
-    fourthText: [],
-    fifthText: [],
-    sixthText: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstText: [],
+      secondText: [],
+      thirdText: [],
+      fourthText: [],
+      fifthText: [],
+      sixthText: [],
+      screenWidth: null,
+    };
+    this.StoryboardRef = React.createRef();
+  }
 
   componentDidMount() {
     const textArray = extractText(appText);
@@ -29,8 +35,21 @@ class StoryboardContainer extends Component {
       fourthText: textArray.slice(6, 9),
       fifthText: textArray.slice(9, 11),
       sixthText: textArray.slice(9, 11),
+      screenWidth: window.innerWidth,
     });
+
+    window.addEventListener('resize', this.onWindowResize);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onWindowResize);
+  }
+
+  onWindowResize = () => {
+    this.setState({
+      screenWidth: window.innerWidth,
+    });
+  };
 
   render() {
     const {
@@ -40,87 +59,91 @@ class StoryboardContainer extends Component {
       fourthText,
       fifthText,
       sixthText,
+      screenWidth,
     } = this.state;
     return (
-      <div>
-        {/* <StackedAreaGraphContainer /> */}
-
-        <div className="StoryboardContainer">
-          <HeaderV2 />
-          <div className="bg-0">
-            <div className="text-container-0">
-              {firstText.map((text, i) => {
+      <div className="StoryboardContainer" ref={this.StoryboardRef}>
+        {screenWidth < 485 ? (
+          <RotatePhone />
+        ) : (
+          <>
+            <HeaderV2 />
+            <div className="bg-0">
+              <div className="text-container-0">
+                {firstText.map((text, i) => {
+                  return (
+                    <p className="text-0" key={`0-text-${i}`}>
+                      {i === 0 ? (
+                        <>
+                          <span className="dropcap-0">P</span>
+                          <span className="leadtext-0">
+                            IECING TOGETHER THE POVERTY PUZZLE
+                          </span>
+                        </>
+                      ) : null}
+                      {text}
+                    </p>
+                  );
+                })}
+              </div>
+              <div className="image-container-0" />
+            </div>
+            <div className="bg-1">
+              <h2 className="introtext-1">
+                Why are broader measures of poverty important?
+              </h2>
+              <div className="text-container-1">
+                {secondText.map((text, i) => {
+                  return (
+                    <p className="text-1" key={`text-${i}`}>
+                      {text}
+                    </p>
+                  );
+                })}
+              </div>
+            </div>
+            <BarGraphContainer />
+            <div className="bg-1-special">
+              <div className="text-container-1">
+                {thirdText.map((text, i) => {
+                  return (
+                    <p className="text-1" key={`text-${i}`}>
+                      {text}
+                    </p>
+                  );
+                })}
+              </div>
+            </div>
+            <BubbleGraphContainer flowText={fourthText} />
+            <div className="parallax-divider" />
+            <div className="bg-3">
+              <h2 className="introtext-3">
+                Non-monetary measures are important to tackle poverty in all its
+                forms
+              </h2>
+              <div className="text-container-3">
+                {fifthText.map((text, i) => {
+                  return (
+                    <p className="text-3" key={`text-${i}`}>
+                      {text}
+                    </p>
+                  );
+                })}
+              </div>
+            </div>
+            <ChoroplethContainer />
+            <div className="sb-text-container">
+              {sixthText.map((text, i) => {
                 return (
-                  <p className="text-0" key={`0-text-${i}`}>
-                    {i === 0 ? (
-                      <>
-                        <span className="dropcap-0">P</span>
-                        <span className="leadtext-0">
-                          IECING TOGETHER THE POVERTY PUZZLE
-                        </span>
-                      </>
-                    ) : null}
+                  <p className="pt-3 sb-text" key={`text-${i}`}>
                     {text}
                   </p>
                 );
               })}
             </div>
-            <div className="image-container-0" />
-          </div>
-          <div className="bg-1">
-            <h2 className="introtext-1">
-              Why are broader measures of poverty important?
-            </h2>
-            <div className="text-container-1">
-              {secondText.map((text, i) => {
-                return (
-                  <p className="text-1" key={`text-${i}`}>
-                    {text}
-                  </p>
-                );
-              })}
-            </div>
-          </div>
-          <BarGraphContainer />
-          <div className="bg-1-special">
-            <div className="text-container-1">
-              {thirdText.map((text, i) => {
-                return (
-                  <p className="text-1" key={`text-${i}`}>
-                    {text}
-                  </p>
-                );
-              })}
-            </div>
-          </div>
-          <BubbleGraphContainer flowText={fourthText} />
-          <div className="parallax-divider" />
-          <div className="bg-3">
-            <h2 className="introtext-3">
-              Non-monetary measures are important to tackle poverty in all its
-              forms
-            </h2>
-            <div className="text-container-3">
-              {fifthText.map((text, i) => {
-                return (
-                  <p className="text-3" key={`text-${i}`}>
-                    {text}
-                  </p>
-                );
-              })}
-            </div>
-          </div>
-          <ChoroplethContainer />
-          <div className="sb-text-container">
-            {sixthText.map((text, i) => {
-              return (
-                <p className="pt-3 sb-text" key={`text-${i}`}>
-                  {text}
-                </p>
-              );
-            })}
-          </div>
-        </div>
+            {/* <StackedAreaGraphContainer /> */}
+          </>
+        )}
       </div>
     );
   }
