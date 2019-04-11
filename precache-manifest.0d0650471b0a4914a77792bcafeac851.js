@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_wChina_5.5.4b1504fd.csv"
   },
   {
-    "revision": "4126818be991d9375d36",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.8f2fe7ea.chunk.css"
+    "revision": "8fef87d77200cd1958c4",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.017dbe90.chunk.css"
   },
   {
     "revision": "03244904b5496a7c9dcb0326d08c55d0",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/the-fishermen-3039589_1920.03244904.jpg"
   },
   {
-    "revision": "5474a61f2e4a59e156bc",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/1.5474a61f.chunk.js"
+    "revision": "683a044bb99582c67267",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/1.683a044b.chunk.js"
   },
   {
     "revision": "51b6458cc8c2ce96ca60",
@@ -32,8 +32,8 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_wChina_3.2.b2508c61.csv"
   },
   {
-    "revision": "4126818be991d9375d36",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.4126818b.chunk.js"
+    "revision": "8fef87d77200cd1958c4",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.8fef87d7.chunk.js"
   },
   {
     "revision": "f2dbba84117a2fe4ef00bee86fa78d6f",
@@ -52,19 +52,19 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/choropleth_data.174fc8f3.csv"
   },
   {
-    "revision": "329f0ffdf37d87e78f1980039eb8a01f",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/pedestrians-400811_1920.329f0ffd.jpg"
+    "revision": "d00ce54cc21e1a6b2ce8337a43f27c41",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/pedestrians-400811_1920_2.d00ce54c.jpg"
   },
   {
     "revision": "189ebf9687822b4e8902f66ff745c76f",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/teddy-bear-1807560_640.189ebf96.jpg"
   },
   {
-    "revision": "5474a61f2e4a59e156bc",
+    "revision": "683a044bb99582c67267",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.9b3f9647.chunk.css"
   },
   {
-    "revision": "3728fe021419b74b399d666e5f9bec35",
+    "revision": "fa1a938fbd95afafa0295a2194cd24a2",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/index.html"
   }
 ];
