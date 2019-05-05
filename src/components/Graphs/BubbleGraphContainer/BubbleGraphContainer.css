@@ -11,6 +11,11 @@
   padding: 25px;
 }
 
+.BubbleGraphContainer-align-center {
+  height: 100%;
+  display: table;
+}
+
 .BubbleGraphContainer-header-text {
   font-family: 'Cormorant', serif;
   margin-bottom: 0;
@@ -24,8 +29,15 @@
   height: 2rem;
 }
 
+.BubbleGraphContainer-header-container .VictoryContainer {
+  height: auto !important;
+  padding-top: 15px;
+}
+
 .BubbleGraphContainer-header-container {
-  height: 15%;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .BubbleGraphContainer-container .VictoryContainer {

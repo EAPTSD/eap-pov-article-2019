@@ -126,18 +126,20 @@ class BubbleGraphContainer extends Component {
     return (
       <div className="BubbleGraphContainer-sequence-container">
         <div className="BubbleGraphContainer-container BubbleGraphContainer-sticky container-fluid">
-          <div className="row">
+          <div className="row h-100">
             <div className="col-6" />
-            <div className="BubbleGraphContainer-header-container col-6 text-center">
-              <h1 className="BubbleGraphContainer-header-text">
-                Developing EAP
-              </h1>
-              <span
-                className={`BubbleGraphContainer-header-text-change ${headerClass}`}
-              >
-                {displayText}
-              </span>
-              <BubbleGraphV2 displayData={displayData} />
+            <div className="col-6 BubbleGraphContainer-align-center">
+              <div className="BubbleGraphContainer-header-container text-center">
+                <h1 className="BubbleGraphContainer-header-text">
+                  Developing EAP
+                </h1>
+                <span
+                  className={`BubbleGraphContainer-header-text-change ${headerClass}`}
+                >
+                  {displayText}
+                </span>
+                <BubbleGraphV2 displayData={displayData} />
+              </div>
             </div>
           </div>
         </div>
@@ -179,7 +181,7 @@ class BubbleGraphContainer extends Component {
                 </>
               ) : null}
               <p className={flowClass}>{text}</p>
-              {i === 2 ? (
+              {i === 3 ? (
                 <>
                   <Waypoint
                     onEnter={() => {

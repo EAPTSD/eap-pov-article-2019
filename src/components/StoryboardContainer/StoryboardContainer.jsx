@@ -30,7 +30,7 @@ class StoryboardContainer extends Component {
     const textArray = extractText(appText);
     this.setState({
       firstText: textArray.slice(0, 3),
-      secondText: textArray.slice(3, 4),
+      secondText: textArray.slice(3, 7),
       thirdText: textArray.slice(4, 6),
       fourthText: textArray.slice(6, 9),
       fifthText: textArray.slice(9, 11),
@@ -83,7 +83,10 @@ class StoryboardContainer extends Component {
                 })}
                 <p className="text-0" key="text-0-4">
                   New pieces of the poverty puzzle were introduced in the{' '}
-                  <a href="http://www.worldbank.org/en/publication/poverty-and-shared-prosperity">
+                  <a
+                    href="http://www.worldbank.org/en/publication/poverty-and-shared-prosperity"
+                    target="_blank"
+                  >
                     2018 Poverty and Shared Prosperity
                   </a>{' '}
                   flagship to complement the existing World Bank measures of
@@ -94,6 +97,7 @@ class StoryboardContainer extends Component {
                 </p>
               </div>
             </div>
+            <BubbleGraphContainer flowText={secondText} />
             <div className="bg-1">
               <h2 className="introtext-1">
                 Why are broader measures of poverty important?
@@ -120,7 +124,6 @@ class StoryboardContainer extends Component {
                 })}
               </div>
             </div>
-            <BubbleGraphContainer flowText={fourthText} />
             <div className="parallax-divider" />
             <div className="bg-3">
               <h2 className="introtext-3">

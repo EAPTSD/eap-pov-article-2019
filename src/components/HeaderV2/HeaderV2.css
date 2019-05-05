@@ -50,7 +50,7 @@
 }
 
 .HeaderV2-title {
-  font-size: 3.3vw;
+  font-size: 48px;
   text-shadow: 2px 2px 8px #0f0f0f;
   font-family: 'Cormorant', serif;
   color: ghostwhite;
@@ -67,7 +67,7 @@
 }
 
 .HeaderV2-subtitle {
-  font-size: 1.3vw;
+  font-size: 21px;
   font-family: 'Lora', serif;
   color: gainsboro;
   width: 80%;
@@ -75,8 +75,26 @@
 }
 
 .byline {
+  font-size: 15px;
   font-family: 'Lora', serif;
   color: #b2b2b2;
   font-weight: bold;
   text-shadow: 2px 2px 8px #0f0f0f;
+}
+
+@media only screen and (max-width: 1000px) {
+  .HeaderV2-title-container {
+    width: 60%;
+    bottom: 125vh;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .HeaderV2-title-container {
+    width: 80%;
+    bottom: 120vh;
+  }
+  .HeaderV2-subtitle {
+    width: 90%;
+  }
 }
