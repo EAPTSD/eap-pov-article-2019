@@ -69,24 +69,30 @@ class StoryboardContainer extends Component {
           <>
             <HeaderV2 />
             <div className="bg-0">
+              <h2 className="introtext-0">
+                Higher standards are required to match higher aspirations in
+                middle-income countries
+              </h2>
               <div className="text-container-0">
                 {firstText.map((text, i) => {
                   return (
-                    <p className="text-0" key={`0-text-${i}`}>
-                      {i === 0 ? (
-                        <>
-                          <span className="dropcap-0">P</span>
-                          <span className="leadtext-0">
-                            IECING TOGETHER THE POVERTY PUZZLE
-                          </span>
-                        </>
-                      ) : null}
+                    <p className="text-0" key={`text-0-${i + 1}`}>
                       {text}
                     </p>
                   );
                 })}
+                <p className="text-0" key="text-0-4">
+                  New pieces of the poverty puzzle were introduced in the{' '}
+                  <a href="http://www.worldbank.org/en/publication/poverty-and-shared-prosperity">
+                    2018 Poverty and Shared Prosperity
+                  </a>{' '}
+                  flagship to complement the existing World Bank measures of
+                  poverty, aimed at meeting the twin goals of ending extreme
+                  poverty and boosting shared prosperity. These new pieces
+                  include higher poverty lines and a multidimensional poverty
+                  measure.
+                </p>
               </div>
-              <div className="image-container-0" />
             </div>
             <div className="bg-1">
               <h2 className="introtext-1">
@@ -95,7 +101,7 @@ class StoryboardContainer extends Component {
               <div className="text-container-1">
                 {secondText.map((text, i) => {
                   return (
-                    <p className="text-1" key={`text-${i}`}>
+                    <p className="text-1" key={`text-1a-${i}`}>
                       {text}
                     </p>
                   );
@@ -107,7 +113,7 @@ class StoryboardContainer extends Component {
               <div className="text-container-1">
                 {thirdText.map((text, i) => {
                   return (
-                    <p className="text-1" key={`text-${i}`}>
+                    <p className="text-1" key={`text-1b-${i}`}>
                       {text}
                     </p>
                   );
@@ -124,7 +130,7 @@ class StoryboardContainer extends Component {
               <div className="text-container-3">
                 {fifthText.map((text, i) => {
                   return (
-                    <p className="text-3" key={`text-${i}`}>
+                    <p className="text-3" key={`text-3-${i}`}>
                       {text}
                     </p>
                   );

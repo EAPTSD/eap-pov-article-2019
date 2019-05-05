@@ -20,7 +20,7 @@ const BarGraphV2 = (props) => {
       <VictoryChart
         height={400}
         width={450}
-        // domain={{ y: [0, 1000] }}
+        domain={{ y: [0, 1000] }}
         domainPadding={{ x: 35 }}
         animate={{ duration: first ? 2000 : 800 }}
       >

@@ -64,7 +64,7 @@ class HeaderV2 extends Component {
               Pacific Region
             </h2>
             <span className="byline">
-              WORLD BANK - By JUDY YANG
+              WORLD BANK - By JUDY YANG, SHIYAO WANG, and DARWIN RINDERER
               <br />
               April 7, 2018
             </span>
