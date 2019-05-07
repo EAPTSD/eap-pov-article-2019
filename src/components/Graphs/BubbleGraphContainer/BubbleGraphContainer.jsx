@@ -147,7 +147,7 @@ class BubbleGraphContainer extends Component {
           let flowClass;
           if (i === 0) {
             flowClass = 'bg-header-2';
-          } else if (i === 1) {
+          } else if (i === 1 || i === 2) {
             flowClass = 'bg-text-2';
           } else {
             flowClass = 'bg-text-2-last';

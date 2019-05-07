@@ -134,6 +134,18 @@
   }
 }
 
+@media only screen and (max-width: 1200px) {
+  .bg-header-2 {
+    width: 45% !important;
+    padding-left: 50px !important;
+  }
+  .bg-text-2,
+  .bg-text-2-last {
+    width: 45% !important;
+    padding-left: 50px !important;
+  }
+}
+
 .temp {
   width: 10px;
   height: 10px;

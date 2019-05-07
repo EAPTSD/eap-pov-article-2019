@@ -52,7 +52,9 @@ const BubbleGraphV2 = (props) => {
             fontFamily: 'Lora, serif',
           },
         }}
-        labelComponent={<VictoryTooltip />}
+        labelComponent={
+          <VictoryTooltip style={{ fontSize: 10, fontFamily: 'Lora, serif' }} />
+        }
         animate={{
           onExit: {
             duration: 1000,
