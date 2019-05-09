@@ -12,11 +12,10 @@ import {
 import './StackedAreaGraphV2.css';
 
 const StackedAreaGraphV2 = (props) => {
-  const { color, data, isPercent, externalMutations } = props;
+  const { color, data, isPercent } = props;
   return (
     <div className="StackedAreaGraphV2-container">
       <VictoryChart
-        externalEventMutations={externalMutations}
         events={[
           {
             target: 'data',

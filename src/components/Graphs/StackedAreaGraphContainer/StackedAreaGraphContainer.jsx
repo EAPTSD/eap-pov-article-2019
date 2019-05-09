@@ -31,7 +31,6 @@ class StackedAreaGraphContainer extends Component {
     index: 1,
     percentageData: [],
     stackedAreaText: ['with China', 'without China'],
-    externalMutations: undefined,
     headerClass: '',
   };
 
@@ -77,51 +76,6 @@ class StackedAreaGraphContainer extends Component {
     }, 4000);
   };
 
-  removeMutation = () => {
-    this.setState({
-      externalMutations: undefined,
-    });
-  };
-
-  highlightArea = (i, event) => {
-    event.stopPropagation();
-    const callback = this.removeMutation;
-    const area = `area-${i}`;
-    this.setState({
-      externalMutations: [
-        {
-          childName: area,
-          target: 'data',
-          eventKey: 'all',
-          mutation: () => ({
-            style: {
-              fill: 'goldenrod',
-              stroke: 'goldenrod',
-            },
-          }),
-          callback,
-        },
-      ],
-    });
-  };
-
-  unhighlightArea = (i, event) => {
-    event.stopPropagation();
-    const callback = this.removeMutation;
-    const area = `area-${i}`;
-    this.setState({
-      externalMutations: [
-        {
-          childName: area,
-          target: 'data',
-          eventKey: 'all',
-          mutation: () => ({ style: undefined }),
-          callback,
-        },
-      ],
-    });
-  };
-
   render() {
     const {
       data,
@@ -130,7 +84,6 @@ class StackedAreaGraphContainer extends Component {
       povClasses,
       percentageData,
       displayText,
-      externalMutations,
       headerClass,
     } = this.state;
     return (
@@ -149,18 +102,13 @@ class StackedAreaGraphContainer extends Component {
         </div>
         <div className="StackedAreaGraphContainer-container row">
           <div className="col-sm">
-            <StackedAreaGraphV2
-              data={data}
-              color={'blue'}
-              externalMutations={externalMutations}
-            />
+            <StackedAreaGraphV2 data={data} color={'blue'} />
           </div>
           <div className="col-sm">
             <StackedAreaGraphV2
               data={percentageData}
               color={purpColors}
               isPercent={true}
-              externalMutations={externalMutations}
             />
           </div>
         </div>
@@ -170,8 +118,6 @@ class StackedAreaGraphContainer extends Component {
               povClasses={povClasses}
               coolColors={coolColors}
               purpColors={purpColors}
-              highlightArea={this.highlightArea}
-              unhighlightArea={this.unhighlightArea}
             />
           </div>
         </div>

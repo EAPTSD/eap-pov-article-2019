@@ -5,20 +5,10 @@ import React from 'react';
 import './StackedAreaLegend.css';
 
 const StackedAreaLegend = (props) => {
-  const {
-    povClasses,
-    coolColors,
-    purpColors,
-    highlightArea,
-    unhighlightArea,
-  } = props;
+  const { povClasses, coolColors, purpColors } = props;
   return povClasses.map((povClass, i) => {
     return (
-      <div
-        className="StackedAreaLegend-item"
-        onMouseEnter={(event) => highlightArea(i, event)}
-        onMouseLeave={(event) => unhighlightArea(i, event)}
-      >
+      <div className="StackedAreaLegend-item">
         <svg width={60} height={25}>
           <circle
             className="legend-circle"
