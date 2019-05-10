@@ -44,13 +44,14 @@ const StackedAreaGraphV2 = (props) => {
           label={isPercent ? 'Population (Percentage)' : 'Population (Million)'}
           axisLabelComponent={<VictoryLabel dy={-12} />}
           style={{
-            tickLabels: { fontSize: 12, padding: 5 },
+            axisLabel: { fontSize: 12, fontFamily: 'Lora, serif' },
+            tickLabels: { fontSize: 10, padding: 5, fontFamily: 'Lora, serif' },
           }}
         />
         <VictoryAxis
           crossAxis
           style={{
-            tickLabels: { fontSize: 12, padding: 5 },
+            tickLabels: { fontSize: 10, padding: 5, fontFamily: 'Lora, serif' },
           }}
         />
       </VictoryChart>

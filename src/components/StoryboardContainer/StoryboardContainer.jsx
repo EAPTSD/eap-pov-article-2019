@@ -137,7 +137,7 @@ class StoryboardContainer extends Component {
                   include earthquakes and volcanic eruptions that are less
                   foreseeable.
                 </p>
-                <p className="text-3" key="text-3-0">
+                <p className="text-3" key="text-3-1">
                   Large variation in poverty rates exists both within and across
                   countries. Across 78 sub-regions, the $3.20/day poverty rate
                   ranges from 0 percent in Bangkok, Thailand (2017) to 84.5

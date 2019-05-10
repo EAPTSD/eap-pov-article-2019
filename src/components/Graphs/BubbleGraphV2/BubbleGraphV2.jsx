@@ -27,7 +27,7 @@ const BubbleGraphV2 = (props) => {
     >
       <VictoryLegend
         x={230}
-        y={40}
+        y={20}
         title={`Per-Capita Per-Day Poverty`}
         centerTitle
         orientation="horizontal"
