@@ -60,7 +60,7 @@
   z-index: 10;
 }
 
-.bg-header-2 {
+.introtext-1 {
   width: 600px;
   font-size: 2.2rem;
   color: #111;
@@ -72,7 +72,7 @@
   will-change: transform;
 }
 
-.bg-text-2 {
+.text-1 {
   width: 600px;
   color: #111;
   opacity: 0.9;
@@ -84,7 +84,7 @@
   margin-bottom: 35vh;
 }
 
-.bg-text-2-last {
+.text-1-last {
   width: 600px;
   color: #111;
   opacity: 0.9;
@@ -128,19 +128,13 @@
   }
 }
 
-@media only screen and (max-width: 650px) {
-  .bg-text {
-    width: 90vw;
-  }
-}
-
 @media only screen and (max-width: 1200px) {
-  .bg-header-2 {
+  .introtext-1 {
     width: 45% !important;
     padding-left: 50px !important;
   }
-  .bg-text-2,
-  .bg-text-2-last {
+  .text-1,
+  .text-1-last {
     width: 45% !important;
     padding-left: 50px !important;
   }

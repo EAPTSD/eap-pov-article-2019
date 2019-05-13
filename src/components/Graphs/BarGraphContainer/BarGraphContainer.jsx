@@ -20,25 +20,7 @@ class BarGraphContainer extends Component {
     reserveData: [],
     start: false,
     first: true,
-    years: [
-      2002,
-      2003,
-      2004,
-      2005,
-      2006,
-      2007,
-      2008,
-      2009,
-      2010,
-      2011,
-      2012,
-      2013,
-      2014,
-      2015,
-      2016,
-      2017,
-      2018,
-    ],
+    years: [2002, 2006, 2010, 2014, 2018],
   };
 
   componentDidMount() {
@@ -49,7 +31,6 @@ class BarGraphContainer extends Component {
         years
       );
       this.setState({
-        // higherPovertyDisplayData: formattedHigherPovertyData[0],
         reserveData: formattedHigherPovertyData,
       });
     });
@@ -66,7 +47,7 @@ class BarGraphContainer extends Component {
         () => {
           setTimeout(() => {
             this.updateGraph();
-          }, 2000);
+          }, 2500);
         }
       );
     }
@@ -79,15 +60,15 @@ class BarGraphContainer extends Component {
         this.setState({
           headerClass: 'BarGraphContainer-fadeOut',
         });
-      }, 1200);
+      }, 2000);
       this.setState({
         displayText: years[index].toString(),
         headerClass: 'BarGraphContainer-fadeIn',
         higherPovertyDisplayData: reserveData[index],
-        index: index === 16 ? 0 : index + 1,
+        index: index === 4 ? 0 : index + 1,
         first: false,
       });
-    }, 1500);
+    }, 2500);
   };
 
   render() {

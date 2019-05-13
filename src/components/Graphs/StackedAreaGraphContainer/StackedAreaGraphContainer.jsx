@@ -1,6 +1,7 @@
 // External Imports
 import React, { Component } from 'react';
 import * as d3 from 'd3';
+import Waypoint from 'react-waypoint';
 
 // Internal Imports
 import formatClassData from '../../../utilities/formatClassData';
@@ -44,17 +45,12 @@ class StackedAreaGraphContainer extends Component {
       const formattedClassData = files.map((file) => {
         return formatClassData(file);
       });
-      this.setState(
-        {
-          data: formattedClassData[0],
-          displayText: this.state.stackedAreaText[0],
-          percentageData: formattedClassData[2],
-          formattedClassData,
-        },
-        () => {
-          this.updateGraph();
-        }
-      );
+      this.setState({
+        data: formattedClassData[0],
+        displayText: this.state.stackedAreaText[0],
+        percentageData: formattedClassData[2],
+        formattedClassData,
+      });
     });
   }
 

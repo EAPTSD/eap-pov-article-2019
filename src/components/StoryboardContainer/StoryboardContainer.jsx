@@ -2,34 +2,25 @@
 import React, { Component } from 'react';
 
 // Internal Imports
-import appText from '../../text/appText';
 import BarGraphContainer from '../Graphs/BarGraphContainer';
 import BubbleGraphContainer from '../Graphs/BubbleGraphContainer';
 import StackedAreaGraphContainer from '../Graphs/StackedAreaGraphContainer';
 import ChoroplethContainer from '../Graphs/ChoroplethContainer';
 import HeaderV2 from '../HeaderV2';
 import RotatePhone from '../RotatePhone';
-import extractText from '../../utilities/extractText';
 import './StoryboardContainer.css';
 
 class StoryboardContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstText: [],
-      secondText: [],
-      thirdText: [],
       screenWidth: null,
     };
     this.StoryboardRef = React.createRef();
   }
 
   componentDidMount() {
-    const textArray = extractText(appText);
     this.setState({
-      firstText: textArray.slice(0, 3),
-      secondText: textArray.slice(3, 7),
-      thirdText: textArray.slice(7, 10),
       screenWidth: window.innerWidth,
     });
 
@@ -47,7 +38,7 @@ class StoryboardContainer extends Component {
   };
 
   render() {
-    const { firstText, secondText, thirdText, screenWidth } = this.state;
+    const { screenWidth } = this.state;
     return (
       <div className="StoryboardContainer" ref={this.StoryboardRef}>
         {screenWidth < 485 ? (
@@ -61,14 +52,35 @@ class StoryboardContainer extends Component {
                 middle-income countries
               </h2>
               <div className="text-container-0">
-                {firstText.map((text, i) => {
-                  return (
-                    <p className="text-0" key={`text-0-${i + 1}`}>
-                      {text}
-                    </p>
-                  );
-                })}
-                <p className="text-0" key="text-0-4">
+                <p className="text-0" key="text-0-0">
+                  Economic progress in East Asia and Pacific (EAP) has greatly
+                  contributed to the global reduction of extreme poverty. The
+                  more prosperous countries in the region – China, Thailand, and
+                  Malaysia – now have poverty rates measured by the $1.90/day
+                  (2011 PPP) International Poverty Line of less than 1 percent.
+                </p>
+                <p className="text-0" key="text-0-1">
+                  Yet, many citizens in developing EAP would not believe that
+                  their societies are without poverty. Rising incomes and wealth
+                  over the past three decades have led to questions as to
+                  whether the $1.90 International Poverty Line is now too low to
+                  adequately capture whether or not someone is poor in the
+                  region. This concern is especially relevant for developing
+                  EAP, which is composed exclusively of lower-middle- and
+                  upper-middle-income countries. Conceptions of poverty and the
+                  standards of living to which people aspire are much higher
+                  than what is benchmarked by the International Poverty Line.
+                </p>
+                <p className="text-0" key="text-0-2">
+                  At the same time, poverty is a complex and multifaceted
+                  problem. In addition to monetary deprivation, individuals may
+                  suffer from lack of access to basic infrastructure, education,
+                  and other critical services. Piecing together the poverty
+                  puzzle means widening the ways in which we define and measure
+                  poverty, acknowledging that poverty is not one-dimensional nor
+                  solely monetary in nature.
+                </p>
+                <p className="text-0" key="text-0-3">
                   New pieces of the poverty puzzle were introduced in the{' '}
                   <a
                     href="http://www.worldbank.org/en/publication/poverty-and-shared-prosperity"
@@ -85,14 +97,14 @@ class StoryboardContainer extends Component {
                 </p>
               </div>
             </div>
-            <BubbleGraphContainer flowText={secondText} />
+            <BubbleGraphContainer />
             <BarGraphContainer />
-            <div className="bg-1">
-              <h2 className="introtext-1">
+            <div className="bg-2">
+              <h2 className="introtext-2">
                 Half a billion people are not yet economically secure
               </h2>
-              <div className="text-container-1">
-                <p className="text-1" key="text-1-0">
+              <div className="text-container-2">
+                <p className="text-2" key="text-2-0">
                   Based on definitions of economic classes discussed in the EAP{' '}
                   <a
                     href="http://documents.worldbank.org/curated/en/770241511445721465/Riding-the-wave-an-East-Asian-miracle-for-the-21st-century"
@@ -152,27 +164,47 @@ class StoryboardContainer extends Component {
               </div>
             </div>
             <ChoroplethContainer />
-            <div className="sb-text-container">
-              {thirdText.map((text, i) => {
-                return (
-                  <p className="pt-3 sb-text" key={`text-4-${i}`}>
-                    {text}
-                  </p>
-                );
-              })}
-              <p className="pt-3 sb-text" key="text-4-2">
-                To read more about A Broader View of Poverty in East Asia and
-                Pacific, please refer to Part 2A in the Spring 2019’s edition of
-                the{' '}
-                <a
-                  href="https://openknowledge.worldbank.org/handle/10986/31500"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  East Asia and Pacific Economic Update
-                </a>
-                .
-              </p>
+            <div className="bg-4">
+              <div className="text-container-4">
+                <p className="text-4" key="text-4-0">
+                  Our conceptualization of what poverty is in developing East
+                  Asia and Pacific should adapt as incomes and aspirations rise,
+                  and countries work on expanding their middle-class societies
+                  and transitioning to high-income status. As societies prosper,
+                  higher standards for monitoring refer not only to higher
+                  poverty lines to account for higher costs of living in
+                  wealthier societies but also to accessible and high-quality
+                  public services. A broader view of poverty, including higher
+                  poverty lines and multidimensional poverty measures, reveals
+                  there is still much work to be done in middle-income
+                  countries, even though extreme poverty is now less prevalent.
+                </p>
+                <p className="text-4" key="text-4-1">
+                  This view helps to enhance policy dialogue and craft policies
+                  that are more relevant and targeted. A larger suite of global
+                  measures, grounded in tools that countries already use to
+                  monitor progress, can facilitate enhanced dialogue by offering
+                  a rich set of comparable instruments for countries to assess
+                  their performance. To facilitate relevant and targeted
+                  policies, new and existing indicators should be monitored in a
+                  more disaggregated manner, both geographically as well as at
+                  the individual level. When this is done, pockets of poor are
+                  more noticeable, even in relatively well-off countries.
+                </p>
+                <p className="text-4 pt-3" key="text-4-2">
+                  To read more about A Broader View of Poverty in East Asia and
+                  Pacific, please refer to Part 2A in the Spring 2019’s edition
+                  of the{' '}
+                  <a
+                    href="https://openknowledge.worldbank.org/handle/10986/31500"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    East Asia and Pacific Economic Update
+                  </a>
+                  .
+                </p>
+              </div>
             </div>
           </>
         )}

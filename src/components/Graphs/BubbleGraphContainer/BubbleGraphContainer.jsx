@@ -107,6 +107,10 @@ class BubbleGraphContainer extends Component {
       headerClass = 'fadeIn';
       displayText = bubbleGraphText[1];
       displayData = reserveDataWoChina;
+    } else if (withChina === 'end') {
+      headerClass = 'fadeOut';
+      displayText = bubbleGraphText[1];
+      displayData = [];
     } else {
       headerClass = 'fadeOut';
       displayText = bubbleGraphText[0];
@@ -122,7 +126,6 @@ class BubbleGraphContainer extends Component {
 
   render() {
     const { displayData, headerClass, displayText } = this.state;
-    const { flowText } = this.props;
     return (
       <div className="BubbleGraphContainer-sequence-container">
         <div className="BubbleGraphContainer-container BubbleGraphContainer-sticky container-fluid">
@@ -143,57 +146,63 @@ class BubbleGraphContainer extends Component {
             </div>
           </div>
         </div>
-        {flowText.map((text, i) => {
-          let flowClass;
-          if (i === 0) {
-            flowClass = 'bg-header-2';
-          } else if (i === 1 || i === 2) {
-            flowClass = 'bg-text-2';
-          } else {
-            flowClass = 'bg-text-2-last';
-          }
-          return (
-            <>
-              {i === 0 ? (
-                <>
-                  <Waypoint
-                    onEnter={({ previousPosition }) => {
-                      if (previousPosition === 'above') {
-                        return this.updateGraph();
-                      } else {
-                        setTimeout(() => {
-                          this.updateGraph(true);
-                        }, 400);
-                      }
-                    }}
-                  />
-                  <div className="temp" />
-                </>
-              ) : null}
-              {i === 2 ? (
-                <>
-                  <Waypoint
-                    onEnter={() => {
-                      this.updateGraph(false);
-                    }}
-                  />
-                  <div className="temp" />
-                </>
-              ) : null}
-              <p className={flowClass}>{text}</p>
-              {i === 3 ? (
-                <>
-                  <Waypoint
-                    onEnter={() => {
-                      this.updateGraph();
-                    }}
-                  />
-                  <div className="temp" />
-                </>
-              ) : null}
-            </>
-          );
-        })}
+        <Waypoint
+          onEnter={({ previousPosition }) => {
+            if (previousPosition === 'above') {
+              return this.updateGraph();
+            } else {
+              setTimeout(() => {
+                this.updateGraph(true);
+              }, 400);
+            }
+          }}
+        />
+        <div className="temp" />
+        <p className="introtext-1" key="text-1-0">
+          Where the poverty threshold is set makes a tremendous difference in
+          how policymakers think about who and how many people are poor.
+        </p>
+        <p className="text-1" key="text-1-1">
+          Monitoring poverty at higher poverty lines is becoming increasingly
+          important to ensure an appropriate policy response for the poor living
+          in countries with higher costs of living and rising aspirations.
+        </p>
+        <Waypoint
+          onEnter={({ previousPosition }) => {
+            if (previousPosition === 'above') {
+              return this.updateGraph(true);
+            } else {
+              setTimeout(() => {
+                this.updateGraph(false);
+              }, 400);
+            }
+          }}
+        />
+        <div className="temp" />
+        <p className="text-1" key="text-1-2">
+          In developing EAP in 2018, an estimated 30 million people lived on
+          less than $1.90 a day, while 168 million lived on less than $3.20 a
+          day, and 538 million on less than $5.50 a day.
+        </p>
+        <p className="text-1-last" key="text-1-3">
+          Although $5.50 is slightly less than three times higher than the
+          International poverty line ($1.90 a day), the number of poor at this
+          higher line is almost eighteen times more than the number of extreme
+          poor because such a large proportion of the population lives between
+          $1.90/day and $5.50/day.
+        </p>
+        <Waypoint
+          onEnter={({ previousPosition }) => {
+            if (previousPosition === 'above') {
+              return this.updateGraph(false);
+            } else {
+              setTimeout(() => {
+                this.updateGraph('end');
+              }, 400);
+            }
+          }}
+        />
+        <div className="temp" />
       </div>
     );
   }
