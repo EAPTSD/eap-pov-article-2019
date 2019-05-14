@@ -39,11 +39,12 @@ body .row {
   font-family: 'Cormorant', serif;
   margin-bottom: 2.5rem;
   width: 770px;
-  margin: 0 auto 6rem;
-  font-size: 2.5rem;
+  margin: 10rem auto;
+  font-size: 3rem;
   color: whitesmoke;
   opacity: 0.7;
   text-align: center;
+  line-height: 70px;
 }
 
 .text-container-0 {
@@ -62,8 +63,8 @@ body .row {
 
 .bg-2 {
   position: relative;
-  background-color: white;
-  padding-bottom: 50px;
+  background-color: lavenderblush;
+  padding: 50px 0 120px;
 }
 
 .introtext-2 {
@@ -94,15 +95,15 @@ body .row {
   background-position: center;
   background-attachment: fixed;
   width: 100vw;
-  height: 120vh;
+  height: 100vh;
   will-change: transform;
 }
 
-.bg-3 {
+.bg-3,
+.bg-4 {
   position: relative;
-  /* background-color: white; */
   background-color: #9b9b9b;
-  padding: 50px 0;
+  padding: 150px 0;
 }
 
 .introtext-3 {
@@ -114,17 +115,30 @@ body .row {
   text-align: center;
 }
 
-.text-container-3 {
+.text-container-3,
+.text-container-4 {
   width: 600px;
   margin: 0 auto;
 }
 
-.text-3 {
+.text-3,
+.text-4,
+.text-4-last {
   font-family: 'Lora', serif;
   margin-bottom: 2rem;
   color: #111;
   line-height: 1.6em;
   font-size: 20px;
+}
+
+.text-4-last {
+  font-style: italic;
+}
+
+/* .bg-4 {
+  position: relative;
+  background-color: #9b9b9b;
+  padding: 150px 0;
 }
 
 .text-container-4 {
@@ -137,7 +151,7 @@ body .row {
   color: black;
   opacity: 0.7;
   font-family: 'Lora', serif;
-}
+} */
 
 @media only screen and (max-width: 800px) {
   .introtext-0,

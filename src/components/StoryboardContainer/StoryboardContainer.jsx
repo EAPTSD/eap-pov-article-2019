@@ -15,6 +15,9 @@ class StoryboardContainer extends Component {
     super(props);
     this.state = {
       screenWidth: null,
+      imageZoom: {
+        transform: 'scale(1)',
+      },
     };
     this.StoryboardRef = React.createRef();
   }
@@ -25,10 +28,12 @@ class StoryboardContainer extends Component {
     });
 
     window.addEventListener('resize', this.onWindowResize);
+    window.addEventListener('scroll', this.listenToScroll);
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.onWindowResize);
+    window.removeEventListener('scroll', this.listenToScroll);
   }
 
   onWindowResize = () => {
@@ -38,7 +43,8 @@ class StoryboardContainer extends Component {
   };
 
   render() {
-    const { screenWidth } = this.state;
+    const { screenWidth, imageZoom } = this.state;
+
     return (
       <div className="StoryboardContainer" ref={this.StoryboardRef}>
         {screenWidth < 485 ? (
@@ -119,7 +125,11 @@ class StoryboardContainer extends Component {
               </div>
             </div>
             <StackedAreaGraphContainer />
-            <div className="parallax-divider" />
+            <div
+              className="parallax-divider"
+              ref={this.ParallaxImageRef}
+              style={imageZoom}
+            />
             <div className="bg-3">
               <h2 className="introtext-3">
                 Developing EAP is a diverse region, with some pockets still
@@ -191,7 +201,7 @@ class StoryboardContainer extends Component {
                   the individual level. When this is done, pockets of poor are
                   more noticeable, even in relatively well-off countries.
                 </p>
-                <p className="text-4 pt-3" key="text-4-2">
+                <p className="text-4-last " key="text-4-2">
                   To read more about A Broader View of Poverty in East Asia and
                   Pacific, please refer to Part 2A in the Spring 2019’s edition
                   of the{' '}

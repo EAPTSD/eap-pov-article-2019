@@ -31,6 +31,15 @@
   background-color: #9b9b9b;
 }
 
+.Choropleth-header {
+  position: relative;
+  bottom: -40vh;
+  left: -80vw;
+  white-space: nowrap;
+  font-family: 'Cormorant', serif;
+  font-size: 3.2rem;
+}
+
 .sub-nation:hover {
   opacity: 0.5;
   stroke: goldenrod;

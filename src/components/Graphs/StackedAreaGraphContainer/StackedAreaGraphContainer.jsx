@@ -1,7 +1,6 @@
 // External Imports
 import React, { Component } from 'react';
 import * as d3 from 'd3';
-import Waypoint from 'react-waypoint';
 
 // Internal Imports
 import formatClassData from '../../../utilities/formatClassData';

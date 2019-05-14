@@ -1,6 +1,5 @@
 .StackedAreaGraphContainer-sequence-container {
   -webkit-font-smoothing: antialiased;
-  height: 85vh;
   padding: 15px 0;
   background-color: lavenderblush;
   margin: 0 auto !important;
@@ -31,7 +30,7 @@
 .StackedAreaLegend-container {
   position: relative;
   margin: 0 auto !important;
-  top: -125px;
+  top: -75px;
 }
 
 .fadeOut {
