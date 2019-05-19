@@ -1,7 +1,7 @@
 {
   "main.css": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.5db67452.chunk.css",
-  "main.js": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.896c2470.chunk.js",
-  "main.js.map": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.896c2470.chunk.js.map",
+  "main.js": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.43911843.chunk.js",
+  "main.js.map": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.43911843.chunk.js.map",
   "static/css/1.871c394e.chunk.css": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.871c394e.chunk.css",
   "static/js/1.20868574.chunk.js": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/1.20868574.chunk.js",
   "static/js/1.20868574.chunk.js.map": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/1.20868574.chunk.js.map",
@@ -20,9 +20,9 @@
   "static/media/choropleth_data.csv": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/choropleth_data.174fc8f3.csv",
   "static/media/HeaderV2.css": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/pedestrians-400811_1920_2.d00ce54c.jpg",
   "static/media/asean_wChina_1.9.csv": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_wChina_1.9.5d3ebbf1.csv",
-  "static/css/1.871c394e.chunk.css.map": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.871c394e.chunk.css.map",
   "static/css/main.5db67452.chunk.css.map": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.5db67452.chunk.css.map",
+  "static/css/1.871c394e.chunk.css.map": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.871c394e.chunk.css.map",
   "index.html": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/index.html",
-  "precache-manifest.f9046480f6c20c39c12aa65746e2d8f0.js": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/precache-manifest.f9046480f6c20c39c12aa65746e2d8f0.js",
+  "precache-manifest.cb6c65cbc3460fc37fe8e4708cd3a789.js": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/precache-manifest.cb6c65cbc3460fc37fe8e4708cd3a789.js",
   "service-worker.js": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/service-worker.js"
 }
