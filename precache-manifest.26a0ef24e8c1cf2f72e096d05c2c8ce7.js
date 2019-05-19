@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "dc048442fc079e52d7940fae2de30b9c",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_woChina_3.2.dc048442.csv"
+    "revision": "f2dbba84117a2fe4ef00bee86fa78d6f",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_woChina_1.9.f2dbba84.csv"
   },
   {
-    "revision": "bd82fae2a9ddd02e8528",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.c853b5a9.chunk.css"
+    "revision": "c6b5de1474a4c419b319",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.89f7a314.chunk.css"
   },
   {
-    "revision": "03244904b5496a7c9dcb0326d08c55d0",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/the-fishermen-3039589_1920.03244904.jpg"
+    "revision": "d00ce54cc21e1a6b2ce8337a43f27c41",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/pedestrians-400811_1920_2.d00ce54c.jpg"
   },
   {
     "revision": "20868574898f6ac50797",
@@ -36,12 +36,12 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_wChina_5.5.4b1504fd.csv"
   },
   {
-    "revision": "f2dbba84117a2fe4ef00bee86fa78d6f",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_woChina_1.9.f2dbba84.csv"
+    "revision": "c6b5de1474a4c419b319",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.c6b5de14.chunk.js"
   },
   {
-    "revision": "bd82fae2a9ddd02e8528",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.bd82fae2.chunk.js"
+    "revision": "dc048442fc079e52d7940fae2de30b9c",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_woChina_3.2.dc048442.csv"
   },
   {
     "revision": "578be73b517d2dffcbeb44803dc9be4c",
@@ -68,15 +68,11 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/choropleth_data.174fc8f3.csv"
   },
   {
-    "revision": "d00ce54cc21e1a6b2ce8337a43f27c41",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/pedestrians-400811_1920_2.d00ce54c.jpg"
-  },
-  {
     "revision": "20868574898f6ac50797",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.871c394e.chunk.css"
   },
   {
-    "revision": "2fe1a7a44336838efc185b5a9feb1dac",
+    "revision": "b1bb3c56f44fbf7ab5c610e81d5ad0a1",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/index.html"
   }
 ];
