@@ -64,7 +64,7 @@ body .row {
 .bg-2 {
   position: relative;
   background-color: lavenderblush;
-  padding: 50px 0 120px;
+  padding: 45vh 0;
 }
 
 .introtext-2 {
@@ -89,21 +89,16 @@ body .row {
   font-size: 20px;
 }
 
-.parallax-divider {
-  background-image: url('../../images/the-fishermen-3039589_1920.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  width: 100vw;
-  height: 100vh;
-  will-change: transform;
-}
-
-.bg-3,
-.bg-4 {
+.bg-3 {
   position: relative;
   background-color: #9b9b9b;
   padding: 150px 0;
+}
+
+.bg-4 {
+  position: relative;
+  background-color: #9b9b9b;
+  padding: 150px 0 25px;
 }
 
 .introtext-3 {
@@ -116,14 +111,14 @@ body .row {
 }
 
 .text-container-3,
-.text-container-4 {
+.text-container-4,
+.text-container-5 {
   width: 600px;
   margin: 0 auto;
 }
 
 .text-3,
-.text-4,
-.text-4-last {
+.text-4 {
   font-family: 'Lora', serif;
   margin-bottom: 2rem;
   color: #111;
@@ -131,27 +126,19 @@ body .row {
   font-size: 20px;
 }
 
-.text-4-last {
-  font-style: italic;
-}
-
-/* .bg-4 {
+.bg-5 {
   position: relative;
-  background-color: #9b9b9b;
-  padding: 150px 0;
+  background-color: #1c1c1c;
+  padding: 15vh 0;
 }
 
-.text-container-4 {
-  width: 600px;
-  margin: 0 auto;
-}
-
-.text-4 {
+.text-5 {
   font-size: 19px;
-  color: black;
+  color: whitesmoke;
   opacity: 0.7;
   font-family: 'Lora', serif;
-} */
+  font-style: italic;
+}
 
 @media only screen and (max-width: 800px) {
   .introtext-0,

@@ -103,10 +103,10 @@
   height: 1vmax;
 }
 
-.Choropleth-legend-container,
+/* .Choropleth-legend-container,
 .Choropleth-legend-container .Choropleth-legend {
-  transition: fill 0.2s;
-}
+  transition: fill 2s;
+} */
 
 .Choropleth-legend .label {
   fill: #cbcbcb;

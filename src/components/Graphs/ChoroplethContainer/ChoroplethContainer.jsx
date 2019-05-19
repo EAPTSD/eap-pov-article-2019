@@ -49,6 +49,7 @@ class ChoroplethContainer extends Component {
 
   componentDidMount() {
     Promise.all([d3.csv(choroplethData)]).then((files) => {
+      console.log(files);
       const choroplethDataObj = choroplethDataToObj(files[0]);
 
       const pov190Color = d3
@@ -214,16 +215,22 @@ class ChoroplethContainer extends Component {
     this.updateHeader(labels[type]);
 
     const subNation = d3.selectAll('path.sub-nation');
+    // .transition()
+    // .duration(250)
+    // .style('opacity', 0.9);
+
     if (i === 0 || i === 8) {
       subNation.attr('fill', 'lightgrey').on('mouseenter', () => {});
       return;
     }
 
-    subNation.attr('fill', (d) => {
-      const dataValue = choroplethDataObj[d.properties.ADM1_CODE][type];
-      const fillColor = dataValue === '-1' ? 'lightgrey' : color(dataValue);
-      return fillColor;
-    });
+    if (choroplethDataObj) {
+      subNation.attr('fill', (d) => {
+        const dataValue = choroplethDataObj[d.properties.ADM1_CODE][type];
+        const fillColor = dataValue === '-1' ? 'lightgrey' : color(dataValue);
+        return fillColor;
+      });
+    }
 
     const tooltip = d3.select('.Choropleth-tooltip');
     subNation
