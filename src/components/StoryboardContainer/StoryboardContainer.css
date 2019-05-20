@@ -143,12 +143,22 @@ body .row {
 @media only screen and (max-width: 800px) {
   .introtext-0,
   .introtext-1,
+  .introtext-2,
   .introtext-3 {
     width: 80%;
   }
   .text-container-0,
   .text-container-1,
-  .text-container-3 {
-    width: 60%;
+  .text-container-2,
+  .text-container-3,
+  .text-container-4,
+  .text-container-5 {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .StoryboardContent {
+    display: none;
   }
 }

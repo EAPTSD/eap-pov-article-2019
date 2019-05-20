@@ -32,11 +32,17 @@
   font-size: 1.5rem;
   color: #111;
   position: absolute;
-  top: 70%;
+  top: 80%;
   transform: translateY(-70%);
   width: 80%;
   left: 0;
   right: 0;
   margin: 0 auto;
   text-align: center;
+}
+
+@media only screen and (min-width: 481px) {
+  .RotatePhone-container {
+    display: none;
+  }
 }

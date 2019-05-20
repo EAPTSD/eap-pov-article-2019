@@ -49,7 +49,6 @@ class ChoroplethContainer extends Component {
 
   componentDidMount() {
     Promise.all([d3.csv(choroplethData)]).then((files) => {
-      console.log(files);
       const choroplethDataObj = choroplethDataToObj(files[0]);
 
       const pov190Color = d3
