@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_woChina_1.9.f2dbba84.csv"
   },
   {
-    "revision": "8aebc3bc0c90ef1ab926",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.dfadd2c3.chunk.css"
+    "revision": "3d2b241713a3b1132638",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.36a5cd86.chunk.css"
   },
   {
     "revision": "d00ce54cc21e1a6b2ce8337a43f27c41",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/pedestrians-400811_1920_2.d00ce54c.jpg"
   },
   {
-    "revision": "20868574898f6ac50797",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/1.20868574.chunk.js"
+    "revision": "56d1986455b706c41b91",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/1.56d19864.chunk.js"
   },
   {
     "revision": "51b6458cc8c2ce96ca60",
@@ -36,8 +36,8 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_wChina_5.5.4b1504fd.csv"
   },
   {
-    "revision": "8aebc3bc0c90ef1ab926",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.8aebc3bc.chunk.js"
+    "revision": "3d2b241713a3b1132638",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.3d2b2417.chunk.js"
   },
   {
     "revision": "dc048442fc079e52d7940fae2de30b9c",
@@ -68,11 +68,11 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/choropleth_data.174fc8f3.csv"
   },
   {
-    "revision": "20868574898f6ac50797",
+    "revision": "56d1986455b706c41b91",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.871c394e.chunk.css"
   },
   {
-    "revision": "8a970f3689d8b9ce5536934f794f6087",
+    "revision": "76d143d090cc0d46a872da4f13c11421",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/index.html"
   }
 ];
