@@ -27,7 +27,7 @@ const BubbleGraphV2 = (props) => {
     >
       <VictoryLegend
         x={230}
-        y={40}
+        y={20}
         title={`Per-Capita Per-Day Poverty`}
         centerTitle
         orientation="horizontal"
@@ -52,7 +52,9 @@ const BubbleGraphV2 = (props) => {
             fontFamily: 'Lora, serif',
           },
         }}
-        labelComponent={<VictoryTooltip />}
+        labelComponent={
+          <VictoryTooltip style={{ fontSize: 10, fontFamily: 'Lora, serif' }} />
+        }
         animate={{
           onExit: {
             duration: 1000,

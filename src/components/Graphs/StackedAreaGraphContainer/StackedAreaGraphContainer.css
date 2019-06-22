@@ -1,38 +1,36 @@
 .StackedAreaGraphContainer-sequence-container {
   -webkit-font-smoothing: antialiased;
-  height: 85vh;
   padding: 15px 0;
   background-color: lavenderblush;
-  margin: 0 !important;
+  margin: 0 auto !important;
+}
+
+.StackedAreaGraphContainer-sequence-container
+  .StackedAreaGraphContainer-container {
+  margin: 0 auto !important;
 }
 
 .StackedAreaGraphContainer-container {
   height: 100%;
   width: 75%;
-  margin: 0 auto;
 }
 
 .StackedAreaGraphContainer-header-text {
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: 'Cormorant', serif;
   margin-bottom: 0;
   font-size: 2.5rem;
 }
 
 .StackedAreaGraphContainer-header-text-change {
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: 'Cormorant', serif;
   margin-bottom: 0;
   font-size: 2rem;
 }
 
 .StackedAreaLegend-container {
   position: relative;
-  margin: 0 !important;
-
-  /* Stacked Legend Items */
-  /* top: -175px; */
-
-  /* Inline Legend Items */
-  top: -125px;
+  margin: 0 auto !important;
+  top: -75px;
 }
 
 .fadeOut {

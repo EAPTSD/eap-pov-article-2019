@@ -29,14 +29,22 @@ body .row {
   margin: 0 !important;
 }
 
-.StoryboardContainer {
-  max-width: 1440px;
-}
-
 .bg-0 {
   position: relative;
   background-color: #111;
-  padding: 150px 0 300px;
+  padding: 12rem 0 5rem;
+}
+
+.introtext-0 {
+  font-family: 'Cormorant', serif;
+  margin-bottom: 2.5rem;
+  width: 770px;
+  margin: 10rem auto;
+  font-size: 3rem;
+  color: whitesmoke;
+  opacity: 0.7;
+  text-align: center;
+  line-height: 70px;
 }
 
 .text-container-0 {
@@ -44,32 +52,8 @@ body .row {
   margin: 0 auto;
 }
 
-.dropcap-0 {
-  float: left;
-  display: block;
-  position: relative;
-  font-family: 'Lora', serif;
-  font-weight: 400;
-  font-size: 3rem;
-  line-height: 1.75em;
-  height: 1.58em;
-  width: 1.58em;
-  overflow: hidden;
-  background: white;
-  color: #111;
-  text-align: center;
-  margin: 4px 10px 0 0;
-  top: 4px;
-}
-
-.leadtext-0 {
-  font-weight: bold;
-  text-decoration: underline;
-}
-
 .text-0 {
   font-family: 'Lora', serif;
-  /* font-style: italic; */
   font-size: 20px;
   color: whitesmoke;
   opacity: 0.7;
@@ -77,47 +61,27 @@ body .row {
   margin-bottom: 2rem;
 }
 
-.image-container-0 {
-  position: absolute;
-  background-image: url('../../images/teddy-bear-1807560_640.jpg');
-  background-size: cover;
-  background-position: center;
-  width: 50vw;
-  height: 31vw;
-  margin: 0 auto;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -20%;
-  box-shadow: 10px 10px 10px 2px rgba(0, 0, 0, 0.3);
-  z-index: 5;
-}
-
-.bg-1 {
+.bg-2 {
   position: relative;
-  background-color: white;
-  padding: 300px 0 50px;
+  background-color: lavenderblush;
+  padding: 45vh 0;
 }
 
-.bg-1-special {
-  position: relative;
-  background-color: white;
-  padding: 0 0 50px;
-}
-
-.text-container-1 {
-  width: 600px;
-  margin: 0 auto;
-}
-
-.introtext-1 {
+.introtext-2 {
   font-family: 'Cormorant', serif;
   margin-bottom: 2.5rem;
   width: 770px;
   margin: 0.5rem auto 2.5rem;
   font-size: 2.5rem;
+  text-align: center;
 }
 
-.text-1 {
+.text-container-2 {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.text-2 {
   font-family: 'Lora', serif;
   margin-bottom: 2rem;
   color: #111;
@@ -125,61 +89,16 @@ body .row {
   font-size: 20px;
 }
 
-.bg-header-2 {
-  width: 600px;
-  font-size: 2.2rem;
-  color: #111;
-  opacity: 0.9;
-  font-family: 'Cormorant', serif;
-  padding-left: 75px;
-  border-radius: 5px;
-  margin-bottom: 50vh;
-  will-change: transform;
-}
-
-.bg-text-2 {
-  width: 600px;
-  color: #111;
-  opacity: 0.9;
-  font-family: 'Lora', serif;
-  padding-left: 75px;
-  border-radius: 5px;
-  line-height: 1.6em;
-  font-size: 20px;
-  margin-bottom: 35vh;
-}
-
-.bg-text-2-last {
-  width: 600px;
-  color: #111;
-  opacity: 0.9;
-  font-family: 'Lora', serif;
-  padding-left: 75px;
-  border-radius: 5px;
-  line-height: 1.6em;
-  font-size: 20px;
-  padding-bottom: 50vh;
-}
-
-.parallax-divider {
-  background-image: url('../../images/the-fishermen-3039589_1920.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  width: 100vw;
-  height: 120vh;
-  will-change: transform;
-}
-
 .bg-3 {
   position: relative;
-  background-color: white;
-  padding: 50px 0;
+  background-color: #9b9b9b;
+  padding: 150px 0;
 }
 
-.text-container-3 {
-  width: 600px;
-  margin: 0 auto;
+.bg-4 {
+  position: relative;
+  background-color: #9b9b9b;
+  padding: 150px 0 25px;
 }
 
 .introtext-3 {
@@ -191,7 +110,15 @@ body .row {
   text-align: center;
 }
 
-.text-3 {
+.text-container-3,
+.text-container-4,
+.text-container-5 {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.text-3,
+.text-4 {
   font-family: 'Lora', serif;
   margin-bottom: 2rem;
   color: #111;
@@ -199,25 +126,39 @@ body .row {
   font-size: 20px;
 }
 
-.full-height-container {
-  height: auto;
+.bg-5 {
   position: relative;
+  background-color: #1c1c1c;
+  padding: 15vh 0;
 }
 
-.sb-text {
-  width: 600px;
-  margin: 0 auto;
-}
-
-.sb-text {
+.text-5 {
   font-size: 19px;
-  color: black;
+  color: whitesmoke;
   opacity: 0.7;
   font-family: 'Lora', serif;
+  font-style: italic;
 }
 
-@media only screen and (max-width: 650px) {
-  .sb-text-container {
-    width: 90vw;
+@media only screen and (max-width: 800px) {
+  .introtext-0,
+  .introtext-1,
+  .introtext-2,
+  .introtext-3 {
+    width: 80%;
+  }
+  .text-container-0,
+  .text-container-1,
+  .text-container-2,
+  .text-container-3,
+  .text-container-4,
+  .text-container-5 {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .StoryboardContent {
+    display: none;
   }
 }

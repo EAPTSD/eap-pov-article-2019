@@ -1,7 +1,7 @@
 .BarGraphContainer-sequence-container {
   -webkit-font-smoothing: antialiased;
-  height: 85vh;
-  padding: 15px 0;
+  padding: 150px 0 100px;
+  background-color: lavenderblush;
 }
 
 .BarGraphContainer-container {
@@ -18,7 +18,7 @@
 .BarGraphContainer-header-text-change {
   font-family: 'Cormorant', serif;
   margin-bottom: 0;
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 .BarGraphContainer-fadeOut {

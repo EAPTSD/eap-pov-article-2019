@@ -1,6 +1,7 @@
 // External Imports
 import React, { Component } from 'react';
 import * as d3 from 'd3';
+import Waypoint from 'react-waypoint';
 
 // Internal Imports
 import BarGraphV2 from '../BarGraphV2';
@@ -17,25 +18,9 @@ class BarGraphContainer extends Component {
     higherPovertyDisplayData: [],
     index: 1,
     reserveData: [],
-    years: [
-      2002,
-      2003,
-      2004,
-      2005,
-      2006,
-      2007,
-      2008,
-      2009,
-      2010,
-      2011,
-      2012,
-      2013,
-      2014,
-      2015,
-      2016,
-      2017,
-      2018,
-    ],
+    start: false,
+    first: true,
+    years: [2002, 2006, 2010, 2014, 2018],
   };
 
   componentDidMount() {
@@ -45,19 +30,28 @@ class BarGraphContainer extends Component {
         files[0],
         years
       );
+      this.setState({
+        reserveData: formattedHigherPovertyData,
+      });
+    });
+  }
+
+  startGraph = () => {
+    const { start, reserveData } = this.state;
+    if (!start) {
       this.setState(
         {
-          higherPovertyDisplayData: formattedHigherPovertyData[0],
-          reserveData: formattedHigherPovertyData,
+          start: true,
+          higherPovertyDisplayData: reserveData[0],
         },
         () => {
           setTimeout(() => {
             this.updateGraph();
-          }, 3000);
+          }, 2500);
         }
       );
-    });
-  }
+    }
+  };
 
   updateGraph = () => {
     setInterval(() => {
@@ -66,20 +60,32 @@ class BarGraphContainer extends Component {
         this.setState({
           headerClass: 'BarGraphContainer-fadeOut',
         });
-      }, 1200);
+      }, 2000);
       this.setState({
         displayText: years[index].toString(),
         headerClass: 'BarGraphContainer-fadeIn',
         higherPovertyDisplayData: reserveData[index],
-        index: index === 16 ? 0 : index + 1,
+        index: index === 4 ? 0 : index + 1,
+        first: false,
       });
-    }, 1500);
+    }, 2500);
   };
 
   render() {
-    const { higherPovertyDisplayData, displayText, headerClass } = this.state;
+    const {
+      higherPovertyDisplayData,
+      displayText,
+      headerClass,
+      first,
+    } = this.state;
     return (
       <div className="BarGraphContainer-sequence-container container-fluid">
+        <Waypoint
+          onEnter={() => {
+            this.startGraph();
+          }}
+        />
+        <div className="temp" />
         <div className="row">
           <div className="col text-center">
             <h1 className="BarGraphContainer-header-text">
@@ -93,7 +99,10 @@ class BarGraphContainer extends Component {
           </div>
         </div>
         <div className="BarGraphContainer-container">
-          <BarGraphV2 higherPovertyDisplayData={higherPovertyDisplayData} />
+          <BarGraphV2
+            higherPovertyDisplayData={higherPovertyDisplayData}
+            first={first}
+          />
         </div>
       </div>
     );

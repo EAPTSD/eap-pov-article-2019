@@ -1,14 +1,16 @@
 .ChoroplethContainer-sequence-container {
   position: relative;
   -webkit-font-smoothing: antialiased;
-  background-color: #606060;
+  /* background-color: #606060; */
+  background-color: #9b9b9b;
 }
 
 .ChoroplethContainer-container {
   height: 100vh;
   display: flex;
   align-items: center;
-  background-color: #606060;
+  /* background-color: #606060; */
+  background-color: #9b9b9b;
   padding: 25px;
 }
 
@@ -25,7 +27,17 @@
 
 .ChoroplethContainer-waypoint-buffer {
   height: 120vh;
-  background-color: #606060;
+  /* background-color: #606060; */
+  background-color: #9b9b9b;
+}
+
+.Choropleth-header {
+  position: relative;
+  bottom: -40vh;
+  left: -80vw;
+  white-space: nowrap;
+  font-family: 'Cormorant', serif;
+  font-size: 3.2rem;
 }
 
 .sub-nation:hover {
@@ -91,10 +103,10 @@
   height: 1vmax;
 }
 
-.Choropleth-legend-container,
+/* .Choropleth-legend-container,
 .Choropleth-legend-container .Choropleth-legend {
-  transition: fill 0.2s;
-}
+  transition: fill 2s;
+} */
 
 .Choropleth-legend .label {
   fill: #cbcbcb;

@@ -42,6 +42,7 @@ class ChoroplethContainer extends Component {
         water: 'Water',
         sanitation: 'Sanitation',
       },
+      headerText: '',
     };
     this.ChoroplethLegendRef = React.createRef();
   }
@@ -142,7 +143,7 @@ class ChoroplethContainer extends Component {
         legendWidth = '120px';
         legendHeight = '160px';
         break;
-      case windowWidth > 1140:
+      default:
         legendWidth = '150px';
         legendHeight = '200px';
         break;
@@ -198,24 +199,37 @@ class ChoroplethContainer extends Component {
     legend.call(legendUpdate);
   };
 
+  updateHeader = (headerText) => {
+    this.setState({
+      headerText: headerText,
+    });
+  };
+
   updateGraph = (type, i) => {
     const { colors, labels, choroplethDataObj } = this.state;
     const color = colors[type];
     const isVisible = i === 0 || i === 8 ? false : true;
 
     this.updateLegend(color, isVisible, type);
+    this.updateHeader(labels[type]);
 
     const subNation = d3.selectAll('path.sub-nation');
+    // .transition()
+    // .duration(250)
+    // .style('opacity', 0.9);
+
     if (i === 0 || i === 8) {
       subNation.attr('fill', 'lightgrey').on('mouseenter', () => {});
       return;
     }
 
-    subNation.attr('fill', (d) => {
-      const dataValue = choroplethDataObj[d.properties.ADM1_CODE][type];
-      const fillColor = dataValue === '-1' ? 'lightgrey' : color(dataValue);
-      return fillColor;
-    });
+    if (choroplethDataObj) {
+      subNation.attr('fill', (d) => {
+        const dataValue = choroplethDataObj[d.properties.ADM1_CODE][type];
+        const fillColor = dataValue === '-1' ? 'lightgrey' : color(dataValue);
+        return fillColor;
+      });
+    }
 
     const tooltip = d3.select('.Choropleth-tooltip');
     subNation
@@ -286,7 +300,7 @@ class ChoroplethContainer extends Component {
   };
 
   render() {
-    const { types, legendWidth, legendHeight } = this.state;
+    const { types, legendWidth, legendHeight, headerText } = this.state;
     return (
       <div className="ChoroplethContainer-sequence-container">
         <div className="ChoroplethContainer-container ChoroplethContainer-sticky">
@@ -302,6 +316,7 @@ class ChoroplethContainer extends Component {
               width: legendWidth || 1,
             }}
           />
+          <h1 className="Choropleth-header">{headerText}</h1>
         </div>
         {types.map((type, i) => {
           return (

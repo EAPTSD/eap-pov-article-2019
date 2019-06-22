@@ -14,15 +14,15 @@ const color = {
 };
 
 const BarGraphV2 = (props) => {
-  const { higherPovertyDisplayData } = props;
+  const { higherPovertyDisplayData, first } = props;
   return (
     <div className="BarGraphV2-container">
       <VictoryChart
         height={400}
         width={450}
-        // domain={{ y: [0, 1000] }}
+        domain={{ y: [0, 1000] }}
         domainPadding={{ x: 35 }}
-        animate={{ duration: 800 }}
+        animate={{ duration: first ? 2000 : 800 }}
       >
         <VictoryBar
           barWidth={40}
