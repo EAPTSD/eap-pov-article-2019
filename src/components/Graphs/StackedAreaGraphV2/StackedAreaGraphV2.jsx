@@ -22,7 +22,6 @@ const StackedAreaGraphV2 = (props) => {
           },
         ]}
         scale={{ x: 'time' }}
-        animate={{ duration: 1500 }}
         width={500}
         height={450}
       >
