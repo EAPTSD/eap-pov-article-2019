@@ -13,6 +13,7 @@ import './ChoroplethContainer.css';
 
 // Data
 import choroplethData from '../../../data/ChoroplethData/choropleth_data.csv';
+import choroplethTypes from './ChoroplethTypes';
 
 class ChoroplethContainer extends Component {
   constructor(props) {
@@ -22,28 +23,19 @@ class ChoroplethContainer extends Component {
       choroplethDataObj: null,
       legendWidth: null,
       legendHeight: null,
-      types: [
-        'start',
-        'pov190',
-        'pov320',
-        'pov550',
-        'edAttain',
-        'edEnroll',
-        'water',
-        'sanitation',
-        'end',
-      ],
+      types: choroplethTypes,
       labels: {
         pov190: 'Poverty $1.90',
         pov320: 'Poverty $3.20',
         pov550: 'Poverty $5.50',
-        edAttain: 'Eductation Attainment',
-        edEnroll: 'Eductation Enrollment',
+        edAttain: 'Education Attainment',
+        edEnroll: 'Education Enrollment',
         water: 'Water',
         sanitation: 'Sanitation',
       },
       headerText: '',
     };
+
     this.ChoroplethLegendRef = React.createRef();
   }
 
@@ -307,28 +299,38 @@ class ChoroplethContainer extends Component {
           <ChoroplethV2Eap />
           <ChoroplethV2Mongolia />
           <div className="Choropleth-tooltip" />
-          <svg
-            className="Choropleth-legend-container"
-            visibility="hidden"
-            ref={this.ChoroplethLegendRef}
-            style={{
-              height: legendHeight || 1,
-              width: legendWidth || 1,
-            }}
-          />
-          <h1 className="Choropleth-header">{headerText}</h1>
+          <div className="choropleth-bottom-bar__container">
+            <svg
+              className="Choropleth-legend-container"
+              visibility="hidden"
+              ref={this.ChoroplethLegendRef}
+              style={{
+                height: legendHeight || 1,
+                width: legendWidth || 1,
+              }}
+            />
+            <h1 className="Choropleth-header">{headerText}</h1>
+          </div>
         </div>
-        {types.map((type, i) => {
-          return (
-            <>
-              <div className="ChoroplethContainer-waypoint-buffer" />
-              <Waypoint onEnter={() => this.updateGraph(type, i)} />
-              {i === 8 ? (
-                <div className="ChoroplethContainer-waypoint-buffer" />
-              ) : null}
-            </>
-          );
-        })}
+        <div className="choropleth-text__container">
+          {types.map((typeData, i) => {
+            const { type, text } = typeData;
+            return (
+              <>
+                <Waypoint
+                  onEnter={() => this.updateGraph(type, i)}
+                  bottomOffset="40%"
+                />
+                <div className="choropleth-text__block">
+                  <p>{text}</p>
+                </div>
+                {i === 8 ? (
+                  <div className="ChoroplethContainer-waypoint-buffer" />
+                ) : null}
+              </>
+            );
+          })}
+        </div>
       </div>
     );
   }
