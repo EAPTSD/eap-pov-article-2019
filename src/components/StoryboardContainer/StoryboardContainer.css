@@ -63,15 +63,15 @@ body .row {
 
 .bg-2 {
   position: relative;
-  background-color: lavenderblush;
-  padding: 45vh 0;
+  background-color: #ffecd5;
+  padding-top: 150px;
 }
 
 .introtext-2 {
   font-family: 'Cormorant', serif;
   margin-bottom: 2.5rem;
   width: 770px;
-  margin: 0.5rem auto 2.5rem;
+  margin: 0 auto 2.5rem;
   font-size: 2.5rem;
   text-align: center;
 }
@@ -83,7 +83,7 @@ body .row {
 
 .text-2 {
   font-family: 'Lora', serif;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   color: #111;
   line-height: 1.6em;
   font-size: 20px;
@@ -91,14 +91,8 @@ body .row {
 
 .bg-3 {
   position: relative;
-  background-color: #9b9b9b;
-  padding: 150px 0;
-}
-
-.bg-4 {
-  position: relative;
-  background-color: #9b9b9b;
-  padding: 150px 0 25px;
+  background-color: lavenderblush;
+  padding: 20vh 0 10vh;
 }
 
 .introtext-3 {
@@ -110,15 +104,12 @@ body .row {
   text-align: center;
 }
 
-.text-container-3,
-.text-container-4,
-.text-container-5 {
+.text-container-3 {
   width: 600px;
   margin: 0 auto;
 }
 
-.text-3,
-.text-4 {
+.text-3 {
   font-family: 'Lora', serif;
   margin-bottom: 2rem;
   color: #111;
@@ -126,13 +117,50 @@ body .row {
   font-size: 20px;
 }
 
+.bg-4 {
+  position: relative;
+  background-color: #9b9b9b;
+  padding: 150px 0;
+}
+
 .bg-5 {
+  position: relative;
+  background-color: #9b9b9b;
+  padding: 150px 0 25px;
+}
+
+.introtext-4 {
+  font-family: 'Cormorant', serif;
+  margin-bottom: 2.5rem;
+  width: 770px;
+  margin: 0.5rem auto 2.5rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.text-container-4,
+.text-container-5,
+.text-container-6 {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.text-4,
+.text-5 {
+  font-family: 'Lora', serif;
+  margin-bottom: 2rem;
+  color: #111;
+  line-height: 1.6em;
+  font-size: 20px;
+}
+
+.bg-6 {
   position: relative;
   background-color: #1c1c1c;
   padding: 15vh 0;
 }
 
-.text-5 {
+.text-6 {
   font-size: 19px;
   color: whitesmoke;
   opacity: 0.7;
@@ -143,8 +171,8 @@ body .row {
 @media only screen and (max-width: 800px) {
   .introtext-0,
   .introtext-1,
-  .introtext-2,
-  .introtext-3 {
+  .introtext-3,
+  .introtext-4 {
     width: 80%;
   }
   .text-container-0,
@@ -152,7 +180,8 @@ body .row {
   .text-container-2,
   .text-container-3,
   .text-container-4,
-  .text-container-5 {
+  .text-container-5,
+  .text-container-6 {
     width: 85%;
   }
 }
