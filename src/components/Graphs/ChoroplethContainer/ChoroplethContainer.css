@@ -31,13 +31,22 @@
   background-color: #9b9b9b;
 }
 
-.Choropleth-header {
+.Choropleth-header-container {
   position: relative;
-  bottom: -40vh;
+  bottom: -35vh;
   left: -80vw;
+}
+
+.Choropleth-header {
   white-space: nowrap;
   font-family: 'Cormorant', serif;
   font-size: 3.2rem;
+}
+
+.Choropleth-subHeader {
+  white-space: nowrap;
+  font-family: 'Lora', serif;
+  font-size: 2rem;
 }
 
 .sub-nation:hover {
