@@ -160,12 +160,11 @@ class BubbleGraphContainer extends Component {
         <div className="temp" />
         <p className="introtext-1" key="text-1-0">
           Where the poverty threshold is set makes a tremendous difference in
-          how policymakers think about who and how many people are poor.
+          who and how many people are poor.
         </p>
         <p className="text-1" key="text-1-1">
-          Monitoring poverty at higher poverty lines is becoming increasingly
-          important to ensure an appropriate policy response for the poor living
-          in countries with higher costs of living and rising aspirations.
+          The graph on the right shows the number of poor (size of the bubble),
+          according to three poverty lines.
         </p>
         <Waypoint
           onEnter={({ previousPosition }) => {
