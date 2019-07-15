@@ -45,6 +45,24 @@
   padding-top: 50vh;
 }
 
+/*.Choropleth-header-container {
+  position: relative;
+  bottom: -35vh;
+  left: -80vw;
+}
+
+.Choropleth-header {
+  white-space: nowrap;
+  font-family: 'Cormorant', serif;
+  font-size: 3.2rem;
+}*/
+
+.Choropleth-subHeader {
+  white-space: nowrap;
+  font-family: 'Lora', serif;
+  font-size: 2rem;
+}
+
 .sub-nation:hover {
   opacity: 0.5;
   stroke: goldenrod;

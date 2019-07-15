@@ -33,7 +33,17 @@ class ChoroplethContainer extends Component {
         water: 'Water',
         sanitation: 'Sanitation',
       },
+      subLabels: {
+        pov190: 'Text Box #3',
+        pov320: 'Text Box #4',
+        pov550: 'Text Box #5',
+        edAttain: 'Text Box #6',
+        edEnroll: 'Text Box #7',
+        water: 'Text Box #8',
+        sanitation: 'Text Box #9',
+      },
       headerText: '',
+      subHeaderText: '',
     };
 
     this.ChoroplethLegendRef = React.createRef();
@@ -191,19 +201,20 @@ class ChoroplethContainer extends Component {
     legend.call(legendUpdate);
   };
 
-  updateHeader = (headerText) => {
+  updateHeaders = (headerText, subHeaderText) => {
     this.setState({
       headerText: headerText,
+      subHeaderText: subHeaderText,
     });
   };
 
   updateGraph = (type, i) => {
-    const { colors, labels, choroplethDataObj } = this.state;
+    const { colors, labels, subLabels, choroplethDataObj } = this.state;
     const color = colors[type];
     const isVisible = i === 0 || i === 8 ? false : true;
 
     this.updateLegend(color, isVisible, type);
-    this.updateHeader(labels[type]);
+    this.updateHeaders(labels[type], subLabels[type]);
 
     const subNation = d3.selectAll('path.sub-nation');
     // .transition()
@@ -292,13 +303,20 @@ class ChoroplethContainer extends Component {
   };
 
   render() {
-    const { types, legendWidth, legendHeight, headerText } = this.state;
+    const {
+      types,
+      legendWidth,
+      legendHeight,
+      headerText,
+      subHeaderText,
+    } = this.state;
     return (
       <div className="ChoroplethContainer-sequence-container">
         <div className="ChoroplethContainer-container ChoroplethContainer-sticky">
           <ChoroplethV2Eap />
           <ChoroplethV2Mongolia />
           <div className="Choropleth-tooltip" />
+
           <div className="choropleth-bottom-bar__container">
             <svg
               className="Choropleth-legend-container"
@@ -330,6 +348,21 @@ class ChoroplethContainer extends Component {
               </>
             );
           })}
+            
+<!--           <svg
+            className="Choropleth-legend-container"
+            visibility="hidden"
+            ref={this.ChoroplethLegendRef}
+            style={{
+              height: legendHeight || 1,
+              width: legendWidth || 1,
+            }}
+          />
+          <div className="Choropleth-header-container">
+            <h1 className="Choropleth-header">{headerText}</h1>
+            <p className="Choropleth-subHeader">{subHeaderText}</p>
+          </div> -->
+            
         </div>
       </div>
     );
