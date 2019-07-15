@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   /* background-color: #606060; */
-  background-color: #9b9b9b;
+  background-color: #a8a8a8;
   text-align: center;
   position: absolute;
   right: 30%;
@@ -16,7 +16,7 @@
 .ChoroplethV2Mongolia-svg {
   height: 100%;
   /* background-color: #606060; */
-  background-color: #9b9b9b;
+  background-color: #a8a8a8;
   display: block;
   margin: 0 auto;
 }
@@ -28,7 +28,7 @@ path.sub-nation {
 .ChoroplethV2Mongolia-waypoint-buffer {
   height: 120vh;
   /* background-color: #606060; */
-  background-color: #9b9b9b;
+  background-color: #a8a8a8;
 }
 
 .ChoroplethV2Mongolia-span {

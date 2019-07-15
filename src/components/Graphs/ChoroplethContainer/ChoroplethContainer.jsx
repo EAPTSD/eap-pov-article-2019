@@ -348,21 +348,6 @@ class ChoroplethContainer extends Component {
               </>
             );
           })}
-            
-<!--           <svg
-            className="Choropleth-legend-container"
-            visibility="hidden"
-            ref={this.ChoroplethLegendRef}
-            style={{
-              height: legendHeight || 1,
-              width: legendWidth || 1,
-            }}
-          />
-          <div className="Choropleth-header-container">
-            <h1 className="Choropleth-header">{headerText}</h1>
-            <p className="Choropleth-subHeader">{subHeaderText}</p>
-          </div> -->
-            
         </div>
       </div>
     );

@@ -2,14 +2,14 @@
   position: relative;
   -webkit-font-smoothing: antialiased;
   /* background-color: #82aaf1; */
-  background-color: lavenderblush;
+  background-color: #dfd4f1;
   z-index: 0;
 }
 
 .BubbleGraphContainer-container {
   height: 100vh;
   /* background-color: #82aaf1; */
-  background-color: lavenderblush;
+  background-color: #dfd4f1;
   padding: 25px;
 }
 
