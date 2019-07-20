@@ -29,8 +29,9 @@ class ChoroplethV2Eap extends Component {
 
     const featureCollection = topojson.feature(
       combinedData,
-      combinedData.objects.EAP_SubNations
+      combinedData.objects.eap_subnatid_povdata
     );
+
     const center = d3.geoPath().centroid(featureCollection);
 
     this.setState(
@@ -95,7 +96,7 @@ class ChoroplethV2Eap extends Component {
       .datum(
         topojson.mesh(
           combinedData,
-          combinedData.objects.EAP_Countries,
+          combinedData.objects.EAP_adm0,
           (a) => a.id !== 1
         )
       )
@@ -110,8 +111,8 @@ class ChoroplethV2Eap extends Component {
       .datum(
         topojson.mesh(
           combinedData,
-          combinedData.objects.EAP_SubNations,
-          (a) => a.properties.ADM0_CODE === 147295
+          combinedData.objects.eap_subnatid_povdata,
+          (a) => a.properties.uniqid === 191
         )
       )
       .attr('fill', 'none')

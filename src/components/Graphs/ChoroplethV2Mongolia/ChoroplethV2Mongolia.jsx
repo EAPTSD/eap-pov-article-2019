@@ -30,11 +30,16 @@ class ChoroplethV2Mongolia extends Component {
 
     const featureCollection = topojson.feature(
       combinedData,
-      combinedData.objects.EAP_SubNations
+      combinedData.objects.eap_subnatid_povdata
     );
+
+    console.log(combinedData);
+
     const mngIsoloated = featureCollection.features.filter((country) => {
-      return [167].includes(country.properties.ADM0_CODE);
+      return ['MNG'].includes(country.properties.cntrycd);
     });
+
+    console.log(mngIsoloated);
 
     const mngCollection = {
       features: mngIsoloated,
@@ -106,7 +111,7 @@ class ChoroplethV2Mongolia extends Component {
       .datum(
         topojson.mesh(
           combinedData,
-          combinedData.objects.EAP_Countries,
+          combinedData.objects.EAP_adm0,
           (a) => a.id === 0
         )
       )

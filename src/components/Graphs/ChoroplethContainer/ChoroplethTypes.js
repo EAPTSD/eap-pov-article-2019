@@ -4,31 +4,31 @@ export default [
     text: '',
   },
   {
-    type: 'pov190',
+    type: 'pr190_s',
     text: 'Poverty 190',
   },
   {
-    type: 'pov320',
+    type: 'pr320_s',
     text: 'Poverty 320',
   },
   {
-    type: 'pov550',
+    type: 'pr550_s',
     text: 'Poverty 550',
   },
   {
-    type: 'edAttain',
+    type: 'mpi2a_s',
     text: 'Education Attainment',
   },
   {
-    type: 'edEnroll',
+    type: 'mpi2b_s',
     text: 'Education Enrollment',
   },
   {
-    type: 'water',
+    type: 'mpi3b_s',
     text: 'Water',
   },
   {
-    type: 'sanitation',
+    type: 'mpi3c_s',
     text: 'Sanitation',
   },
   {
