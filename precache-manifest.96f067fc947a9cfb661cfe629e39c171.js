@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_woChina_1.9.f2dbba84.csv"
   },
   {
-    "revision": "76c96b0b5c63196b146e",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.49dc4242.chunk.css"
+    "revision": "303cf7312c81c76af05a",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.1a47782b.chunk.css"
   },
   {
     "revision": "d00ce54cc21e1a6b2ce8337a43f27c41",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/pedestrians-400811_1920_2.d00ce54c.jpg"
   },
   {
-    "revision": "e5ea06401897cea6f44b",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/1.e5ea0640.chunk.js"
+    "revision": "bf61978da1c4ecdae9f9",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/1.bf61978d.chunk.js"
   },
   {
     "revision": "51b6458cc8c2ce96ca60",
@@ -36,8 +36,8 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_wChina_5.5.4b1504fd.csv"
   },
   {
-    "revision": "76c96b0b5c63196b146e",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.76c96b0b.chunk.js"
+    "revision": "303cf7312c81c76af05a",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.303cf731.chunk.js"
   },
   {
     "revision": "dc048442fc079e52d7940fae2de30b9c",
@@ -64,15 +64,11 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/eap_ex_china_economic_class_percentage.40d5b8ba.csv"
   },
   {
-    "revision": "174fc8f3c29dd58e3825afacdb745e29",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/choropleth_data.174fc8f3.csv"
+    "revision": "bf61978da1c4ecdae9f9",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.e3f72df9.chunk.css"
   },
   {
-    "revision": "e5ea06401897cea6f44b",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.871c394e.chunk.css"
-  },
-  {
-    "revision": "d527ada0af47c0a8316415692d973980",
+    "revision": "eab4b022689d9595d7ebaf80edcebbdc",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/index.html"
   }
 ];
