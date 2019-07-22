@@ -1,7 +1,6 @@
 // External Imports
 import React, { Component } from 'react';
 import * as d3 from 'd3';
-import { legendColor, legendHelpers } from 'd3-svg-legend';
 import Stickyfill from 'stickyfilljs';
 import Waypoint from 'react-waypoint';
 
@@ -18,8 +17,6 @@ class ChoroplethContainer extends Component {
     super(props);
     this.state = {
       colors: {},
-      legendWidth: null,
-      legendHeight: null,
       types: choroplethTypes,
       labels: {
         pr190_s: 'Poverty $1.90',
@@ -30,11 +27,91 @@ class ChoroplethContainer extends Component {
         mpi3b_s: 'Water',
         mpi3c_s: 'Sanitation',
       },
+      legends: {
+        start: [],
+        pr190_s: [
+          { color: 'rgb(247, 251, 255)', text: 'Less than 0.50' },
+          { color: 'rgb(222, 235, 247)', text: '0.50 to 1.20' },
+          { color: 'rgb(198, 219, 239)', text: '1.20 to 2.30' },
+          { color: 'rgb(158, 202, 225)', text: '2.30 to 6.80' },
+          { color: 'rgb(107, 174, 214)', text: '6.80 to 11.30' },
+          { color: 'rgb(66, 146, 198)', text: '11.30 to 15.60' },
+          { color: 'rgb(33, 113, 181)', text: '15.60 to 25.20' },
+          { color: 'rgb(8, 81, 156)', text: '25.20 to 44.00' },
+          { color: 'rgb(8, 48, 107)', text: '44.00 or more' },
+        ],
+        pr320_s: [
+          { color: 'rgb(247, 251, 255)', text: 'Less than 1.00' },
+          { color: 'rgb(222, 235, 247)', text: '1.00 to 6.00' },
+          { color: 'rgb(198, 219, 239)', text: '6.00 to 12.00' },
+          { color: 'rgb(158, 202, 225)', text: '12.00 to 22.00' },
+          { color: 'rgb(107, 174, 214)', text: '22.00 to 30.00' },
+          { color: 'rgb(66, 146, 198)', text: '30.00 to 36.00' },
+          { color: 'rgb(33, 113, 181)', text: '36.00 to 46.00' },
+          { color: 'rgb(8, 81, 156)', text: '46.00 to 63.00' },
+          { color: 'rgb(8, 48, 107)', text: '63.00 or more' },
+        ],
+        pr550_s: [
+          { color: 'rgb(247, 251, 255)', text: 'Less than 5.00' },
+          { color: 'rgb(222, 235, 247)', text: '5.00 to 28.00' },
+          { color: 'rgb(198, 219, 239)', text: '28.00 to 42.00' },
+          { color: 'rgb(158, 202, 225)', text: '42.00 to 56.00' },
+          { color: 'rgb(107, 174, 214)', text: '56.00 to 62.00' },
+          { color: 'rgb(66, 146, 198)', text: '62.00 to 70.00' },
+          { color: 'rgb(33, 113, 181)', text: '70.00 to 75.00' },
+          { color: 'rgb(8, 81, 156)', text: '75.00 to 87.00' },
+          { color: 'rgb(8, 48, 107)', text: '87.00 or more' },
+        ],
+        mpi2a_s: [
+          { color: 'rgb(255, 245, 240)', text: 'Less than 0.80' },
+          { color: 'rgb(254, 224, 210)', text: '0.80 to 1.90' },
+          { color: 'rgb(252, 187, 161)', text: '1.90 to 3.60' },
+          { color: 'rgb(252, 146, 114)', text: '3.60 to 5.30' },
+          { color: 'rgb(251, 106, 74)', text: '5.30 to 7.00' },
+          { color: 'rgb(239, 59, 44)', text: '7.00 to 11.00' },
+          { color: 'rgb(203, 24, 29)', text: '11.00 to 15.00' },
+          { color: 'rgb(165, 15, 21)', text: '15.00 to 25.00' },
+          { color: 'rgb(103, 0, 13)', text: '25.00 or more' },
+        ],
+        mpi2b_s: [
+          { color: 'rgb(255, 245, 240)', text: 'Less than 0.50' },
+          { color: 'rgb(254, 224, 210)', text: '0.50 to 1.50' },
+          { color: 'rgb(252, 187, 161)', text: '1.50 to 2.80' },
+          { color: 'rgb(252, 146, 114)', text: '2.80 to 3.60' },
+          { color: 'rgb(251, 106, 74)', text: '3.60 to 5.50' },
+          { color: 'rgb(239, 59, 44)', text: '5.50 to 8.70' },
+          { color: 'rgb(203, 24, 29)', text: '8.70 to 12.00' },
+          { color: 'rgb(165, 15, 21)', text: '12.00 to 29.00' },
+          { color: 'rgb(103, 0, 13)', text: '29.00 or more' },
+        ],
+        mpi3b_s: [
+          { color: 'rgb(247, 252, 245)', text: 'Less than 2.10' },
+          { color: 'rgb(229, 245, 224)', text: '2.10 to 7.60' },
+          { color: 'rgb(199, 233, 192)', text: '7.60 to 11.20' },
+          { color: 'rgb(161, 217, 155)', text: '11.20 to 13.00' },
+          { color: 'rgb(116, 196, 118)', text: '13.00 to 18.40' },
+          { color: 'rgb(65, 171, 93)', text: '18.40 to 26.00' },
+          { color: 'rgb(35, 139, 69)', text: '26.00 to 37.00' },
+          { color: 'rgb(0, 109, 44)', text: '37.00 to 60.00' },
+          { color: 'rgb(0, 68, 27)', text: '60.00 or more' },
+        ],
+        mpi3c_s: [
+          { color: 'rgb(252, 251, 253)', text: 'Less than 1.10' },
+          { color: 'rgb(239, 237, 245)', text: '1.10 to 3.50' },
+          { color: 'rgb(218, 218, 235)', text: '3.50 to 9.70' },
+          { color: 'rgb(188, 189, 220)', text: '9.70 to 12.70' },
+          { color: 'rgb(158, 154, 200)', text: '12.70 to 20.00' },
+          { color: 'rgb(128, 125, 186)', text: '20.00 to 29.00' },
+          { color: 'rgb(106, 81, 163)', text: '29.00 to 43.00' },
+          { color: 'rgb(84, 39, 143)', text: '43.00 to 66.00' },
+          { color: 'rgb(63, 0, 125)', text: '66.00 or more' },
+        ],
+        end: [],
+      },
+      displayLegend: [],
       headerText: '',
       subHeaderText: '',
     };
-
-    this.ChoroplethLegendRef = React.createRef();
   }
 
   componentDidMount() {
@@ -83,106 +160,13 @@ class ChoroplethContainer extends Component {
       mpi3c_s: sanitationColor,
     };
 
-    this.createLegend(pov190Color);
     this.setState({
       colors: colors,
     });
 
-    this.onResize();
     const elements = document.querySelectorAll('.ChoroplethContainer-sticky');
     Stickyfill.add(elements);
-    window.addEventListener('resize', this.onResize);
   }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize);
-  }
-
-  onResize = () => {
-    let legendWidth;
-    let legendHeight;
-    const windowWidth = window.innerWidth;
-
-    switch (true) {
-      case windowWidth < 500:
-        legendWidth = '60px';
-        legendHeight = '85px';
-        break;
-      case windowWidth < 576:
-        legendWidth = '70px';
-        legendHeight = '95px';
-        break;
-      case windowWidth < 648:
-        legendWidth = '75px';
-        legendHeight = '100px';
-        break;
-      case windowWidth < 720:
-        legendWidth = '80px';
-        legendHeight = '110px';
-        break;
-      case windowWidth < 960:
-        legendWidth = '100px';
-        legendHeight = '125px';
-        break;
-      case windowWidth < 1140:
-        legendWidth = '120px';
-        legendHeight = '160px';
-        break;
-      default:
-        legendWidth = '150px';
-        legendHeight = '200px';
-        break;
-    }
-
-    this.setState({
-      legendWidth: legendWidth,
-      legendHeight: legendHeight,
-    });
-  };
-
-  createLegend = (color) => {
-    const svg = d3.select('.Choropleth-legend-container');
-
-    const thresholdScale = d3
-      .scaleThreshold()
-      .domain([color.domain()])
-      .range([color.range()]);
-
-    svg
-      .append('g')
-      .attr('class', 'Choropleth-legend')
-      .attr('visibility', 'hidden');
-
-    const legend = legendColor()
-      .labelFormat(d3.format('.2f'))
-      .labels(legendHelpers.thresholdLabels)
-      .scale(thresholdScale);
-
-    svg.select('.Choropleth-legend').call(legend);
-  };
-
-  updateLegend = (color, isVisible = false) => {
-    const legend = d3.select('.Choropleth-legend');
-    const legendContainer = d3.select('.Choropleth-legend-container');
-
-    const visibility = isVisible ? 'visible' : 'hidden';
-    legend.attr('visibility', visibility);
-    legendContainer.attr('visibility', visibility);
-
-    if (!color) return;
-
-    const thresholdScale = d3
-      .scaleThreshold()
-      .domain(color.domain())
-      .range(color.range());
-
-    const legendUpdate = legendColor()
-      .labelFormat(d3.format('.2f'))
-      .labels(legendHelpers.thresholdLabels)
-      .scale(thresholdScale);
-
-    legend.call(legendUpdate);
-  };
 
   updateHeaders = (headerText) => {
     this.setState({
@@ -190,12 +174,18 @@ class ChoroplethContainer extends Component {
     });
   };
 
+  updateLegend = (type) => {
+    const { legends } = this.state;
+    this.setState({
+      displayLegend: legends[type],
+    });
+  };
+
   updateGraph = (type, i) => {
     const { colors, labels } = this.state;
     const color = colors[type];
-    const isVisible = i === 0 || i === 8 ? false : true;
 
-    this.updateLegend(color, isVisible, type);
+    this.updateLegend(type);
     this.updateHeaders(labels[type]);
 
     const subNation = d3.selectAll('path.sub-nation');
@@ -230,10 +220,6 @@ class ChoroplethContainer extends Component {
         const data = d.properties[type];
         const dataString = data ? data.toString() : '-1';
         const dataValue = dataString.slice(0, dataString.indexOf('.') + 3);
-
-        console.log(country);
-        console.log(region);
-        console.log(data);
 
         let regionHtml;
         if (region && color) {
@@ -288,24 +274,34 @@ class ChoroplethContainer extends Component {
   };
 
   render() {
-    const { types, legendWidth, legendHeight, headerText } = this.state;
+    const { types, headerText, displayLegend } = this.state;
     return (
       <div className="ChoroplethContainer-sequence-container">
         <div className="ChoroplethContainer-container ChoroplethContainer-sticky">
           <ChoroplethV2Eap />
           <ChoroplethV2Mongolia />
           <div className="Choropleth-tooltip" />
-
           <div className="choropleth-bottom-bar__container">
-            <svg
-              className="Choropleth-legend-container"
-              visibility="hidden"
-              ref={this.ChoroplethLegendRef}
-              style={{
-                height: legendHeight || 1,
-                width: legendWidth || 1,
-              }}
-            />
+            {displayLegend.length > 1 && (
+              <div className="Choropleth-legend-container">
+                {displayLegend.map((item, i) => {
+                  return (
+                    <div
+                      className="ChoroplethLegend-item"
+                      key={`choropleth-legend-item-${i}`}
+                    >
+                      <svg width={10} height={10}>
+                        <rect width={10} height={10} fill={item.color} />
+                      </svg>
+                      <span className="ChoroplethLegend-item-text">
+                        {' '}
+                        {item.text}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
             <h1 className="Choropleth-header">{headerText}</h1>
           </div>
         </div>

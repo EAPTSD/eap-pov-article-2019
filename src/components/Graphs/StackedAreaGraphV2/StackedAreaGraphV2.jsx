@@ -22,8 +22,9 @@ const StackedAreaGraphV2 = (props) => {
           },
         ]}
         scale={{ x: 'time' }}
-        width={500}
-        height={450}
+        width={350}
+        height={300}
+        animate={{ duration: 1000 }}
       >
         <VictoryStack colorScale={color}>
           {data.map((data, i) => {
@@ -43,7 +44,7 @@ const StackedAreaGraphV2 = (props) => {
           label={isPercent ? 'Population (Percentage)' : 'Population (Million)'}
           axisLabelComponent={<VictoryLabel dy={-12} />}
           style={{
-            axisLabel: { fontSize: 12, fontFamily: 'Lora, serif' },
+            axisLabel: { fontSize: 11, fontFamily: 'Lora, serif' },
             tickLabels: { fontSize: 10, padding: 5, fontFamily: 'Lora, serif' },
           }}
         />

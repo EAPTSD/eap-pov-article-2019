@@ -33,13 +33,9 @@ class ChoroplethV2Mongolia extends Component {
       combinedData.objects.eap_subnatid_povdata
     );
 
-    console.log(combinedData);
-
     const mngIsoloated = featureCollection.features.filter((country) => {
       return ['MNG'].includes(country.properties.cntrycd);
     });
-
-    console.log(mngIsoloated);
 
     const mngCollection = {
       features: mngIsoloated,

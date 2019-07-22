@@ -1,6 +1,7 @@
 // External Imports
 import React, { Component } from 'react';
 import * as d3 from 'd3';
+import Waypoint from 'react-waypoint';
 
 // Internal Imports
 import formatClassData from '../../../utilities/formatClassData';
@@ -32,6 +33,7 @@ class StackedAreaGraphContainer extends Component {
     percentageData: [],
     stackedAreaText: ['with China', 'without China'],
     headerClass: '',
+    start: false,
   };
 
   componentDidMount() {
@@ -53,14 +55,41 @@ class StackedAreaGraphContainer extends Component {
     });
   }
 
+  startGraph = () => {
+    const { start } = this.state;
+    if (!start) {
+      this.setState(
+        {
+          start: true,
+        },
+        () => {
+          this.updateGraph();
+        }
+      );
+    }
+  };
+
+  stopGraph = () => {
+    if (this.saInt) {
+      this.setState(
+        {
+          start: false,
+        },
+        () => {
+          clearInterval(this.saInt);
+        }
+      );
+    }
+  };
+
   updateGraph = () => {
-    setInterval(() => {
+    this.saInt = setInterval(() => {
       const { index, formattedClassData, stackedAreaText } = this.state;
       setTimeout(() => {
         this.setState({
           headerClass: 'fadeOut',
         });
-      }, 3000);
+      }, 2000);
       this.setState({
         data: formattedClassData[index],
         displayText: stackedAreaText[index],
@@ -68,11 +97,12 @@ class StackedAreaGraphContainer extends Component {
         percentageData: formattedClassData[index + 2],
         index: index === 1 ? 0 : 1,
       });
-    }, 4000);
+    }, 3000);
   };
 
   render() {
     const {
+      start,
       data,
       coolColors,
       purpColors,
@@ -83,16 +113,23 @@ class StackedAreaGraphContainer extends Component {
     } = this.state;
     return (
       <div className="StackedAreaGraphContainer-sequence-container container-fluid">
+        <Waypoint
+          onEnter={() => {
+            this.startGraph();
+          }}
+        />
         <div className="row">
           <div className="col text-center">
             <h1 className="StackedAreaGraphContainer-header-text">
               EAP Economic Class
             </h1>
-            <span
-              className={`StackedAreaGraphContainer-header-text-change ${headerClass}`}
+            <h2
+              className={`StackedAreaGraphContainer-header-text-change ${
+                start ? headerClass : ''
+              }`}
             >
               {displayText}
-            </span>
+            </h2>
           </div>
         </div>
         <div className="StackedAreaGraphContainer-container row">
@@ -116,6 +153,16 @@ class StackedAreaGraphContainer extends Component {
             />
           </div>
         </div>
+        <Waypoint
+          onLeave={() => {
+            this.stopGraph();
+          }}
+          onEnter={(currentPosition) => {
+            if (currentPosition.previousPosition === 'above') {
+              this.startGraph();
+            }
+          }}
+        />
       </div>
     );
   }

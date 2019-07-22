@@ -13,13 +13,12 @@ import higherPovertyData from '../../../data/BarGraphData/EAP_higher_pov.csv';
 
 class BarGraphContainer extends Component {
   state = {
-    displayText: '2002',
+    displayText: '',
     headerClass: '',
     higherPovertyDisplayData: [],
-    index: 1,
+    index: 0,
     reserveData: [],
     start: false,
-    first: true,
     years: [2002, 2006, 2010, 2014, 2018],
   };
 
@@ -37,37 +36,46 @@ class BarGraphContainer extends Component {
   }
 
   startGraph = () => {
-    const { start, reserveData } = this.state;
+    const { start } = this.state;
     if (!start) {
       this.setState(
         {
           start: true,
-          higherPovertyDisplayData: reserveData[0],
         },
         () => {
-          setTimeout(() => {
-            this.updateGraph();
-          }, 2500);
+          this.updateGraph();
         }
       );
     }
   };
 
+  stopGraph = () => {
+    if (this.bgInt) {
+      clearInterval(this.bgInt);
+      this.setState({
+        start: false,
+        index: 0,
+        headerClass: '',
+        higherPovertyDisplayData: [],
+        displayText: '',
+      });
+    }
+  };
+
   updateGraph = () => {
-    setInterval(() => {
+    this.bgInt = setInterval(() => {
       const { reserveData, index, years } = this.state;
-      setTimeout(() => {
-        this.setState({
-          headerClass: 'BarGraphContainer-fadeOut',
-        });
-      }, 2000);
       this.setState({
         displayText: years[index].toString(),
         headerClass: 'BarGraphContainer-fadeIn',
         higherPovertyDisplayData: reserveData[index],
         index: index === 4 ? 0 : index + 1,
-        first: false,
       });
+      setTimeout(() => {
+        this.setState({
+          headerClass: 'BarGraphContainer-fadeOut',
+        });
+      }, 2000);
     }, 2500);
   };
 
@@ -77,6 +85,7 @@ class BarGraphContainer extends Component {
       displayText,
       headerClass,
       first,
+      start,
     } = this.state;
     return (
       <div className="BarGraphContainer-sequence-container container-fluid">
@@ -91,11 +100,13 @@ class BarGraphContainer extends Component {
             <h1 className="BarGraphContainer-header-text">
               Developing EAP Poor Population with China
             </h1>
-            <span
-              className={`BarGraphContainer-header-text-change ${headerClass}`}
+            <h2
+              className={`BarGraphContainer-header-text-change ${
+                start ? headerClass : ''
+              }`}
             >
               {displayText}
-            </span>
+            </h2>
           </div>
         </div>
         <div className="BarGraphContainer-container">
@@ -104,6 +115,16 @@ class BarGraphContainer extends Component {
             first={first}
           />
         </div>
+        <Waypoint
+          onLeave={() => {
+            this.stopGraph();
+          }}
+          onEnter={(currentPosition) => {
+            if (currentPosition.previousPosition === 'above') {
+              this.startGraph();
+            }
+          }}
+        />
       </div>
     );
   }

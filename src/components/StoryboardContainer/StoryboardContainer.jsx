@@ -74,8 +74,8 @@ const StoryboardContainer = () => {
               Text Box #1 - Content
             </p>
           </div>
+          <BarGraphContainer />
         </div>
-        <BarGraphContainer />
         <div className="bg-3">
           <h2 className="introtext-3">
             Half a billion people are not yet economically secure
