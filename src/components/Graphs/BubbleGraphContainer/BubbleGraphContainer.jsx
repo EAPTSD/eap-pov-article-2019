@@ -157,7 +157,6 @@ class BubbleGraphContainer extends Component {
             }
           }}
         />
-        <div className="temp" />
         <p className="introtext-1" key="text-1-0">
           Where the poverty threshold is set makes a tremendous difference in
           who and how many people are poor.
@@ -177,7 +176,6 @@ class BubbleGraphContainer extends Component {
             }
           }}
         />
-        <div className="temp" />
         <p className="text-1" key="text-1-2">
           In developing EAP in 2018, an estimated 30 million people lived on
           less than $1.90 a day, while 168 million lived on less than $3.20 a
@@ -201,7 +199,6 @@ class BubbleGraphContainer extends Component {
             }
           }}
         />
-        <div className="temp" />
       </div>
     );
   }

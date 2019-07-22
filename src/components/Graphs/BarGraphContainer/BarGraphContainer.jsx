@@ -94,7 +94,6 @@ class BarGraphContainer extends Component {
             this.startGraph();
           }}
         />
-        <div className="temp" />
         <div className="row">
           <div className="col text-center">
             <h1 className="BarGraphContainer-header-text">
