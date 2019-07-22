@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_woChina_1.9.f2dbba84.csv"
   },
   {
-    "revision": "469db404abf470b066c8",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.efdd3027.chunk.css"
+    "revision": "4b696de912994ffedcb7",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/main.7e50da60.chunk.css"
   },
   {
     "revision": "d00ce54cc21e1a6b2ce8337a43f27c41",
@@ -36,8 +36,8 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/media/asean_wChina_5.5.4b1504fd.csv"
   },
   {
-    "revision": "469db404abf470b066c8",
-    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.469db404.chunk.js"
+    "revision": "4b696de912994ffedcb7",
+    "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/js/main.4b696de9.chunk.js"
   },
   {
     "revision": "dc048442fc079e52d7940fae2de30b9c",
@@ -68,7 +68,7 @@ self.__precacheManifest = [
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/static/css/1.e3f72df9.chunk.css"
   },
   {
-    "revision": "ff845a6b44f16ef83e741b8668642b7b",
+    "revision": "2f5537f7acd4e829ae096f7c6c90ef02",
     "url": "/24f402c1-271d-4361-a6b3-2ad3a1fcffe1/index.html"
   }
 ];
