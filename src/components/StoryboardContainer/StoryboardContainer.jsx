@@ -18,40 +18,20 @@ const StoryboardContainer = () => {
         <HeaderV2 />
         <div className="bg-0">
           <h2 className="introtext-0">
-            Higher standards are required to match higher aspirations in
-            middle-income countries
+          Piecing together the poverty puzzle means widening the ways in which we define and measure poverty. 
           </h2>
           <div className="text-container-0">
             <p className="text-0" key="text-0-0">
-              Economic progress in East Asia and Pacific (EAP) has greatly
-              contributed to the global reduction of extreme poverty. The more
-              prosperous countries in the region – China, Thailand, and Malaysia
-              – now have poverty rates measured by the $1.90/day (2011 PPP)
-              International Poverty Line of less than 1 percent.
+            Our conceptualization of what poverty is in developing EAP should change as incomes rise, and aspirations change to the expansion of middle-class societies and transition to high-income status.
             </p>
             <p className="text-0" key="text-0-1">
-              Yet, many citizens in developing EAP would not believe that their
-              societies are without poverty. Rising incomes and wealth over the
-              past three decades have led to questions as to whether the $1.90
-              International Poverty Line is now too low to adequately capture
-              whether or not someone is poor in the region. This concern is
-              especially relevant for developing EAP, which is composed
-              exclusively of lower-middle- and upper-middle-income countries.
-              Conceptions of poverty and the standards of living to which people
-              aspire are much higher than what is benchmarked by the
-              International Poverty Line.
+            A broader view of poverty, including higher poverty lines and multidimensional poverty measures, reveals there is still much work to be done in middle-income countries, even though extreme poverty is now less prevalent.
             </p>
             <p className="text-0" key="text-0-2">
-              At the same time, poverty is a complex and multifaceted problem.
-              In addition to monetary deprivation, individuals may suffer from
-              lack of access to basic infrastructure, education, and other
-              critical services. Piecing together the poverty puzzle means
-              widening the ways in which we define and measure poverty,
-              acknowledging that poverty is not one-dimensional nor solely
-              monetary in nature.
+            As highlighted in this chapter, poverty is multi-faceted. A larger suite of poverty measures broadens our view and understanding of poverty in the developing East Asia and Pacific region. 
             </p>
             <p className="text-0" key="text-0-3">
-              New pieces of the poverty puzzle were introduced in the{' '}
+            New pieces of the poverty puzzle were introduced in the{' '}
               <a
                 href="http://www.worldbank.org/en/publication/poverty-and-shared-prosperity"
                 target="_blank"
@@ -61,20 +41,31 @@ const StoryboardContainer = () => {
               </a>{' '}
               flagship to complement the existing World Bank measures of
               poverty, aimed at meeting the twin goals of ending extreme poverty
-              and boosting shared prosperity. These new pieces include higher
-              poverty lines and a multidimensional poverty measure.
+              and boosting shared prosperity.
             </p>
           </div>
         </div>
+        
         <BubbleGraphContainer />
+        
         <div className="bg-2">
           <h2 className="introtext-2">Text Box #1 - Header</h2>
           <div className="text-container-2">
             <p className="text-2" key="text-2-0">
-              Text Box #1 - Content
+              Over the past quarter century, the wave of prosperity that has
+              spread across the region has meant that
+              almost a billion people are no longer living in extreme poverty.
             </p>
           </div>
+          
           <BarGraphContainer />
+
+          <div className="text-container-2">
+            <p className="text-2" key="text-2-0">
+             The estimated number of poor in developing EAP in 2018 at the International ($1.9), LMIC ($3.2), and UMIC ($5.5) poverty lines are 30, 168, and 538 million respectively. Even though the UMIC poverty line is less than three times higher than the IPL, the number of UMIC poor is almost 18 times more than the number of extreme poor because a much larger proportion of the population lives between $1.9/day and $5.5/day. Differences in EAP’s most populous countries are also the most significant. For example, 9.9 million Chinese were poor as measured by the IPL in 2015, compared to 373.1 million using the UMIC poverty line. Similarly, in Indonesia, 15.1 and 155.4 million were poor in 2017 based on the International and UMIC poverty lines respectively.  
+            </p>
+          </div>
+
         </div>
         <div className="bg-3">
           <h2 className="introtext-3">
@@ -92,13 +83,24 @@ const StoryboardContainer = () => {
               </a>{' '}
               flagship, the economically secure are those that live on between
               $5.50 to $15 a day (2011 PPP).
-            </p>
-            <p className="text-3" key="text-3-1">
-              Text Box #2 - Content
-            </p>
+            </p>          
           </div>
         </div>
+
         <StackedAreaGraphContainer />
+
+        <div className="bg-3">
+         <div className="text-container-3">          
+            <p className="text-3" key="text-3-1">
+              Text Box #2 - Economic progress in East Asia and Pacific (EAP) has greatly
+              contributed to the global reduction of extreme poverty. The more
+              prosperous countries in the region – China, Thailand, and Malaysia
+              – now have poverty rates measured by the $1.90/day (2011 PPP)
+              International Poverty Line of less than 1 percent.
+            </p>
+         </div>
+        </div>
+        
         <div className="bg-4">
           <h2 className="introtext-4">
             Developing EAP is a diverse region, with some pockets still facing

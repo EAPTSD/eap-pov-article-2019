@@ -1,13 +1,13 @@
 .BubbleGraphContainer-sequence-container {
   position: relative;
   -webkit-font-smoothing: antialiased;
-  background-color: #dfd4f1;
+  background-color: #ffe6cc;
   z-index: 0;
 }
 
 .BubbleGraphContainer-container {
   height: 100vh;
-  background-color: #dfd4f1;
+  background-color: #ffe6cc;
 }
 
 .BubbleGraphContainer-align-center {

@@ -16,7 +16,8 @@
 }
 
 .HeaderV2-image-container {
-  background-image: url('../../images/pedestrians-400811_1920_2.jpg');
+  /*background-image: url('../../images/pedestrians-400811_1920_2.jpg');*/
+  background-image: url('../../images/img1.jpeg');
   background-size: 100% 100%;
   z-index: -999;
   height: 100vh;
