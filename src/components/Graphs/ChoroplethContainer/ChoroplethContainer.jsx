@@ -1,9 +1,3 @@
-// External Imports
-import React, { Component } from 'react';
-import * as d3 from 'd3';
-import Stickyfill from 'stickyfilljs';
-import Waypoint from 'react-waypoint';
-
 // Internal Imports
 import ChoroplethV2Eap from '../ChoroplethV2Eap';
 import ChoroplethV2Mongolia from '../ChoroplethV2Mongolia';
@@ -11,6 +5,12 @@ import './ChoroplethContainer.css';
 
 // Data
 import choroplethTypes from './ChoroplethTypes';
+
+// External Imports
+import React, { Component } from 'react';
+import * as d3 from 'd3';
+import Stickyfill from 'stickyfilljs';
+import { Waypoint } from 'react-waypoint';;
 
 class ChoroplethContainer extends Component {
   constructor(props) {

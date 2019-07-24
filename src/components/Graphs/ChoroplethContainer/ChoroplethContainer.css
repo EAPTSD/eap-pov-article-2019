@@ -33,6 +33,7 @@
   min-height: 300px;
   background-color: #a8a8a8;
   padding: 75px 0;
+  line-height: 1.5;
 }
 
 .choropleth-text__block:first-of-type {
@@ -160,6 +161,12 @@
   }
 }
 @media only screen and (max-width: 720px) {
+  .Choropleth-header {
+    bottom: 30px;
+  }
+  .Choropleth-legend-container {
+    display: none;
+  }
   .Choropleth-tooltip-data {
     font-size: 1.5rem;
   }

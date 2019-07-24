@@ -7,3 +7,11 @@
   font-size: 14px;
   font-family: 'Lora', serif;
 }
+
+
+@media only screen and (max-width: 800px) {
+  .StackedAreaLegend-item-text {
+    font-size: 12px;
+  }
+}
+

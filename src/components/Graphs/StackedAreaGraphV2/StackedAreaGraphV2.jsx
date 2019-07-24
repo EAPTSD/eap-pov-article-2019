@@ -27,7 +27,7 @@ const StackedAreaGraphV2 = (props) => {
         animate={{ duration: 1000 }}
       >
         <VictoryStack colorScale={color}>
-          {data.map((data, i) => {
+          {data && data.map((data, i) => {
             return (
               <VictoryArea
                 name={`area-${i}`}

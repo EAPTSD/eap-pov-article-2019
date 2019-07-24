@@ -1,9 +1,3 @@
-// External Imports
-import React, { Component } from 'react';
-import * as d3 from 'd3';
-import Waypoint from 'react-waypoint';
-import Stickyfill from 'stickyfilljs';
-
 // Internal Imports
 import formatPovertyData from '../../../utilities/formatPovertyData';
 import displayDataPopulator from '../../../utilities/displayDataPopulator';
@@ -17,6 +11,12 @@ import asean_wChina_5_5 from '../../../data/BubbleGraphData/asean_wChina_5.5.csv
 import asean_woChina_1_9 from '../../../data/BubbleGraphData/asean_woChina_1.9.csv';
 import asean_woChina_3_2 from '../../../data/BubbleGraphData/asean_woChina_3.2.csv';
 import asean_woChina_5_5 from '../../../data/BubbleGraphData/asean_woChina_5.5.csv';
+
+// External Imports
+import React, { Component } from 'react';
+import * as d3 from 'd3';
+import { Waypoint } from 'react-waypoint';
+import Stickyfill from 'stickyfilljs';
 
 class BubbleGraphContainer extends Component {
   state = {

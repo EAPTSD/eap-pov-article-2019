@@ -92,10 +92,19 @@
 
 @media only screen and (max-width: 750px) {
   .HeaderV2-title-container {
-    width: 80%;
-    bottom: 120vh;
+    width: 75%;
+    bottom: 130vh;
+    padding: 0.5rem;
+  }
+  .HeaderV2-title {
+    font-size: 30px;
   }
   .HeaderV2-subtitle {
     width: 90%;
+    font-size: 16px;
+    margin: 0 auto 15px;
+  }
+  .byline {
+    font-size: 12px;
   }
 }

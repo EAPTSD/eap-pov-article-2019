@@ -3,3 +3,9 @@
   height: 75vh;
   top: -50px;
 }
+
+@media only screen and (max-width: 800px) {
+  .StackedAreaGraphV2-container {
+    top: 0;
+  }
+}
