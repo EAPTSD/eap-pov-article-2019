@@ -11,7 +11,8 @@
 
 .BarGraphContainer-header-text {
   font-family: 'Cormorant', serif;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
+  text-align: center;
   font-size: 2rem;
 }
 
