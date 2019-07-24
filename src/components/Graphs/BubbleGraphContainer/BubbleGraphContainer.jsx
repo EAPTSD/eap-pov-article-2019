@@ -28,8 +28,8 @@ class BubbleGraphContainer extends Component {
     asean1_9: null,
     asean3_2: null,
     asean5_5: null,
-    bubbleGraphText: ['with China', 'without China'],
-    displayText: 'with China',
+    bubbleGraphText: ['(EAP including China)', '(EAP excluding China)'],
+    displayText: '(EAP including China)',
     headerClass: 'hide-text',
   };
 
@@ -134,7 +134,7 @@ class BubbleGraphContainer extends Component {
             <div className="col-6 BubbleGraphContainer-align-center">
               <div className="BubbleGraphContainer-header-container text-center">
                 <h1 className="BubbleGraphContainer-header-text">
-                  Developing EAP
+                 Poverty rates and the number of poor vary considerably by where the poverty threshold is set.
                 </h1>
                 <span
                   className={`BubbleGraphContainer-header-text-change ${headerClass}`}
@@ -158,12 +158,17 @@ class BubbleGraphContainer extends Component {
           }}
         />
         <p className="introtext-1" key="text-1-0">
-          Where the poverty threshold is set makes a tremendous difference in
-          who and how many people are poor.
+          The size of the bubbles on the graph on the right shows the number of poor,
+          according to three poverty lines.
         </p>
         <p className="text-1" key="text-1-1">
-          The graph on the right shows the number of poor (size of the bubble),
-          according to three poverty lines.
+        In developing EAP in 2018, an estimated 30 million people lived on
+          less than $1.90 a day, while 168 million lived on less than $3.20 a
+          day, and 538 million on less than $5.50 a day. Although $5.50 is slightly less than three times higher than the
+          International poverty line ($1.90 a day), the number of poor at this
+          higher line is almost eighteen times more than the number of extreme
+          poor because such a large proportion of the population lives between
+          $1.90/day and $5.50/day.
         </p>
         <Waypoint
           onEnter={({ previousPosition }) => {
@@ -177,16 +182,12 @@ class BubbleGraphContainer extends Component {
           }}
         />
         <p className="text-1" key="text-1-2">
-          In developing EAP in 2018, an estimated 30 million people lived on
-          less than $1.90 a day, while 168 million lived on less than $3.20 a
-          day, and 538 million on less than $5.50 a day.
+          China has experienced very successful poverty reduction and has a low poverty rate.
+          Poverty rates in the region are much higher when excluding China. 
+          The poverty rate in developing EAP excluding China is 4 percent, compared to 1.5 percent when China is included.
         </p>
         <p className="text-1-last" key="text-1-3">
-          Although $5.50 is slightly less than three times higher than the
-          International poverty line ($1.90 a day), the number of poor at this
-          higher line is almost eighteen times more than the number of extreme
-          poor because such a large proportion of the population lives between
-          $1.90/day and $5.50/day.
+          Even though the UMIC poverty line is less than three times higher than the IPL, the number of UMIC poor is almost 18 times more than the number of extreme poor because a much larger proportion of the population lives between $1.9/day and $5.5/day. Differences in EAP’s most populous countries are also the most significant. For example, 9.9 million Chinese were poor as measured by the IPL in 2015, compared to 373.1 million using the UMIC poverty line. Similarly, in Indonesia, 15.1 and 155.4 million were poor in 2017 based on the International and UMIC poverty lines respectively.  
         </p>
         <Waypoint
           onEnter={({ previousPosition }) => {
