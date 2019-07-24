@@ -97,7 +97,7 @@ class BarGraphContainer extends Component {
         <div className="row">
           <div className="col text-center">
             <h1 className="BarGraphContainer-header-text">
-              Over time, the population in developing EAP has shifted towards higher economic classes
+              Developing EAP Poor Population with China
             </h1>
             <h2
               className={`BarGraphContainer-header-text-change ${

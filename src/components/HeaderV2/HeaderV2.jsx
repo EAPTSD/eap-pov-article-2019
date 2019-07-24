@@ -66,7 +66,7 @@ class HeaderV2 extends Component {
             <span className="byline">
               WORLD BANK - By JUDY YANG, SHIYAO WANG, and DARWIN RINDERER
               <br />
-              June 2019
+              April 7, 2018
             </span>
           </div>
         </div>

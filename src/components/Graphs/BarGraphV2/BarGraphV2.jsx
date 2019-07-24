@@ -6,11 +6,11 @@ import { VictoryChart, VictoryBar, VictoryAxis, VictoryLabel } from 'victory';
 import './BarGraphV2.css';
 
 const color = {
-  'Extreme-Poor': '#F1536D',
-  'Moderately-Poor': '#CCEBFF',
-  'Vulnerable': '#68C2FF',
-  'Secure': '#006FC2',
-  'Middle-Class': '#004A92',
+  '< $1.9': '#F1536D',
+  '$1.9 - $3.2': '#CCEBFF',
+  '$3.2 - $5.5': '#68C2FF',
+  '$5.5 - $15': '#006FC2',
+  '> $15': '#004A92',
 };
 
 const BarGraphV2 = (props) => {
@@ -19,7 +19,7 @@ const BarGraphV2 = (props) => {
     <div className="BarGraphV2-container">
       <VictoryChart
         height={400}
-        width={600}
+        width={450}
         domain={{ y: [0, 1000] }}
         domainPadding={{ x: 35 }}
         animate={{ duration: 800 }}
@@ -33,7 +33,7 @@ const BarGraphV2 = (props) => {
             },
           }}
           categories={{
-            x: ['Extreme-Poor', 'Moderately-Poor', 'Vulnerable', 'Secure', 'Middle-Class'],
+            x: ['< $1.9', '$1.9 - $3.2', '$3.2 - $5.5', '$5.5 - $15', '> $15'],
           }}
           data={higherPovertyDisplayData}
         />
