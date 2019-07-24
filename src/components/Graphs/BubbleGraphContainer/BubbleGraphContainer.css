@@ -74,7 +74,7 @@
   font-family: 'Lora', serif;
   padding-left: 75px;
   border-radius: 5px;
-  line-height: 1.6;
+  line-height: 1.5;
   font-size: 20px;
   margin-bottom: 35vh;
 }
@@ -121,6 +121,18 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .BubbleGraphContainer-header-text {
+	  font-size: 1.5rem;
+  }
+  .BubbleGraphContainer-header-text-change {
+    font-size: 1.2rem;
+  }
+  .BubbleGraphContainer-container .VictoryContainer {
+    top: 0;
   }
 }
 

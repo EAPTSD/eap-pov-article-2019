@@ -1,8 +1,3 @@
-// External Imports
-import React, { Component } from 'react';
-import * as d3 from 'd3';
-import Waypoint from 'react-waypoint';
-
 // Internal Imports
 import formatClassData from '../../../utilities/formatClassData';
 import StackedAreaGraphV2 from '../StackedAreaGraphV2';
@@ -14,6 +9,11 @@ import eapClassData from '../../../data/StackedAreaGraphData/eap_economic_class.
 import eapExChinaClassData from '../../../data/StackedAreaGraphData/eap_ex_china_economic_class.csv';
 import eapPercentageClassData from '../../../data/StackedAreaGraphData/eap_economic_class_percentage.csv';
 import eapExChinaPercentageClassData from '../../../data/StackedAreaGraphData/eap_ex_china_economic_class_percentage.csv';
+
+// External Imports
+import React, { Component } from 'react';
+import * as d3 from 'd3';
+import { Waypoint } from 'react-waypoint';;
 
 class StackedAreaGraphContainer extends Component {
   state = {
@@ -83,22 +83,27 @@ class StackedAreaGraphContainer extends Component {
   };
 
   updateGraph = () => {
+    this.graphUpdater();
     this.saInt = setInterval(() => {
-      const { index, formattedClassData, stackedAreaText } = this.state;
-      setTimeout(() => {
-        this.setState({
-          headerClass: 'fadeOut',
-        });
-      }, 2000);
-      this.setState({
-        data: formattedClassData[index],
-        displayText: stackedAreaText[index],
-        headerClass: 'fadeIn',
-        percentageData: formattedClassData[index + 2],
-        index: index === 1 ? 0 : 1,
-      });
+      this.graphUpdater();
     }, 3000);
   };
+
+  graphUpdater = () => {
+    const { index, formattedClassData, stackedAreaText } = this.state;
+    setTimeout(() => {
+      this.setState({
+        headerClass: 'fadeOut',
+      });
+    }, 2000);
+    this.setState({
+      data: formattedClassData[index],
+      displayText: stackedAreaText[index],
+      headerClass: 'fadeIn',
+      percentageData: formattedClassData[index + 2],
+      index: index === 1 ? 0 : 1,
+    });
+  }
 
   render() {
     const {

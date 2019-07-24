@@ -12,7 +12,7 @@
 * {
   /* background: #000 !important;
   color: #0f0 !important;
-  outline: solid #f00 1px !important;  */
+  outline: solid #f00 1px !important;    */
 }
 
 body,
@@ -65,7 +65,7 @@ body .row {
 .bg-2 {
   position: relative;
   background-color: #c6c2c7;
-  padding-top: 150px;
+  padding: 3rem 0 5rem;
 }
 
 .introtext-2 {
@@ -92,7 +92,7 @@ body .row {
 .bg-3 {
   position: relative;
   background-color: #f2e3c2;
-  padding: 20vh 0 10vh;
+  padding: 3rem 0 5rem;
 }
 
 .introtext-3 {
@@ -120,13 +120,13 @@ body .row {
 .bg-4 {
   position: relative;
   background-color: #a8a8a8;
-  padding: 150px 0;
+  padding: 3rem 0 5rem;
 }
 
 .bg-5 {
   position: relative;
   background-color: #ffe6cc;
-  padding: 150px 0 25px;
+  padding: 3rem 0 5rem;
 }
 
 .introtext-4 {
@@ -157,7 +157,7 @@ body .row {
 .bg-6 {
   position: relative;
   background-color: #1c1c1c;
-  padding: 15vh 0;
+  padding: 3rem 0 4rem;
 }
 
 .text-6 {
@@ -170,11 +170,29 @@ body .row {
 }
 
 @media only screen and (max-width: 800px) {
-  .introtext-0,
-  .introtext-1,
+  .bg-3 {
+    padding: 3rem 0 1rem;
+  }
+  .introtext-0 {
+    margin: 0rem auto 5.5rem;
+  }
+  .introtext-2,
   .introtext-3,
   .introtext-4 {
-    width: 80%;
+    margin: 0rem auto 3.5rem;
+  }
+  .introtext-0,
+  .introtext-2,
+  .introtext-3,
+  .introtext-4 {
+    width: 70%;
+	  font-size: 2rem;
+	  line-height: 45px;
+  }
+  .introtext-1,
+  .introtext-2 {
+    font-size: 2rem;
+	  line-height: 45px;
   }
   .text-container-0,
   .text-container-1,
@@ -183,7 +201,17 @@ body .row {
   .text-container-4,
   .text-container-5,
   .text-container-6 {
-    width: 85%;
+    width: 65%;
+  }
+  .text-0, 
+  .text-1,
+  .text-1-last,
+  .text-2,
+  .text-3,
+  .text-4,
+  .text-5,
+  .text-6 {
+    font-size: 16px;
   }
 }
 

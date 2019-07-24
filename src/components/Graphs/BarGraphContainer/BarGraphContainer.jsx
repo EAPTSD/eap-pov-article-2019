@@ -1,8 +1,3 @@
-// External Imports
-import React, { Component } from 'react';
-import * as d3 from 'd3';
-import Waypoint from 'react-waypoint';
-
 // Internal Imports
 import BarGraphV2 from '../BarGraphV2';
 import formatHigherPovertyData from '../../../utilities/formatHigherPovertyData';
@@ -10,6 +5,11 @@ import './BarGraphContainer.css';
 
 // Data
 import higherPovertyData from '../../../data/BarGraphData/EAP_higher_pov.csv';
+
+// External Imports
+import React, { Component } from 'react';
+import * as d3 from 'd3';
+import { Waypoint } from 'react-waypoint';
 
 class BarGraphContainer extends Component {
   state = {
@@ -63,21 +63,26 @@ class BarGraphContainer extends Component {
   };
 
   updateGraph = () => {
+    this.graphUpdater();
     this.bgInt = setInterval(() => {
-      const { reserveData, index, years } = this.state;
-      this.setState({
-        displayText: years[index].toString(),
-        headerClass: 'BarGraphContainer-fadeIn',
-        higherPovertyDisplayData: reserveData[index],
-        index: index === 4 ? 0 : index + 1,
-      });
-      setTimeout(() => {
-        this.setState({
-          headerClass: 'BarGraphContainer-fadeOut',
-        });
-      }, 2000);
+      this.graphUpdater();
     }, 2500);
   };
+
+  graphUpdater = () => {
+    const { reserveData, index, years } = this.state;
+    this.setState({
+      displayText: years[index].toString(),
+      headerClass: 'BarGraphContainer-fadeIn',
+      higherPovertyDisplayData: reserveData[index],
+      index: index === 4 ? 0 : index + 1,
+    });
+    setTimeout(() => {
+      this.setState({
+        headerClass: 'BarGraphContainer-fadeOut',
+      });
+    }, 2000);
+  }
 
   render() {
     const {
