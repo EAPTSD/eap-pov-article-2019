@@ -4,7 +4,7 @@ import React from 'react';
 // Internal Imports
 import BarGraphContainer from '../Graphs/BarGraphContainer';
 import BubbleGraphContainer from '../Graphs/BubbleGraphContainer';
-import StackedAreaGraphContainer from '../Graphs/StackedAreaGraphContainer';
+// import StackedAreaGraphContainer from '../Graphs/StackedAreaGraphContainer';
 import ChoroplethContainer from '../Graphs/ChoroplethContainer';
 import HeaderV2 from '../HeaderV2';
 import RotatePhone from '../RotatePhone';
@@ -104,7 +104,7 @@ const StoryboardContainer = () => {
         </div>
         
 
-        <StackedAreaGraphContainer />
+        {/* <StackedAreaGraphContainer /> */}
 
 
         <div className="bg-4">
