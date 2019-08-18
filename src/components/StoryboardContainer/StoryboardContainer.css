@@ -23,7 +23,6 @@ html {
   padding: 0;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  line-height: 0;
 }
 
 body .row {
