@@ -37,10 +37,15 @@ class BarGraphContainer extends Component {
 
   startGraph = () => {
     const { start } = this.state;
+    const { reserveData, index, years } = this.state;
     if (!start) {
       this.setState(
         {
           start: true,
+          displayText: years[index].toString(),
+          headerClass: 'BarGraphContainer-fadeIn',
+          higherPovertyDisplayData: reserveData[index],
+          index: 0,
         },
         () => {
           this.updateGraph();

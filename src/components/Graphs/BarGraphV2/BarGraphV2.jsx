@@ -22,7 +22,7 @@ const BarGraphV2 = (props) => {
         width={600}
         domain={{ y: [0, 1000] }}
         domainPadding={{ x: 35 }}
-        animate={{ duration: 800 }}
+        animate={{ duration: 800, easing: 'cubic' }}
       >
         <VictoryBar
           barWidth={40}
@@ -36,6 +36,7 @@ const BarGraphV2 = (props) => {
             x: ['Extreme-Poor', 'Moderately-Poor', 'Vulnerable', 'Secure', 'Middle-Class'],
           }}
           data={higherPovertyDisplayData}
+
         />
         <VictoryAxis
           dependentAxis
