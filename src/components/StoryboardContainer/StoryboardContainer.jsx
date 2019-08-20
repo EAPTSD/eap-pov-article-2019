@@ -21,16 +21,16 @@ const StoryboardContainer = () => {
           Piecing together the poverty puzzle means widening the ways in which we define and measure poverty. 
           </h2>
           <div className="text-container-0">
-            <p className="text-0" key="text-0-0">
+            <p className="text-0">
             Our conceptualization of what poverty is in the developing East Asia and Pacific (EAP) region should change as incomes and aspirations rise in these middle income countries. A larger suite of poverty measures helps tp broaden our view and understanding of poverty.
             </p>
-            <p className="text-0" key="text-0-1">
+            <p className="text-0">
             Monitoring poverty at higher poverty lines is increasingly important as countries grow richer. Poverty is also multi-faceted and non-monetary in nature.   
             </p>
-            <p className="text-0" key="text-0-2">
+            <p className="text-0">
             A broader view of poverty reveals there is still much work to be done in developing EAP, even though extreme poverty is now less prevalent.
             </p>
-            <p className="text-0" key="text-0-3">
+            <p className="text-0">
             This article discusses pieces of the poverty puzzle that were introduced in the{' '}
               <a
                 href="http://www.worldbank.org/en/publication/poverty-and-shared-prosperity"
@@ -49,7 +49,7 @@ const StoryboardContainer = () => {
         <div className="bg-2">
           <h2 className="introtext-2">Almost a billion people have been lifted out of extreme poverty over the past quarter century.</h2>
           <div className="text-container-2">
-            <p className="text-2" key="text-2-0">
+            <p className="text-2">
               For defintions of economic classes used in developing EAP, see the {' '}
               <a
                 href="http://documents.worldbank.org/curated/en/770241511445721465/Riding-the-wave-an-East-Asian-miracle-for-the-21st-century"
@@ -65,7 +65,7 @@ const StoryboardContainer = () => {
           <BarGraphContainer />
 
           <div className="text-container-2">
-            <p className="text-2" key="text-2-0">
+            <p className="text-2">
             While EAP has been extremely successful at reducing poverty measured by the International, LMIC, and UMIC poverty lines, building middle-class societies may be more challenging for the region. 
             The middle-class threshold, set at $15/day in the World Bank’s regional study “Riding the Wave”, is much higher than the UMIC poverty line ($5.5/day). 
             The majority of developing EAP, over a billion people, lives between $5.5 and $15/day. 
@@ -73,7 +73,7 @@ const StoryboardContainer = () => {
             Outside of EAP’s wealthiest countries, the middle-class is small in size or growing slowly. In the Philippines, the size of the middle-class has hardly changed over the last decade. </p>
           
 
-            <p className="text-2" key="text-2-0">
+            <p className="text-2">
             Growth strategies that helped to eradicate extreme poverty in most of developing EAP will likely not be sufficient to also lift households into the middle-class.  
             Outward oriented growth, basic human capital development, and sound economic governance helped lift a billion people in EAP out of extreme poverty. 
             Yet, these foundational policies will not guarantee that a billion people will also be lifted into the middle-class. 
@@ -96,7 +96,7 @@ const StoryboardContainer = () => {
           </h2>
       
           <div className="text-container-3">          
-            <p className="text-3" key="text-3-1">
+            <p className="text-3">
               The figures below show the distribution of economic classes across the developing EAP population, with and without China.
             </p>
           </div>
@@ -112,7 +112,7 @@ const StoryboardContainer = () => {
             Developing EAP is a diverse region, with some areas still facing daunting challenges
           </h2>
           <div className="text-container-4">
-            <p className="text-4" key="text-4-0">
+            <p className="text-4">
               While many countries in EAP have made good progress in tackling
               poverty, it is important to bear in mind that developing EAP is a
               diverse region and includes sub-regions that still face daunting
@@ -134,7 +134,7 @@ const StoryboardContainer = () => {
               seasonal and somewhat predictable, but also include earthquakes
               and volcanic eruptions that are less foreseeable.
             </p>
-            <p className="text-4" key="text-4-1">
+            <p className="text-4">
               Large variation in poverty rates exists both within and across
               countries. Across 78 sub-regions, the $3.20/day poverty rate
               ranges from 0 percent in Bangkok, Thailand (2017) to 84.5 percent
@@ -151,7 +151,7 @@ const StoryboardContainer = () => {
         <ChoroplethContainer />
         <div className="bg-5">
           <div className="text-container-5">
-            <p className="text-5" key="text-5-0">
+            <p className="text-5">
               Our conceptualization of what poverty is in developing East Asia
               and Pacific should adapt as incomes and aspirations rise, and
               countries work on expanding their middle-class societies and
@@ -164,7 +164,7 @@ const StoryboardContainer = () => {
               middle-income countries, even though extreme poverty is now less
               prevalent.
             </p>
-            <p className="text-5" key="text-5-1">
+            <p className="text-5">
               This view helps to enhance policy dialogue and craft policies that
               are more relevant and targeted. A larger suite of global measures,
               grounded in tools that countries already use to monitor progress,
@@ -180,7 +180,7 @@ const StoryboardContainer = () => {
         </div>
         <div className="bg-6">
           <div className="text-container-6">
-            <p className="text-6" key="text-6-0">
+            <p className="text-6">
               To read more about A Broader View of Poverty in East Asia and
               Pacific, please refer to Part 2A in the Spring 2019’s edition of
               the{' '}
