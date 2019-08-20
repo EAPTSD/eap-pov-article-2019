@@ -25,6 +25,10 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
+p {
+  margin-bottom: 0;
+}
+
 body .row {
   margin: 0 !important;
 }
@@ -95,6 +99,7 @@ body .row {
   font-family: 'Lora', serif;
   color: #111;
   line-height: 1.6;
+  padding-bottom: 2rem;
   font-size: 20px;
   text-align: justify;
 }
