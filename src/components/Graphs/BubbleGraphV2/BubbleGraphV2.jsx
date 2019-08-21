@@ -61,7 +61,7 @@ const BubbleGraphV2 = (props) => {
             before: () => ({ opacity: 0.3, _y: 0 }),
           },
           onEnter: {
-            duration: 1000,
+            duration: 0,
             before: () => ({ opacity: 0.3, _y: 0 }),
             after: (datum) => ({ opacity: 1, _y: datum._y }),
           },
