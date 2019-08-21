@@ -255,7 +255,7 @@ class ChoroplethContainer extends Component {
           {types.map((typeData, i) => {
             const { type, text } = typeData;
             return (
-              <>
+              <React.Fragment key={ i }>
                 {i === 0 ? (
                   <div className="ChoroplethContainer-waypoint-buffer" />
                 ) : null}
@@ -269,7 +269,7 @@ class ChoroplethContainer extends Component {
                 {i === 8 ? (
                   <div className="ChoroplethContainer-waypoint-buffer" />
                 ) : null}
-              </>
+              </React.Fragment>
             );
           })}
         </div>
