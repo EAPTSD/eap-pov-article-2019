@@ -23,7 +23,6 @@ html {
   padding: 0;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  line-height: 0;
 }
 
 body .row {
@@ -32,7 +31,7 @@ body .row {
 
 .bg-0 {
   position: relative;
-  background-color: #111;
+  background-color: #282828;
   padding: 10rem 0 5rem;
 }
 
@@ -65,14 +64,14 @@ body .row {
 
 .bg-1 {
   position: relative;
-  background-color: #c6c2c7;
+  background-color: #white;
   padding-top: 150px;
 }
 
 
 .bg-2 {
   position: relative;
-  background-color: #c6c2c7;
+  background-color: #white;
   padding-top: 150px;
 }
 
@@ -130,13 +129,13 @@ body .row {
 
 .bg-4 {
   position: relative;
-  background-color: #a8a8a8;
+  background-color: #white;
   padding: 150px 0;
 }
 
 .bg-5 {
   position: relative;
-  background-color: #ffe6cc;
+  background-color: #white;
   padding: 150px 0 25px;
 }
 

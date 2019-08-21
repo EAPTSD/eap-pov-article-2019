@@ -23,7 +23,7 @@ class ChoroplethContainer extends Component {
         pr320_s: 'Poverty $3.20',
         pr550_s: 'Poverty $5.50',
         mpi2a_s: 'Education Attainment',
-        mpi2b_s: 'Education Enrollment',
+        mpi2b_s: 'Education Enrollment test',
         mpi3b_s: 'Water',
         mpi3c_s: 'Sanitation',
       },

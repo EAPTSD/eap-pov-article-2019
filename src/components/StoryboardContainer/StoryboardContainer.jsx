@@ -4,7 +4,7 @@ import React from 'react';
 // Internal Imports
 import BarGraphContainer from '../Graphs/BarGraphContainer';
 import BubbleGraphContainer from '../Graphs/BubbleGraphContainer';
-import StackedAreaGraphContainer from '../Graphs/StackedAreaGraphContainer';
+// import StackedAreaGraphContainer from '../Graphs/StackedAreaGraphContainer';
 import ChoroplethContainer from '../Graphs/ChoroplethContainer';
 import HeaderV2 from '../HeaderV2';
 import RotatePhone from '../RotatePhone';
@@ -22,7 +22,7 @@ const StoryboardContainer = () => {
           </h2>
           <div className="text-container-0">
             <p className="text-0" key="text-0-0">
-            Our conceptualization of what poverty is in the developing East Asia and Pacific (EAP) region should change as incomes and aspirations rise in these middle income countries. A larger suite of poverty measures helps tp broaden our view and understanding of poverty.
+            Our conceptualization of what poverty is in the developing East Asia and Pacific (EAP) region should change as incomes and aspirations rise in these middle income countries. A larger suite of poverty measures helps to broaden our view and understanding of poverty.
             </p>
             <p className="text-0" key="text-0-1">
             Monitoring poverty at higher poverty lines is increasingly important as countries grow richer. Poverty is also multi-faceted and non-monetary in nature.   
@@ -48,6 +48,23 @@ const StoryboardContainer = () => {
 
         <div className="bg-2">
           <h2 className="introtext-2">Almost a billion people have been lifted out of extreme poverty over the past quarter century.</h2>
+          
+          <div className="text-container-2">
+            <p className="text-2" key="text-2-0">
+              Today, the majority of developing EAP, over a billion people are economically secure, living between $5.5 and $15/day.
+            </p>
+          </div>
+
+          <BarGraphContainer />
+          
+          <h2 className="introtext-2">However, half a billion people are not yet economically secure.</h2>
+          
+          <div className="text-container-2">
+           <p className="text-2" key="text-2-0"> 
+           ADD SOMETHING ON ECONOMIC SECURITY
+           </p>
+          </div>
+
           <div className="text-container-2">
             <p className="text-2" key="text-2-0">
               For defintions of economic classes used in developing EAP, see the {' '}
@@ -61,19 +78,23 @@ const StoryboardContainer = () => {
               flagship.
             </p>          
           </div>
+        </div>
 
-          <BarGraphContainer />
 
-          <div className="text-container-2">
-            <p className="text-2" key="text-2-0">
-            While EAP has been extremely successful at reducing poverty measured by the International, LMIC, and UMIC poverty lines, building middle-class societies may be more challenging for the region. 
-            The middle-class threshold, set at $15/day in the World Bank’s regional study “Riding the Wave”, is much higher than the UMIC poverty line ($5.5/day). 
-            The majority of developing EAP, over a billion people, lives between $5.5 and $15/day. 
-            In 2018, 75.4 percent of EAP still lived below $15/day. 
-            Outside of EAP’s wealthiest countries, the middle-class is small in size or growing slowly. In the Philippines, the size of the middle-class has hardly changed over the last decade. </p>
+                  
+        {/* --------------------STACKED GRAPH SECTION---------------------*/}
+
+        <div className="bg-3">
+          <h2 className="introtext-3">
+          In 2018, about a quarter of developing EAP were middle-class.
           
-
-            <p className="text-2" key="text-2-0">
+          </h2>
+          <div className="text-container-3">          
+          <p className="text-3" key="text-3-1">
+            While EAP has been extremely successful at reducing poverty, building middle-class societies may be more challenging for the region. 
+             Outside of EAP’s wealthiest countries, the middle-class is small in size or growing slowly. In the Philippines, the size of the middle-class has hardly changed over the last decade.
+           </p>
+           <p className="text-3" key="text-3-1">
             Growth strategies that helped to eradicate extreme poverty in most of developing EAP will likely not be sufficient to also lift households into the middle-class.  
             Outward oriented growth, basic human capital development, and sound economic governance helped lift a billion people in EAP out of extreme poverty. 
             Yet, these foundational policies will not guarantee that a billion people will also be lifted into the middle-class. 
@@ -83,28 +104,16 @@ const StoryboardContainer = () => {
             </p>
           </div>
         </div>
-
+        
         {/* --------------------BUBBLE GRAPH SECTION---------------------*/}
 
         <BubbleGraphContainer />
-                  
-        {/* --------------------STACKED GRAPH SECTION---------------------*/}
 
-        <div className="bg-3">
-          <h2 className="introtext-3">
-            Half a billion people are not yet economically secure
-          </h2>
-      
-          <div className="text-container-3">          
-            <p className="text-3" key="text-3-1">
-              The figures below show the distribution of economic classes across the developing EAP population, with and without China.
-            </p>
-          </div>
+        {/* ----------------------------------------------------------------------------------------*/}
 
-        </div>
-        
+        {/*--- < StackedAreaGraphContainer /> ---*/}
 
-        <StackedAreaGraphContainer />
+        {/* ---------------- MAP SECTION -----------------------------------------------------------*/}
 
 
         <div className="bg-4">

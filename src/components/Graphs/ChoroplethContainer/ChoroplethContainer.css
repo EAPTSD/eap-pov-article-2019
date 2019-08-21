@@ -2,14 +2,14 @@
   position: relative;
   display: flex;
   -webkit-font-smoothing: antialiased;
-  background-color: #a8a8a8;
+  background-color: #white;
 }
 
 .ChoroplethContainer-container {
   height: 100vh;
   display: flex;
   align-items: center;
-  background-color: #a8a8a8;
+  background-color: #white;
   padding: 25px;
 }
 
@@ -31,7 +31,7 @@
 
 .choropleth-text__block {
   min-height: 300px;
-  background-color: #a8a8a8;
+  background-color: #white;
   padding: 75px 0;
 }
 

@@ -21,7 +21,7 @@ export default [
   },
   {
     type: 'mpi2b_s',
-    text: 'Education Enrollment',
+    text: 'Education Enrollment. ',
   },
   {
     type: 'mpi3b_s',
