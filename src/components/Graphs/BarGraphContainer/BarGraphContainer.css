@@ -10,14 +10,12 @@
 }
 
 .BarGraphContainer-header-text {
-  font-family: 'Cormorant', serif;
   margin-bottom: 1rem;
   text-align: center;
   font-size: 2rem;
 }
 
 .BarGraphContainer-header-text-change {
-  font-family: 'Cormorant', serif;
   margin-bottom: 0;
   font-size: 2rem;
   height: 2rem;

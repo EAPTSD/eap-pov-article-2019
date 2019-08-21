@@ -158,6 +158,9 @@ const StoryboardContainer = () => {
           </div>
         </div>
         <ChoroplethContainer />
+
+
+        {/* ----CLOSING SECTION------------------------------------------------------------------------------------*/}
         <div className="bg-5">
           <div className="text-container-5">
             <p className="text-5" key="text-5-0">

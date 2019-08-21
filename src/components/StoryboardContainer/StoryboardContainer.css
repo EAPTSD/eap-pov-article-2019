@@ -17,6 +17,7 @@
 
 body,
 html {
+  font-family: 'Palatino', serif;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -36,7 +37,6 @@ body .row {
 }
 
 .introtext-0 {
-  font-family: 'Cormorant', serif;
   margin-bottom: 1.5rem;
   width: 770px;
   margin: 5rem auto;
@@ -54,7 +54,6 @@ body .row {
 
 .text-0 {
   text-align: justify;
-  font-family: 'Lora', serif;
   font-size: 20px;
   color: whitesmoke;
   opacity: 0.7;
@@ -76,7 +75,6 @@ body .row {
 }
 
 .introtext-2 {
-  font-family: 'Cormorant', serif;
   margin-bottom: 2.5rem;
   margin: 0 auto 2.5rem;
   font-size: 2.5rem;
@@ -92,7 +90,6 @@ body .row {
 }
 
 .text-2 {
-  font-family: 'Lora', serif;
   color: #111;
   line-height: 1.6;
   font-size: 20px;
@@ -101,12 +98,12 @@ body .row {
 
 .bg-3 {
   position: relative;
-  background-color: #c6c2c7;
+  background-color: #282828;
   padding: 20vh 0 10vh;
 }
 
 .introtext-3 {
-  font-family: 'Cormorant', serif;
+  color: whitesmoke;
   margin-bottom: 2.5rem;
   width: 770px;
   margin: 0.5rem auto 2.5rem;
@@ -120,9 +117,8 @@ body .row {
 }
 
 .text-3 {
-  font-family: 'Lora', serif;
   margin-bottom: 2rem;
-  color: #111;
+  color: whitesmoke;;
   line-height: 1.6;
   font-size: 20px;
 }
@@ -135,12 +131,11 @@ body .row {
 
 .bg-5 {
   position: relative;
-  background-color: #white;
+  background-color: #282828;
   padding: 150px 0 25px;
 }
 
 .introtext-4 {
-  font-family: 'Cormorant', serif;
   margin-bottom: 2.5rem;
   width: 770px;
   margin: 0.5rem auto 2.5rem;
@@ -156,11 +151,16 @@ body .row {
   text-align: justify;
 }
 
-.text-4,
-.text-5 {
-  font-family: 'Lora', serif;
+.text-4 {
   margin-bottom: 2rem;
   color: #111;
+  line-height: 1.6;
+  font-size: 20px;
+}
+
+.text-5 {
+  margin-bottom: 2rem;
+  color: whitesmoke;
   line-height: 1.6;
   font-size: 20px;
 }
@@ -175,7 +175,6 @@ body .row {
   font-size: 19px;
   color: whitesmoke;
   opacity: 0.7;
-  font-family: 'Lora', serif;
   font-style: italic;
   line-height: 1.5;
 }
