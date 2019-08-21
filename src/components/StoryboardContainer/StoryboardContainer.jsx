@@ -95,11 +95,11 @@ const StoryboardContainer = () => {
             Half a billion people are not yet economically secure
           </h2>
       
-          <div className="text-container-3">          
+          {/* <div className="text-container-3">          
             <p className="text-3">
               The figures below show the distribution of economic classes across the developing EAP population, with and without China.
             </p>
-          </div>
+          </div> */}
 
         </div>
         
