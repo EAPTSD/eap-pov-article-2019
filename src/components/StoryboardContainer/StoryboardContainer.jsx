@@ -3,8 +3,8 @@ import React from 'react';
 
 // Internal Imports
 import BarGraphContainer from '../Graphs/BarGraphContainer';
-import BubbleGraphContainer from '../Graphs/BubbleGraphContainer';
-// import StackedAreaGraphContainer from '../Graphs/StackedAreaGraphContainer';
+//import BubbleGraphContainer from '../Graphs/BubbleGraphContainer';
+import StackedAreaGraphContainer from '../Graphs/StackedAreaGraphContainer';
 import ChoroplethContainer from '../Graphs/ChoroplethContainer';
 import HeaderV2 from '../HeaderV2';
 import RotatePhone from '../RotatePhone';
@@ -107,11 +107,11 @@ const StoryboardContainer = () => {
         
         {/* --------------------BUBBLE GRAPH SECTION---------------------*/}
 
-        <BubbleGraphContainer />
+         {/* <BubbleGraphContainer /> */}
 
         {/* ----------------------------------------------------------------------------------------*/}
 
-        {/*--- < StackedAreaGraphContainer /> ---*/}
+       < StackedAreaGraphContainer />
 
         {/* ---------------- MAP SECTION -----------------------------------------------------------*/}
 
