@@ -132,6 +132,8 @@ section.theme--light, footer.theme--light {
 /* Per section overrides */
 
 #section-0 {
+  /* The min height is to avoid an automatic scrollTop when the hero loads */
+  min-height: 100vh;
   padding: 0;
   position: relative;
 }
