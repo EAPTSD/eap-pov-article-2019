@@ -57,12 +57,22 @@ const StoryboardContainer = () => {
 
           <BarGraphContainer />
           
-          <h2 className="introtext-2">However, half a billion people are not yet economically secure.</h2>
+          <h2 className="introtext-2">In 2018, about a quarter of developing EAP were middle-class.</h2>
           
           <div className="text-container-2">
            <p className="text-2" key="text-2-0"> 
-           ADD SOMETHING ON ECONOMIC SECURITY
+           While EAP has been extremely successful at reducing poverty, building middle-class societies may be more challenging for the region. 
+             Outside of EAP’s wealthiest countries, the middle-class is small in size or growing slowly. In the Philippines, the size of the middle-class has hardly changed over the last decade.
+          
            </p>
+           <p className="text-2" key="text-2-0">
+            Growth strategies that helped to eradicate extreme poverty in most of developing EAP will likely not be sufficient to also lift households into the middle-class.  
+            Outward oriented growth, basic human capital development, and sound economic governance helped lift a billion people in EAP out of extreme poverty. 
+            Yet, these foundational policies will not guarantee that a billion people will also be lifted into the middle-class. 
+            The EAP regional middle-class poverty line is almost eight times higher than the international poverty line. 
+            Countries and challenges are also evolving. Even as the size of the middle-class is increasing, middle-class households can still be exposed to risks and fall back into poverty. 
+            This is a relevant concern as the region experiences uncertainties from trade tensions and slowing growth. 
+            </p>
           </div>
 
           <div className="text-container-2">
@@ -86,22 +96,14 @@ const StoryboardContainer = () => {
 
         <div className="bg-3">
           <h2 className="introtext-3">
-          In 2018, about a quarter of developing EAP were middle-class.
           
+          However, half a billion people are not yet economically secure.
           </h2>
           <div className="text-container-3">          
-          <p className="text-3" key="text-3-1">
-            While EAP has been extremely successful at reducing poverty, building middle-class societies may be more challenging for the region. 
-             Outside of EAP’s wealthiest countries, the middle-class is small in size or growing slowly. In the Philippines, the size of the middle-class has hardly changed over the last decade.
-           </p>
+   
            <p className="text-3" key="text-3-1">
-            Growth strategies that helped to eradicate extreme poverty in most of developing EAP will likely not be sufficient to also lift households into the middle-class.  
-            Outward oriented growth, basic human capital development, and sound economic governance helped lift a billion people in EAP out of extreme poverty. 
-            Yet, these foundational policies will not guarantee that a billion people will also be lifted into the middle-class. 
-            The EAP regional middle-class poverty line is almost eight times higher than the international poverty line. 
-            Countries and challenges are also evolving. Even as the size of the middle-class is increasing, middle-class households can still be exposed to risks and fall back into poverty. 
-            This is a relevant concern as the region experiences uncertainties from trade tensions, slowing growth, and elections. 
-            </p>
+            ADD TEXT
+          </p>
           </div>
         </div>
         

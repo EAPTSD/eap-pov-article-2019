@@ -1,7 +1,8 @@
 .StackedAreaGraphContainer-sequence-container {
   -webkit-font-smoothing: antialiased;
   padding: 15px 0;
-  background-color: #c6c2c7;
+  background-color: #282828;
+  color: whitesmoke;
   margin: 0 auto !important;
 }
 
