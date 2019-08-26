@@ -125,8 +125,6 @@ const renderEAPPovertyChart = async () => {
   })
 
   // Create scales
-  // TODO: Ask why the total population counts are the same each year. It looks proportionate, but seems
-  // to claim absolute values.
   const yScale = d3
     .scaleLinear()
     .range([height + margin.top, 0])
@@ -185,7 +183,38 @@ const renderEAPPovertyChart = async () => {
     .text("Population (in Millions)")
     .style("font-size", "25px")
 
-  
+  // Legend
+  const size = 20
+  const reversedKeys = keys.reverse();
+  const reversedColors = colors.reverse();
+  chart
+    .selectAll("myrect")
+    .data(reversedKeys)
+    .enter()
+    .append("rect")
+    .attr("x", 700)
+    .attr("y", function(d,i){ return 10 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
+    .attr("width", size)
+    .attr("height", size)
+    .style("fill", function(d,i){ return reversedColors[i]})
+    // .on("mouseover", highlight)
+    // .on("mouseleave", noHighlight)
+
+  // Add one dot in the legend for each name.
+  chart
+    .selectAll("mylabels")
+    .data(reversedKeys)
+    .enter()
+    .append("text")
+    .attr("x", 700 + size*1.2)
+    .attr("y", function(d,i){ return 10 + i*(size+5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
+    .style("fill", (d, i)=> reversedColors[i])
+    .text(d => d)
+    .attr("text-anchor", "left")
+    .style("alignment-baseline", "middle")
+    // .on("mouseover", highlight)
+    // .on("mouseleave", noHighlight)
+
 }
 
 // For now, we'll render all charts immediately. If it gets slow we can always lazy render them. (we can also just convert the
