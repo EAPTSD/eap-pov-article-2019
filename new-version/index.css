@@ -8,10 +8,6 @@
   -webkit-font-smoothing: antialiased;
 }
 
-li {
-  list-style-type: none;
-}
-
 /* BEGIN Define base theme */
 
 section {
@@ -42,6 +38,21 @@ p {
   line-height: 1.6;
   margin-top: 1em;
   margin-bottom: 1em;
+  text-align: justify;
+}
+
+sub {
+  display: block;
+  margin:0 auto;
+  width: 80%;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 .text-block {
@@ -74,7 +85,7 @@ we want to apply dark to a child element directly */
 }
 
 section.theme--dark, footer.theme--dark {
-  background: linear-gradient(120deg, #000, #000, #333);
+  background: linear-gradient(120deg, #333, #000, #333);
 }
 
 .theme--dark h1, 
@@ -84,6 +95,10 @@ section.theme--dark, footer.theme--dark {
 .theme--dark p {
   color: whitesmoke;
   opacity: 0.85;
+}
+
+.theme--dark a {
+  color: #007bff;
 }
 
 /* Light Theme */
@@ -170,21 +185,6 @@ section.theme--light, footer.theme--light {
   width: 50%;
   text-align: center;
 }
-
-/* #section-1 {
-  padding: 10rem 0;
-} */
-
-/* #section-1 h2 {
-  margin: 0 auto;
-  margin-bottom: 10rem;
-}
-
-#section-1 p {
-
-  margin: 0 12.5% 2rem 12.5%;
-
-} */
 
 .chart {
   height: 400px;

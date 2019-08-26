@@ -91,7 +91,8 @@ const renderEAPPovertyChart = async () => {
     "lightgreen",
     "green",
   ];
-  const margin = {top: 50, right: 250, bottom: 140, left: 100};
+  const lineColor = 'steelblue';
+  const margin = {top: 0, right: 250, bottom: 40, left: 100};
   const strokeWidth = 1;
 
   const svg = d3
@@ -110,7 +111,7 @@ const renderEAPPovertyChart = async () => {
     .attr("transform", `translate(-${margin.left - strokeWidth},-${margin.top})`);
 
   // NOTE: The csv data is incorrectly formatted for our purposes. I manually reformatted some for testing.
-  const data = await d3.csv('./data/EAP_breakdown_yearly/reformatted.csv');
+  const data = await d3.csv('./data/EAP_breakdown_yearly/eap_economic_class.csv');
   // We want all the groups except the year (which is our x axis value)
   const keys = data.columns.slice(1);
   const stack = d3.stack().keys(keys);
@@ -150,9 +151,9 @@ const renderEAPPovertyChart = async () => {
 
   series
     .append("path")
-    .attr("transform", `translate(${margin.left},${margin.top})`)
+    .attr("transform", `translate(${margin.left},0)`)
     .style("fill", (d, i) => colors[i])
-    .attr("stroke", "steelblue")
+    .attr("stroke", lineColor)
     .attr("stroke-linejoin", "round")
     .attr("stroke-linecap", "round")
     .attr("stroke-width", strokeWidth)
@@ -161,7 +162,7 @@ const renderEAPPovertyChart = async () => {
   // Add the X Axis
   chart
     .append("g")
-    .attr("transform", `translate(0,${height + margin.top})`)
+    .attr("transform", `translate(0,${height})`)
     .call(d3.axisBottom(xScale).ticks(data.length, '.4'));
 
   // Add the Y Axis
@@ -177,24 +178,13 @@ const renderEAPPovertyChart = async () => {
     .call(d3.axisLeft(yScale))
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("x", -100)
+    .attr("x", -150)
     .attr("y", -70)
     .attr("dy", "0.3408em")
     .attr("fill", "#000")
     .text("Population (in Millions)")
     .style("font-size", "25px")
 
-  // Add title text
-  // TODO: Remove this from chart and just add it as a regular element.
-  chart
-    .append("text")
-    .attr("x", 0)
-    .attr("y", -40)
-    .attr("dy", "0.71em")
-    .attr("fill", "#000")
-    .text("The population in developing EAP is shifting towards higher economic classes")
-    .style("font", "23px avenir")
-    .style("fill", "#000000");
   
 }
 
