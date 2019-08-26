@@ -21,7 +21,7 @@
   background-size: 100% 100%;
   z-index: -999;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 }
 
 .HeaderV2-bg-overlay {

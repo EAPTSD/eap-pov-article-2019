@@ -92,6 +92,7 @@ body .row {
 .text-2 {
   color: #111;
   line-height: 1.6;
+  padding-bottom: 2rem;
   font-size: 20px;
   text-align: justify;
 }

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo scroll</title>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body>
+    <aside class="sidebar">
+      <ul>
+        <li>
+          <a href="#section-0" class="navigation-dot"></a>
+        </li>
+        <li>
+          <a href="#section-1" class="navigation-dot"></a>
+        </li>
+        <li>
+          <a href="#section-2" class="navigation-dot"></a>
+        </li>
+        <li>
+          <a href="#section-3" class="navigation-dot"></a>
+        </li>
+        <li>
+          <a href="#section-4" class="navigation-dot"></a>
+        </li>
+        <li>
+          <a href="#section-5" class="navigation-dot"></a>
+        </li>
+      </ul>
+    </aside>
+    <section id="section-0">
+      <img src="https://source.unsplash.com/1601x1200" alt="Whatever">
+      <div class="title-card__container-outer">
+        <div class="title-card__container-inner">
+          <h1>Piecing Together the Poverty Puzzle in East Asia and Pacific</h1>
+          <p>WORLD BANK - By JUDY YANG, SHIYAO WANG, and DARWIN RINDERER</p>
+        </div>
+      </div>
+    </section>
+    <section id="section-1">
+        <h2>Higher standards are required to match higher aspirations in middle-income countries</h2>
+        <p>Economic progress in East Asia and Pacific (EAP) has greatly contributed to the global reduction of extreme poverty. The more prosperous countries in the region – China, Thailand, and Malaysia – now have poverty rates measured by the $1.90/day (2011 PPP) International Poverty Line of less than 1 percent.</p>
+        <p>Yet, many citizens in developing EAP would not believe that their societies are without poverty. Rising incomes and wealth over the past three decades have led to questions as to whether the $1.90 International Poverty Line is now too low to adequately capture whether or not someone is poor in the region. This concern is especially relevant for developing EAP, which is composed exclusively of lower-middle- and upper-middle-income countries. Conceptions of poverty and the standards of living to which people aspire are much higher than what is benchmarked by the International Poverty Line.</p>
+        <p>At the same time, poverty is a complex and multifaceted problem. In addition to monetary deprivation, individuals may suffer from lack of access to basic infrastructure, education, and other critical services. Piecing together the poverty puzzle means widening the ways in which we define and measure poverty, acknowledging that poverty is not one-dimensional nor solely monetary in nature.</p>
+        <p>New pieces of the poverty puzzle were introduced in the 2018 Poverty and Shared Prosperity flagship to complement the existing World Bank measures of poverty, aimed at meeting the twin goals of ending extreme poverty and boosting shared prosperity. These new pieces include higher poverty lines and a multidimensional poverty measure.</p>
+    </section>
+    <section id="section-2" style="height: 400px; margin-bottom: 25vh;">
+      <h2>Section</h2>
+      <p>Oh, for a muse of fire that would ascend the brightest heaven of invention</p>
+      <p>A kingdom for a stage, princes to act, and monarchs to behold the swelling scene.</p>
+    </section>
+    <section id="section-3" class="sticky-scroll__container" style="margin-bottom: 25vh;">
+      <div class="scroll__text">
+        <h2 class="step">I am a cool section</h2>
+        <p class="step">Monitoring poverty at higher poverty lines is becoming increasingly important to ensure an appropriate policy response for the poor living in countries with higher costs of living and rising aspirations.</p>
+        <p class="step">In developing EAP in 2018, an estimated 30 million people lived on less than $1.90 a day, while 168 million lived on less than $3.20 a day, and 538 million on less than $5.50 a day.</p>
+        <p class="step">Although $5.50 is slightly less than three times higher than the International poverty line ($1.90 a day), the number of poor at this higher line is almost eighteen times more than the number of extreme poor because such a large proportion of the population lives between $1.90/day and $5.50/day.</p>
+      </div>
+      <div class="scroll__graphic">
+        <div id="chart-1" class="chart hidden"></div>
+      </div>
+    </section>
+    <section id="section-4" style="height: 600px; background: paleturquoise;">
+      <div class="chart-2"></div>
+    </section>
+    <section id="section-5">
+      <h2>Section</h2>
+      <p>Oh, for a muse of fire that would ascend the brightest heaven of invention</p>
+      <p>A kingdom for a stage, princes to act, and monarchs to behold the swelling scene.</p>
+    </section>
+    <footer>
+        <p>To read more about A Broader View of Poverty in East Asia and Pacific, please refer to Part 2A in the Spring 2019’s edition of the <a href="https://openknowledge.worldbank.org/handle/10986/31500" target="_blank" rel="noopener noreferrer">East Asia and Pacific Economic Update</a>.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>

@@ -19,9 +19,6 @@ class ChoroplethContainer extends Component {
       colors: {},
       types: choroplethTypes,
       labels: {
-        pr190_s: 'Poverty $1.90',
-        pr320_s: 'Poverty $3.20',
-        pr550_s: 'Poverty $5.50',
         mpi2a_s: 'Education Attainment',
         mpi2b_s: 'Education Enrollment test',
         mpi3b_s: 'Water',
@@ -29,39 +26,6 @@ class ChoroplethContainer extends Component {
       },
       legends: {
         start: [],
-        pr190_s: [
-          { color: 'rgb(247, 251, 255)', text: 'Less than 0.50' },
-          { color: 'rgb(222, 235, 247)', text: '0.50 to 1.20' },
-          { color: 'rgb(198, 219, 239)', text: '1.20 to 2.30' },
-          { color: 'rgb(158, 202, 225)', text: '2.30 to 6.80' },
-          { color: 'rgb(107, 174, 214)', text: '6.80 to 11.30' },
-          { color: 'rgb(66, 146, 198)', text: '11.30 to 15.60' },
-          { color: 'rgb(33, 113, 181)', text: '15.60 to 25.20' },
-          { color: 'rgb(8, 81, 156)', text: '25.20 to 44.00' },
-          { color: 'rgb(8, 48, 107)', text: '44.00 or more' },
-        ],
-        pr320_s: [
-          { color: 'rgb(247, 251, 255)', text: 'Less than 1.00' },
-          { color: 'rgb(222, 235, 247)', text: '1.00 to 6.00' },
-          { color: 'rgb(198, 219, 239)', text: '6.00 to 12.00' },
-          { color: 'rgb(158, 202, 225)', text: '12.00 to 22.00' },
-          { color: 'rgb(107, 174, 214)', text: '22.00 to 30.00' },
-          { color: 'rgb(66, 146, 198)', text: '30.00 to 36.00' },
-          { color: 'rgb(33, 113, 181)', text: '36.00 to 46.00' },
-          { color: 'rgb(8, 81, 156)', text: '46.00 to 63.00' },
-          { color: 'rgb(8, 48, 107)', text: '63.00 or more' },
-        ],
-        pr550_s: [
-          { color: 'rgb(247, 251, 255)', text: 'Less than 5.00' },
-          { color: 'rgb(222, 235, 247)', text: '5.00 to 28.00' },
-          { color: 'rgb(198, 219, 239)', text: '28.00 to 42.00' },
-          { color: 'rgb(158, 202, 225)', text: '42.00 to 56.00' },
-          { color: 'rgb(107, 174, 214)', text: '56.00 to 62.00' },
-          { color: 'rgb(66, 146, 198)', text: '62.00 to 70.00' },
-          { color: 'rgb(33, 113, 181)', text: '70.00 to 75.00' },
-          { color: 'rgb(8, 81, 156)', text: '75.00 to 87.00' },
-          { color: 'rgb(8, 48, 107)', text: '87.00 or more' },
-        ],
         mpi2a_s: [
           { color: 'rgb(255, 245, 240)', text: 'Less than 0.80' },
           { color: 'rgb(254, 224, 210)', text: '0.80 to 1.90' },
@@ -115,21 +79,6 @@ class ChoroplethContainer extends Component {
   }
 
   componentDidMount() {
-    const pov190Color = d3
-      .scaleThreshold()
-      .domain([0.5, 1.2, 2.3, 6.8, 11.3, 15.6, 25.2, 44, 55])
-      .range(d3.schemeBlues[9]);
-
-    const pov320Color = d3
-      .scaleThreshold()
-      .domain([1, 6, 12, 22, 30, 36, 46, 63, 85])
-      .range(d3.schemeBlues[9]);
-
-    const pov550Color = d3
-      .scaleThreshold()
-      .domain([5, 28, 42, 56, 62, 70, 75, 87, 97])
-      .range(d3.schemeBlues[9]);
-
     const edAttainColor = d3
       .scaleThreshold()
       .domain([0.8, 1.9, 3.6, 5.3, 7, 11, 15, 25, 39])
@@ -151,9 +100,6 @@ class ChoroplethContainer extends Component {
       .range(d3.schemePurples[9]);
 
     const colors = {
-      pr190_s: pov190Color,
-      pr320_s: pov320Color,
-      pr550_s: pov550Color,
       mpi2a_s: edAttainColor,
       mpi2b_s: edEnrollColor,
       mpi3b_s: waterColor,
@@ -309,7 +255,7 @@ class ChoroplethContainer extends Component {
           {types.map((typeData, i) => {
             const { type, text } = typeData;
             return (
-              <>
+              <React.Fragment key={ i }>
                 {i === 0 ? (
                   <div className="ChoroplethContainer-waypoint-buffer" />
                 ) : null}
@@ -323,7 +269,7 @@ class ChoroplethContainer extends Component {
                 {i === 8 ? (
                   <div className="ChoroplethContainer-waypoint-buffer" />
                 ) : null}
-              </>
+              </React.Fragment>
             );
           })}
         </div>

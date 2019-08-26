@@ -153,7 +153,7 @@ class BubbleGraphContainer extends Component {
             } else {
               setTimeout(() => {
                 this.updateGraph(true);
-              }, 400);
+              }, 0);
             }
           }}
         />
