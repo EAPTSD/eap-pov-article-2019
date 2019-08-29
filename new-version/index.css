@@ -170,6 +170,7 @@ section.theme--light, footer.theme--light {
 
 .title-card__container-inner {
   display: flex;
+  font: 'Lato', serif;
   flex-direction: column;
   justify-content: center;
   align-items: center;
