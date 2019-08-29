@@ -17,15 +17,15 @@ section {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 20px;
   text-align: center;
 }
 
 h2 {
-  font-family: 'Cormorant', serif;
+  font-family: 'Lato', serif;
   font-weight: 500;
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-align: center;
   line-height: 70px;
   margin-top: 2rem;
@@ -33,7 +33,7 @@ h2 {
 }
 
 p {
-  font-family: 'Palatino', serif;
+  font-family: 'Lato', serif;
   font-size: 20px;
   line-height: 1.6;
   margin-top: 1em;
