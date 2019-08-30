@@ -85,7 +85,7 @@ we want to apply dark to a child element directly */
 }
 
 section.theme--dark, footer.theme--dark {
-  background: linear-gradient(120deg, #333, #000, #333);
+  background: linear-gradient(120deg, rgb(18, 53, 90), rgb(19, 38, 58), rgb(18, 53, 90));
 }
 
 .theme--dark h1, 
