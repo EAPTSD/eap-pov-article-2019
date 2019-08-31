@@ -197,8 +197,7 @@ const renderEAPPovertyChart = async () => {
     .attr("width", size)
     .attr("height", size)
     .style("fill", function(d,i){ return reversedColors[i]})
-    // .on("mouseover", highlight)
-    // .on("mouseleave", noHighlight)
+    .style("stroke", "black")
 
   // Add one dot in the legend for each name.
   chart
@@ -208,12 +207,10 @@ const renderEAPPovertyChart = async () => {
     .append("text")
     .attr("x", 700 + size*1.2)
     .attr("y", function(d,i){ return 10 + i*(size+5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
-    .style("fill", (d, i)=> reversedColors[i])
+    .style("fill", '#333')
     .text(d => d)
     .attr("text-anchor", "left")
     .style("alignment-baseline", "middle")
-    // .on("mouseover", highlight)
-    // .on("mouseleave", noHighlight)
 
 }
 
