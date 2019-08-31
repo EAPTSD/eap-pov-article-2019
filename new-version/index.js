@@ -58,13 +58,13 @@ scrollHandler();
 // 1. EAP Poverty By Year - Stacked Area Chart
 // Using this pattern largely: https://medium.com/@louisemoxy/how-to-create-a-stacked-area-chart-with-d3-28a2fee0b8ca
 const renderEAPPovertyChart = async () => {
-  // TODO: Pick colors
+  // TODO: Pick colors, https://coolors.co/a85c26-c48d5a-eacaa6-a8d0db-3e66a5
   const colors = [
-    "orangered",
-    "orange",
-    "yellow",
-    "lightgreen",
-    "green",
+    "#A85C26",
+    "#c48d5a",
+    "eacaa6",
+    "#a8d0db",
+    "#3e66a5",
   ];
   const lineColor = 'steelblue';
   const margin = {top: 0, right: 250, bottom: 40, left: 100};
@@ -93,8 +93,8 @@ const renderEAPPovertyChart = async () => {
    */
 
   const header_mapping = {
-    extreme: 'Extremely Poor',
-    moderate: 'Moderately Poor',
+    extreme: 'Extreme Poor',
+    moderate: 'Moderate Poor',
     vulnerable: 'Economically Vulnerable',
     secure: 'Economically Secure',
     middle_class: 'Middle Class',
@@ -164,11 +164,12 @@ const renderEAPPovertyChart = async () => {
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", -150)
+    .attr("font-family", "Lato")
     .attr("y", -70)
     .attr("dy", "0.3408em")
     .attr("fill", "#000")
-    .text("Population (in Millions)")
-    .style("font-size", "25px")
+    .text("Developing EAP population (millions)")
+    .style("font-size", "22px")
 
   // Legend
   const size = 20
@@ -192,6 +193,7 @@ const renderEAPPovertyChart = async () => {
     .data(reversedKeys)
     .enter()
     .append("text")
+    .attr("font-family", "Lato")
     .attr("x", 700 + size*1.2)
     .attr("y", function(d,i){ return 10 + i*(size+5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
     .style("fill", '#333')
