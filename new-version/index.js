@@ -112,6 +112,18 @@ const renderEAPPovertyChart = async () => {
 
   // NOTE: The csv data is incorrectly formatted for our purposes. I manually reformatted some for testing.
   const data = await d3.csv('./data/EAP_breakdown_yearly/eap_economic_class.csv');
+  /**
+   * The keys should map to the columns in eap_economic_class.csv.
+   * The values are how you want those headers to appear in the chart view.
+   */
+
+  const header_mapping = {
+    extreme: 'Extremely Poor',
+    moderate: 'Moderately Poor',
+    vulnerable: 'Economically Vulnerable',
+    secure: 'Economically Secure',
+    middle_class: 'Middle Class',
+  }
   // We want all the groups except the year (which is our x axis value)
   const keys = data.columns.slice(1);
   const stack = d3.stack().keys(keys);
@@ -208,7 +220,7 @@ const renderEAPPovertyChart = async () => {
     .attr("x", 700 + size*1.2)
     .attr("y", function(d,i){ return 10 + i*(size+5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
     .style("fill", '#333')
-    .text(d => d)
+    .text(d => header_mapping[d])
     .attr("text-anchor", "left")
     .style("alignment-baseline", "middle")
 
