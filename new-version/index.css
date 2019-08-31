@@ -8,6 +8,10 @@
   -webkit-font-smoothing: antialiased;
 }
 
+:root {
+  font-size: 16px;
+}
+
 /* BEGIN Define base theme */
 
 section {
@@ -34,7 +38,7 @@ h2 {
 
 p {
   font-family: 'Lato', serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 1.6;
   margin-top: 1em;
   margin-bottom: 1em;
@@ -72,7 +76,7 @@ footer {
 .row {
   /* TODO: Change once we have mq */
   max-width: 800px;
-  width: 100%;
+  width: 85%;
   margin: 0 auto;
 }
 
@@ -131,6 +135,7 @@ section.theme--light, footer.theme--light {
   right: 0;
 }
 
+
 .sidebar .navigation-dot {
   display: block;
   margin: 8px 0;
@@ -158,11 +163,13 @@ section.theme--light, footer.theme--light {
   top: 0;
   width: 100%;
   height: 100vh;
+  object-fit: cover;
 }
 
 .title-card__container-outer {
   position: relative;
-  width: 600px;
+  max-width: 600px;
+  width: 85%;
   margin: 0 auto;
   padding-bottom: 25vh;
   transform: translateY(-75vh);
@@ -195,4 +202,16 @@ section.theme--light, footer.theme--light {
 
 .chart.hidden {
   background: yellow;
+}
+
+
+/* This is a very light mobile friendly resize to adjust all the rem relative sizes down a bit at mobile. */
+@media screen and (max-width: 800px){
+  :root {
+    font-size: 14px;
+  }
+
+  .sidebar {
+    width: 10vw;
+  }
 }
