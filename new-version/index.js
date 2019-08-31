@@ -52,31 +52,6 @@ window.addEventListener('scroll', scrollHandler);
 // We want to correctly set UI state before scrolling starts.
 scrollHandler();
 
-// // #################################
-// // Scrollerama for sticky scrolling
-// const scroller = scrollama();
-
-// // setup the instance, pass callback functions
-// scroller
-//   .setup({
-//     step: 'section .step',
-//     text: "scroll__text",
-//     graphic: "scroll__graphic",
-//     container: '#section-4',
-//     offset: 0.2,
-//   })
-//   .onStepEnter(response => {
-//     // { element, index, direction }
-//     response.element.classList.add('active');
-//   })
-//   .onStepExit(response => {
-//     // { element, index, direction }
-//     response.element.classList.remove('active');
-//   })
-
-// // setup resize event
-// window.addEventListener('resize', scroller.resize);
-
 // ################################
 // d3 Charts
 
