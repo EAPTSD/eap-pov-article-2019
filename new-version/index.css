@@ -204,6 +204,16 @@ section.theme--light, footer.theme--light {
   background: yellow;
 }
 
+.street-view__container {
+  display: flex;
+  height: 600px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.street-view__view {
+  width: 50%;
+}
 
 /* This is a very light mobile friendly resize to adjust all the rem relative sizes down a bit at mobile. */
 @media screen and (max-width: 800px){

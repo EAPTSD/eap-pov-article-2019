@@ -35,7 +35,6 @@
       </ul>
     </aside>
 
-
     <section id="section-0">
       <img src='data/img1.jpeg'>
       <div class="title-card__container-outer">
@@ -45,7 +44,6 @@
         </div>
       </div>
     </section>
-
 
     <section id="section-1" class="theme--dark">
       <div class="row">
@@ -83,6 +81,10 @@
         <div class="row">
           <h2>Moreover, half a billion people are still not economically secure</h2>
         </div>
+        <div class="street-view__container">
+          <div id="street-view-1" class="street-view__view"></div>
+          <div id="street-view-2" class="street-view__view"></div>
+        </div>
     </section>
 
 
@@ -99,21 +101,6 @@
       </div>  
     </section>
 
-
-    <!-- <section id="section-4" class="sticky-scroll__container">
-      <div class="scroll__text">
-        <p class="step">The size of the bubbles on the graph on the right shows the number of poor, according to three poverty lines.</p>
-        <p class="step">In developing EAP in 2018, an estimated 30 million people lived on less than $1.90 a day, while 168 million lived on less than $3.20 a day, and 538 million on less than $5.50 a day. Although $5.50 is slightly less than three times higher than the International poverty line ($1.90 a day), the number of poor at this higher line is almost eighteen times more than the number of extreme poor because such a large proportion of the population lives between $1.90/day and $5.50/day.</p>
-        <p class="step">China has experienced very successful poverty reduction and has a low poverty rate. Poverty rates in the region are much higher when excluding China. The poverty rate in developing EAP excluding China is 4 percent, compared to 1.5 percent when China is included.</p>
-        <p class="step">Even though the UMIC poverty line is less than three times higher than the IPL, the number of UMIC poor is almost 18 times more than the number of extreme poor because a much larger proportion of the population lives between $1.9/day and $5.5/day. Differences in EAP’s most populous countries are also the most significant. For example, 9.9 million Chinese were poor as measured by the IPL in 2015, compared to 373.1 million using the UMIC poverty line. Similarly, in Indonesia, 15.1 and 155.4 million were poor in 2017 based on the International and UMIC poverty lines respectively.</p>
-      </div>
-      <div class="scroll__graphic">
-          TODO: Bubble graph here
-        <div id="chart-1" class="chart hidden" style="height: 500px; width: 700px;"></div>
-      </div>
-    </section> -->
-
-
     <section id="section-5" class="theme--dark">
       <div class="row">
         <h2>Developing EAP is a diverse region, with some areas still facing daunting challenges</h2>
@@ -123,6 +110,7 @@
         </div>
       </div>
     </section>
+
     <section id="section-6" class="theme--light">
       <div class="row">
         <div class="text-block">
@@ -131,6 +119,17 @@
         </div>
       </div>
     </section>
+
+    <section id="section-7" class="theme--light">
+      <div class="row">
+        <h2>EXAMPLE: Contrasting weath in the same city</h2>
+      </div>
+      <div class="street-view__container">
+        <div id="street-view-3" class="street-view__view"></div>
+        <div id="street-view-4" class="street-view__view"></div>
+      </div>  
+    </section>
+
     <footer class="theme--dark">
       <div class="row">
         <div class="text-block">
@@ -138,8 +137,10 @@
         </div>
       </div>
     </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.11.0/d3.js"></script>
     <script src="https://unpkg.com/scrollama"></script>
     <script src="./index.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn7ygM7u52DQJFJDiiMIiI_lX-CmfWO7A&callback=initializeStreetView"></script>
   </body>
 </html>

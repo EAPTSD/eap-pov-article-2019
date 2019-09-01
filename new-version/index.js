@@ -208,3 +208,36 @@ renderEAPPovertyChart()
 // For some reason (TODO: figure it out later) the page refreshes to the middle scroll position.
 // This is a quick hack so I can go back to what I was doing.
 window.scrollTo(0,0);
+
+// Street view locations
+const bangkok_poor = {
+  // Poor bangkok
+  position: {lat: 13.7085165, lng: 100.5730016},
+  pov: {heading: 165, pitch: -30},
+  zoom: 1
+}
+const bangkok_rich = {
+  // Rich Bangkok
+  position: {lat: 13.7416278, lng: 100.540026},
+  pov: {heading: 30, pitch: 10},
+  zoom: 1
+}
+const phnomPenh_poor = {
+  // Poor Phnom Penh
+  position: {lat: 11.515841, lng: 104.8382861},
+  pov: {heading: 310, pitch: 0},
+  zoom: 1
+}
+const phnomPenh_rich = {
+  // Rich Phnom Penh
+  position: {lat: 11.5355705, lng: 104.9276932},
+  pov: {heading: 310, pitch: 10},
+  zoom: 1
+}
+
+window.initializeStreetView = () => {
+  const panorama1 = new google.maps.StreetViewPanorama(document.getElementById('street-view-1'), bangkok_poor);
+  const panorama2 = new google.maps.StreetViewPanorama(document.getElementById('street-view-2'), phnomPenh_poor);
+  const panorama3 = new google.maps.StreetViewPanorama(document.getElementById('street-view-3'), phnomPenh_poor);
+  const panorama4 = new google.maps.StreetViewPanorama(document.getElementById('street-view-4'), phnomPenh_rich);
+}
