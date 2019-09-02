@@ -194,17 +194,6 @@ section.theme--light, footer.theme--light {
   text-align: center;
 }
 
-.chart {
-  height: 400px;
-  width: 400px;
-  background: green;
-}
-
-.chart.hidden {
-  background: yellow;
-}
-
-
 /* This is a very light mobile friendly resize to adjust all the rem relative sizes down a bit at mobile. */
 @media screen and (max-width: 800px){
   :root {
