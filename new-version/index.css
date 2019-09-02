@@ -78,6 +78,14 @@ footer {
   max-width: 800px;
   width: 85%;
   margin: 0 auto;
+
+  /* 
+  The following three lines are what causes every direct child of a .row to be centered.
+  This is not the only way, and alternate approaches may be preferred if more grid-like layouts are moved towards.
+   */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Dark Theme */
