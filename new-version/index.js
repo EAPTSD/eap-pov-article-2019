@@ -119,10 +119,10 @@ const renderEapBarChart = () => {
     }
 
     const getStep = (year) => ({
-      method: 'animate',
       label: year,
+      method: 'animate',
       args: [
-        year,
+        [year],
         {
           mode: 'immediate',
           transition: {
@@ -141,7 +141,7 @@ const renderEapBarChart = () => {
       name: year,
       data: ['RoEAP', 'China'].map(region => getTrace(region, year)),
     }))
-    console.log(frames)
+
     const layout = {
       title: traceYear,
       xaxis: {
@@ -173,7 +173,7 @@ const renderEapBarChart = () => {
             t: 100,
           },
           currentvalue: {
-            visible: true,
+            // visible: true,
             prefix: 'Year: ',
             xanchor: 'right',
             font: {
@@ -181,13 +181,43 @@ const renderEapBarChart = () => {
               color: '#666'
             },
           },
+          transition: {
+            duration: 300,
+          },
           steps: years.map(year => getStep(year)),
         },
       ],
-  
+      updatemenus: [{
+        x: 0,
+        y: 0,
+        yanchor: 'top',
+        xanchor: 'left',
+        showactive: false,
+        direction: 'left',
+        type: 'buttons',
+        pad: {t: 87, r: 10},
+        buttons: [{
+          method: 'animate',
+          args: [null, {
+            mode: 'immediate',
+            fromcurrent: true,
+            transition: {duration: 300},
+            frame: {duration: 1000, redraw: false}
+          }],
+          label: 'Play'
+        }, {
+          method: 'animate',
+          args: [[null], {
+            mode: 'immediate',
+            transition: {duration: 0},
+            frame: {duration: 0, redraw: false}
+          }],
+          label: 'Pause'
+        }]
+      }],
     }
-    
-    Plotly.newPlot('eap_bar_chart', {
+
+    const plotSettings = {
       data,
       layout,
       frames,
@@ -196,7 +226,11 @@ const renderEapBarChart = () => {
         // displaylogo: false,
         displayModeBar: false,
       },
-    });
+    };
+
+    console.log(plotSettings)
+    
+    Plotly.newPlot('eap_bar_chart', plotSettings);
   })
 }
 
