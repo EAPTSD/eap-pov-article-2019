@@ -66,7 +66,7 @@ const renderEapBarChart = () => {
       return acc
     }, {})
     const years = Object.keys(regionalData.China).sort((a,b) => a - b);
-    const traceYear = years[0];
+
     const getTrace = (region, year) => {
       // We're going to need to do this manually so that we can guarantee order. 
       // NOTE: If the column names change, this will break!
@@ -105,8 +105,11 @@ const renderEapBarChart = () => {
       return {
         x,
         y,
+        id: [region],
+        text: [region],
         name: regionMap[region]['name'],
-        type: 'bar',
+        // type: 'bar',
+        mode: 'lines+markers',
         marker: {
           color: regionMap[region]['color'],
           // Uncomment out the following if you want an outline for the bars.
@@ -118,7 +121,7 @@ const renderEapBarChart = () => {
       }
     }
 
-    const getStep = (year) => ({
+    const getStep = year => ({
       label: year,
       method: 'animate',
       args: [
@@ -135,7 +138,8 @@ const renderEapBarChart = () => {
         },
       ],
     })
-
+    
+    const traceYear = years[0];
     const data = ['RoEAP', 'China'].map(region => getTrace(region, traceYear));
     const frames = years.map(year => ({
       name: year,
@@ -162,9 +166,9 @@ const renderEapBarChart = () => {
         fixedrange: true,
         range: [0, 800],
       },
-      barmode: 'group',
-      bargap: 0.25,
-      bargroupgap: .05,
+      // barmode: 'relative',
+      // bargap: 0.25,
+      // bargroupgap: .05,
 
       sliders: [
         {
@@ -230,7 +234,7 @@ const renderEapBarChart = () => {
 
     console.log(plotSettings)
     
-    Plotly.newPlot('eap_bar_chart', plotSettings);
+    Plotly.plot('eap_bar_chart', plotSettings);
   })
 }
 
