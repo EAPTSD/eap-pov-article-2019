@@ -202,6 +202,27 @@ section.theme--light, footer.theme--light {
   text-align: center;
 }
 
+#eap_bar_chart__button--play {
+  display: block;
+  background: #ddf3fd;
+  border: 1px solid black;
+  width: 90px;
+  padding: 10px 18px;
+  margin: 10px auto;
+  font-size: 20px;
+  box-shadow: 0 15px 20px -10px #333;
+  border-radius: 2px;
+}
+#eap_bar_chart__button--play:hover, #eap_bar_chart__button--play:focus {
+  background: rgb(198, 217, 231);
+  box-shadow: 0 15px 25px -10px #333;
+}
+
+#eap_bar_chart__button--play:active {
+  background: rgb(156, 169, 179);
+  box-shadow: inherit;
+}
+
 /* This is a very light mobile friendly resize to adjust all the rem relative sizes down a bit at mobile. */
 @media screen and (max-width: 800px){
   :root {
@@ -211,4 +232,96 @@ section.theme--light, footer.theme--light {
   .sidebar {
     width: 10vw;
   }
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 7.85px 0;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 7.3px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  background: #a1c5e9;
+  border-radius: 22.4px;
+  border: 0px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0.4px solid #000000;
+  height: 23px;
+  width: 23px;
+  border-radius: 50px;
+  background: #eda84d;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7.85px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #a1c5e9;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 7.3px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  background: #a1c5e9;
+  border-radius: 22.4px;
+  border: 0px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0.4px solid #000000;
+  height: 23px;
+  width: 23px;
+  border-radius: 50px;
+  background: #eda84d;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 7.3px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #a1c5e9;
+  border: 0px solid #000000;
+  border-radius: 44.8px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+}
+input[type=range]::-ms-fill-upper {
+  background: #a1c5e9;
+  border: 0px solid #000000;
+  border-radius: 44.8px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 0.4px solid #000000;
+  height: 23px;
+  width: 23px;
+  border-radius: 50px;
+  background: #eda84d;
+  cursor: pointer;
+  height: 7.3px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #a1c5e9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #a1c5e9;
+}
+
+#eap_bar_chart_slider {
+  display: block;
+  width: 80%;
+  margin: 30px auto;
 }

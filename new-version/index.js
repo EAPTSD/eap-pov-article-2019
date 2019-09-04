@@ -180,6 +180,10 @@ const renderEapBarChart = async () => {
     .attr("transform", "translate(0," + baseSize.height + ")")
     .style("font", "18px sans-serif")
     .call(d3.axisBottom(x))
+    .call(() => {
+      groupContainer.selectAll('.axis--x .tick line')
+      .attr("display", "none")
+    })
     .selectAll("text")	
     .style("text-anchor", "end")
     .attr("dx", "-.8em")
@@ -266,12 +270,14 @@ const renderEapBarChart = async () => {
     else {
       isPlaying = true;
       e.target.innerText = 'Pause'
-      timer = setInterval(incrementYear, 400)
+      timer = setInterval(incrementYear, 600)
     }
   }
 
-  slider.addEventListener('change', onSlider)
+  slider.addEventListener('input', onSlider)
   playButton.addEventListener('click', onPlay)
+
+  // TODO: Hover population and Tooltips and Legend and Responsiveness.
 }
 
 renderEapBarChart();
