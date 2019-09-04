@@ -161,6 +161,30 @@ const renderEapBarChart = async () => {
   
   data = data_nest.filter(d => d.key === '2002')[0].values;
 
+  const highlightGroup = groupName => {
+    // Turn all rects transparent
+    d3.selectAll("rect").style("opacity", 0.3)
+    // Recolor the ones to highlight
+    d3.selectAll(`.bar-chart__region--${ groupName } rect`)
+      .style("opacity", 1)
+    d3.selectAll(`.bar-chart__legend-icon--${ groupName }`)
+      .style("opacity", 1)
+  }
+
+  const mouseoverBar = function(d) {
+    // Find the value that this group was generated from (ie the region)
+    const groupName = d3.select(this.parentNode).datum().key;
+    // TODO: Hover tooltip with population
+    const groupValue = d.data[groupName];
+    highlightGroup(groupName);
+  }
+
+  // When user do not hover anymore
+  const mouseleaveBar = function(d) {
+    d3.selectAll("rect").style("opacity", 1)
+  }
+
+
   groupContainer.append("g")
     .attr("class", "axis axis--x")
     .attr("transform", "translate(0," + baseSize.height + ")")
@@ -194,15 +218,18 @@ const renderEapBarChart = async () => {
     .data(stack.keys(regions)(data))
     .enter()
       .append("g")
-      .attr("class", "bar-chart__region")
+      .attr("class", d => "bar-chart__region bar-chart__region--" + d.key)
       .attr("fill", d => regionMap[d.key].color)
     .selectAll("rect")
     .data(d => d )
     .enter().append("rect")
+      .attr("class", "bar-chart__region-bar")
       .attr("x", d => x(xLabelFullMap[d.data.x]))
       .attr("y", d => y(d[1]))
       .attr("height", d => y(d[0]) - y(d[1]))
-      .attr("width", x.bandwidth());
+      .attr("width", x.bandwidth())
+      .on("mouseover", mouseoverBar)
+      .on("mouseleave", mouseleaveBar)
 
   // Main Title text
   svg.append("text")
@@ -235,9 +262,12 @@ const renderEapBarChart = async () => {
 
   legend.append("rect")
     .attr("x", baseSize.width - 22)
+    .attr("class", d => `bar-chart__legend-icon bar-chart__legend-icon--${ d }`)
     .attr("width", 22)
     .attr("height", 22)
-    .attr("fill", d => regionMap[d]['color']);
+    .attr("fill", d => regionMap[d]['color'])
+    .on("mouseover", d => highlightGroup(d))
+    .on("mouseleave", mouseleaveBar)
 
   legend.append("text")
     .attr("x", baseSize.width - 30)
