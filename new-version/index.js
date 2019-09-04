@@ -34,208 +34,192 @@ scrollHandler();
 // This is a quick hack so I can go back to what I was doing.
 // window.scrollTo(0,0);
 
-// #### Plotly chart
+// #### d3 chart
+const renderEapBarChart = async () => {
+  const chartContainerSelector = '#eap_bar_chart';
 
-const eapBarChartContainer = document.getElementById('eap_bar_chart');
+  // The raw data is an array of objects with years, level, and region keys.
+  const rawData = await d3.csv('./data/dreaded-bar-anime-data-for-use.csv');
 
-const renderEapBarChart = () => {
-  Plotly.d3.csv('./data/dreaded-bar-anime-data-for-use.csv', rawData => {
-    // The raw data is an array of objects with years, level, and region keys.
-
-    // We want to have a lookup table. First by region, then by year, then by poverty level.
-    // From that we will generate traces for plotly on the fly.
-    const regionalData = rawData.reduce((acc, curr) => {
-      const {
-        Country: region,
-        Threshold: level,
-        ...years
-      } = curr;
-      const regionMapExists = acc.hasOwnProperty(region);
-      if(!regionMapExists){
-        acc[region] = {};
-      }
-      const regionMap = acc[region];
-      Object.entries(years).forEach(([year, population]) => {
-        const yearMapExistsOnRegionMap = regionMap.hasOwnProperty(year);
-        if(!yearMapExistsOnRegionMap){
-          regionMap[year] = {}
-        }
-        const yearMap = regionMap[year];
-        yearMap[level] = population;
-      })
-      return acc
-    }, {})
-    const years = Object.keys(regionalData.China).sort((a,b) => a - b);
-
-    const getTrace = (region, year) => {
-      // We're going to need to do this manually so that we can guarantee order. 
-      // NOTE: If the column names change, this will break!
-      const xLabels = [ 
-        'extreme',
-        'moderate',
-        'vulnerable',
-        'secure',
-        'middle_class',
-        'above_mc',
-      ];
-
-      const xLabelFullMap = {
-        'extreme': 'Extremely Poor',
-        'moderate': 'Moderately Poor',
-        'vulnerable': 'Economically Vulnerable',
-        'secure': 'Economically Secure',
-        'middle_class': 'Middle Class',
-        'above_mc': 'Above Middle Class',
-      }
-
-      const regionMap = {
-        'China': {
-          name: 'China',
-          color: '#F18F01',
-        },
-        'RoEAP': {
-          name: 'Rest of developing EAP',
-          color: '#048BA8',
-        }
-      }
-
-      const x = xLabels.map(xLabel => xLabelFullMap[xLabel]);
-      const y = xLabels.map(xLabel => regionalData[region][year][xLabel]);
-
-      return {
-        x,
-        y,
-        id: [region],
-        text: [region],
-        name: regionMap[region]['name'],
-        // type: 'bar',
-        mode: 'lines+markers',
-        marker: {
-          color: regionMap[region]['color'],
-          // Uncomment out the following if you want an outline for the bars.
-          // NOTE: you may need to adjust the bargap and bargroupgap to compensate.
-          // line: {
-          //   width: 1,
-          // }
-        },
-      }
+  // We want to have a lookup table. First by region, then by year, then by poverty level.
+  // From that we will generate traces for plotly on the fly.
+  const regionalData = rawData.reduce((acc, curr) => {
+    const {
+      Country: region,
+      Threshold: level,
+      ...years
+    } = curr;
+    const regionMapExists = acc.hasOwnProperty(region);
+    if(!regionMapExists){
+      acc[region] = {};
     }
-
-    const getStep = year => ({
-      label: year,
-      method: 'animate',
-      args: [
-        [year],
-        {
-          mode: 'immediate',
-          transition: {
-            duration: 300,
-          },
-          frame: {
-            duration: 300,
-            redraw: false,
-          },
-        },
-      ],
+    const regionMap = acc[region];
+    Object.entries(years).forEach(([year, population]) => {
+      const yearMapExistsOnRegionMap = regionMap.hasOwnProperty(year);
+      if(!yearMapExistsOnRegionMap){
+        regionMap[year] = {}
+      }
+      const yearMap = regionMap[year];
+      yearMap[level] = population;
     })
-    
-    const traceYear = years[0];
-    const data = ['RoEAP', 'China'].map(region => getTrace(region, traceYear));
-    const frames = years.map(year => ({
-      name: year,
-      data: ['RoEAP', 'China'].map(region => getTrace(region, year)),
-    }))
+    return acc
+  }, {})
+  // The list of years will represent each state of the chart.
+  
+  // NOTE: To save some serious time for this POC, we're going to hardcode the values. This can be made dynamic if need be.
+  
+  // We're going to need to do this manually so that we can guarantee order. 
+  // NOTE: If the column names change, this will break!
+  const xLabels = [ 
+    'extreme',
+    'moderate',
+    'vulnerable',
+    'secure',
+    'middle_class',
+    'above_mc',
+  ];
 
-    const layout = {
-      title: traceYear,
-      xaxis: {
-        tickfont: {
-          size: 14,
-        },
-        automargin: true,
-        fixedrange: true,
-      },
-      yaxis: {
-        title: 'Population',
-        titlefont: {
-          size: 18,
-        },
-        tickfont: {
-          size: 14,
-        },
-        fixedrange: true,
-        range: [0, 800],
-      },
-      // barmode: 'relative',
-      // bargap: 0.25,
-      // bargroupgap: .05,
+  const xLabelFullMap = {
+    'extreme': 'Extremely Poor',
+    'moderate': 'Moderately Poor',
+    'vulnerable': 'Economically Vulnerable',
+    'secure': 'Economically Secure',
+    'middle_class': 'Middle Class',
+    'above_mc': 'Above Middle Class',
+  };
 
-      sliders: [
-        {
-          pad: {
-            l: 0, 
-            t: 100,
-          },
-          currentvalue: {
-            // visible: true,
-            prefix: 'Year: ',
-            xanchor: 'right',
-            font: {
-              size: 18, 
-              color: '#666'
-            },
-          },
-          transition: {
-            duration: 300,
-          },
-          steps: years.map(year => getStep(year)),
-        },
-      ],
-      updatemenus: [{
-        x: 0,
-        y: 0,
-        yanchor: 'top',
-        xanchor: 'left',
-        showactive: false,
-        direction: 'left',
-        type: 'buttons',
-        pad: {t: 87, r: 10},
-        buttons: [{
-          method: 'animate',
-          args: [null, {
-            mode: 'immediate',
-            fromcurrent: true,
-            transition: {duration: 300},
-            frame: {duration: 1000, redraw: false}
-          }],
-          label: 'Play'
-        }, {
-          method: 'animate',
-          args: [[null], {
-            mode: 'immediate',
-            transition: {duration: 0},
-            frame: {duration: 0, redraw: false}
-          }],
-          label: 'Pause'
-        }]
-      }],
-    }
+  const regions = ['RoEAP', 'China'];
 
-    const plotSettings = {
-      data,
-      layout,
-      frames,
-      config: {
-        responsive: true,
-        // displaylogo: false,
-        displayModeBar: false,
-      },
-    };
+  const regionMap = {
+    'China': {
+      name: 'China',
+      color: '#F18F01',
+    },
+    'RoEAP': {
+      name: 'Rest of developing EAP',
+      color: '#048BA8',
+    },
+  };
+  const years = Object.keys(regionalData.China).sort((a,b) => a - b);
+  // This is the way without the regionalData object
+  // const years = Object.keys(rawData[0]).filter(key => key !== 'Country' && key !== 'Threshold').sort((a,b) => a - b)
+  
+  const formatDataForSlider = () => {
+    const output = [];
+    // We need to iterate through the years.
+    years.forEach(year => {
+      // For each year, we need to iterate through the xLabels
+      xLabels.forEach(x => {
+        // For each xLabel, we need to get the corresponding value for each region.
+        // Push that object into a top level array.
+        const row = {
+          year,
+          x,
+        }
+        regions.forEach(region => {
+          row[region] = regionalData[region][year][x]
+        })
+        output.push(row)
+      })
+    })
+    return output;
+  }
 
-    console.log(plotSettings)
-    
-    Plotly.plot('eap_bar_chart', plotSettings);
-  })
+  // Why the double transform? To reuse some code which expects a different shape.
+  // Using https://bl.ocks.org/reinson/166bae46dd106b45cf2d77c7802768ca for reference
+  const rawSliderData = formatDataForSlider();
+
+  // Hardcoded sizes for now.
+  const baseSize = {
+    width: 600,
+    height: 400,
+    margin: {
+      top: 20,
+      bottom: 200,
+      left: 300,
+      right: 100,
+    },
+  }
+
+  // Build a single chart. 
+  const svg = d3
+    .select(chartContainerSelector)
+    .append('svg')
+    .attr("width", baseSize.width + baseSize.margin.left + baseSize.margin.right)
+    .attr("height", baseSize.height + baseSize.margin.top + baseSize.margin.bottom);
+  let groupContainer = svg
+    .append('g')
+    .attr("transform", `translate(${ baseSize.margin.left },${ baseSize.margin.top })`);
+  const x = d3.scaleBand().domain(xLabels.map(x => xLabelFullMap[x])).range([0, baseSize.width]).padding(0.25);
+  const y = d3.scaleLinear().domain([0, 1050]).rangeRound([baseSize.height, 0]);
+  const stack = d3.stack()
+
+  const data_nest = d3
+    .nest()
+    .key(d => d.year)
+    .entries(rawSliderData);
+  
+  data = data_nest.filter(d => d.key === '2002')[0].values;
+
+  groupContainer.selectAll(".bar-chart__region")
+    .data(stack.keys(regions)(data))
+    .enter()
+      .append("g")
+      .attr("class", "bar-chart__region")
+      .attr("fill", d => regionMap[d.key].color)
+    .selectAll("rect")
+    .data(d => d )
+    .enter().append("rect")
+      .attr("x", d => x(xLabelFullMap[d.data.x]))
+      .attr("y", d => y(d[1]))
+      .attr("height", d => y(d[0]) - y(d[1]))
+      .attr("width", x.bandwidth());
+
+  groupContainer.append("g")
+    .attr("class", "axis axis--x")
+    .attr("transform", "translate(0," + baseSize.height + ")")
+    .style("font", "18px sans-serif")
+    .call(d3.axisBottom(x))
+    .selectAll("text")	
+    .style("text-anchor", "end")
+    .attr("dx", "-.8em")
+    // .attr("dy", ".15em")
+    .attr("transform", "rotate(-45)");
+
+
+  groupContainer.append("g")
+    .attr("class", "axis axis--y")
+    .call(d3.axisLeft(y).ticks(5, "d"))
+    .append("text")
+    .call(() => {
+      groupContainer.selectAll('.axis--y .tick line')
+      .attr("x2", baseSize.width)
+      .attr("stroke-opacity", 0.1)
+    })
+    .call(() => {
+      groupContainer.selectAll('.domain')
+      .attr("display", "none")
+    })
+
+  const onSliderUpdate = e => {
+    const value = e.target.value;
+    const data = data_nest.filter(d => d.key === value)[0].values;
+
+    groupContainer.selectAll(".bar-chart__region")
+      .data(stack.keys(regions)(data))
+      .selectAll("rect")
+      .data(d => d)
+      .transition()
+      .duration(150) 
+      .delay((d, i) => i * 25)     
+      .attr("height", d => y(d[0]) - y(d[1]))
+      .attr("x", d => x(xLabelFullMap[d.data.x]))
+      .attr("y", d => y(d[1]))
+  }
+
+  const slider = document.getElementById("eap_bar_chart_slider")
+  slider.addEventListener('change', onSliderUpdate)
+
 }
 
 renderEapBarChart();
