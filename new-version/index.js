@@ -131,7 +131,7 @@ const renderEapBarChart = async () => {
 
   // Hardcoded sizes for now.
   const baseSize = {
-    width: 700,
+    width: 600,
     height: 400,
     margin: {
       top: 50,
