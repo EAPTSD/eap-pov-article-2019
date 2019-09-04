@@ -136,7 +136,7 @@ const renderEapBarChart = async () => {
     margin: {
       top: 20,
       bottom: 200,
-      left: 300,
+      left: 100,
       right: 100,
     },
   }
@@ -199,6 +199,17 @@ const renderEapBarChart = async () => {
       groupContainer.selectAll('.domain')
       .attr("display", "none")
     })
+
+  // Label for y axis
+  groupContainer    
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - baseSize.margin.left)
+    .attr("x",0 - ( baseSize.height / 2))
+    .attr("dy", "1em")
+    .attr('font-size', '24px')
+    .style("text-anchor", "middle")
+    .text("Population (in millions)");      
 
   // ##### ANIMATION CONTROLS ######
   const slider = document.getElementById("eap_bar_chart_slider")
