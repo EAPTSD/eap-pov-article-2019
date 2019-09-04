@@ -134,7 +134,7 @@ const renderEapBarChart = async () => {
     width: 600,
     height: 400,
     margin: {
-      top: 20,
+      top: 50,
       bottom: 200,
       left: 100,
       right: 100,
@@ -200,6 +200,14 @@ const renderEapBarChart = async () => {
       .attr("display", "none")
     })
 
+  svg.append("text")
+    .attr("class", "bar-chart__title")
+    .attr("x", (baseSize.width / 2) + baseSize.margin.left)
+    .attr("y", baseSize.margin.top)
+    .attr("text-anchor", "middle")
+    .attr('font-size', "35px")
+    .text("2002");
+
   // Label for y axis
   groupContainer    
     .append("text")
@@ -232,6 +240,9 @@ const renderEapBarChart = async () => {
       .attr("height", d => y(d[0]) - y(d[1]))
       .attr("x", d => x(xLabelFullMap[d.data.x]))
       .attr("y", d => y(d[1]))
+    
+    svg.selectAll('.bar-chart__title').text(year)
+
   }
 
   const incrementYear = () => {
