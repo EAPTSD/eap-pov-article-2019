@@ -172,15 +172,18 @@ const renderEapBarChart = async () => {
   }
 
   const mouseoverBar = function(d) {
+    // Reveal the tooltip container.
+    d3.selectAll('.bar-chart__tooltip').style("display", null);
+
     // Find the value that this group was generated from (ie the region)
+    // From https://www.d3-graph-gallery.com/graph/barplot_stacked_highlight.html
     const groupName = d3.select(this.parentNode).datum().key;
-    // TODO: Hover tooltip with population
-    const groupValue = d.data[groupName];
     highlightGroup(groupName);
   }
 
   // When user do not hover anymore
   const mouseleaveBar = function(d) {
+    d3.selectAll('.bar-chart__tooltip').style("display", "none");
     d3.selectAll("rect").style("opacity", 1)
   }
 
@@ -229,8 +232,22 @@ const renderEapBarChart = async () => {
       .attr("y", d => y(d[1]))
       .attr("height", d => y(d[0]) - y(d[1]))
       .attr("width", x.bandwidth())
+      .on("mousemove", function(d) {
+        const xPosition = d3.mouse(this)[0] + 70;
+        const yPosition = d3.mouse(this)[1];
+        console.log(xPosition, yPosition)
+        const barValue = d[1]-d[0];
+        const roundedBarValue = barValue.toFixed(2);
+
+        const tooltip = d3.selectAll('.bar-chart__tooltip');
+        console.log(tooltip)
+        tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+        tooltip.select("text").text(roundedBarValue);
+      })
       .on("mouseover", mouseoverBar)
+      // Mouseout vs mouseleave??
       .on("mouseleave", mouseleaveBar)
+  
 
   // Main Title text
   svg.append("text")
@@ -279,6 +296,26 @@ const renderEapBarChart = async () => {
     .attr("y", 9.5)
     .attr("dy", "0.5em")
     .text(d => regionMap[d]['name']);
+  
+  // The tooltip box will initially be hidden.
+  // It is a floating box we will move to track the mouse while it
+  // is over the graph, but only reveal when hovering over a specific bar.
+  const tooltip = svg.append("g")
+    .attr("class", "bar-chart__tooltip")
+    .style("display", "none");
+      
+  tooltip.append("rect")
+    .attr("width", 60)
+    .attr("height", 20)
+    .attr("fill", "white")
+    .style("opacity", 0.5);
+
+  tooltip.append("text")
+    .attr("x", 30)
+    .attr("dy", "1.2em")
+    .style("text-anchor", "middle")
+    .attr("font-size", "12px")
+    .attr("font-weight", "bold");
 
   // ##### ANIMATION CONTROLS ######
   const slider = document.getElementById("eap_bar_chart_slider")
