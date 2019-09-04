@@ -66,6 +66,11 @@ a {
   margin: 3rem auto;
 }
 
+.column {
+  float: left;
+  width: 50%;
+}
+
 footer {
   height: 450px;
   display: flex;
