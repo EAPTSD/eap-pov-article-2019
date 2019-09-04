@@ -80,8 +80,8 @@ const renderEapBarChart = async () => {
   ];
 
   const xLabelFullMap = {
-    'extreme': 'Extremely Poor',
-    'moderate': 'Moderately Poor',
+    'extreme': 'Extreme Poor',
+    'moderate': 'Moderate Poor',
     'vulnerable': 'Economically Vulnerable',
     'secure': 'Economically Secure',
     'middle_class': 'Middle Class',
@@ -131,7 +131,7 @@ const renderEapBarChart = async () => {
 
   // Hardcoded sizes for now.
   const baseSize = {
-    width: 600,
+    width: 700,
     height: 400,
     margin: {
       top: 50,
@@ -188,7 +188,8 @@ const renderEapBarChart = async () => {
   groupContainer.append("g")
     .attr("class", "axis axis--x")
     .attr("transform", "translate(0," + baseSize.height + ")")
-    .style("font", "18px sans-serif")
+    .style("font", "16px sans-serif")
+    .attr("font-family", "Lato")
     .call(d3.axisBottom(x))
     .call(() => {
       groupContainer.selectAll('.axis--x .tick line')
@@ -237,7 +238,8 @@ const renderEapBarChart = async () => {
     .attr("x", (baseSize.width / 2) + baseSize.margin.left)
     .attr("y", baseSize.margin.top)
     .attr("text-anchor", "middle")
-    .attr('font-size', "35px")
+    .attr("font-family", "Lato")
+    .attr('font-size', "24px")
     .text("2002");
 
   // Label for y axis
@@ -247,20 +249,22 @@ const renderEapBarChart = async () => {
     .attr("y", 0 - baseSize.margin.left)
     .attr("x",0 - ( baseSize.height / 2))
     .attr("dy", "1em")
+    .attr("font-family", "Lato")
     .attr('font-size', '24px')
     .style("text-anchor", "middle")
     .text("Population (in millions)");
 
   const legend = groupContainer.append("g")
-    .attr("font-family", "sans-serif")
+    .attr("font-family", "Lato")
     .attr("font-size", 14)
     .attr("text-anchor", "end")
     .selectAll("g")
     .data(regions.slice().reverse())
     .enter().append("g")
-      .attr("transform", function(d, i) { return "translate(0," + ((i * 26) + 30) + ")"; });
+    .attr("transform", function(d, i) { return "translate(0," + ((i * 26) + 30) + ")"; });
 
   legend.append("rect")
+    .attr("font-family", "Lato")
     .attr("x", baseSize.width - 22)
     .attr("class", d => `bar-chart__legend-icon bar-chart__legend-icon--${ d }`)
     .attr("width", 22)
@@ -270,6 +274,7 @@ const renderEapBarChart = async () => {
     .on("mouseleave", mouseleaveBar)
 
   legend.append("text")
+  .attr("font-family", "Lato")
     .attr("x", baseSize.width - 30)
     .attr("y", 9.5)
     .attr("dy", "0.5em")
@@ -292,7 +297,6 @@ const renderEapBarChart = async () => {
       .data(d => d)
       .transition()
       .duration(150) 
-      .delay((d, i) => i * 50)     
       .attr("height", d => y(d[0]) - y(d[1]))
       .attr("x", d => x(xLabelFullMap[d.data.x]))
       .attr("y", d => y(d[1]))
