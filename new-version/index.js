@@ -186,7 +186,6 @@ const renderEapBarChart = async () => {
     // .attr("dy", ".15em")
     .attr("transform", "rotate(-45)");
 
-
   groupContainer.append("g")
     .attr("class", "axis axis--y")
     .call(d3.axisLeft(y).ticks(5, "d"))
@@ -201,9 +200,16 @@ const renderEapBarChart = async () => {
       .attr("display", "none")
     })
 
-  const onSliderUpdate = e => {
-    const value = e.target.value;
-    const data = data_nest.filter(d => d.key === value)[0].values;
+  // ##### ANIMATION CONTROLS ######
+  const slider = document.getElementById("eap_bar_chart_slider")
+  const playButton = document.getElementById("eap_bar_chart__button--play")
+  let activeYear = years[0];
+  let timer;
+  let isPlaying = false;
+
+  const updateChart = year => {
+    activeYear = year;
+    const data = data_nest.filter(d => d.key === year)[0].values;
 
     groupContainer.selectAll(".bar-chart__region")
       .data(stack.keys(regions)(data))
@@ -211,15 +217,39 @@ const renderEapBarChart = async () => {
       .data(d => d)
       .transition()
       .duration(150) 
-      .delay((d, i) => i * 25)     
+      .delay((d, i) => i * 50)     
       .attr("height", d => y(d[0]) - y(d[1]))
       .attr("x", d => x(xLabelFullMap[d.data.x]))
       .attr("y", d => y(d[1]))
   }
 
-  const slider = document.getElementById("eap_bar_chart_slider")
-  slider.addEventListener('change', onSliderUpdate)
+  const incrementYear = () => {
+    const nextYearIndex = years.indexOf(activeYear) + 1;
+    const nextYear = years[nextYearIndex] ? years[nextYearIndex] : years[0];
+    activeYear = nextYear;
+    slider.value = nextYear;
+    updateChart(nextYear)
+  }
 
+  const onSlider = e => {
+    const value = e.target.value;
+    updateChart(value)
+  }
+  const onPlay = e => {
+    if(isPlaying){
+      isPlaying = false;
+      clearInterval(timer)
+      e.target.innerText = 'Play'
+    }
+    else {
+      isPlaying = true;
+      e.target.innerText = 'Pause'
+      timer = setInterval(incrementYear, 400)
+    }
+  }
+
+  slider.addEventListener('change', onSlider)
+  playButton.addEventListener('click', onPlay)
 }
 
 renderEapBarChart();
