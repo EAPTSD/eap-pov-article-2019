@@ -161,20 +161,6 @@ const renderEapBarChart = async () => {
   
   data = data_nest.filter(d => d.key === '2002')[0].values;
 
-  groupContainer.selectAll(".bar-chart__region")
-    .data(stack.keys(regions)(data))
-    .enter()
-      .append("g")
-      .attr("class", "bar-chart__region")
-      .attr("fill", d => regionMap[d.key].color)
-    .selectAll("rect")
-    .data(d => d )
-    .enter().append("rect")
-      .attr("x", d => x(xLabelFullMap[d.data.x]))
-      .attr("y", d => y(d[1]))
-      .attr("height", d => y(d[0]) - y(d[1]))
-      .attr("width", x.bandwidth());
-
   groupContainer.append("g")
     .attr("class", "axis axis--x")
     .attr("transform", "translate(0," + baseSize.height + ")")
@@ -203,6 +189,22 @@ const renderEapBarChart = async () => {
       groupContainer.selectAll('.domain')
       .attr("display", "none")
     })
+
+  groupContainer.selectAll(".bar-chart__region")
+    .data(stack.keys(regions)(data))
+    .enter()
+      .append("g")
+      .attr("class", "bar-chart__region")
+      .attr("fill", d => regionMap[d.key].color)
+    .selectAll("rect")
+    .data(d => d )
+    .enter().append("rect")
+      .attr("x", d => x(xLabelFullMap[d.data.x]))
+      .attr("y", d => y(d[1]))
+      .attr("height", d => y(d[0]) - y(d[1]))
+      .attr("width", x.bandwidth());
+
+
 
   svg.append("text")
     .attr("class", "bar-chart__title")
