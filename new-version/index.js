@@ -204,8 +204,7 @@ const renderEapBarChart = async () => {
       .attr("height", d => y(d[0]) - y(d[1]))
       .attr("width", x.bandwidth());
 
-
-
+  // Main Title text
   svg.append("text")
     .attr("class", "bar-chart__title")
     .attr("x", (baseSize.width / 2) + baseSize.margin.left)
@@ -223,7 +222,28 @@ const renderEapBarChart = async () => {
     .attr("dy", "1em")
     .attr('font-size', '24px')
     .style("text-anchor", "middle")
-    .text("Population (in millions)");      
+    .text("Population (in millions)");
+
+  const legend = groupContainer.append("g")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", 14)
+    .attr("text-anchor", "end")
+    .selectAll("g")
+    .data(regions.slice().reverse())
+    .enter().append("g")
+      .attr("transform", function(d, i) { return "translate(0," + ((i * 26) + 30) + ")"; });
+
+  legend.append("rect")
+    .attr("x", baseSize.width - 22)
+    .attr("width", 22)
+    .attr("height", 22)
+    .attr("fill", d => regionMap[d]['color']);
+
+  legend.append("text")
+    .attr("x", baseSize.width - 30)
+    .attr("y", 9.5)
+    .attr("dy", "0.5em")
+    .text(d => regionMap[d]['name']);
 
   // ##### ANIMATION CONTROLS ######
   const slider = document.getElementById("eap_bar_chart_slider")
@@ -279,7 +299,7 @@ const renderEapBarChart = async () => {
   slider.addEventListener('input', onSlider)
   playButton.addEventListener('click', onPlay)
 
-  // TODO: Hover population and Tooltips and Legend and Responsiveness.
+  // TODO: Hover population and Tooltips  and Responsiveness.
 }
 
 renderEapBarChart();
