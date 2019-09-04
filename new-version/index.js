@@ -139,6 +139,17 @@ const renderEapBarChart = async () => {
       left: 100,
       right: 100,
     },
+    tooltip: {
+      fontSize: 14,
+      width: 120,
+      height: 40,
+      posX: 50,
+      posY: 0,
+      textOffset: {
+        x: 10,
+        y: 0,
+      },
+    }
   }
 
   // Build a single chart. 
@@ -162,13 +173,12 @@ const renderEapBarChart = async () => {
   data = data_nest.filter(d => d.key === '2002')[0].values;
 
   const highlightGroup = groupName => {
-    // Turn all rects transparent
-    d3.selectAll("rect").style("opacity", 0.3)
+    // Turn all bars and legend transparent (but not tooltip)
+    d3.selectAll(".bar-chart__legend-icon").style("opacity", 0.3)
+    d3.selectAll(".bar-chart__region-bar").style("opacity", 0.3)
     // Recolor the ones to highlight
-    d3.selectAll(`.bar-chart__region--${ groupName } rect`)
-      .style("opacity", 1)
-    d3.selectAll(`.bar-chart__legend-icon--${ groupName }`)
-      .style("opacity", 1)
+    d3.selectAll(`.bar-chart__region--${ groupName } rect`).style("opacity", 1)
+    d3.selectAll(`.bar-chart__legend-icon--${ groupName }`).style("opacity", 1)
   }
 
   const mouseoverBar = function(d) {
@@ -185,6 +195,37 @@ const renderEapBarChart = async () => {
   const mouseleaveBar = function(d) {
     d3.selectAll('.bar-chart__tooltip').style("display", "none");
     d3.selectAll("rect").style("opacity", 1)
+  }
+
+  function onMousemove(d) {
+    const activeRegion = d3.select(this.parentNode).datum().key
+    const { data } = d;
+    // We want to draw the values for both bars (so that bars that are miniscule and hard to select are still available
+    // to show values)
+    // Since there are two known and fixed values, we'll do this manually. But it would make sense to use a loop
+    // for dynamism in most cases.
+    // We also want to highlight the active region so it's clear which bar is being hovered.
+
+    // 1. Reposition the tooltip above the mouse's current location with an offset.
+    const xPosition = d3.mouse(this)[0] + baseSize.tooltip.posX;
+    const yPosition = d3.mouse(this)[1] + baseSize.tooltip.posY;
+    const tooltip = d3.selectAll('.bar-chart__tooltip');
+    tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+    
+    // 2. Render China
+    tooltip
+      .select(".bar-chart__tooltip-text--China")
+      .text(`China: ${ parseFloat(data.China, 10).toFixed(2) }m`)
+      .attr("font-weight", "normal")
+    // 3. Render RoEAP
+    tooltip
+      .select(".bar-chart__tooltip-text--RoEAP")
+      .text(`RoEAP: ${ parseFloat(data.RoEAP, 10).toFixed(2) }m`)
+      .attr("font-weight", "normal")
+    // 4. Highlight active region
+    tooltip
+      .select(`.bar-chart__tooltip-text--${ activeRegion }`)
+      .attr("font-weight", "bolder")
   }
 
 
@@ -232,18 +273,7 @@ const renderEapBarChart = async () => {
       .attr("y", d => y(d[1]))
       .attr("height", d => y(d[0]) - y(d[1]))
       .attr("width", x.bandwidth())
-      .on("mousemove", function(d) {
-        const xPosition = d3.mouse(this)[0] + 70;
-        const yPosition = d3.mouse(this)[1];
-        console.log(xPosition, yPosition)
-        const barValue = d[1]-d[0];
-        const roundedBarValue = barValue.toFixed(2);
-
-        const tooltip = d3.selectAll('.bar-chart__tooltip');
-        console.log(tooltip)
-        tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
-        tooltip.select("text").text(roundedBarValue);
-      })
+      .on("mousemove", onMousemove)
       .on("mouseover", mouseoverBar)
       // Mouseout vs mouseleave??
       .on("mouseleave", mouseleaveBar)
@@ -305,17 +335,26 @@ const renderEapBarChart = async () => {
     .style("display", "none");
       
   tooltip.append("rect")
-    .attr("width", 60)
-    .attr("height", 20)
-    .attr("fill", "white")
-    .style("opacity", 0.5);
+    .attr("width", baseSize.tooltip.width)
+    .attr("height", baseSize.tooltip.height)
+    .attr("fill", "#DDD")
+    .style("opacity", .5);
 
   tooltip.append("text")
-    .attr("x", 30)
-    .attr("dy", "1.2em")
-    .style("text-anchor", "middle")
-    .attr("font-size", "12px")
-    .attr("font-weight", "bold");
+    .attr("x", baseSize.tooltip.textOffset.x)
+    .attr("dy", "1.1em")
+    // NOTE: This is manual.
+    // I don't think it's a good use of abstraction to use the data/enter pattern
+    // for a known set of two. n.b. This breaks if the column headers change.
+    .attr("class", "bar-chart__tooltip--text bar-chart__tooltip-text--China")
+    .style("text-anchor", "left")
+    .attr("font-size", `${ baseSize.tooltip.fontSize }px`)
+  tooltip.append("text")
+    .attr("x", baseSize.tooltip.textOffset.x)
+    .attr("dy", "2.4em")
+    .attr("class", "bar-chart__tooltip--text bar-chart__tooltip-text--RoEAP")
+    .style("text-anchor", "left")
+    .attr("font-size", `${ baseSize.tooltip.fontSize }px`)
 
   // ##### ANIMATION CONTROLS ######
   const slider = document.getElementById("eap_bar_chart_slider")
