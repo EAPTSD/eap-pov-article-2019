@@ -413,3 +413,49 @@ const renderEapBarChart = async () => {
 }
 
 renderEapBarChart();
+
+const renderMongoliaChoropleth = async () => {
+  const baseSize = {
+    container: {
+      width: 975,
+      height: 610
+    }
+  }
+  const chartId = '#mongolia_choropleth_poverty_chart';
+  const rawJson = await d3.json('./data/ChoroplethData/eap_subnatid_povdata_simplified.json');
+
+  const allEapFeatures = topojson.feature(rawJson, rawJson.objects.eap_subnatid_povdata);
+  const mongoliaFeatures = {
+    features: allEapFeatures.features.filter(feature => feature.properties.cntrycd === 'MNG'),
+    type: 'FeatureCollection',
+  }
+
+  const center = d3.geoPath().centroid(mongoliaFeatures)
+
+  const projection = d3
+    .geoMercator()
+    .scale(1000)
+    .center(center)
+    .translate( [baseSize.container.width / 2, baseSize.container.height / 2 ] )
+
+  const path = d3.geoPath().projection(projection);
+
+  const svg = d3
+    .select(chartId)
+    .append("svg")
+    .attr("viewBox", [0, 0, baseSize.container.width, baseSize.container.height])
+    .attr("height", baseSize.container.height)
+    .attr("width", baseSize.container.width)
+
+  const map = svg
+    .append("g")
+    .selectAll("path")
+    .data(mongoliaFeatures.features)
+    .join("path")
+      .attr("fill", 'purple')
+      .attr("d", path)      
+  
+
+}
+
+renderMongoliaChoropleth();
