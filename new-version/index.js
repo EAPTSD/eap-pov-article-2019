@@ -415,6 +415,53 @@ const renderEapBarChart = async () => {
 renderEapBarChart();
 
 const renderMongoliaChoropleth = async () => {
+  const labelMap = {
+    // Imp_0_c,
+    // Imp_1_c,
+    // Imp_2_c,
+    // Imp_3_c,
+    // Imp_4_c,
+    // Imp_5_c,
+    // Imp_6_c,
+    // Impi_0,
+    // Impi_1,
+    // Impi_2,
+    // Impi_3,
+    // Impi_4,
+    // Impi_5,
+    // Impi_6,
+    countryCode: 'cntrycd',
+    countryName: 'cntrynm',
+    regionName: 'id',
+    monetaryPovertyCountry: 'mpi1_c',
+    monetaryPovertyRegion: 'mpi1_s',
+    eduAttainPovertyCountry: 'mpi2a_c',
+    eduAttainPovertyRegion: 'mpi2a_s',
+    eduEnrollPovertyCountry: 'mpi2b_c',
+    eduEnrollPovertyRegion: 'mpi2b_s',
+    // electricityPovertyCountry: 'mpi3a_c',
+    // electricityPovertyRegion: 'mpi3a_s',
+    waterPovertyCountry: 'mpi3b_c',
+    waterPovertyRegion: 'mpi3b_s',
+    sanitationPovertyCountry: 'mpi3c_c',
+    sanitationPovertyRegion: 'mpi3c_s',
+    // npr190_c,
+    // npr190_s,
+    // npr320_c,
+    // npr320_s,
+    // npr550_c,
+    // npr550_s,
+    // pop_c,
+    // pop_s,
+    // pr190_c,
+    // pr190_s,
+    // pr320_c,
+    // pr320_s,
+    // pr550_c,
+    // pr550_s,
+    // uniqid,
+  }
+  
   const baseSize = {
     container: {
       width: 975,
@@ -426,7 +473,7 @@ const renderMongoliaChoropleth = async () => {
 
   const allEapFeatures = topojson.feature(rawJson, rawJson.objects.eap_subnatid_povdata);
   const mongoliaFeatures = {
-    features: allEapFeatures.features.filter(feature => feature.properties.cntrycd === 'MNG'),
+    features: allEapFeatures.features.filter(feature => feature.properties[labelMap.countryCode] === 'MNG'),
     type: 'FeatureCollection',
   }
 
@@ -440,6 +487,8 @@ const renderMongoliaChoropleth = async () => {
 
   const path = d3.geoPath().projection(projection);
 
+  const mapDataToColor = d3.scaleSequential(d3.interpolateRdYlGn).domain([0, 100])
+
   const svg = d3
     .select(chartId)
     .append("svg")
@@ -452,8 +501,13 @@ const renderMongoliaChoropleth = async () => {
     .selectAll("path")
     .data(mongoliaFeatures.features)
     .join("path")
-      .attr("fill", 'purple')
-      .attr("d", path)      
+      .attr("fill", d => {
+        const value = d.properties[labelMap.waterPovertyRegion];
+        // Low is good and there isn't a chromatic scale that goes green to blue.
+        const invertedValue = 100 - value;
+        return mapDataToColor(invertedValue);
+      })
+      .attr("d", path)     
   
 
 }
