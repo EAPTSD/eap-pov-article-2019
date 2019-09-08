@@ -3,7 +3,7 @@ const Plotly = window.Plotly;
 const navDots = Array.from(document.querySelectorAll('.navigation-dot'));
 
 const getActiveSection = () => {
-  const sortedNavDots = navDots.sort((a,b) => {
+  const sortedNavDots = navDots.sort((a, b) => {
     const sectionA = document.querySelector(a.hash);
     const sectionB = document.querySelector(b.hash);
     const a_absDistanceToScreenTop = Math.abs(window.scrollY - sectionA.offsetTop);
@@ -18,7 +18,7 @@ const scrollHandler = e => {
   // 1. Get Active Dot
   const activeSection = getActiveSection();
   // 2. Toggle active for active dot only.
-  for(let i = 0; i < navDots.length; i++){
+  for (let i = 0; i < navDots.length; i++) {
     const navDot = navDots[i];
     navDot.classList.remove('active');
   }
@@ -50,13 +50,13 @@ const renderEapBarChart = async () => {
       ...years
     } = curr;
     const regionMapExists = acc.hasOwnProperty(region);
-    if(!regionMapExists){
+    if (!regionMapExists) {
       acc[region] = {};
     }
     const regionMap = acc[region];
     Object.entries(years).forEach(([year, population]) => {
       const yearMapExistsOnRegionMap = regionMap.hasOwnProperty(year);
-      if(!yearMapExistsOnRegionMap){
+      if (!yearMapExistsOnRegionMap) {
         regionMap[year] = {}
       }
       const yearMap = regionMap[year];
@@ -65,12 +65,12 @@ const renderEapBarChart = async () => {
     return acc
   }, {})
   // The list of years will represent each state of the chart.
-  
+
   // NOTE: To save some serious time for this POC, we're going to hardcode the values. This can be made dynamic if need be.
-  
+
   // We're going to need to do this manually so that we can guarantee order. 
   // NOTE: If the column names change, this will break!
-  const xLabels = [ 
+  const xLabels = [
     'extreme',
     'moderate',
     'vulnerable',
@@ -100,10 +100,10 @@ const renderEapBarChart = async () => {
       color: '#048BA8',
     },
   };
-  const years = Object.keys(regionalData.China).sort((a,b) => a - b);
+  const years = Object.keys(regionalData.China).sort((a, b) => a - b);
   // This is the way without the regionalData object
   // const years = Object.keys(rawData[0]).filter(key => key !== 'Country' && key !== 'Threshold').sort((a,b) => a - b)
-  
+
   const formatDataForSlider = () => {
     const output = [];
     // We need to iterate through the years.
@@ -158,18 +158,20 @@ const renderEapBarChart = async () => {
     .append('svg')
     .attr("width", baseSize.width + baseSize.margin.left + baseSize.margin.right)
     .attr("height", baseSize.height + baseSize.margin.top + baseSize.margin.bottom);
+
   let groupContainer = svg
     .append('g')
-    .attr("transform", `translate(${ baseSize.margin.left },${ baseSize.margin.top })`);
+    .attr("transform", `translate(${baseSize.margin.left},${baseSize.margin.top})`);
+
   const x = d3.scaleBand().domain(xLabels.map(x => xLabelFullMap[x])).range([0, baseSize.width]).padding(0.25);
   const y = d3.scaleLinear().domain([0, 1050]).rangeRound([baseSize.height, 0]);
-  const stack = d3.stack()
+  const stack = d3.stack();
 
   const data_nest = d3
     .nest()
     .key(d => d.year)
     .entries(rawSliderData);
-  
+
   data = data_nest.filter(d => d.key === '2002')[0].values;
 
   const highlightGroup = groupName => {
@@ -177,11 +179,11 @@ const renderEapBarChart = async () => {
     d3.selectAll(".bar-chart__legend-icon").style("opacity", 0.3)
     d3.selectAll(".bar-chart__region-bar").style("opacity", 0.3)
     // Recolor the ones to highlight
-    d3.selectAll(`.bar-chart__region--${ groupName } rect`).style("opacity", 1)
-    d3.selectAll(`.bar-chart__legend-icon--${ groupName }`).style("opacity", 1)
+    d3.selectAll(`.bar-chart__region--${groupName} rect`).style("opacity", 1)
+    d3.selectAll(`.bar-chart__legend-icon--${groupName}`).style("opacity", 1)
   }
 
-  const mouseoverBar = function(d) {
+  const mouseoverBar = function (d) {
     // Reveal the tooltip container.
     d3.selectAll('.bar-chart__tooltip').style("display", null);
 
@@ -191,8 +193,7 @@ const renderEapBarChart = async () => {
     highlightGroup(groupName);
   }
 
-  // When user do not hover anymore
-  const mouseleaveBar = function(d) {
+  const mouseleaveBar = function (d) {
     d3.selectAll('.bar-chart__tooltip').style("display", "none");
     d3.selectAll("rect").style("opacity", 1)
   }
@@ -211,20 +212,20 @@ const renderEapBarChart = async () => {
     const yPosition = d3.mouse(this)[1] + baseSize.tooltip.posY;
     const tooltip = d3.selectAll('.bar-chart__tooltip');
     tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
-    
+
     // 2. Render China
     tooltip
       .select(".bar-chart__tooltip-text--China")
-      .text(`China: ${ parseFloat(data.China, 10).toFixed(2) }m`)
+      .text(`China: ${parseFloat(data.China, 10).toFixed(2)}m`)
       .attr("font-weight", "normal")
     // 3. Render RoEAP
     tooltip
       .select(".bar-chart__tooltip-text--RoEAP")
-      .text(`RoEAP: ${ parseFloat(data.RoEAP, 10).toFixed(2) }m`)
+      .text(`RoEAP: ${parseFloat(data.RoEAP, 10).toFixed(2)}m`)
       .attr("font-weight", "normal")
     // 4. Highlight active region
     tooltip
-      .select(`.bar-chart__tooltip-text--${ activeRegion }`)
+      .select(`.bar-chart__tooltip-text--${activeRegion}`)
       .attr("font-weight", "bolder")
   }
 
@@ -237,9 +238,9 @@ const renderEapBarChart = async () => {
     .call(d3.axisBottom(x))
     .call(() => {
       groupContainer.selectAll('.axis--x .tick line')
-      .attr("display", "none")
+        .attr("display", "none")
     })
-    .selectAll("text")	
+    .selectAll("text")
     .style("text-anchor", "end")
     .attr("dx", "-.8em")
     // .attr("dy", ".15em")
@@ -251,33 +252,33 @@ const renderEapBarChart = async () => {
     .append("text")
     .call(() => {
       groupContainer.selectAll('.axis--y .tick line')
-      .attr("x2", baseSize.width)
-      .attr("stroke-opacity", 0.1)
+        .attr("x2", baseSize.width)
+        .attr("stroke-opacity", 0.1)
     })
     .call(() => {
       groupContainer.selectAll('.domain')
-      .attr("display", "none")
+        .attr("display", "none")
     })
 
   groupContainer.selectAll(".bar-chart__region")
     .data(stack.keys(regions)(data))
     .enter()
-      .append("g")
-      .attr("class", d => "bar-chart__region bar-chart__region--" + d.key)
-      .attr("fill", d => regionMap[d.key].color)
+    .append("g")
+    .attr("class", d => "bar-chart__region bar-chart__region--" + d.key)
+    .attr("fill", d => regionMap[d.key].color)
     .selectAll("rect")
-    .data(d => d )
+    .data(d => d)
     .enter().append("rect")
-      .attr("class", "bar-chart__region-bar")
-      .attr("x", d => x(xLabelFullMap[d.data.x]))
-      .attr("y", d => y(d[1]))
-      .attr("height", d => y(d[0]) - y(d[1]))
-      .attr("width", x.bandwidth())
-      .on("mousemove", onMousemove)
-      .on("mouseover", mouseoverBar)
-      // Mouseout vs mouseleave??
-      .on("mouseleave", mouseleaveBar)
-  
+    .attr("class", "bar-chart__region-bar")
+    .attr("x", d => x(xLabelFullMap[d.data.x]))
+    .attr("y", d => y(d[1]))
+    .attr("height", d => y(d[0]) - y(d[1]))
+    .attr("width", x.bandwidth())
+    .on("mousemove", onMousemove)
+    .on("mouseover", mouseoverBar)
+    // Mouseout vs mouseleave??
+    .on("mouseleave", mouseleaveBar)
+
 
   // Main Title text
   svg.append("text")
@@ -290,11 +291,11 @@ const renderEapBarChart = async () => {
     .text("2002");
 
   // Label for y axis
-  groupContainer    
+  groupContainer
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", 0 - baseSize.margin.left)
-    .attr("x",0 - ( baseSize.height / 2))
+    .attr("x", 0 - (baseSize.height / 2))
     .attr("dy", "1em")
     .attr("font-family", "Lato")
     .attr('font-size', '24px')
@@ -308,12 +309,12 @@ const renderEapBarChart = async () => {
     .selectAll("g")
     .data(regions.slice().reverse())
     .enter().append("g")
-    .attr("transform", function(d, i) { return "translate(0," + ((i * 26) + 30) + ")"; });
+    .attr("transform", function (d, i) { return "translate(0," + ((i * 26) + 30) + ")"; });
 
   legend.append("rect")
     .attr("font-family", "Lato")
     .attr("x", baseSize.width - 22)
-    .attr("class", d => `bar-chart__legend-icon bar-chart__legend-icon--${ d }`)
+    .attr("class", d => `bar-chart__legend-icon bar-chart__legend-icon--${d}`)
     .attr("width", 22)
     .attr("height", 22)
     .attr("fill", d => regionMap[d]['color'])
@@ -321,19 +322,19 @@ const renderEapBarChart = async () => {
     .on("mouseleave", mouseleaveBar)
 
   legend.append("text")
-  .attr("font-family", "Lato")
+    .attr("font-family", "Lato")
     .attr("x", baseSize.width - 30)
     .attr("y", 9.5)
     .attr("dy", "0.5em")
     .text(d => regionMap[d]['name']);
-  
+
   // The tooltip box will initially be hidden.
   // It is a floating box we will move to track the mouse while it
   // is over the graph, but only reveal when hovering over a specific bar.
   const tooltip = svg.append("g")
     .attr("class", "bar-chart__tooltip")
     .style("display", "none");
-      
+
   tooltip.append("rect")
     .attr("width", baseSize.tooltip.width)
     .attr("height", baseSize.tooltip.height)
@@ -348,13 +349,13 @@ const renderEapBarChart = async () => {
     // for a known set of two. n.b. This breaks if the column headers change.
     .attr("class", "bar-chart__tooltip--text bar-chart__tooltip-text--China")
     .style("text-anchor", "left")
-    .attr("font-size", `${ baseSize.tooltip.fontSize }px`)
+    .attr("font-size", `${baseSize.tooltip.fontSize}px`)
   tooltip.append("text")
     .attr("x", baseSize.tooltip.textOffset.x)
     .attr("dy", "2.4em")
     .attr("class", "bar-chart__tooltip--text bar-chart__tooltip-text--RoEAP")
     .style("text-anchor", "left")
-    .attr("font-size", `${ baseSize.tooltip.fontSize }px`)
+    .attr("font-size", `${baseSize.tooltip.fontSize}px`)
 
   // ##### ANIMATION CONTROLS ######
   const slider = document.getElementById("eap_bar_chart_slider")
@@ -372,11 +373,11 @@ const renderEapBarChart = async () => {
       .selectAll("rect")
       .data(d => d)
       .transition()
-      .duration(150) 
+      .duration(150)
       .attr("height", d => y(d[0]) - y(d[1]))
       .attr("x", d => x(xLabelFullMap[d.data.x]))
       .attr("y", d => y(d[1]))
-    
+
     svg.selectAll('.bar-chart__title').text(year)
 
   }
@@ -394,7 +395,7 @@ const renderEapBarChart = async () => {
     updateChart(value)
   }
   const onPlay = e => {
-    if(isPlaying){
+    if (isPlaying) {
       isPlaying = false;
       clearInterval(timer)
       e.target.innerText = 'Play'
@@ -409,7 +410,7 @@ const renderEapBarChart = async () => {
   slider.addEventListener('input', onSlider)
   playButton.addEventListener('click', onPlay)
 
-  // TODO: Hover population and Tooltips  and Responsiveness.
+  // TODO: Responsiveness.
 }
 
 renderEapBarChart();
