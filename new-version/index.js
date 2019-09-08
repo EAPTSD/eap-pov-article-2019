@@ -1,6 +1,5 @@
-const Plotly = window.Plotly;
-
 const navDots = Array.from(document.querySelectorAll('.navigation-dot'));
+const topojson = window.topojson;
 
 const getActiveSection = () => {
   const sortedNavDots = navDots.sort((a, b) => {
