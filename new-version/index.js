@@ -482,9 +482,12 @@ const renderMongoliaChoropleth = async () => {
 
   // Stroke width is currently unnecessary (they are all the same). Leaving it in in case the requirements change.
   // No China, Cambodia, add Malaysia later, check Fiji remote islands
+  // To do: add surveyyear information somewhere in the svg
+
   const countrySettings = {
     'IDN': {
       label: 'Indonesia',
+      surveyyear: 2017,
       scale: 900,
       positionOffset: {
         x: -10,
@@ -494,6 +497,7 @@ const renderMongoliaChoropleth = async () => {
     },
     'LAO': {
       label: 'Lao PDR',
+      surveyyear: 2012,
       scale: 3200,
       positionOffset: {
         x: 0,
@@ -503,6 +507,7 @@ const renderMongoliaChoropleth = async () => {
     },
     'MNG': {
       label: 'Mongolia',
+      surveyyear: 2016,
       scale: 1300,
       positionOffset: {
         x: -15,
@@ -512,6 +517,7 @@ const renderMongoliaChoropleth = async () => {
     },
     'MMR': {
       label: 'Myanmar',
+      surveyyear: 2015,
       scale: 1500,
       positionOffset: {
         x: 0,
@@ -521,6 +527,7 @@ const renderMongoliaChoropleth = async () => {
     },
     'PNG': {
       label: 'Papua New Guinea',
+      surveyyear: 2009,
       scale: 2800,
       positionOffset: {
         x: -160,
@@ -530,6 +537,7 @@ const renderMongoliaChoropleth = async () => {
     },
     'PHL': {
       label: 'Philippines',
+      surveyyear: 2015,
       scale: 1800,
       positionOffset: {
         x: 30,
@@ -539,6 +547,7 @@ const renderMongoliaChoropleth = async () => {
     },
     'SLB': {
       label: 'Solomon Islands',
+      surveyyear: 2013,
       scale: 3600,
       positionOffset: {
         x: -140,
@@ -548,6 +557,7 @@ const renderMongoliaChoropleth = async () => {
     },
     'THA': {
       label: 'Thailand',
+      surveyyear: 2017,
       scale: 2000,
       positionOffset: {
         x: 0,
@@ -557,6 +567,7 @@ const renderMongoliaChoropleth = async () => {
     },
     'TLS': {
       label: 'Timor-Leste',
+      surveyyear: 2014,
       scale: 9000,
       positionOffset: {
         x: 0,
@@ -566,6 +577,7 @@ const renderMongoliaChoropleth = async () => {
     },  
     'VNM': {
       label: 'Vietnam',
+      surveyyear: 2016,
       scale: 1900,
       positionOffset: {
         x: 0,
@@ -575,6 +587,7 @@ const renderMongoliaChoropleth = async () => {
     },
     'VUT': {
       label: 'Vanuatu',
+      surveyyear: 2010,
       scale: 3800,
       positionOffset: {
         x: 0,
@@ -644,7 +657,7 @@ const renderMongoliaChoropleth = async () => {
     function onMousemove(region) {
       const regionName = region.properties[labelMap.regionName];
       const selectionType = form.poverty_measure.value;
-      const data = region.properties[selectionType];
+      const data = region.properties[selectionType].toFixed(1);
       const country = countrySettings[region.properties.cntrycd]
       const { positionOffset } = country;
       // We want to draw the values for both bars (so that bars that are miniscule and hard to select are still available
@@ -673,7 +686,17 @@ const renderMongoliaChoropleth = async () => {
         .attr("class", "poverty-map__tooltip--text")
         .style("text-anchor", "left")
         .attr("font-size", `${ baseSize.tooltip.fontSize + 2 }px`)
+        .text(`Poverty or deprivation rate:`)
+      tooltip.append("text")
+        .attr("x", baseSize.tooltip.textOffset.x)
+        .attr("y", baseSize.tooltip.textOffset.y * 3)
+        .attr("class", "poverty-map__tooltip--text")
+        .style("text-anchor", "left")
+        .attr("font-size", `${ baseSize.tooltip.fontSize + 2 }px`)
         .text(`${ data }`)
+
+
+      //Add graph in a tooltip in a graph inception style?  
     }
   
 
