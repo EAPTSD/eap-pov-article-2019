@@ -468,7 +468,8 @@ const renderMongoliaChoropleth = async () => {
       height: 610
     }
   }
-  const chartId = '#mongolia_choropleth_poverty_chart';
+  const formId = 'mongolia_choropleth_selector';
+  const chartSelector = '#mongolia_choropleth_poverty_chart';
   const rawJson = await d3.json('./data/ChoroplethData/eap_subnatid_povdata_simplified.json');
 
   const allEapFeatures = topojson.feature(rawJson, rawJson.objects.eap_subnatid_povdata);
@@ -490,26 +491,38 @@ const renderMongoliaChoropleth = async () => {
   const mapDataToColor = d3.scaleSequential(d3.interpolateRdYlGn).domain([0, 100])
 
   const svg = d3
-    .select(chartId)
+    .select(chartSelector)
     .append("svg")
     .attr("viewBox", [0, 0, baseSize.container.width, baseSize.container.height])
     .attr("height", baseSize.container.height)
     .attr("width", baseSize.container.width)
 
-  const map = svg
+  const regions = svg
     .append("g")
     .selectAll("path")
     .data(mongoliaFeatures.features)
     .join("path")
+      .attr('class', "sub-region")
       .attr("fill", d => {
-        const value = d.properties[labelMap.waterPovertyRegion];
+        const value = d.properties[labelMap.monetaryPovertyRegion];
         // Low is good and there isn't a chromatic scale that goes green to blue.
         const invertedValue = 100 - value;
         return mapDataToColor(invertedValue);
       })
       .attr("d", path)     
   
-
+  const form = document.getElementById(formId)
+  const onFormChange = e => {
+    const buttonValue = e.target.value;
+    regions
+      .attr("fill", d => {
+        const value = d.properties[buttonValue];
+        // Low is good and there isn't a chromatic scale that goes green to blue.
+        const invertedValue = 100 - value;
+        return mapDataToColor(invertedValue);
+      })
+  }
+  form.addEventListener('change', onFormChange);
 }
 
 renderMongoliaChoropleth();
