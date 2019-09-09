@@ -484,28 +484,28 @@ const renderMongoliaChoropleth = async () => {
   const countrySettings = {
     'MNG': {
       label: 'Mongolia',
-      scale: 1100,
+      scale: 1300,
       positionOffset: {
-        x: 0,
+        x: -15,
         y: 0,
       },
       strokeWidth: .2,
     },
     'PNG': {
       label: 'Papua New Guinea',
-      scale: 2200,
+      scale: 2800,
       positionOffset: {
-        x: -110,
+        x: -160,
         y: 0,
       },
       strokeWidth: .2,
     },
     'PHL': {
       label: 'Philippines',
-      scale: 1600,
+      scale: 1800,
       positionOffset: {
         x: 30,
-        y: 0,
+        y: 20,
       },
       strokeWidth: .2,
     },
@@ -520,10 +520,10 @@ const renderMongoliaChoropleth = async () => {
     },
     'THA': {
       label: 'Thailand',
-      scale: 1700,
+      scale: 2000,
       positionOffset: {
         x: 0,
-        y: -60,
+        y: -70,
       },
       strokeWidth: .2,
     },
@@ -538,10 +538,10 @@ const renderMongoliaChoropleth = async () => {
     },
     'LAO': {
       label: 'Lao PDR',
-      scale: 3000,
+      scale: 3200,
       positionOffset: {
         x: 0,
-        y: 0,
+        y: -20,
       },
       strokeWidth: .2,
     },
@@ -550,7 +550,7 @@ const renderMongoliaChoropleth = async () => {
       scale: 1900,
       positionOffset: {
         x: 0,
-        y: 0,
+        y: -20,
       },
       strokeWidth: .2,
     },
