@@ -469,6 +469,8 @@ const renderMongoliaChoropleth = async () => {
     }
   }
   const formId = 'mongolia_choropleth_selector';
+  const form = document.getElementById(formId);
+
   const chartSelector = '#mongolia_choropleth_poverty_chart';
   const rawJson = await d3.json('./data/ChoroplethData/eap_subnatid_povdata_simplified.json');
 
@@ -488,7 +490,27 @@ const renderMongoliaChoropleth = async () => {
 
   const path = d3.geoPath().projection(projection);
 
-  const mapDataToColor = d3.scaleSequential(d3.interpolateRdYlGn).domain([0, 100])
+  const mapDataToColor = d3.scaleSequential(d3.interpolateRdYlGn).domain([0, 100]);
+
+  const onMouseoverRegion = function (region) {
+    // Get current poverty type being visualized
+    const selectionType = form.poverty_measure.value;
+    const data = region.properties[selectionType]
+    // const colorValue = d3.scaleSequential(d3.interpolateGreys).domain([0, 100])(data)
+    d3.select(this)
+      // .attr('fill', '#777')
+      .attr('stroke-width', 2)
+      .attr("stroke", "#DDD")
+  }
+  const onMouseleaveRegion = function (region) {
+    // Get current poverty type being visualized
+    const selectionType = form.poverty_measure.value;
+    const data = region.properties[selectionType]
+    // const colorValue = mapDataToColor(100 - data)
+    d3.select(this)
+      // .attr('fill', colorValue)
+      .attr('stroke', 'none')
+  }
 
   const svg = d3
     .select(chartSelector)
@@ -502,16 +524,17 @@ const renderMongoliaChoropleth = async () => {
     .selectAll("path")
     .data(mongoliaFeatures.features)
     .join("path")
-      .attr('class', "sub-region")
+      .attr('class', "poverty-map__sub-region")
       .attr("fill", d => {
         const value = d.properties[labelMap.monetaryPovertyRegion];
         // Low is good and there isn't a chromatic scale that goes green to blue.
         const invertedValue = 100 - value;
         return mapDataToColor(invertedValue);
       })
-      .attr("d", path)     
+      .attr("d", path)
+      .on('mouseover', onMouseoverRegion)
+      .on('mouseleave', onMouseleaveRegion)
   
-  const form = document.getElementById(formId)
   const onFormChange = e => {
     const buttonValue = e.target.value;
     regions
