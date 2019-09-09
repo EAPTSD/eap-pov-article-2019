@@ -668,7 +668,7 @@ const renderMongoliaChoropleth = async () => {
       .attr("viewBox", [0, 0, baseSize.container.width, baseSize.container.height])
       .attr("height", baseSize.container.height)
       .attr("width", baseSize.container.width)
-      .style("background-color", "#111")
+      .style("background", "black")
   
     const regions = svg
       .append("g")
