@@ -475,7 +475,7 @@ const renderMongoliaChoropleth = async () => {
       posY: 20,
       textOffset: {
         x: 10,
-        y: 0,
+        y: 20,
       },
     },
   }
@@ -604,12 +604,12 @@ const renderMongoliaChoropleth = async () => {
     const path = d3.geoPath().projection(projection);
   
     const mapDataToColor = d3.scaleSequential(d3.interpolateRdYlGn).domain([0, 100]);
-    const strokeColor = '#fff'
+    const strokeColor = '#fff';
   
     const onMouseoverRegion = function (region) {
       // Get current poverty type being visualized
-      const selectionType = form.poverty_measure.value;
-      const data = region.properties[selectionType]
+      // const selectionType = form.poverty_measure.value;
+      // const data = region.properties[selectionType];
       // const colorValue = d3.scaleSequential(d3.interpolateGreys).domain([0, 100])(data)
       d3.select(this)
         // .attr('fill', '#777')
@@ -622,8 +622,8 @@ const renderMongoliaChoropleth = async () => {
 
     const onMouseleaveRegion = function (region) {
       // Get current poverty type being visualized
-      const selectionType = form.poverty_measure.value;
-      const data = region.properties[selectionType]
+      // const selectionType = form.poverty_measure.value;
+      // const data = region.properties[selectionType]
       // const colorValue = mapDataToColor(100 - data)
       d3.select(this)
         // .attr('fill', colorValue)
@@ -633,6 +633,9 @@ const renderMongoliaChoropleth = async () => {
     }
 
     function onMousemove(region) {
+      const regionName = region.properties[labelMap.regionName];
+      const selectionType = form.poverty_measure.value;
+      const data = region.properties[selectionType];
       const country = countrySettings[region.properties.cntrycd]
       const { positionOffset } = country;
       // We want to draw the values for both bars (so that bars that are miniscule and hard to select are still available
@@ -646,13 +649,22 @@ const renderMongoliaChoropleth = async () => {
       const yPosition = d3.mouse(this)[1] + baseSize.tooltip.posY + positionOffset.y;
       const tooltip = d3.selectAll('.poverty-map__tooltip');
       tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+      tooltip.selectAll('text').remove();
   
-      // // 2. Render China
-      // tooltip
-      //   .select(".poverty-map__tooltip-text--xxx")
-      //   .text(`China: ${parseFloat(data.China, 10).toFixed(2)}m`)
-      //   .attr("font-weight", "normal")
-
+      tooltip.append("text")
+        .attr("x", baseSize.tooltip.textOffset.x)
+        .attr("y", baseSize.tooltip.textOffset.y)
+        .attr("class", "poverty-map__tooltip--text")
+        .style("text-anchor", "left")
+        .attr("font-size", `${ baseSize.tooltip.fontSize + 2 }px`)
+        .text(`${ regionName }`)
+      tooltip.append("text")
+        .attr("x", baseSize.tooltip.textOffset.x)
+        .attr("y", baseSize.tooltip.textOffset.y * 2)
+        .attr("class", "poverty-map__tooltip--text")
+        .style("text-anchor", "left")
+        .attr("font-size", `${ baseSize.tooltip.fontSize + 2 }px`)
+        .text(`${ data }`)
     }
   
 
@@ -702,16 +714,6 @@ const renderMongoliaChoropleth = async () => {
       .attr("height", baseSize.tooltip.height)
       .attr("fill", "#DDD")
       .style("opacity", .5);
-
-      // NOTE: This is manual.
-      // I don't think it's a good use of abstraction to use the data/enter pattern
-      // for a known set of two. n.b. This breaks if the column headers change.
-    tooltip.append("text")
-      .attr("x", baseSize.tooltip.textOffset.x)
-      .attr("dy", "1.1em")
-      .attr("class", "poverty-map__tooltip--text xxx")
-      .style("text-anchor", "left")
-      .attr("font-size", `${baseSize.tooltip.fontSize}px`)
 
     
     const onFormChange = e => {
