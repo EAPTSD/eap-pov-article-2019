@@ -466,7 +466,18 @@ const renderMongoliaChoropleth = async () => {
     container: {
       width: 800,
       height: 610
-    }
+    },
+    tooltip: {
+      fontSize: 14,
+      width: 120,
+      height: 200,
+      posX: 20,
+      posY: 20,
+      textOffset: {
+        x: 10,
+        y: 0,
+      },
+    },
   }
 
   // Stroke width is currently unnecessary (they are all the same). Leaving it in in case the requirements change.
@@ -604,7 +615,11 @@ const renderMongoliaChoropleth = async () => {
         // .attr('fill', '#777')
         .attr('stroke-width', 2)
         .attr("stroke", "#DDD")
+
+      // Reveal the tooltip container.
+      d3.selectAll('.poverty-map__tooltip').style("display", null);
     }
+
     const onMouseleaveRegion = function (region) {
       // Get current poverty type being visualized
       const selectionType = form.poverty_measure.value;
@@ -612,8 +627,34 @@ const renderMongoliaChoropleth = async () => {
       // const colorValue = mapDataToColor(100 - data)
       d3.select(this)
         // .attr('fill', colorValue)
-        .attr('stroke-width', countrySettings[region.properties.cntrycd].strokeWidth)
+        .attr('stroke-width', countrySettings[region.properties.cntrycd].strokeWidth);
+      
+      d3.selectAll('.poverty-map__tooltip').style("display", "none");
     }
+
+    function onMousemove(region) {
+      const country = countrySettings[region.properties.cntrycd]
+      const { positionOffset } = country;
+      // We want to draw the values for both bars (so that bars that are miniscule and hard to select are still available
+      // to show values)
+      // Since there are two known and fixed values, we'll do this manually. But it would make sense to use a loop
+      // for dynamism in most cases.
+      // We also want to highlight the active region so it's clear which bar is being hovered.
+  
+      // 1. Reposition the tooltip above the mouse's current location with an offset.
+      const xPosition = d3.mouse(this)[0] + baseSize.tooltip.posX + positionOffset.x;
+      const yPosition = d3.mouse(this)[1] + baseSize.tooltip.posY + positionOffset.y;
+      const tooltip = d3.selectAll('.poverty-map__tooltip');
+      tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+  
+      // // 2. Render China
+      // tooltip
+      //   .select(".poverty-map__tooltip-text--xxx")
+      //   .text(`China: ${parseFloat(data.China, 10).toFixed(2)}m`)
+      //   .attr("font-weight", "normal")
+
+    }
+  
 
     // Clear contents of SVG
     d3
@@ -647,7 +688,30 @@ const renderMongoliaChoropleth = async () => {
         .attr("d", path)
         .on('mouseover', onMouseoverRegion)
         .on('mouseleave', onMouseleaveRegion)
+        .on('mousemove', onMousemove)
+    
+    // The tooltip box will initially be hidden.
+    // It is a floating box we will move to track the mouse while it
+    // is over the graph, but only reveal when hovering over a specific bar.
+    const tooltip = svg.append("g")
+      .attr("class", "poverty-map__tooltip")
+      .style("display", "none");
 
+    tooltip.append("rect")
+      .attr("width", baseSize.tooltip.width)
+      .attr("height", baseSize.tooltip.height)
+      .attr("fill", "#DDD")
+      .style("opacity", .5);
+
+      // NOTE: This is manual.
+      // I don't think it's a good use of abstraction to use the data/enter pattern
+      // for a known set of two. n.b. This breaks if the column headers change.
+    tooltip.append("text")
+      .attr("x", baseSize.tooltip.textOffset.x)
+      .attr("dy", "1.1em")
+      .attr("class", "poverty-map__tooltip--text xxx")
+      .style("text-anchor", "left")
+      .attr("font-size", `${baseSize.tooltip.fontSize}px`)
 
     
     const onFormChange = e => {
