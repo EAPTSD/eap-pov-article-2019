@@ -464,88 +464,222 @@ const renderMongoliaChoropleth = async () => {
   
   const baseSize = {
     container: {
-      width: 975,
+      width: 800,
       height: 610
     }
   }
-  const formId = 'mongolia_choropleth_selector';
+
+  // Stroke width is currently unnecessary (they are all the same). Leaving it in in case the requirements change.
+  const countrySettings = {
+    'MNG': {
+      label: 'Mongolia',
+      scale: 1100,
+      positionOffset: {
+        x: 0,
+        y: 0,
+      },
+      strokeWidth: .2,
+    },
+    'PNG': {
+      label: 'Papua New Guinea',
+      scale: 2200,
+      positionOffset: {
+        x: -110,
+        y: 0,
+      },
+      strokeWidth: .2,
+    },
+    'PHL': {
+      label: 'Philippines',
+      scale: 1600,
+      positionOffset: {
+        x: 30,
+        y: 0,
+      },
+      strokeWidth: .2,
+    },
+    'IDN': {
+      label: 'Indonesia',
+      scale: 900,
+      positionOffset: {
+        x: -10,
+        y: 0,
+      },
+      strokeWidth: .2,
+    },
+    'THA': {
+      label: 'Thailand',
+      scale: 1700,
+      positionOffset: {
+        x: 0,
+        y: -60,
+      },
+      strokeWidth: .2,
+    },
+    'SLB': {
+      label: 'Solomon Islands',
+      scale: 3600,
+      positionOffset: {
+        x: -140,
+        y: -50,
+      },
+      strokeWidth: .2,
+    },
+    'LAO': {
+      label: 'Lao PDR',
+      scale: 3000,
+      positionOffset: {
+        x: 0,
+        y: 0,
+      },
+      strokeWidth: .2,
+    },
+    'VNM': {
+      label: 'Vietnam',
+      scale: 1900,
+      positionOffset: {
+        x: 0,
+        y: 0,
+      },
+      strokeWidth: .2,
+    },
+    'MMR': {
+      label: 'Myanmar',
+      scale: 1500,
+      positionOffset: {
+        x: 0,
+        y: -50,
+      },
+      strokeWidth: .2,
+    },
+    'VUT': {
+      label: 'Vanuatu',
+      scale: 3800,
+      positionOffset: {
+        x: 0,
+        y: -20,
+      },
+      strokeWidth: .2,
+    }
+  }
+
+  // No China, Cambodia, add Malaysia later, check Fiji remote islands
+
+  const initialCountryCode = 'MNG';
+  const formId = 'choropleth_poverty_selector';
   const form = document.getElementById(formId);
 
-  const chartSelector = '#mongolia_choropleth_poverty_chart';
+  const povertySelector = '#choropleth_poverty_chart';
+  const countrySelectorId = 'choropleth_country_selector';
+
   const rawJson = await d3.json('./data/ChoroplethData/eap_subnatid_povdata_simplified.json');
 
   const allEapFeatures = topojson.feature(rawJson, rawJson.objects.eap_subnatid_povdata);
-  const mongoliaFeatures = {
-    features: allEapFeatures.features.filter(feature => feature.properties[labelMap.countryCode] === 'MNG'),
-    type: 'FeatureCollection',
-  }
 
-  const center = d3.geoPath().centroid(mongoliaFeatures)
-
-  const projection = d3
-    .geoMercator()
-    .scale(1000)
-    .center(center)
-    .translate( [baseSize.container.width / 2, baseSize.container.height / 2 ] )
-
-  const path = d3.geoPath().projection(projection);
-
-  const mapDataToColor = d3.scaleSequential(d3.interpolateRdYlGn).domain([0, 100]);
-
-  const onMouseoverRegion = function (region) {
-    // Get current poverty type being visualized
-    const selectionType = form.poverty_measure.value;
-    const data = region.properties[selectionType]
-    // const colorValue = d3.scaleSequential(d3.interpolateGreys).domain([0, 100])(data)
-    d3.select(this)
-      // .attr('fill', '#777')
-      .attr('stroke-width', 2)
-      .attr("stroke", "#DDD")
-  }
-  const onMouseleaveRegion = function (region) {
-    // Get current poverty type being visualized
-    const selectionType = form.poverty_measure.value;
-    const data = region.properties[selectionType]
-    // const colorValue = mapDataToColor(100 - data)
-    d3.select(this)
-      // .attr('fill', colorValue)
-      .attr('stroke', 'none')
-  }
-
-  const svg = d3
-    .select(chartSelector)
-    .append("svg")
-    .attr("viewBox", [0, 0, baseSize.container.width, baseSize.container.height])
-    .attr("height", baseSize.container.height)
-    .attr("width", baseSize.container.width)
-
-  const regions = svg
-    .append("g")
-    .selectAll("path")
-    .data(mongoliaFeatures.features)
-    .join("path")
-      .attr('class', "poverty-map__sub-region")
-      .attr("fill", d => {
-        const value = d.properties[labelMap.monetaryPovertyRegion];
-        // Low is good and there isn't a chromatic scale that goes green to blue.
-        const invertedValue = 100 - value;
-        return mapDataToColor(invertedValue);
-      })
-      .attr("d", path)
-      .on('mouseover', onMouseoverRegion)
-      .on('mouseleave', onMouseleaveRegion)
+  const renderMap = countryCode => {
+    const countryFeatures = {
+      features: allEapFeatures.features.filter(feature => feature.properties[labelMap.countryCode] === countryCode),
+      type: 'FeatureCollection',
+    }
   
-  const onFormChange = e => {
-    const buttonValue = e.target.value;
-    regions
-      .attr("fill", d => {
-        const value = d.properties[buttonValue];
-        // Low is good and there isn't a chromatic scale that goes green to blue.
-        const invertedValue = 100 - value;
-        return mapDataToColor(invertedValue);
-      })
+    const center = d3.geoPath().centroid(countryFeatures)
+  
+    const projection = d3
+      .geoMercator()
+      .scale(countrySettings[countryCode].scale)
+      .center(center)
+      .translate( [baseSize.container.width / 2, baseSize.container.height / 2 ] )
+  
+    const path = d3.geoPath().projection(projection);
+  
+    const mapDataToColor = d3.scaleSequential(d3.interpolateRdYlGn).domain([0, 100]);
+    const strokeColor = '#fff'
+  
+    const onMouseoverRegion = function (region) {
+      // Get current poverty type being visualized
+      const selectionType = form.poverty_measure.value;
+      const data = region.properties[selectionType]
+      // const colorValue = d3.scaleSequential(d3.interpolateGreys).domain([0, 100])(data)
+      d3.select(this)
+        // .attr('fill', '#777')
+        .attr('stroke-width', 2)
+        .attr("stroke", "#DDD")
+    }
+    const onMouseleaveRegion = function (region) {
+      // Get current poverty type being visualized
+      const selectionType = form.poverty_measure.value;
+      const data = region.properties[selectionType]
+      // const colorValue = mapDataToColor(100 - data)
+      d3.select(this)
+        // .attr('fill', colorValue)
+        .attr('stroke-width', countrySettings[region.properties.cntrycd].strokeWidth)
+    }
+
+    // Clear contents of SVG
+    d3
+      .select(povertySelector)
+      .selectAll('*')
+      .remove()
+  
+    const svg = d3
+      .select(povertySelector)
+      .append("svg")
+      .attr("viewBox", [0, 0, baseSize.container.width, baseSize.container.height])
+      .attr("height", baseSize.container.height)
+      .attr("width", baseSize.container.width)
+      .style("background-color", "#111")
+  
+    const regions = svg
+      .append("g")
+      .attr("transform", `translate(${ countrySettings[countryCode].positionOffset.x }, ${ countrySettings[countryCode].positionOffset.y })`)
+      .selectAll("path")
+      .data(countryFeatures.features)
+      .join("path")
+        .attr('class', "poverty-map__sub-region")
+        .attr("fill", d => {
+          const value = d.properties[labelMap.monetaryPovertyRegion];
+          // Low is good and there isn't a chromatic scale that goes green to blue.
+          const invertedValue = 100 - value;
+          return mapDataToColor(invertedValue);
+        })
+        .attr("stroke", strokeColor)
+        .attr('stroke-width', countrySettings[countryCode].strokeWidth)
+        .attr("d", path)
+        .on('mouseover', onMouseoverRegion)
+        .on('mouseleave', onMouseleaveRegion)
+
+
+    
+    const onFormChange = e => {
+      const buttonValue = e.target.value;
+      regions
+        .attr("fill", d => {
+          const value = d.properties[buttonValue];
+          // Low is good and there isn't a chromatic scale that goes green to blue.
+          const invertedValue = 100 - value;
+          return mapDataToColor(invertedValue);
+        })
+    }
+    form.addEventListener('change', onFormChange);
   }
-  form.addEventListener('change', onFormChange);
+
+  // Dyanamically build country selector if element exists.
+  const countrySelectorElement = document.getElementById(countrySelectorId);
+  if(countrySelectorElement){
+    const countryCodes = Object.keys(countrySettings);
+    countryCodes.forEach(countryCode => {
+      const option = document.createElement('option');
+      option.value = countryCode;
+      option.innerText = countrySettings[countryCode].label;
+      countrySelectorElement.appendChild(option)
+    })
+    countrySelectorElement.addEventListener('change', e => {
+      const countryCode = e.target.value;
+      renderMap(countryCode);
+    })
+  }
+
+  renderMap(initialCountryCode);
 }
 
-renderMongoliaChoropleth();
+renderMongoliaChoropleth('MNG');
