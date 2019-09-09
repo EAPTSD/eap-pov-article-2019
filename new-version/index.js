@@ -481,13 +481,41 @@ const renderMongoliaChoropleth = async () => {
   }
 
   // Stroke width is currently unnecessary (they are all the same). Leaving it in in case the requirements change.
+  // No China, Cambodia, add Malaysia later, check Fiji remote islands
   const countrySettings = {
+    'IDN': {
+      label: 'Indonesia',
+      scale: 900,
+      positionOffset: {
+        x: -10,
+        y: 0,
+      },
+      strokeWidth: .2,
+    },
+    'LAO': {
+      label: 'Lao PDR',
+      scale: 3200,
+      positionOffset: {
+        x: 0,
+        y: -20,
+      },
+      strokeWidth: .2,
+    },
     'MNG': {
       label: 'Mongolia',
       scale: 1300,
       positionOffset: {
         x: -15,
         y: 0,
+      },
+      strokeWidth: .2,
+    },
+    'MMR': {
+      label: 'Myanmar',
+      scale: 1500,
+      positionOffset: {
+        x: 0,
+        y: -50,
       },
       strokeWidth: .2,
     },
@@ -509,12 +537,12 @@ const renderMongoliaChoropleth = async () => {
       },
       strokeWidth: .2,
     },
-    'IDN': {
-      label: 'Indonesia',
-      scale: 900,
+    'SLB': {
+      label: 'Solomon Islands',
+      scale: 3600,
       positionOffset: {
-        x: -10,
-        y: 0,
+        x: -140,
+        y: -50,
       },
       strokeWidth: .2,
     },
@@ -527,39 +555,21 @@ const renderMongoliaChoropleth = async () => {
       },
       strokeWidth: .2,
     },
-    'SLB': {
-      label: 'Solomon Islands',
-      scale: 3600,
-      positionOffset: {
-        x: -140,
-        y: -50,
-      },
-      strokeWidth: .2,
-    },
-    'LAO': {
-      label: 'Lao PDR',
-      scale: 3200,
+    'TLS': {
+      label: 'Timor-Leste',
+      scale: 9000,
       positionOffset: {
         x: 0,
         y: -20,
       },
       strokeWidth: .2,
-    },
+    },  
     'VNM': {
       label: 'Vietnam',
       scale: 1900,
       positionOffset: {
         x: 0,
         y: -20,
-      },
-      strokeWidth: .2,
-    },
-    'MMR': {
-      label: 'Myanmar',
-      scale: 1500,
-      positionOffset: {
-        x: 0,
-        y: -50,
       },
       strokeWidth: .2,
     },
@@ -574,9 +584,8 @@ const renderMongoliaChoropleth = async () => {
     }
   }
 
-  // No China, Cambodia, add Malaysia later, check Fiji remote islands
 
-  const initialCountryCode = 'MNG';
+  const initialCountryCode = 'IDN';
   const formId = 'choropleth_poverty_selector';
   const form = document.getElementById(formId);
 
