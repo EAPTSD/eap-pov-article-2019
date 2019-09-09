@@ -50,6 +50,11 @@ sub {
   width: 80%;
 }
 
+img{
+
+  width: 700px;
+
+}
 li {
   list-style-type: none;
 }
@@ -101,7 +106,7 @@ we want to apply dark to a child element directly */
 }
 
 section.theme--dark, footer.theme--dark {
-  background: linear-gradient(120deg, rgb(43, 46, 49), rgb(26, 28, 31), rgb(18, 53, 90));
+  background: linear-gradient(120deg, rgb(43, 46, 49), rgb(26, 28, 31), rgb(73, 74, 75));
 }
 
 .theme--dark h1, 
