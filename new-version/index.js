@@ -599,8 +599,8 @@ const renderMongoliaChoropleth = async () => {
 
 
   const initialCountryCode = 'IDN';
-  const formId = 'choropleth_poverty_selector';
-  const form = document.getElementById(formId);
+  const povertyMeasureFormId = 'choropleth_poverty_selector';
+  const povertyMeasureForm = document.getElementById(povertyMeasureFormId);
 
   const povertySelector = '#choropleth_poverty_chart';
   const countrySelectorId = 'choropleth_country_selector';
@@ -608,6 +608,13 @@ const renderMongoliaChoropleth = async () => {
   const rawJson = await d3.json('./data/ChoroplethData/eap_subnatid_povdata_simplified.json');
 
   const allEapFeatures = topojson.feature(rawJson, rawJson.objects.eap_subnatid_povdata);
+
+  const getActivePovertyMeasure = () => {
+    const formElements = Array.from(document.getElementById(povertyMeasureFormId).elements);
+    const checkedElement = formElements.filter(el => el.checked)[0];
+    const povertyMeasure = checkedElement.value;
+    return povertyMeasure;
+  }
 
   const renderMap = countryCode => {
     const countryFeatures = {
@@ -656,7 +663,7 @@ const renderMongoliaChoropleth = async () => {
 
     function onMousemove(region) {
       const regionName = region.properties[labelMap.regionName];
-      const selectionType = form.poverty_measure.value;
+      const selectionType = povertyMeasureForm.poverty_measure.value;
       const data = region.properties[selectionType].toFixed(1);
       const country = countrySettings[region.properties.cntrycd]
       const { positionOffset } = country;
@@ -722,7 +729,8 @@ const renderMongoliaChoropleth = async () => {
       .join("path")
         .attr('class', "poverty-map__sub-region")
         .attr("fill", d => {
-          const value = d.properties[labelMap.monetaryPovertyRegion];
+          const povertyMeasure = getActivePovertyMeasure();
+          const value = d.properties[povertyMeasure];
           // Low is good and there isn't a chromatic scale that goes green to blue.
           const invertedValue = 100 - value;
           return mapDataToColor(invertedValue);
@@ -730,9 +738,9 @@ const renderMongoliaChoropleth = async () => {
         .attr("stroke", strokeColor)
         .attr('stroke-width', countrySettings[countryCode].strokeWidth)
         .attr("d", path)
+        .on('mousemove', onMousemove)
         .on('mouseover', onMouseoverRegion)
         .on('mouseleave', onMouseleaveRegion)
-        .on('mousemove', onMousemove)
     
     // The tooltip box will initially be hidden.
     // It is a floating box we will move to track the mouse while it
@@ -747,18 +755,23 @@ const renderMongoliaChoropleth = async () => {
       .attr("fill", "#DDD")
       .style("opacity", .5);
 
-    
-    const onFormChange = e => {
-      const buttonValue = e.target.value;
+    const updateMapColorsByPovertyMeasure = povertyMeasure => {
       regions
         .attr("fill", d => {
-          const value = d.properties[buttonValue];
+          const value = d.properties[povertyMeasure];
           // Low is good and there isn't a chromatic scale that goes green to blue.
           const invertedValue = 100 - value;
           return mapDataToColor(invertedValue);
         })
     }
-    form.addEventListener('change', onFormChange);
+
+    // When a different poverty type is selected, update the region colors based on that data.
+    // TODO: Rerender map based on the new data instead perhaps (so tooltips correlate as well)
+    const onFormChange = e => {
+      const povertyMeasure = e.target.value;
+      updateMapColorsByPovertyMeasure(povertyMeasure)
+    }
+    povertyMeasureForm.addEventListener('change', onFormChange);
   }
 
   // Dyanamically build country selector if element exists.
