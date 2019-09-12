@@ -1,38 +1,13 @@
 {
-  "name": "24f402c1-271d-4361-a6b3-2ad3a1fcffe1",
+  "name": "eap-pov-article-2019",
   "version": "0.1.0",
-  "author": "Darwin Rinderer",
+  "author": "Judy Yang",
+  "contributors": [
+    "Brendan Beltz <brendanwebdev@gmail.com> (https://www.brendanbeltz.com)"
+  ],
   "private": false,
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "d3": "^5.9.7",
-    "react": "^16.8.6",
-    "react-app-polyfill": "^1.0.1",
-    "react-dom": "^16.8.6",
-    "react-scripts": "^3.0.1",
-    "react-waypoint": "^9.0.2",
-    "reactstrap": "^8.0.1",
-    "stickyfilljs": "^2.1.0",
-    "topojson": "^3.0.2",
-    "uuid": "^3.3.2",
-    "victory": "^32.3.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
-  "browserslist": [
-    ">0.1%",
-    "not dead",
-    "not ie <= 8",
-    "not op_mini all"
-  ],
-  "devDependencies": {
-    "gh-pages": "2.0.1"
-  },
-  "homepage": "https://EAPTSD.github.io/24f402c1-271d-4361-a6b3-2ad3a1fcffe1"
+    "d3": "5.8.0",
+    "topojson": "3.0.2"
+  }
 }

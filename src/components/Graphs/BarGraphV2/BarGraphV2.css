@@ -1,9 +1,0 @@
-.BarGraphV2-container {
-  position: relative;
-  height: 60vh;
-}
-
-.BarGraphV2-container .VictoryContainer,
-.BarGraphV2-container .VictoryContainer svg {
-  height: 100% !important;
-}
