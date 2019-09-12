@@ -1,3 +1,3 @@
-Branch brendan1: [Live Demo](https://admiring-perlman-e506f5.netlify.com)
+[Live](https://github.com/EAPTSD/eap-pov-article-2019.git)
 
 # A Broader View of Poverty in developing East Asia and Pacific
