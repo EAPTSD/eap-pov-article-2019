@@ -1,7 +1,10 @@
 {
-  "name": "24f402c1-271d-4361-a6b3-2ad3a1fcffe1",
+  "name": "eap-pov-article-2019",
   "version": "0.1.0",
-  "author": "Darwin Rinderer",
+  "author": "Judy Yang",
+  "contributors": [
+    "Brendan Beltz <brendanwebdev@gmail.com> (https://www.brendanbeltz.com)"
+  ],
   "private": false,
   "dependencies": {
     "ajv": "6.8.1",
