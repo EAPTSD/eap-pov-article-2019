@@ -605,6 +605,12 @@ const renderMongoliaChoropleth = async () => {
   const povertySelector = '#choropleth_poverty_chart';
   const countrySelectorId = 'choropleth_country_selector';
 
+  const tooltip = document.createElement('div');
+  tooltip.classList.add('poverty-map__tooltip');
+  tooltip.classList.add('hidden');
+  document.body.appendChild(tooltip);
+
+
   const rawJson = await d3.json('./data/ChoroplethData/eap_subnatid_povdata_simplified.json');
 
   const allEapFeatures = topojson.feature(rawJson, rawJson.objects.eap_subnatid_povdata);
@@ -647,6 +653,8 @@ const renderMongoliaChoropleth = async () => {
 
       // Reveal the tooltip container.
       d3.selectAll('.poverty-map__tooltip').style("display", null);
+
+      tooltip.classList.remove("hidden")
     }
 
     const onMouseleaveRegion = function (region) {
@@ -659,49 +667,28 @@ const renderMongoliaChoropleth = async () => {
         .attr('stroke-width', countrySettings[region.properties.cntrycd].strokeWidth);
       
       d3.selectAll('.poverty-map__tooltip').style("display", "none");
+
+      tooltip.classList.add("hidden");
     }
 
     function onMousemove(region) {
       const regionName = region.properties[labelMap.regionName];
       const selectionType = povertyMeasureForm.poverty_measure.value;
-      const data = region.properties[selectionType].toFixed(1);
-      const country = countrySettings[region.properties.cntrycd]
-      const { positionOffset } = country;
-      // We want to draw the values for both bars (so that bars that are miniscule and hard to select are still available
-      // to show values)
-      // Since there are two known and fixed values, we'll do this manually. But it would make sense to use a loop
-      // for dynamism in most cases.
-      // We also want to highlight the active region so it's clear which bar is being hovered.
+      const regionalDeprivationRate = region.properties[selectionType].toFixed(1);
+      const nationaDeprivationRateCode = selectionType.replace(/s$/, 'c');
+      const nationalDeprivationRate = region.properties[nationaDeprivationRateCode].toFixed(1);
   
       // 1. Reposition the tooltip above the mouse's current location with an offset.
-      const xPosition = d3.mouse(this)[0] + baseSize.tooltip.posX + positionOffset.x;
-      const yPosition = d3.mouse(this)[1] + baseSize.tooltip.posY + positionOffset.y;
-      const tooltip = d3.selectAll('.poverty-map__tooltip');
-      tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
-      tooltip.selectAll('text').remove();
-  
-      tooltip.append("text")
-        .attr("x", baseSize.tooltip.textOffset.x)
-        .attr("y", baseSize.tooltip.textOffset.y)
-        .attr("class", "poverty-map__tooltip--text")
-        .style("text-anchor", "left")
-        .attr("font-size", `${ baseSize.tooltip.fontSize + 2 }px`)
-        .text(`${ regionName }`)
-      tooltip.append("text")
-        .attr("x", baseSize.tooltip.textOffset.x)
-        .attr("y", baseSize.tooltip.textOffset.y * 2)
-        .attr("class", "poverty-map__tooltip--text")
-        .style("text-anchor", "left")
-        .attr("font-size", `${ baseSize.tooltip.fontSize + 2 }px`)
-        .text(`Poverty or deprivation rate:`)
-      tooltip.append("text")
-        .attr("x", baseSize.tooltip.textOffset.x)
-        .attr("y", baseSize.tooltip.textOffset.y * 3)
-        .attr("class", "poverty-map__tooltip--text")
-        .style("text-anchor", "left")
-        .attr("font-size", `${ baseSize.tooltip.fontSize + 2 }px`)
-        .text(`${ data }`)
-
+      d3.select('.poverty-map__tooltip')
+        .style("left", `${d3.event.pageX + 14 }px`)
+        .style("top", `${d3.event.pageY + 10 }px`);
+      const markup = `
+        <p class="region-name">${ regionName }</p>
+        <p>Deprivation Rate</p>
+        <p>&nbsp;&nbsp;Regional: ${ regionalDeprivationRate }</p>
+        <p>&nbsp;&nbsp;National: ${ nationalDeprivationRate }</p>
+      `
+      tooltip.innerHTML = markup;
 
       //Add graph in a tooltip in a graph inception style?  
     }
@@ -742,19 +729,6 @@ const renderMongoliaChoropleth = async () => {
         .on('mouseover', onMouseoverRegion)
         .on('mouseleave', onMouseleaveRegion)
     
-    // The tooltip box will initially be hidden.
-    // It is a floating box we will move to track the mouse while it
-    // is over the graph, but only reveal when hovering over a specific bar.
-    const tooltip = svg.append("g")
-      .attr("class", "poverty-map__tooltip")
-      .style("display", "none");
-
-    tooltip.append("rect")
-      .attr("width", baseSize.tooltip.width)
-      .attr("height", baseSize.tooltip.height)
-      .attr("fill", "#DDD")
-      .style("opacity", .5);
-
     const updateMapColorsByPovertyMeasure = povertyMeasure => {
       regions
         .attr("fill", d => {
