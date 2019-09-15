@@ -246,13 +246,13 @@ section#section-4 {
 
 .title-card__container-outer {
   position: relative;
-  max-width: 650px;
+  max-width: 750px;
   width: 85%;
   margin: 0 auto;
   transform: translateY(-75vh);
   border: 4px solid black;
-  padding: 10px;
-  background: white;
+  padding: 40px;
+  background: #ffffffe6;
 }
 
 .title-card__container-inner {
