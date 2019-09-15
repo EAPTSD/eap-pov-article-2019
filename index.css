@@ -246,29 +246,34 @@ section#section-4 {
 
 .title-card__container-outer {
   position: relative;
-  max-width: 600px;
+  max-width: 650px;
   width: 85%;
   margin: 0 auto;
-  padding-bottom: 25vh;
   transform: translateY(-75vh);
+  border: 4px solid black;
+  padding: 10px;
+  background: white;
 }
 
 .title-card__container-inner {
   display: flex;
-  font: 'Lato', serif;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.5);
+  background: linear-gradient(120deg, rgb(45, 45, 45), rgb(13, 13, 13), rgb(45, 45, 45));
   height: auto;
   color: white;
-  border-radius: 10px;
-  padding: 50px 0;
+  padding: 50px;
+}
+
+.title-card__container-inner h2 {
+  margin: 0;
 }
 
 .title-card__container-inner p {
-  margin: 20px;
-  width: 50%;
+  margin-top: 20px;
+  margin-bottom: 0;
+  width: 65%;
   text-align: center;
 }
 
