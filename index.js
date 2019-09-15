@@ -359,6 +359,7 @@ const renderEapBarChart = async () => {
   // ##### ANIMATION CONTROLS ######
   const slider = document.getElementById("eap_bar_chart_slider")
   const playButton = document.getElementById("eap_bar_chart__button--play")
+  const lastYear = years[years.length -1];
   let activeYear = years[0];
   let timer;
   let isPlaying = false;
@@ -383,10 +384,17 @@ const renderEapBarChart = async () => {
 
   const incrementYear = () => {
     const nextYearIndex = years.indexOf(activeYear) + 1;
-    const nextYear = years[nextYearIndex] ? years[nextYearIndex] : years[0];
-    activeYear = nextYear;
-    slider.value = nextYear;
-    updateChart(nextYear)
+    const nextYear = years[nextYearIndex];
+    if(nextYear){
+      activeYear = nextYear;
+      slider.value = nextYear;
+      updateChart(nextYear)
+    }
+    else {
+      isPlaying = false;
+      clearInterval(timer);
+      playButton.innerText = 'Replay'
+    }
   }
 
   const onSlider = e => {
@@ -400,9 +408,14 @@ const renderEapBarChart = async () => {
       e.target.innerText = 'Play'
     }
     else {
+      // Reset if the slider is at the end.
+      if(activeYear === lastYear) {
+        activeYear = years[0]
+        slider.value = activeYear;
+      }
       isPlaying = true;
       e.target.innerText = 'Pause'
-      timer = setInterval(incrementYear, 600)
+      timer = setInterval(incrementYear, 500)
     }
   }
 
