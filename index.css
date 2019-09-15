@@ -395,10 +395,21 @@ input[type=range]:focus::-ms-fill-upper {
   background: #a1c5e9;
 }
 
+#eap_bar_chart {
+  border: 1px solid #888;
+  box-shadow: 0 0 10px #999;
+  padding: 40px 0 0 40px;
+}
+
+#section-3 #eap_bar_chart {
+  margin-bottom: 5rem;
+}
+
 #eap_bar_chart_slider {
   display: block;
-  width: 80%;
+  width: 90%;
   margin: 30px auto;
+  padding-right: 20px;
 }
 
 .poverty-map__container {

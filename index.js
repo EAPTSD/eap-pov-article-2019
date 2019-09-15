@@ -400,6 +400,12 @@ const renderEapBarChart = async () => {
   const onSlider = e => {
     const value = e.target.value;
     updateChart(value)
+    if(value === lastYear){
+      playButton.innerText = 'Replay'
+    }
+    else {
+      playButton.innerText = 'Play'
+    }
   }
   const onPlay = e => {
     if (isPlaying) {
