@@ -765,6 +765,14 @@ const renderMongoliaChoropleth = async () => {
       updateMapColorsByPovertyMeasure(povertyMeasure)
     }
     povertyMeasureForm.addEventListener('change', onFormChange);
+    povertyMeasureForm.addEventListener('keypress', e => {
+      if(e.key === 'Enter' || ' '){
+        e.preventDefault()
+        const povertyMeasure = e.target.htmlFor
+        document.getElementById(povertyMeasure).checked = true;
+        updateMapColorsByPovertyMeasure(povertyMeasure)
+      }
+    });
   }
 
   // Dyanamically build country selector if element exists.
