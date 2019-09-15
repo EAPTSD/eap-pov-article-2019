@@ -68,7 +68,7 @@ figure.framed-image.thick-frame {
 figure.framed-image figcaption {
   margin: 5px 0;
   padding-left: 5px;
-  font-size: smaller;
+  font-size: 12px;
 }
 
 li {
@@ -246,6 +246,10 @@ section#section-5 {
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+#section-7 figure img {
+  width: 900px;
 }
 
 .title-card__container-outer {
