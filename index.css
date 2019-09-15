@@ -218,15 +218,19 @@ section.theme--light, footer.theme--light {
   margin-bottom: 0;
 }
 
-section#section-4 {
+#section-4 {
+  padding-top: 0;
+}
+
+section#section-5 {
   padding: 5rem 0;
 }
 
-#section-4 .framed-image img {
+#section-5 .framed-image img {
   width: 450px;
 }
 
-#section-5 {
+#section-6 {
   padding-bottom:  5rem;
 }
 
