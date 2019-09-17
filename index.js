@@ -484,7 +484,13 @@ const renderChoropleth = async () => {
   const baseSize = {
     container: {
       width: 800,
-      height: 610
+      height: 640
+    },
+    margin: {
+      top: 0,
+      bottom: 40,
+      left: 40,
+      right: 40,
     },
     tooltip: {
       fontSize: 14,
@@ -497,6 +503,9 @@ const renderChoropleth = async () => {
         y: 20,
       },
     },
+    legend: {
+      height: 25,
+    }
   }
 
   // Stroke width is currently unnecessary (they are all the same). Leaving it in in case the requirements change.
@@ -653,7 +662,7 @@ const renderChoropleth = async () => {
       .geoMercator()
       .scale(countrySettings[countryCode].scale)
       .center(center)
-      .translate( [baseSize.container.width / 2, baseSize.container.height / 2 ] )
+      .translate( [baseSize.container.width / 2, ((baseSize.container.height / 2) - baseSize.margin.bottom - baseSize.margin.top) ] )
   
     const path = d3.geoPath().projection(projection);
   
@@ -748,10 +757,45 @@ const renderChoropleth = async () => {
         .on('mouseover', onMouseoverRegion)
         .on('mouseleave', onMouseleaveRegion)
 
-    // TODO: Create a legend. 
-    // Start with gray versions. Color tint only the levels that have applicable data on the map.
-    // Allow for highlighting. (Will require tagging all regions by level for quick selection and highlighting?)
-    const legend = '';
+    // Using https://observablehq.com/@tmcw/d3-scalesequential-continuous-color-legend-example for approach.
+    const renderLegend = () => {
+      // Create def of linear gradient to use for fill later.
+      const linearGradientId = 'poverty-map__linear-gradient'
+      const defs = svg.append('defs');
+      const linearGradient = defs.append('linearGradient').attr('id', linearGradientId);
+      linearGradient.selectAll("stop")
+        .data(mapDataToColor.ticks().map((t, i, n) => ({ offset: `${100*i/n.length}%`, color: mapDataToColor(100 - t) })))
+        .enter().append("stop")
+        .attr("offset", d => d.offset)
+        .attr("stop-color", d => d.color);
+      
+      svg.append('g')
+        .attr("transform", `translate(0,${ baseSize.container.height - baseSize.margin.bottom - baseSize.legend.height })`)
+        .append("rect")
+        .attr('transform', `translate(${ baseSize.margin.left }, 0)`)
+        .attr("width", baseSize.container.width - baseSize.margin.right - baseSize.margin.left)
+        .attr("height", baseSize.legend.height)
+        .style("fill", `url(#${ linearGradientId })`);
+      
+      const axisScale = d3
+        .scaleLinear()
+        .domain(mapDataToColor.domain())
+        .range([baseSize.margin.left, baseSize.container.width - baseSize.margin.right]);
+      
+      const axisBottom = g => g
+        .attr("class", `poverty-map__legend-bar`)
+        .attr("transform", `translate(0,${baseSize.container.height - baseSize.margin.bottom})`)
+        .call(
+          d3.axisBottom(axisScale)
+            .ticks(baseSize.container.width / 100)
+            .tickSize(-baseSize.legend.height)
+        )
+      
+      svg.append('g')
+        .call(axisBottom);
+    }
+
+    const legend = renderLegend();
     
     const updateMapColorsByPovertyMeasure = povertyMeasure => {
       regions
