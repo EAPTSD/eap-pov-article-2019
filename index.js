@@ -433,7 +433,7 @@ const renderEapBarChart = async () => {
 
 renderEapBarChart();
 
-const renderMongoliaChoropleth = async () => {
+const renderChoropleth = async () => {
   const labelMap = {
     // Imp_0_c,
     // Imp_1_c,
@@ -747,6 +747,11 @@ const renderMongoliaChoropleth = async () => {
         .on('mousemove', onMousemove)
         .on('mouseover', onMouseoverRegion)
         .on('mouseleave', onMouseleaveRegion)
+
+    // TODO: Create a legend. 
+    // Start with gray versions. Color tint only the levels that have applicable data on the map.
+    // Allow for highlighting. (Will require tagging all regions by level for quick selection and highlighting?)
+    const legend = '';
     
     const updateMapColorsByPovertyMeasure = povertyMeasure => {
       regions
@@ -759,7 +764,6 @@ const renderMongoliaChoropleth = async () => {
     }
 
     // When a different poverty type is selected, update the region colors based on that data.
-    // TODO: Rerender map based on the new data instead perhaps (so tooltips correlate as well)
     const onFormChange = e => {
       const povertyMeasure = e.target.value;
       updateMapColorsByPovertyMeasure(povertyMeasure)
@@ -794,4 +798,4 @@ const renderMongoliaChoropleth = async () => {
   renderMap(initialCountryCode);
 }
 
-renderMongoliaChoropleth('MNG');
+renderChoropleth();
