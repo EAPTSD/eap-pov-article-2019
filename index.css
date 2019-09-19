@@ -312,23 +312,21 @@ section#section-5 {
 
 #eap_bar_chart__button--play {
   display: block;
-  background: #ddf3fd;
-  border: 1px solid black;
+  background: #a1c5e9;
+  color: white;
+  border: none;
   width: 90px;
   padding: 10px 18px;
   margin: 10px auto;
   font-size: 20px;
-  box-shadow: 0 15px 20px -10px #333;
-  border-radius: 2px;
+  border-radius: 6px;
 }
 #eap_bar_chart__button--play:hover, #eap_bar_chart__button--play:focus {
-  background: rgb(198, 217, 231);
-  box-shadow: 0 15px 25px -10px #333;
+  background: #88c1fa;
 }
 
 #eap_bar_chart__button--play:active {
-  background: rgb(156, 169, 179);
-  box-shadow: inherit;
+  background: rgb(218, 237, 251);
 }
 
 /* This is a very light mobile friendly resize to adjust all the rem relative sizes down a bit at mobile. */
