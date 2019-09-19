@@ -186,6 +186,18 @@ section.theme--light, footer.theme--light {
   background: black;
 }
 
+
+/* This is a very light mobile friendly resize to adjust all the rem relative sizes down a bit at mobile. */
+@media screen and (max-width: 800px){
+  :root {
+    font-size: 14px;
+  }
+
+  .sidebar {
+    width: 10vw;
+  }
+}
+
 /* Per section overrides */
 
 #section-0 {
@@ -202,6 +214,40 @@ section.theme--light, footer.theme--light {
   height: 100vh;
   object-fit: cover;
   box-shadow: inset 0 0 100vw rgba(0,0,0,0.9);
+}
+
+
+.title-card__container-outer {
+  position: relative;
+  max-width: 750px;
+  width: 85%;
+  margin: 0 auto;
+  transform: translateY(-75vh);
+  border: 4px solid black;
+  padding: 40px;
+  background: #ffffffe6;
+}
+
+.title-card__container-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(120deg, rgb(45, 45, 45), rgb(13, 13, 13), rgb(45, 45, 45));
+  height: auto;
+  color: white;
+  padding: 50px;
+}
+
+.title-card__container-inner h2 {
+  margin: 0;
+}
+
+.title-card__container-inner p {
+  margin-top: 20px;
+  margin-bottom: 0;
+  width: 65%;
+  text-align: center;
 }
 
 #section-1 .framed-image img {
@@ -258,43 +304,12 @@ section#section-5 {
   }
 }
 
-.title-card__container-outer {
-  position: relative;
-  max-width: 750px;
-  width: 85%;
-  margin: 0 auto;
-  transform: translateY(-75vh);
-  border: 4px solid black;
-  padding: 40px;
-  background: #ffffffe6;
-}
-
-.title-card__container-inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(120deg, rgb(45, 45, 45), rgb(13, 13, 13), rgb(45, 45, 45));
-  height: auto;
-  color: white;
-  padding: 50px;
-}
-
-.title-card__container-inner h2 {
-  margin: 0;
-}
-
-.title-card__container-inner p {
-  margin-top: 20px;
-  margin-bottom: 0;
-  width: 65%;
-  text-align: center;
-}
+/* Chart specific styles */
 
 #eap_bar_chart {
   border: 1px solid #888;
   box-shadow: 0 0 10px #999;
-  padding: 40px 0 0 40px;
+  padding: 2.5% 0 0 3%;
   max-width: 100%;
 }
 
@@ -327,17 +342,6 @@ section#section-5 {
 
 #eap_bar_chart__button--play:active {
   background: rgb(218, 237, 251);
-}
-
-/* This is a very light mobile friendly resize to adjust all the rem relative sizes down a bit at mobile. */
-@media screen and (max-width: 800px){
-  :root {
-    font-size: 14px;
-  }
-
-  .sidebar {
-    width: 10vw;
-  }
 }
 
 input[type=range] {
