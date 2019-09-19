@@ -53,6 +53,7 @@ figure.framed-image {
   flex-direction: column;
   border: 1px solid black;
   padding: 20px;
+  padding-bottom: 10px;
   box-shadow: inset 0 0 10px, 0 15px 20px -10px rgba(0,0,0,0.9);
 }
 
@@ -67,7 +68,6 @@ figure.framed-image.thick-frame {
 
 figure.framed-image figcaption {
   margin: 5px 0;
-  padding-left: 5px;
   font-size: 12px;
 }
 
@@ -229,7 +229,7 @@ section#section-5 {
 #section-5 .framed-image img {
   width: 450px;
 }
-
+ 
 #section-6 {
   padding-bottom:  5rem;
 }
@@ -249,7 +249,13 @@ section#section-5 {
 }
 
 #section-7 figure img {
-  width: 900px;
+  width: 100%;
+}
+
+@media screen and (min-width: 800px){
+  #section-7 figure img {
+    width: 75vw;
+  }
 }
 
 .title-card__container-outer {
@@ -284,6 +290,25 @@ section#section-5 {
   width: 65%;
   text-align: center;
 }
+
+#eap_bar_chart {
+  border: 1px solid #888;
+  box-shadow: 0 0 10px #999;
+  padding: 40px 0 0 40px;
+  max-width: 100%;
+}
+
+#section-3 #eap_bar_chart {
+  margin-bottom: 5rem;
+}
+
+#eap_bar_chart_slider {
+  display: block;
+  width: 90%;
+  margin: 30px auto;
+  padding-right: 20px;
+}
+
 
 #eap_bar_chart__button--play {
   display: block;
@@ -403,28 +428,12 @@ input[type=range]:focus::-ms-fill-upper {
   background: #a1c5e9;
 }
 
-#eap_bar_chart {
-  border: 1px solid #888;
-  box-shadow: 0 0 10px #999;
-  padding: 40px 0 0 40px;
-}
-
-#section-3 #eap_bar_chart {
-  margin-bottom: 5rem;
-}
-
-#eap_bar_chart_slider {
-  display: block;
-  width: 90%;
-  margin: 30px auto;
-  padding-right: 20px;
-}
-
 .poverty-map__container {
   background: #b7d9ff;
   border-left: 5px solid #b7d9ff;
   border-right: 5px solid #b7d9ff;
   border-bottom: 3px solid #b7d9ff;
+  max-width: 100%;
 }
 
 #choropleth_poverty_chart {
