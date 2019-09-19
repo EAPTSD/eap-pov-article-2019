@@ -439,7 +439,7 @@ const renderEapBarChart = async () => {
       playButton.innerText = 'Replay'
     }
     else {
-      playButton.innerText = 'Play'
+      playButton.innerText = isPlaying ? 'Pause' : 'Play';
     }
   }
   const onPlay = e => {
