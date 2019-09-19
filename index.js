@@ -162,10 +162,10 @@ const renderEapBarChart = async () => {
     width: 600,
     height: 330,
     margin: {
-      top: 30,
+      top: 50,
       bottom: 150,
       left: 100,
-      right: 100,
+      right: 40,
     },
     tooltip: {
       fontSize: 14,
@@ -318,7 +318,7 @@ const renderEapBarChart = async () => {
   svg.append("text")
     .attr("class", "bar-chart__title")
     .attr("x", (baseSize.width / 2) + baseSize.margin.left)
-    .attr("y", baseSize.margin.top)
+    .attr("y", baseSize.margin.top / 2)
     .attr("text-anchor", "middle")
     .attr("font-family", "Lato")
     .attr('font-size', "24px")
@@ -328,11 +328,11 @@ const renderEapBarChart = async () => {
   groupContainer
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - baseSize.margin.left)
+    .attr("y", - (baseSize.margin.left * .75))
     .attr("x", 0 - (baseSize.height / 2))
     .attr("dy", "1em")
     .attr("font-family", "Lato")
-    .attr('font-size', '24px')
+    .attr('font-size', '18px')
     .style("text-anchor", "middle")
     .text("Population (in millions)");
 
@@ -831,7 +831,7 @@ const renderChoropleth = async () => {
         .call(axisBottom);
     }
 
-    const legend = renderLegend();
+    renderLegend();
     
     const updateMapColorsByPovertyMeasure = povertyMeasure => {
       regions
