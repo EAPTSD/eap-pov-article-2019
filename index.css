@@ -510,3 +510,10 @@ input[type=range]:focus::-ms-fill-upper {
   font-size: 17px;
   background: #a1c5e980;
 }
+
+.poverty-map__legend-bar text {
+  fill: white;
+  cursor: default;
+  user-select: none;
+  font-size: .8rem;
+}
