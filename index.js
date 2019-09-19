@@ -131,10 +131,10 @@ const renderEapBarChart = async () => {
   // Hardcoded sizes for now.
   const baseSize = {
     width: 600,
-    height: 400,
+    height: 330,
     margin: {
-      top: 50,
-      bottom: 200,
+      top: 30,
+      bottom: 150,
       left: 100,
       right: 100,
     },
@@ -142,12 +142,17 @@ const renderEapBarChart = async () => {
       fontSize: 14,
       width: 120,
       height: 40,
-      posX: 50,
-      posY: 0,
+      posX: 80,
+      posY: -20,
       textOffset: {
         x: 10,
         y: 0,
       },
+    },
+    labels: {
+      x: {
+        fontSize: 14,
+      }
     }
   }
 
@@ -232,7 +237,7 @@ const renderEapBarChart = async () => {
   groupContainer.append("g")
     .attr("class", "axis axis--x")
     .attr("transform", "translate(0," + baseSize.height + ")")
-    .style("font", "16px sans-serif")
+    .style("font", `${ baseSize.labels.x.fontSize }px sans-serif`)
     .attr("font-family", "Lato")
     .call(d3.axisBottom(x))
     .call(() => {
