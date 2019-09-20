@@ -33,6 +33,35 @@ scrollHandler();
 // This is a quick hack so I can go back to what I was doing.
 // window.scrollTo(0,0);
 
+// https://brendansudol.com/writing/responsive-d3
+function responsivefy(svg) {
+  // get container + svg aspect ratio
+  var container = d3.select(svg.node().parentNode),
+      width = parseInt(svg.style("width")),
+      height = parseInt(svg.style("height")),
+      aspect = width / height;
+  // add viewBox and preserveAspectRatio properties,
+  // and call resize so that svg resizes on inital page load
+  svg.attr("viewBox", "0 0 " + width + " " + height)
+      .attr("perserveAspectRatio", "xMinYMid")
+      .call(resize);
+
+  // to register multiple listeners for same event type, 
+  // you need to add namespace, i.e., 'click.foo'
+  // necessary if you call invoke this function for multiple svgs
+  // api docs: https://github.com/mbostock/d3/wiki/Selections#on
+  d3.select(window).on("resize." + container.attr("id"), resize);
+
+  // get width of container and resize svg to fit it
+  function resize() {
+      var targetWidth = parseInt(container.style("width"));
+      svg.attr("width", targetWidth);
+      svg.attr("height", Math.round(targetWidth / aspect));
+  }
+}
+
+
+
 // #### d3 chart
 const renderEapBarChart = async () => {
   const chartContainerSelector = '#eap_bar_chart';
@@ -131,23 +160,28 @@ const renderEapBarChart = async () => {
   // Hardcoded sizes for now.
   const baseSize = {
     width: 600,
-    height: 400,
+    height: 330,
     margin: {
       top: 50,
-      bottom: 200,
+      bottom: 150,
       left: 100,
-      right: 100,
+      right: 40,
     },
     tooltip: {
       fontSize: 14,
       width: 120,
       height: 40,
-      posX: 50,
-      posY: 0,
+      posX: 80,
+      posY: -20,
       textOffset: {
         x: 10,
         y: 0,
       },
+    },
+    labels: {
+      x: {
+        fontSize: 14,
+      }
     }
   }
 
@@ -156,8 +190,9 @@ const renderEapBarChart = async () => {
     .select(chartContainerSelector)
     .append('svg')
     .attr("width", baseSize.width + baseSize.margin.left + baseSize.margin.right)
-    .attr("height", baseSize.height + baseSize.margin.top + baseSize.margin.bottom);
-
+    .attr("height", baseSize.height + baseSize.margin.top + baseSize.margin.bottom)
+    .call(responsivefy)
+    
   let groupContainer = svg
     .append('g')
     .attr("transform", `translate(${baseSize.margin.left},${baseSize.margin.top})`);
@@ -232,7 +267,7 @@ const renderEapBarChart = async () => {
   groupContainer.append("g")
     .attr("class", "axis axis--x")
     .attr("transform", "translate(0," + baseSize.height + ")")
-    .style("font", "16px sans-serif")
+    .style("font", `${ baseSize.labels.x.fontSize }px sans-serif`)
     .attr("font-family", "Lato")
     .call(d3.axisBottom(x))
     .call(() => {
@@ -283,7 +318,7 @@ const renderEapBarChart = async () => {
   svg.append("text")
     .attr("class", "bar-chart__title")
     .attr("x", (baseSize.width / 2) + baseSize.margin.left)
-    .attr("y", baseSize.margin.top)
+    .attr("y", baseSize.margin.top / 2)
     .attr("text-anchor", "middle")
     .attr("font-family", "Lato")
     .attr('font-size', "24px")
@@ -293,11 +328,11 @@ const renderEapBarChart = async () => {
   groupContainer
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - baseSize.margin.left)
+    .attr("y", - (baseSize.margin.left * .75))
     .attr("x", 0 - (baseSize.height / 2))
     .attr("dy", "1em")
     .attr("font-family", "Lato")
-    .attr('font-size', '24px')
+    .attr('font-size', '18px')
     .style("text-anchor", "middle")
     .text("Population (in millions)");
 
@@ -359,6 +394,7 @@ const renderEapBarChart = async () => {
   // ##### ANIMATION CONTROLS ######
   const slider = document.getElementById("eap_bar_chart_slider")
   const playButton = document.getElementById("eap_bar_chart__button--play")
+  const lastYear = years[years.length -1];
   let activeYear = years[0];
   let timer;
   let isPlaying = false;
@@ -383,15 +419,28 @@ const renderEapBarChart = async () => {
 
   const incrementYear = () => {
     const nextYearIndex = years.indexOf(activeYear) + 1;
-    const nextYear = years[nextYearIndex] ? years[nextYearIndex] : years[0];
-    activeYear = nextYear;
-    slider.value = nextYear;
-    updateChart(nextYear)
+    const nextYear = years[nextYearIndex];
+    if(nextYear){
+      activeYear = nextYear;
+      slider.value = nextYear;
+      updateChart(nextYear)
+    }
+    else {
+      isPlaying = false;
+      clearInterval(timer);
+      playButton.innerText = 'Replay'
+    }
   }
 
   const onSlider = e => {
     const value = e.target.value;
     updateChart(value)
+    if(value === lastYear){
+      playButton.innerText = 'Replay'
+    }
+    else {
+      playButton.innerText = isPlaying ? 'Pause' : 'Play';
+    }
   }
   const onPlay = e => {
     if (isPlaying) {
@@ -400,9 +449,14 @@ const renderEapBarChart = async () => {
       e.target.innerText = 'Play'
     }
     else {
+      // Reset if the slider is at the end.
+      if(activeYear === lastYear) {
+        activeYear = years[0]
+        slider.value = activeYear;
+      }
       isPlaying = true;
       e.target.innerText = 'Pause'
-      timer = setInterval(incrementYear, 600)
+      timer = setInterval(incrementYear, 500)
     }
   }
 
@@ -414,7 +468,7 @@ const renderEapBarChart = async () => {
 
 renderEapBarChart();
 
-const renderMongoliaChoropleth = async () => {
+const renderChoropleth = async () => {
   const labelMap = {
     // Imp_0_c,
     // Imp_1_c,
@@ -465,7 +519,13 @@ const renderMongoliaChoropleth = async () => {
   const baseSize = {
     container: {
       width: 800,
-      height: 610
+      height: 640
+    },
+    margin: {
+      top: 0,
+      bottom: 40,
+      left: 40,
+      right: 40,
     },
     tooltip: {
       fontSize: 14,
@@ -478,6 +538,9 @@ const renderMongoliaChoropleth = async () => {
         y: 20,
       },
     },
+    legend: {
+      height: 25,
+    }
   }
 
   // Stroke width is currently unnecessary (they are all the same). Leaving it in in case the requirements change.
@@ -634,7 +697,7 @@ const renderMongoliaChoropleth = async () => {
       .geoMercator()
       .scale(countrySettings[countryCode].scale)
       .center(center)
-      .translate( [baseSize.container.width / 2, baseSize.container.height / 2 ] )
+      .translate( [baseSize.container.width / 2, ((baseSize.container.height / 2) - baseSize.margin.bottom - baseSize.margin.top) ] )
   
     const path = d3.geoPath().projection(projection);
   
@@ -707,6 +770,7 @@ const renderMongoliaChoropleth = async () => {
       .attr("height", baseSize.container.height)
       .attr("width", baseSize.container.width)
       .style("background", "black")
+      .call(responsivefy)
   
     const regions = svg
       .append("g")
@@ -728,6 +792,46 @@ const renderMongoliaChoropleth = async () => {
         .on('mousemove', onMousemove)
         .on('mouseover', onMouseoverRegion)
         .on('mouseleave', onMouseleaveRegion)
+
+    // Using https://observablehq.com/@tmcw/d3-scalesequential-continuous-color-legend-example for approach.
+    const renderLegend = () => {
+      // Create def of linear gradient to use for fill later.
+      const linearGradientId = 'poverty-map__linear-gradient'
+      const defs = svg.append('defs');
+      const linearGradient = defs.append('linearGradient').attr('id', linearGradientId);
+      linearGradient.selectAll("stop")
+        .data(mapDataToColor.ticks().map((t, i, n) => ({ offset: `${100*i/n.length}%`, color: mapDataToColor(100 - t) })))
+        .enter().append("stop")
+        .attr("offset", d => d.offset)
+        .attr("stop-color", d => d.color);
+      
+      svg.append('g')
+        .attr("transform", `translate(0,${ baseSize.container.height - baseSize.margin.bottom - baseSize.legend.height })`)
+        .append("rect")
+        .attr('transform', `translate(${ baseSize.margin.left }, 0)`)
+        .attr("width", baseSize.container.width - baseSize.margin.right - baseSize.margin.left)
+        .attr("height", baseSize.legend.height)
+        .style("fill", `url(#${ linearGradientId })`);
+      
+      const axisScale = d3
+        .scaleLinear()
+        .domain(mapDataToColor.domain())
+        .range([baseSize.margin.left, baseSize.container.width - baseSize.margin.right]);
+      
+      const axisBottom = g => g
+        .attr("class", `poverty-map__legend-bar`)
+        .attr("transform", `translate(0,${baseSize.container.height - baseSize.margin.bottom})`)
+        .call(
+          d3.axisBottom(axisScale)
+            .ticks(baseSize.container.width / 100)
+            .tickSize(-baseSize.legend.height)
+        )
+      
+      svg.append('g')
+        .call(axisBottom);
+    }
+
+    renderLegend();
     
     const updateMapColorsByPovertyMeasure = povertyMeasure => {
       regions
@@ -740,12 +844,19 @@ const renderMongoliaChoropleth = async () => {
     }
 
     // When a different poverty type is selected, update the region colors based on that data.
-    // TODO: Rerender map based on the new data instead perhaps (so tooltips correlate as well)
     const onFormChange = e => {
       const povertyMeasure = e.target.value;
       updateMapColorsByPovertyMeasure(povertyMeasure)
     }
     povertyMeasureForm.addEventListener('change', onFormChange);
+    povertyMeasureForm.addEventListener('keypress', e => {
+      if(e.key === 'Enter' || ' '){
+        e.preventDefault()
+        const povertyMeasure = e.target.htmlFor
+        document.getElementById(povertyMeasure).checked = true;
+        updateMapColorsByPovertyMeasure(povertyMeasure)
+      }
+    });
   }
 
   // Dyanamically build country selector if element exists.
@@ -767,4 +878,4 @@ const renderMongoliaChoropleth = async () => {
   renderMap(initialCountryCode);
 }
 
-renderMongoliaChoropleth('MNG');
+renderChoropleth();
