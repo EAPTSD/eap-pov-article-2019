@@ -565,7 +565,7 @@ const renderChoropleth = async () => {
 
   const countrySettings = {
     'IDN': {
-      label: 'Indonesia',
+      label: 'Indonesia (2017)',
       surveyyear: 2017,
       scale: 900,
       positionOffset: {
@@ -575,7 +575,7 @@ const renderChoropleth = async () => {
       strokeWidth: .2,
     },
     'LAO': {
-      label: 'Lao PDR',
+      label: 'Lao PDR (2012)',
       surveyyear: 2012,
       scale: 3200,
       positionOffset: {
@@ -585,7 +585,7 @@ const renderChoropleth = async () => {
       strokeWidth: .2,
     },
     'MNG': {
-      label: 'Mongolia',
+      label: 'Mongolia (2016)',
       surveyyear: 2016,
       scale: 1300,
       positionOffset: {
@@ -595,7 +595,7 @@ const renderChoropleth = async () => {
       strokeWidth: .2,
     },
     'MMR': {
-      label: 'Myanmar',
+      label: 'Myanmar (2015)',
       surveyyear: 2015,
       scale: 1500,
       positionOffset: {
@@ -605,7 +605,7 @@ const renderChoropleth = async () => {
       strokeWidth: .2,
     },
     'PNG': {
-      label: 'Papua New Guinea',
+      label: 'Papua New Guinea (2009)',
       surveyyear: 2009,
       scale: 2800,
       positionOffset: {
@@ -615,7 +615,7 @@ const renderChoropleth = async () => {
       strokeWidth: .2,
     },
     'PHL': {
-      label: 'Philippines',
+      label: 'Philippines (2015)',
       surveyyear: 2015,
       scale: 1800,
       positionOffset: {
@@ -625,7 +625,7 @@ const renderChoropleth = async () => {
       strokeWidth: .2,
     },
     'SLB': {
-      label: 'Solomon Islands',
+      label: 'Solomon Islands (2013)',
       surveyyear: 2013,
       scale: 3600,
       positionOffset: {
@@ -635,7 +635,7 @@ const renderChoropleth = async () => {
       strokeWidth: .2,
     },
     'THA': {
-      label: 'Thailand',
+      label: 'Thailand (2017)',
       surveyyear: 2017,
       scale: 2000,
       positionOffset: {
@@ -645,7 +645,7 @@ const renderChoropleth = async () => {
       strokeWidth: .2,
     },
     'TLS': {
-      label: 'Timor-Leste',
+      label: 'Timor-Leste (2014)',
       surveyyear: 2014,
       scale: 9000,
       positionOffset: {
@@ -654,18 +654,8 @@ const renderChoropleth = async () => {
       },
       strokeWidth: .2,
     },  
-    'VNM': {
-      label: 'Vietnam',
-      surveyyear: 2016,
-      scale: 1900,
-      positionOffset: {
-        x: 0,
-        y: -20,
-      },
-      strokeWidth: .2,
-    },
     'VUT': {
-      label: 'Vanuatu',
+      label: 'Vanuatu (2010)',
       surveyyear: 2010,
       scale: 3800,
       positionOffset: {
@@ -673,7 +663,18 @@ const renderChoropleth = async () => {
         y: -20,
       },
       strokeWidth: .2,
+    },
+    'VNM': {
+      label: 'Vietnam (2016)',
+      surveyyear: 2016,
+      scale: 1900,
+      positionOffset: {
+        x: 0,
+        y: -20,
+      },
+      strokeWidth: .2,
     }
+
   }
 
 
