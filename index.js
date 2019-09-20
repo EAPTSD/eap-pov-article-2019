@@ -237,12 +237,12 @@ const renderEapBarChart = async () => {
     // Render China
     tooltip
       .select(".bar-chart__tooltip-text--China")
-      .text(`China: ${parseFloat(data.China, 10).toFixed(2)}m`)
+      .text(`China: ${parseFloat(data.China, 10).toFixed(0)} m`)
       .attr("font-weight", "normal")
     // Render RoEAP
     tooltip
       .select(".bar-chart__tooltip-text--RoEAP")
-      .text(`RoEAP: ${parseFloat(data.RoEAP, 10).toFixed(2)}m`)
+      .text(`RoEAP: ${parseFloat(data.RoEAP, 10).toFixed(0)} m`)
       .attr("font-weight", "normal")
     // Highlight active region
     tooltip
