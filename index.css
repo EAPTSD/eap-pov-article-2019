@@ -453,19 +453,23 @@ input[type=range]:focus::-ms-fill-upper {
   width: 100%;
   display: flex;
   background: #b7d9ff;
+  color: #404040;
 }
 
 #choropleth_country_selector {
   display: inline-block;
   margin: auto 5px;
-  font-size: 1.1rem;
+  width: 90px;
+  height: 40px;
+  font-size: 10px;
 }
 
 #choropleth_poverty_selector {
   display: inline-flex;
+  flex-wrap: wrap;
   flex: 1;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 #choropleth_poverty_selector input {
@@ -473,19 +477,16 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 #choropleth_poverty_selector label {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100%;
+  height: 40px;
   padding: 5px 0;
+  font-size: 12px;
+  width: 33%;
 }
 
-#choropleth_poverty_selector label:not(:last-of-type) {
-  border-right: 1px solid rgba(0,0,0,0.1);
-
-}
 
 #choropleth_poverty_selector label:hover {
   background: rgba(0,0,0, 0.1);
@@ -535,4 +536,37 @@ input[type=range]:focus::-ms-fill-upper {
   cursor: default;
   user-select: none;
   font-size: .8rem;
+}
+
+@media screen and (min-width: 450px){
+  #choropleth_country_selector {
+    font-size: 1.1rem;
+    width: 160px;
+  }
+}
+
+@media screen and (min-width: 600px){
+  #choropleth_country_selector {
+    height: inherit;
+  }
+
+  #choropleth_poverty_selector {
+    flex-wrap: nowrap;
+  }
+
+  #choropleth_poverty_selector label {
+    height: 100%;
+    flex: 1;
+  }
+
+  #choropleth_poverty_selector label:not(:last-of-type) {
+    border-right: 1px solid rgba(0,0,0,0.1);
+  }
+  
+}
+
+@media screen and (min-width: 700px){
+  #choropleth_poverty_selector label {
+    font-size: 1rem;
+  }
 }
