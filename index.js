@@ -65,6 +65,7 @@ function responsivefy(svg) {
 // #### d3 chart
 const renderEapBarChart = async () => {
   const chartContainerSelector = '#eap_bar_chart';
+  const tooltipSelector = '.bar-chart__tooltip';
 
   // The raw data is an array of objects with years, level, and region keys.
   const rawData = await d3.csv('./data/dreaded-bar-anime-data-for-use.csv');
@@ -219,7 +220,7 @@ const renderEapBarChart = async () => {
 
   const mouseoverBar = function (d) {
     // Reveal the tooltip container.
-    d3.selectAll('.bar-chart__tooltip').style("display", null);
+    d3.selectAll(tooltipSelector).style("display", null);
 
     // Find the value that this group was generated from (ie the region)
     // From https://www.d3-graph-gallery.com/graph/barplot_stacked_highlight.html
@@ -228,39 +229,54 @@ const renderEapBarChart = async () => {
   }
 
   const mouseleaveBar = function (d) {
-    d3.selectAll('.bar-chart__tooltip').style("display", "none");
+    d3.selectAll(tooltipSelector).style("display", "none");
     d3.selectAll("rect").style("opacity", 1)
   }
 
+  const updateTooltipContents = (data, activeRegion, tooltip = d3.selectAll(tooltipSelector)) => {
+    // Render China
+    tooltip
+      .select(".bar-chart__tooltip-text--China")
+      .text(`China: ${parseFloat(data.China, 10).toFixed(2)}m`)
+      .attr("font-weight", "normal")
+    // Render RoEAP
+    tooltip
+      .select(".bar-chart__tooltip-text--RoEAP")
+      .text(`RoEAP: ${parseFloat(data.RoEAP, 10).toFixed(2)}m`)
+      .attr("font-weight", "normal")
+    // Highlight active region
+    tooltip
+      .select(`.bar-chart__tooltip-text--${activeRegion}`)
+      .attr("font-weight", "bolder")
+  }
+
+  const updateToolTipManually = () => {
+    const hoveredElements = document.querySelectorAll(':hover');
+    const hoveredRect = hoveredElements[hoveredElements.length - 1]
+    const data = d3.select(hoveredRect).data()[0]
+    if(data){
+      const activeRegion = d3.select(hoveredRect.parentNode).datum().key
+      updateTooltipContents(data.data, activeRegion)
+    }
+  }
+
   function onMousemove(d) {
-    const activeRegion = d3.select(this.parentNode).datum().key
-    const { data } = d;
     // We want to draw the values for both bars (so that bars that are miniscule and hard to select are still available
     // to show values)
     // Since there are two known and fixed values, we'll do this manually. But it would make sense to use a loop
     // for dynamism in most cases.
     // We also want to highlight the active region so it's clear which bar is being hovered.
 
-    // 1. Reposition the tooltip above the mouse's current location with an offset.
+    // Reposition the tooltip above the mouse's current location with an offset.
     const xPosition = d3.mouse(this)[0] + baseSize.tooltip.posX;
     const yPosition = d3.mouse(this)[1] + baseSize.tooltip.posY;
-    const tooltip = d3.selectAll('.bar-chart__tooltip');
+    const tooltip = d3.selectAll(tooltipSelector);
     tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
 
-    // 2. Render China
-    tooltip
-      .select(".bar-chart__tooltip-text--China")
-      .text(`China: ${parseFloat(data.China, 10).toFixed(2)}m`)
-      .attr("font-weight", "normal")
-    // 3. Render RoEAP
-    tooltip
-      .select(".bar-chart__tooltip-text--RoEAP")
-      .text(`RoEAP: ${parseFloat(data.RoEAP, 10).toFixed(2)}m`)
-      .attr("font-weight", "normal")
-    // 4. Highlight active region
-    tooltip
-      .select(`.bar-chart__tooltip-text--${activeRegion}`)
-      .attr("font-weight", "bolder")
+    // Render contents
+    const { data } = d;
+    const activeRegion = d3.select(this.parentNode).datum().key
+    updateTooltipContents(data, activeRegion, tooltip)
   }
 
 
@@ -303,15 +319,15 @@ const renderEapBarChart = async () => {
     .selectAll("rect")
     .data(d => d)
     .enter().append("rect")
-    .attr("class", "bar-chart__region-bar")
-    .attr("x", d => x(xLabelFullMap[d.data.x]))
-    .attr("y", d => y(d[1]))
-    .attr("height", d => y(d[0]) - y(d[1]))
-    .attr("width", x.bandwidth())
-    .on("mousemove", onMousemove)
-    .on("mouseover", mouseoverBar)
-    // Mouseout vs mouseleave??
-    .on("mouseleave", mouseleaveBar)
+      .attr("class", "bar-chart__region-bar")
+      .attr("x", d => x(xLabelFullMap[d.data.x]))
+      .attr("y", d => y(d[1]))
+      .attr("height", d => y(d[0]) - y(d[1]))
+      .attr("width", x.bandwidth())
+      .on("mousemove", onMousemove)
+      .on("mouseover", mouseoverBar)
+      // Mouseout vs mouseleave??
+      .on("mouseleave", mouseleaveBar)
 
 
   // Main Title text
@@ -415,6 +431,7 @@ const renderEapBarChart = async () => {
 
     svg.selectAll('.bar-chart__title').text(year)
 
+    updateToolTipManually()
   }
 
   const incrementYear = () => {
@@ -463,7 +480,6 @@ const renderEapBarChart = async () => {
   slider.addEventListener('input', onSlider)
   playButton.addEventListener('click', onPlay)
 
-  // TODO: Responsiveness.
 }
 
 renderEapBarChart();
