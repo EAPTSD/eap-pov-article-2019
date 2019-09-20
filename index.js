@@ -392,7 +392,7 @@ const renderEapBarChart = async () => {
     .attr("font-size", `${baseSize.tooltip.fontSize}px`)
 
   // ##### ANIMATION CONTROLS ######
-  const slider = document.getElementById("eap_bar_chart_slider")
+  const slider = document.getElementById("eap_bar_chart__slider")
   const playButton = document.getElementById("eap_bar_chart__button--play")
   const lastYear = years[years.length -1];
   let activeYear = years[0];
