@@ -320,15 +320,25 @@ section#section-5 {
 
 /* Chart specific styles */
 
-#eap_bar_chart {
+.eap_bar_chart__container {
   border: 1px solid #888;
+  background: white;
   box-shadow: 0 0 10px #999;
   padding: 4% 0 0 0;
   max-width: 100%;
 }
 
-#section-3 #eap_bar_chart {
+p.eap_bar_chart__caption {
+  padding: 20px;
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0;
+  line-height: initial;
+}
+
+#section-3 .eap_bar_chart__container {
   margin-bottom: 5rem;
+  margin-top: 80px;
 }
 
 .eap_bar_chart__controls {
@@ -338,7 +348,7 @@ section#section-5 {
   margin-bottom: 30px;
 }
 
-#eap_bar_chart_slider {
+#eap_bar_chart__slider {
   flex: 1 1 90%;
   display: block;
 }
@@ -461,6 +471,15 @@ input[type=range]:focus::-ms-fill-upper {
 #choropleth_poverty_chart {
   margin: 0;
   padding: 0;
+}
+
+p.poverty-map__caption {
+  margin: 0;
+  line-height: initial;
+  padding: 10px;
+  font-size: 1rem;
+  color: #333;
+  font-style: italic;
 }
 
 .poverty-map__nav {
