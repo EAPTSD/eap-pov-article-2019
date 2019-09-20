@@ -45,7 +45,7 @@ p {
 }
 
 img{
-  width: 700px;
+  width: 100%;
 }
 
 figure.framed-image {
@@ -234,24 +234,45 @@ section.theme--light, footer.theme--light {
   justify-content: center;
   align-items: center;
   background: linear-gradient(120deg, rgb(45, 45, 45), rgb(13, 13, 13), rgb(45, 45, 45));
-  height: auto;
   color: white;
-  padding: 50px;
+  padding: 25px;
+  height: 100%;
 }
 
 .title-card__container-inner h2 {
   margin: 0;
+  font-size: 2rem;
+  line-height: 40px;
 }
 
 .title-card__container-inner p {
   margin-top: 20px;
   margin-bottom: 0;
-  width: 65%;
+  width: 85%;
   text-align: center;
 }
 
-#section-1 .framed-image img {
-  width: 500px;
+
+@media screen and (min-width: 650px){
+  img {
+    width: 450px;
+  }
+
+  .title-card__container-inner {
+    padding: 50px;
+    height: auto;
+  }
+
+
+  .title-card__container-inner h2 {
+    font-size: 2.5rem;
+    line-height: inherit;
+  }
+
+  .title-card__container-inner p {
+    width: 65%;
+  }
+
 }
 
 #section-2 .data-wrapper__container {
@@ -272,9 +293,6 @@ section#section-5 {
   padding: 5rem 0;
 }
 
-#section-5 .framed-image img {
-  width: 450px;
-}
  
 #section-6 {
   padding-bottom:  5rem;
@@ -292,10 +310,6 @@ section#section-5 {
   left: 0;
   bottom: 0;
   right: 0;
-}
-
-#section-7 figure img {
-  width: 100%;
 }
 
 @media screen and (min-width: 800px){
@@ -566,6 +580,10 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 @media screen and (min-width: 700px){
+  #choropleth_country_selector {
+    margin-right: 30px;
+  }
+
   #choropleth_poverty_selector label {
     font-size: 1rem;
   }
