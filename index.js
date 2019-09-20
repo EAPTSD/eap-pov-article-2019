@@ -33,9 +33,39 @@ scrollHandler();
 // This is a quick hack so I can go back to what I was doing.
 // window.scrollTo(0,0);
 
+// https://brendansudol.com/writing/responsive-d3
+function responsivefy(svg) {
+  // get container + svg aspect ratio
+  var container = d3.select(svg.node().parentNode),
+      width = parseInt(svg.style("width")),
+      height = parseInt(svg.style("height")),
+      aspect = width / height;
+  // add viewBox and preserveAspectRatio properties,
+  // and call resize so that svg resizes on inital page load
+  svg.attr("viewBox", "0 0 " + width + " " + height)
+      .attr("perserveAspectRatio", "xMinYMid")
+      .call(resize);
+
+  // to register multiple listeners for same event type, 
+  // you need to add namespace, i.e., 'click.foo'
+  // necessary if you call invoke this function for multiple svgs
+  // api docs: https://github.com/mbostock/d3/wiki/Selections#on
+  d3.select(window).on("resize." + container.attr("id"), resize);
+
+  // get width of container and resize svg to fit it
+  function resize() {
+      var targetWidth = parseInt(container.style("width"));
+      svg.attr("width", targetWidth);
+      svg.attr("height", Math.round(targetWidth / aspect));
+  }
+}
+
+
+
 // #### d3 chart
 const renderEapBarChart = async () => {
   const chartContainerSelector = '#eap_bar_chart';
+  const tooltipSelector = '.bar-chart__tooltip';
 
   // The raw data is an array of objects with years, level, and region keys.
   const rawData = await d3.csv('./data/dreaded-bar-anime-data-for-use.csv');
@@ -131,23 +161,28 @@ const renderEapBarChart = async () => {
   // Hardcoded sizes for now.
   const baseSize = {
     width: 600,
-    height: 400,
+    height: 330,
     margin: {
       top: 50,
-      bottom: 200,
+      bottom: 150,
       left: 100,
-      right: 100,
+      right: 40,
     },
     tooltip: {
       fontSize: 14,
       width: 120,
       height: 40,
-      posX: 50,
-      posY: 0,
+      posX: 80,
+      posY: -20,
       textOffset: {
         x: 10,
         y: 0,
       },
+    },
+    labels: {
+      x: {
+        fontSize: 14,
+      }
     }
   }
 
@@ -156,8 +191,9 @@ const renderEapBarChart = async () => {
     .select(chartContainerSelector)
     .append('svg')
     .attr("width", baseSize.width + baseSize.margin.left + baseSize.margin.right)
-    .attr("height", baseSize.height + baseSize.margin.top + baseSize.margin.bottom);
-
+    .attr("height", baseSize.height + baseSize.margin.top + baseSize.margin.bottom)
+    .call(responsivefy)
+    
   let groupContainer = svg
     .append('g')
     .attr("transform", `translate(${baseSize.margin.left},${baseSize.margin.top})`);
@@ -184,7 +220,7 @@ const renderEapBarChart = async () => {
 
   const mouseoverBar = function (d) {
     // Reveal the tooltip container.
-    d3.selectAll('.bar-chart__tooltip').style("display", null);
+    d3.selectAll(tooltipSelector).style("display", null);
 
     // Find the value that this group was generated from (ie the region)
     // From https://www.d3-graph-gallery.com/graph/barplot_stacked_highlight.html
@@ -193,46 +229,61 @@ const renderEapBarChart = async () => {
   }
 
   const mouseleaveBar = function (d) {
-    d3.selectAll('.bar-chart__tooltip').style("display", "none");
+    d3.selectAll(tooltipSelector).style("display", "none");
     d3.selectAll("rect").style("opacity", 1)
   }
 
+  const updateTooltipContents = (data, activeRegion, tooltip = d3.selectAll(tooltipSelector)) => {
+    // Render China
+    tooltip
+      .select(".bar-chart__tooltip-text--China")
+      .text(`China: ${parseFloat(data.China, 10).toFixed(2)}m`)
+      .attr("font-weight", "normal")
+    // Render RoEAP
+    tooltip
+      .select(".bar-chart__tooltip-text--RoEAP")
+      .text(`RoEAP: ${parseFloat(data.RoEAP, 10).toFixed(2)}m`)
+      .attr("font-weight", "normal")
+    // Highlight active region
+    tooltip
+      .select(`.bar-chart__tooltip-text--${activeRegion}`)
+      .attr("font-weight", "bolder")
+  }
+
+  const updateToolTipManually = () => {
+    const hoveredElements = document.querySelectorAll(':hover');
+    const hoveredRect = hoveredElements[hoveredElements.length - 1]
+    const data = d3.select(hoveredRect).data()[0]
+    if(data){
+      const activeRegion = d3.select(hoveredRect.parentNode).datum().key
+      updateTooltipContents(data.data, activeRegion)
+    }
+  }
+
   function onMousemove(d) {
-    const activeRegion = d3.select(this.parentNode).datum().key
-    const { data } = d;
     // We want to draw the values for both bars (so that bars that are miniscule and hard to select are still available
     // to show values)
     // Since there are two known and fixed values, we'll do this manually. But it would make sense to use a loop
     // for dynamism in most cases.
     // We also want to highlight the active region so it's clear which bar is being hovered.
 
-    // 1. Reposition the tooltip above the mouse's current location with an offset.
+    // Reposition the tooltip above the mouse's current location with an offset.
     const xPosition = d3.mouse(this)[0] + baseSize.tooltip.posX;
     const yPosition = d3.mouse(this)[1] + baseSize.tooltip.posY;
-    const tooltip = d3.selectAll('.bar-chart__tooltip');
+    const tooltip = d3.selectAll(tooltipSelector);
     tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
 
-    // 2. Render China
-    tooltip
-      .select(".bar-chart__tooltip-text--China")
-      .text(`China: ${parseFloat(data.China, 10).toFixed(2)}m`)
-      .attr("font-weight", "normal")
-    // 3. Render RoEAP
-    tooltip
-      .select(".bar-chart__tooltip-text--RoEAP")
-      .text(`RoEAP: ${parseFloat(data.RoEAP, 10).toFixed(2)}m`)
-      .attr("font-weight", "normal")
-    // 4. Highlight active region
-    tooltip
-      .select(`.bar-chart__tooltip-text--${activeRegion}`)
-      .attr("font-weight", "bolder")
+    // Render contents
+    const { data } = d;
+    const activeRegion = d3.select(this.parentNode).datum().key
+    updateTooltipContents(data, activeRegion, tooltip)
   }
 
 
   groupContainer.append("g")
     .attr("class", "axis axis--x")
     .attr("transform", "translate(0," + baseSize.height + ")")
-    .style("font", "16px sans-serif")
+    .style("font", `${ baseSize.labels.x.fontSize }px sans-serif`)
     .attr("font-family", "Lato")
     .call(d3.axisBottom(x))
     .call(() => {
@@ -268,22 +319,22 @@ const renderEapBarChart = async () => {
     .selectAll("rect")
     .data(d => d)
     .enter().append("rect")
-    .attr("class", "bar-chart__region-bar")
-    .attr("x", d => x(xLabelFullMap[d.data.x]))
-    .attr("y", d => y(d[1]))
-    .attr("height", d => y(d[0]) - y(d[1]))
-    .attr("width", x.bandwidth())
-    .on("mousemove", onMousemove)
-    .on("mouseover", mouseoverBar)
-    // Mouseout vs mouseleave??
-    .on("mouseleave", mouseleaveBar)
+      .attr("class", "bar-chart__region-bar")
+      .attr("x", d => x(xLabelFullMap[d.data.x]))
+      .attr("y", d => y(d[1]))
+      .attr("height", d => y(d[0]) - y(d[1]))
+      .attr("width", x.bandwidth())
+      .on("mousemove", onMousemove)
+      .on("mouseover", mouseoverBar)
+      // Mouseout vs mouseleave??
+      .on("mouseleave", mouseleaveBar)
 
 
   // Main Title text
   svg.append("text")
     .attr("class", "bar-chart__title")
     .attr("x", (baseSize.width / 2) + baseSize.margin.left)
-    .attr("y", baseSize.margin.top)
+    .attr("y", baseSize.margin.top / 2)
     .attr("text-anchor", "middle")
     .attr("font-family", "Lato")
     .attr('font-size', "24px")
@@ -293,11 +344,11 @@ const renderEapBarChart = async () => {
   groupContainer
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - baseSize.margin.left)
+    .attr("y", - (baseSize.margin.left * .75))
     .attr("x", 0 - (baseSize.height / 2))
     .attr("dy", "1em")
     .attr("font-family", "Lato")
-    .attr('font-size', '24px')
+    .attr('font-size', '18px')
     .style("text-anchor", "middle")
     .text("Population (in millions)");
 
@@ -357,7 +408,7 @@ const renderEapBarChart = async () => {
     .attr("font-size", `${baseSize.tooltip.fontSize}px`)
 
   // ##### ANIMATION CONTROLS ######
-  const slider = document.getElementById("eap_bar_chart_slider")
+  const slider = document.getElementById("eap_bar_chart__slider")
   const playButton = document.getElementById("eap_bar_chart__button--play")
   const lastYear = years[years.length -1];
   let activeYear = years[0];
@@ -380,6 +431,7 @@ const renderEapBarChart = async () => {
 
     svg.selectAll('.bar-chart__title').text(year)
 
+    updateToolTipManually()
   }
 
   const incrementYear = () => {
@@ -404,7 +456,7 @@ const renderEapBarChart = async () => {
       playButton.innerText = 'Replay'
     }
     else {
-      playButton.innerText = 'Play'
+      playButton.innerText = isPlaying ? 'Pause' : 'Play';
     }
   }
   const onPlay = e => {
@@ -428,7 +480,6 @@ const renderEapBarChart = async () => {
   slider.addEventListener('input', onSlider)
   playButton.addEventListener('click', onPlay)
 
-  // TODO: Responsiveness.
 }
 
 renderEapBarChart();
@@ -735,6 +786,7 @@ const renderChoropleth = async () => {
       .attr("height", baseSize.container.height)
       .attr("width", baseSize.container.width)
       .style("background", "black")
+      .call(responsivefy)
   
     const regions = svg
       .append("g")
@@ -795,7 +847,7 @@ const renderChoropleth = async () => {
         .call(axisBottom);
     }
 
-    const legend = renderLegend();
+    renderLegend();
     
     const updateMapColorsByPovertyMeasure = povertyMeasure => {
       regions

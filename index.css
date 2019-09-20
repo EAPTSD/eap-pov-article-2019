@@ -45,7 +45,7 @@ p {
 }
 
 img{
-  width: 700px;
+  width: 100%;
 }
 
 figure.framed-image {
@@ -54,6 +54,8 @@ figure.framed-image {
   border: 1px solid black;
   border-radius: 30px;
   padding: 20px;
+  padding-bottom: 10px;
+  box-shadow: inset 0 0 10px, 0 15px 20px -10px rgba(0,0,0,0.9);
 }
 
 figure.framed-image.medium-frame {
@@ -67,7 +69,6 @@ figure.framed-image.thick-frame {
 
 figure.framed-image figcaption {
   margin: 5px 0;
-  padding-left: 5px;
   font-size: 12px;
 }
 
@@ -186,6 +187,18 @@ section.theme--light, footer.theme--light {
   background: black;
 }
 
+
+/* This is a very light mobile friendly resize to adjust all the rem relative sizes down a bit at mobile. */
+@media screen and (max-width: 800px){
+  :root {
+    font-size: 14px;
+  }
+
+  .sidebar {
+    width: 10vw;
+  }
+}
+
 /* Per section overrides */
 
 #section-0 {
@@ -204,8 +217,63 @@ section.theme--light, footer.theme--light {
   box-shadow: inset 0 0 100vw rgba(0,0,0,0.9);
 }
 
-#section-1 .framed-image img {
-  width: 500px;
+
+.title-card__container-outer {
+  position: relative;
+  max-width: 750px;
+  width: 85%;
+  margin: 0 auto;
+  transform: translateY(-75vh);
+  border: 4px solid black;
+  padding: 40px;
+  background: #ffffffe6;
+}
+
+.title-card__container-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(120deg, rgb(45, 45, 45), rgb(13, 13, 13), rgb(45, 45, 45));
+  color: white;
+  padding: 25px;
+  height: 100%;
+}
+
+.title-card__container-inner h2 {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 40px;
+}
+
+.title-card__container-inner p {
+  margin-top: 20px;
+  margin-bottom: 0;
+  width: 85%;
+  text-align: center;
+}
+
+
+@media screen and (min-width: 650px){
+  img {
+    width: 450px;
+  }
+
+  .title-card__container-inner {
+    padding: 50px;
+    height: auto;
+  }
+
+
+  .title-card__container-inner h2 {
+    font-size: 2.5rem;
+    line-height: inherit;
+  }
+
+  .title-card__container-inner p {
+    width: 65%;
+  }
+
 }
 
 #section-2 .data-wrapper__container {
@@ -226,10 +294,7 @@ section#section-5 {
   padding: 5rem 0;
 }
 
-#section-5 .framed-image img {
-  width: 450px;
-}
-
+ 
 #section-6 {
   padding-bottom:  5rem;
 }
@@ -248,71 +313,65 @@ section#section-5 {
   right: 0;
 }
 
-#section-7 figure img {
-  width: 900px;
+@media screen and (min-width: 800px){
+  #section-7 figure img {
+    width: 75vw;
+  }
 }
 
-.title-card__container-outer {
-  position: relative;
-  max-width: 750px;
-  width: 85%;
-  margin: 0 auto;
-  transform: translateY(-75vh);
-  background: #ffffffe6;
+/* Chart specific styles */
+
+.eap_bar_chart__container {
+  border: 1px solid #888;
+  background: white;
+  box-shadow: 0 0 10px #999;
+  padding: 4% 0 0 0;
+  max-width: 100%;
 }
 
-.title-card__container-inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(120deg, #2d2d2d, rgb(13, 13, 13), rgb(45, 45, 45));
-  height: auto;
-  color: white;
-  padding: 50px;
-}
-
-.title-card__container-inner h2 {
+p.eap_bar_chart__caption {
+  padding: 20px;
+  font-size: 1rem;
+  font-style: italic;
   margin: 0;
+  line-height: initial;
 }
 
-.title-card__container-inner p {
-  margin-top: 20px;
-  margin-bottom: 0;
-  width: 65%;
-  text-align: center;
+#section-3 .eap_bar_chart__container {
+  margin-bottom: 5rem;
 }
+
+.eap_bar_chart__controls {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+#eap_bar_chart__slider {
+  flex: 1 1 90%;
+  display: block;
+}
+
 
 #eap_bar_chart__button--play {
+  flex: 1 0 90px;
   display: block;
-  background: #ddf3fd;
-  border: 1px solid black;
+  background: #a1c5e9;
+  color: white;
+  border: none;
   width: 90px;
   padding: 10px 18px;
-  margin: 10px auto;
+  margin-right: 3%;
   font-size: 20px;
-  box-shadow: 0 15px 20px -10px #333;
-  border-radius: 2px;
+  border-radius: 6px;
 }
 #eap_bar_chart__button--play:hover, #eap_bar_chart__button--play:focus {
-  background: rgb(198, 217, 231);
-  box-shadow: 0 15px 25px -10px #333;
+  background: #88c1fa;
 }
 
 #eap_bar_chart__button--play:active {
-  background: rgb(156, 169, 179);
-  box-shadow: inherit;
-}
-
-/* This is a very light mobile friendly resize to adjust all the rem relative sizes down a bit at mobile. */
-@media screen and (max-width: 800px){
-  :root {
-    font-size: 14px;
-  }
-
-  .sidebar {
-    width: 10vw;
-  }
+  background: rgb(218, 237, 251);
 }
 
 input[type=range] {
@@ -401,28 +460,12 @@ input[type=range]:focus::-ms-fill-upper {
   background: #a1c5e9;
 }
 
-#eap_bar_chart {
-  border: 1px solid #888;
-  box-shadow: 0 0 10px #999;
-  padding: 40px 0 0 40px;
-}
-
-#section-3 #eap_bar_chart {
-  margin-bottom: 5rem;
-}
-
-#eap_bar_chart_slider {
-  display: block;
-  width: 90%;
-  margin: 30px auto;
-  padding-right: 20px;
-}
-
 .poverty-map__container {
   background: #b7d9ff;
   border-left: 5px solid #b7d9ff;
   border-right: 5px solid #b7d9ff;
   border-bottom: 3px solid #b7d9ff;
+  max-width: 100%;
 }
 
 #choropleth_poverty_chart {
@@ -430,23 +473,36 @@ input[type=range]:focus::-ms-fill-upper {
   padding: 0;
 }
 
+p.poverty-map__caption {
+  margin: 0;
+  line-height: initial;
+  padding: 10px;
+  font-size: 1rem;
+  color: #333;
+  font-style: italic;
+}
+
 .poverty-map__nav {
   width: 100%;
   display: flex;
   background: #b7d9ff;
+  color: #404040;
 }
 
 #choropleth_country_selector {
   display: inline-block;
   margin: auto 5px;
-  font-size: 1.1rem;
+  width: 90px;
+  height: 40px;
+  font-size: 10px;
 }
 
 #choropleth_poverty_selector {
   display: inline-flex;
+  flex-wrap: wrap;
   flex: 1;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 #choropleth_poverty_selector input {
@@ -454,19 +510,16 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 #choropleth_poverty_selector label {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100%;
+  height: 40px;
   padding: 5px 0;
+  font-size: 12px;
+  width: 33%;
 }
 
-#choropleth_poverty_selector label:not(:last-of-type) {
-  border-right: 1px solid rgba(0,0,0,0.1);
-
-}
 
 #choropleth_poverty_selector label:hover {
   background: rgba(0,0,0, 0.1);
@@ -516,4 +569,41 @@ input[type=range]:focus::-ms-fill-upper {
   cursor: default;
   user-select: none;
   font-size: .8rem;
+}
+
+@media screen and (min-width: 450px){
+  #choropleth_country_selector {
+    font-size: 1.1rem;
+    width: 160px;
+  }
+}
+
+@media screen and (min-width: 600px){
+  #choropleth_country_selector {
+    height: inherit;
+  }
+
+  #choropleth_poverty_selector {
+    flex-wrap: nowrap;
+  }
+
+  #choropleth_poverty_selector label {
+    height: 100%;
+    flex: 1;
+  }
+
+  #choropleth_poverty_selector label:not(:last-of-type) {
+    border-right: 1px solid rgba(0,0,0,0.1);
+  }
+  
+}
+
+@media screen and (min-width: 700px){
+  #choropleth_country_selector {
+    margin-right: 30px;
+  }
+
+  #choropleth_poverty_selector label {
+    font-size: 1rem;
+  }
 }

@@ -99,10 +99,13 @@
       </div>
 
       <div class="row">
-        <div id="eap_bar_chart">
+        <div class="eap_bar_chart__container">
+          <div class="eap_bar_chart__controls">
             <button id="eap_bar_chart__button--play">Play</button>
-            <input id="eap_bar_chart_slider" type="range" min="2002" max="2017" step="1" value="2002">
-
+            <input id="eap_bar_chart__slider" type="range" min="2002" max="2017" step="1" value="2002">
+          </div>
+          <div id="eap_bar_chart"></div>
+          <p class="eap_bar_chart__caption">Once upon a midnight dreary, while I pondered weak and weary over many a quaint and curious volume of forgotten lore.</p>
         </div>
       </div>  
 
@@ -157,7 +160,9 @@
               <label for="mpi3c_s" tabindex="0">Sanitation</label>
             </form>
           </div>
-          <div id="choropleth_poverty_chart"></div>
+          <div id="choropleth_poverty_chart">
+          </div>
+          <p class="poverty-map__caption">Once upon a midnight dreary, while I pondered weak and weary over many a quaint and curious volume of forgotten lore.</p>
         </div>
       </div>
     </section>
