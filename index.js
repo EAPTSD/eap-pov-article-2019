@@ -68,7 +68,7 @@ const renderEapBarChart = async () => {
   const tooltipSelector = '.bar-chart__tooltip';
 
   // The raw data is an array of objects with years, level, and region keys.
-  const rawData = await d3.csv('./data/dreaded-bar-anime-data-for-use.csv');
+  const rawData = await d3.csv('./data/eap-bar-chart.csv');
 
   // We want to have a lookup table. First by region, then by year, then by poverty level.
   // From that we will generate traces for plotly on the fly.
@@ -691,7 +691,7 @@ const renderChoropleth = async () => {
   document.body.appendChild(tooltip);
 
 
-  const rawJson = await d3.json('./data/ChoroplethData/eap_subnatid_povdata_simplified.json');
+  const rawJson = await d3.json('./data/poverty-map-data.json');
 
   const allEapFeatures = topojson.feature(rawJson, rawJson.objects.eap_subnatid_povdata);
 
