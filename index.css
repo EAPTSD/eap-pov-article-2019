@@ -29,9 +29,9 @@ h1 {
 
 h2 {
   font-weight: 500;
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-align: center;
-  line-height: 70px;
+  line-height: 50px;
   margin-top: 5rem;
   margin-bottom: 2rem;
 }
@@ -280,13 +280,13 @@ section.theme--light, footer.theme--light {
 
 }
 
-#section-2 .data-wrapper__container {
+#section-3 .data-wrapper__container {
   border: 1px solid #888;
   box-shadow: 0 0 10px #999;
   padding: 25px;
 }
 
-#section-2 .data-wrapper__container p:last-child {
+#section-3 .data-wrapper__container p:last-child {
   margin-bottom: 0;
 }
 
@@ -303,7 +303,7 @@ section#section-5 {
   padding-bottom:  5rem;
 }
 
-.section-6-background-image{
+.section-7-background-image{
   position: absolute;
   z-index: -1;   
   width: 100%;
@@ -341,7 +341,7 @@ p.eap_bar_chart__caption {
   line-height: initial;
 }
 
-#section-3 .eap_bar_chart__container {
+#section-4 .eap_bar_chart__container {
   margin-bottom: 5rem;
 }
 
@@ -483,7 +483,7 @@ p.poverty-map__title {
   line-height: initial;
   padding: 10px;
   font-size: 1.5rem;
-  color: rgb(11, 11, 11);
+  color: rgb(155, 200, 226);
 }
 
 p.poverty-map__caption {
