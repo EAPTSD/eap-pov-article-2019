@@ -23,13 +23,15 @@ section {
 
 h1 {
   font-size: 1.5rem;
-  margin: 20px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
 h2 {
   font-weight: 500;
-  font-size: 2rem;
+  width: 70%;
+  font-size: 2.25rem;
   text-align: center;
   line-height: 50px;
   margin-top: 5rem;
@@ -280,6 +282,7 @@ section.theme--light, footer.theme--light {
 
 }
 
+
 #section-3 .data-wrapper__container {
   border: 1px solid #888;
   box-shadow: 0 0 10px #999;
@@ -294,16 +297,15 @@ section.theme--light, footer.theme--light {
   padding-top: 0;
 }
 
-section#section-5 {
+section#section-6 {
   padding: 5rem 0;
 }
 
- 
-#section-6 {
+#section-7 {
   padding-bottom:  5rem;
 }
 
-.section-7-background-image{
+.section-8-background-image{
   position: absolute;
   z-index: -1;   
   width: 100%;
@@ -318,7 +320,7 @@ section#section-5 {
 }
 
 @media screen and (min-width: 800px){
-  #section-7 figure img {
+  #section-8 figure img {
     width: 75vw;
   }
 }
@@ -342,7 +344,7 @@ p.eap_bar_chart__caption {
 }
 
 #section-4 .eap_bar_chart__container {
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
 .eap_bar_chart__controls {
