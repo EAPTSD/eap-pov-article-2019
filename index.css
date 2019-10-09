@@ -67,7 +67,7 @@ figure.framed-image.medium-frame {
 }
 
 figure.framed-image.thick-frame {
-  border: 10px solid black;
+  border: 5px solid black;
 }
 
 figure.framed-image figcaption {
@@ -100,6 +100,7 @@ h2 + .text-block {
 }
 
 footer {
+  font-size: 1rem;
   height: 670px;
   display: flex;
   justify-content: center;
@@ -228,7 +229,7 @@ section.theme--light, footer.theme--light {
   margin: 0 auto;
   transform: translateY(-85vh);
   padding: 30px;
-  border: 4px solid black;
+  border: 4px solid rgb(10, 51, 65);
   background: #ffffffe6;
 }
 
@@ -237,7 +238,7 @@ section.theme--light, footer.theme--light {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(120deg, rgb(45, 45, 45), rgb(13, 13, 13), rgb(45, 45, 45));
+  background: rgb(21, 96, 122,0.9);
   color: white;
   padding: 25px;
   height: 100%;
@@ -299,7 +300,7 @@ section.theme--light, footer.theme--light {
   padding-top: 0;
 }
 
-section#section-6 {
+section#section-2 {
   padding: 5rem 0;
 }
 
@@ -376,7 +377,7 @@ p.eap_bar_chart__caption {
   border-radius: 6px;
 }
 #eap_bar_chart__button--play:hover, #eap_bar_chart__button--play:focus {
-  background: #88c1fa;
+  background: rgb(29, 129, 162,0.5);
 }
 
 #eap_bar_chart__button--play:active {
@@ -406,7 +407,7 @@ input[type=range]::-webkit-slider-thumb {
   height: 23px;
   width: 23px;
   border-radius: 50px;
-  background: #eda84d;
+  background: rgb(200, 99, 0);
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -7.85px;
@@ -470,10 +471,10 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .poverty-map__container {
-  background: #b7d9ff;
-  border-left: 5px solid #b7d9ff;
-  border-right: 5px solid #b7d9ff;
-  border-bottom: 3px solid #b7d9ff;
+  background:rgb(29, 129, 162,0.5);
+  border-left: 5px solid rgb(29, 129, 162,0.5);
+  border-right: 5px solid rgb(29, 129, 162,0.5);
+  border-bottom: 3px solid rgb(29, 129, 162,0.5);
   max-width: 100%;
 }
 
@@ -488,7 +489,7 @@ p.poverty-map__title {
   line-height: initial;
   padding: 10px;
   font-size: 1.5rem;
-  color: rgb(155, 200, 226);
+  color: rgb(29, 129, 162,0.75);
 }
 
 p.poverty-map__caption {
@@ -496,14 +497,14 @@ p.poverty-map__caption {
   line-height: initial;
   padding: 10px;
   font-size: 1rem;
-  color: #333;
+  color: black;
   font-style: italic;
 }
 
 .poverty-map__nav {
   width: 100%;
   display: flex;
-  background: #b7d9ff;
+  background: rgb(29, 129, 162,0.5);
   color: #404040;
 }
 
