@@ -1,13 +1,9 @@
 {
   "name": "eap-pov-article-2019",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Judy Yang",
   "contributors": [
     "Brendan Beltz <brendanwebdev@gmail.com> (https://www.brendanbeltz.com)"
   ],
-  "private": false,
-  "dependencies": {
-    "d3": "5.8.0",
-    "topojson": "3.0.2"
-  }
+  "private": false
 }

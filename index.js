@@ -29,9 +29,6 @@ window.addEventListener('scroll', scrollHandler);
 
 // We want to correctly set UI state before scrolling starts.
 scrollHandler();
-// For some reason (TODO: figure it out later) the page refreshes to the middle scroll position.
-// This is a quick hack so I can go back to what I was doing.
-// window.scrollTo(0,0);
 
 // https://brendansudol.com/writing/responsive-d3
 function responsivefy(svg) {
