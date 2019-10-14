@@ -122,11 +122,11 @@ const renderEapBarChart = async () => {
   const regionMap = {
     'China': {
       name: 'China',
-      color: '#F18F01',
+      color: 'rgb(200, 99, 0,0.5)',
     },
     'RoEAP': {
       name: 'Rest of developing EAP',
-      color: '#048BA8',
+      color: 'rgb(29, 129, 162,0.5)',
     },
   };
   const years = Object.keys(regionalData.China).sort((a, b) => a - b);
@@ -718,7 +718,8 @@ const renderChoropleth = async () => {
   
     const path = d3.geoPath().projection(projection);
   
-    const mapDataToColor = d3.scaleSequential(d3.interpolateRdYlGn).domain([0, 100]);
+    //https://github.com/d3/d3-scale-chromatic
+    const mapDataToColor = d3.scaleSequential(d3.interpolateOranges).domain([0, 100]);
     const strokeColor = '#fff';
   
     const onMouseoverRegion = function (region) {
@@ -800,7 +801,8 @@ const renderChoropleth = async () => {
           const povertyMeasure = getActivePovertyMeasure();
           const value = d.properties[povertyMeasure];
           // Low is good and there isn't a chromatic scale that goes green to blue.
-          const invertedValue = 100 - value;
+          //const invertedValue = 100 - value;
+          const invertedValue = value
           return mapDataToColor(invertedValue);
         })
         .attr("stroke", strokeColor)
@@ -817,7 +819,7 @@ const renderChoropleth = async () => {
       const defs = svg.append('defs');
       const linearGradient = defs.append('linearGradient').attr('id', linearGradientId);
       linearGradient.selectAll("stop")
-        .data(mapDataToColor.ticks().map((t, i, n) => ({ offset: `${100*i/n.length}%`, color: mapDataToColor(100 - t) })))
+        .data(mapDataToColor.ticks().map((t, i, n) => ({ offset: `${100*i/n.length}%`, color: mapDataToColor(t) })))
         .enter().append("stop")
         .attr("offset", d => d.offset)
         .attr("stop-color", d => d.color);
@@ -855,7 +857,8 @@ const renderChoropleth = async () => {
         .attr("fill", d => {
           const value = d.properties[povertyMeasure];
           // Low is good and there isn't a chromatic scale that goes green to blue.
-          const invertedValue = 100 - value;
+          //const invertedValue = 100 - value;
+          const invertedValue = value
           return mapDataToColor(invertedValue);
         })
     }

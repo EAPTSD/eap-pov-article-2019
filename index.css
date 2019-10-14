@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
-  font-family: "Lato", sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -23,17 +23,27 @@ section {
 
 h1 {
   font-size: 1.5rem;
-  margin: 20px;
+  font-weight: 500;
+  margin-top: 3.5rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
 h2 {
-  font-weight: 500;
-  font-size: 2.5rem;
+  font-weight: 550;
+  width: 70%;
+  font-size: 2.25rem;
   text-align: center;
-  line-height: 70px;
-  margin-top: 5rem;
-  margin-bottom: 2rem;
+  line-height: 50px;
+  margin: 5rem 0;
+}
+
+h3 {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: normal;
+  margin: 40px 0;
+  padding: 0 15%;
 }
 
 p {
@@ -42,6 +52,11 @@ p {
   margin-top: 1em;
   margin-bottom: 1em;
   text-align: justify;
+  font-family: "Lato", sans-serif;
+}
+
+p:first-of-type {
+  margin-top: 0;
 }
 
 img{
@@ -52,6 +67,7 @@ figure.framed-image {
   display: flex;
   flex-direction: column;
   border: 1px solid black;
+  background: white;
   padding: 20px;
   padding-bottom: 10px;
   box-shadow: inset 0 0 10px, 0 15px 20px -10px rgba(0,0,0,0.9);
@@ -63,7 +79,7 @@ figure.framed-image.medium-frame {
 }
 
 figure.framed-image.thick-frame {
-  border: 10px solid black;
+  border: 5px solid black;
 }
 
 figure.framed-image figcaption {
@@ -96,6 +112,7 @@ h2 + .text-block {
 }
 
 footer {
+  font-size: 1rem;
   height: 670px;
   display: flex;
   justify-content: center;
@@ -126,7 +143,7 @@ we want to apply dark to a child element directly */
 }
 
 section.theme--dark, footer.theme--dark {
-  background: linear-gradient(120deg, rgb(43, 46, 49), rgb(26, 28, 31), rgb(73, 74, 75));
+  background: linear-gradient(120deg, rgb(28, 28, 29), rgb(53, 54, 56), rgb(91, 92, 94));
 }
 
 .theme--dark h1, 
@@ -224,7 +241,7 @@ section.theme--light, footer.theme--light {
   margin: 0 auto;
   transform: translateY(-85vh);
   padding: 30px;
-  border: 4px solid black;
+  border: 4px solid rgb(10, 51, 65);
   background: #ffffffe6;
 }
 
@@ -233,7 +250,7 @@ section.theme--light, footer.theme--light {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(120deg, rgb(45, 45, 45), rgb(13, 13, 13), rgb(45, 45, 45));
+  background: rgb(21, 96, 122,0.9);
   color: white;
   padding: 25px;
   height: 100%;
@@ -280,13 +297,17 @@ section.theme--light, footer.theme--light {
 
 }
 
-#section-2 .data-wrapper__container {
+section#section-2 {
+  padding-bottom: 5rem;
+}
+
+#section-3 .data-wrapper__container {
   border: 1px solid #888;
   box-shadow: 0 0 10px #999;
   padding: 25px;
 }
 
-#section-2 .data-wrapper__container p:last-child {
+#section-3 .data-wrapper__container p:last-child {
   margin-bottom: 0;
 }
 
@@ -294,33 +315,12 @@ section.theme--light, footer.theme--light {
   padding-top: 0;
 }
 
-section#section-5 {
-  padding: 5rem 0;
+#section-5 .text-block {
+  margin-bottom: 0;
 }
 
- 
-#section-6 {
-  padding-bottom:  5rem;
-}
-
-.section-6-background-image{
-  position: absolute;
-  z-index: -1;   
-  width: 100%;
-  height: 100%;
-  background-image: url("pics/collage2_1_2mb.jpg");
-  background-size: cover;
-  opacity: 0.7;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-@media screen and (min-width: 800px){
-  #section-7 figure img {
-    width: 75vw;
-  }
+#section-7 .text-block {
+  margin-bottom: 0;
 }
 
 /* Chart specific styles */
@@ -337,12 +337,9 @@ p.eap_bar_chart__caption {
   padding: 20px;
   font-size: 1rem;
   font-style: italic;
+  color: black;
   margin: 0;
   line-height: initial;
-}
-
-#section-3 .eap_bar_chart__container {
-  margin-bottom: 5rem;
 }
 
 .eap_bar_chart__controls {
@@ -371,7 +368,7 @@ p.eap_bar_chart__caption {
   border-radius: 6px;
 }
 #eap_bar_chart__button--play:hover, #eap_bar_chart__button--play:focus {
-  background: #88c1fa;
+  background: rgb(29, 129, 162,0.5);
 }
 
 #eap_bar_chart__button--play:active {
@@ -401,7 +398,7 @@ input[type=range]::-webkit-slider-thumb {
   height: 23px;
   width: 23px;
   border-radius: 50px;
-  background: #eda84d;
+  background: rgb(200, 99, 0);
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -7.85px;
@@ -465,7 +462,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .poverty-map__container {
-  background: #b7d9ff;
+  background:#b7d9ff;
   border-left: 5px solid #b7d9ff;
   border-right: 5px solid #b7d9ff;
   border-bottom: 3px solid #b7d9ff;
@@ -483,7 +480,7 @@ p.poverty-map__title {
   line-height: initial;
   padding: 10px;
   font-size: 1.5rem;
-  color: rgb(11, 11, 11);
+  color: rgb(29, 129, 162,0.75);
 }
 
 p.poverty-map__caption {
@@ -491,7 +488,7 @@ p.poverty-map__caption {
   line-height: initial;
   padding: 10px;
   font-size: 1rem;
-  color: #333;
+  color: black;
   font-style: italic;
 }
 
